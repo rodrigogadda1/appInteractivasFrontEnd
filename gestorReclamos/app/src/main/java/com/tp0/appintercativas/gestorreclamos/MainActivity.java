@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.tp0.appintercativas.gestorreclamos.ResponseURIs.ResponseLogin;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.UserController;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
@@ -39,12 +40,44 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                getUsers();
+                getUserById();
             }
         });
     }
 
-    public void getUsers () {
+
+    private void loginn(){
+        String username = editTextUsername.getText().toString();
+        String password = editTextPassword.getText().toString();
+        User user_a_validar = new User(username, password);
+
+        Retrofit retrofit = UserController.ConfiguracionIP();
+        UserService us = retrofit.create(UserService.class);
+
+        Call<ResponseLogin> call = us.login(user_a_validar);
+        txtEstado.setText(user_a_validar.getUsername()+"  -  "+user_a_validar.getPassword()+"  -  "+user_a_validar.getId());
+
+
+        /*call.enqueue(new Callback<ResponseLogin>() {
+            @Override
+            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                if ( (long) response.body().getNroUser() != -1 ) {
+                    txtEstado.setText("valido");
+                }else{
+                    txtEstado.setText("invalido");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                 txtEstado.setText("fallo - " + t.getMessage());
+            }
+        });*/
+
+    }
+
+
+    private void getUsers () {
             Retrofit retrofit = UserController.ConfiguracionIP();
             UserService us = retrofit.create(UserService.class);
             Call<List<User>> call = us.getUsers();
@@ -69,6 +102,28 @@ public class MainActivity extends AppCompatActivity {
                     txtEstado.setText("fallo - " + t.getMessage());
                 }
             });
+    }
+
+    private void getUserById () {
+        Retrofit retrofit = UserController.ConfiguracionIP();
+        UserService us = retrofit.create(UserService.class);
+        Call<User> call = us.findBYId(4);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (!response.isSuccessful()) {
+                    txtEstado.setText("resultado no correcto");
+                    return;
+                }
+                txtEstado.setText(response.body().getFirstName());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                txtEstado.setText("error aca - "+t.getMessage());
+            }
+        });
     }
 
 

@@ -13,6 +13,12 @@ public class User {
         super();
     }
 
+    public User(String username, String password) {
+        super();
+        this.username = username;
+        this.password = password;
+    }
+
     public User(String firstName, String lastName, String email, String username, String password) {
         super();
         this.firstName = firstName;

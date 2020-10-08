@@ -19,7 +19,7 @@ public class UserController {
 
         public static Retrofit ConfiguracionIP() {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:8080")   //url base
+                    .baseUrl("http://10.0.2.2:8083")   //url base
                     .addConverterFactory(GsonConverterFactory.create()) //quien se va a encargar de convertir de json a objeto y arrevez
                     .build();
 
