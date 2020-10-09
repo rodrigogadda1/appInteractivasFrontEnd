@@ -2,9 +2,10 @@ package com.tp0.appintercativas.gestorreclamos.ResponseURIs;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseLogin {
+import java.io.Serializable;
 
-	@SerializedName("body")
+public class ResponseLogin implements Serializable {
+
 	private long nroUser;
 
 	public long getNroUser() {

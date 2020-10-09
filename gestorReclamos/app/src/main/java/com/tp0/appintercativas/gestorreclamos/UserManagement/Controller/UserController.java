@@ -19,12 +19,12 @@ public class UserController {
 
         public static Retrofit ConfiguracionIP() {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:8083")   //url base
+                    .baseUrl("http://10.0.2.2:8080")   //url base
                     .addConverterFactory(GsonConverterFactory.create()) //quien se va a encargar de convertir de json a objeto y arrevez
                     .build();
 
             //UserService us = retrofit.create(UserService.class); //que retrofit se encarge de implementar una clase que utilize esa interfaz, esta clase ya tiene resuelto todo
             return retrofit;
         }
-
+        //spring no libera el puerto 8080 cuando terminate
 }

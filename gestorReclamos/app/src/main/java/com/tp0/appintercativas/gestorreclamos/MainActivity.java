@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                getUserById();
+                loginn();
             }
         });
     }
@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = UserController.ConfiguracionIP();
         UserService us = retrofit.create(UserService.class);
 
-        Call<ResponseLogin> call = us.login(user_a_validar);
+        Call<ResponseLogin> call = us.login(username,password);
         txtEstado.setText(user_a_validar.getUsername()+"  -  "+user_a_validar.getPassword()+"  -  "+user_a_validar.getId());
 
 
-        /*call.enqueue(new Callback<ResponseLogin>() {
+        call.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                 if ( (long) response.body().getNroUser() != -1 ) {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
                  txtEstado.setText("fallo - " + t.getMessage());
             }
-        });*/
+        });
 
     }
 

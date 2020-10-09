@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface UserService {
 
@@ -25,7 +26,17 @@ public interface UserService {
             "Content-Type:application/json"
     })
     @GET(API_ROUTE_LOGIN)
-    Call<ResponseLogin> login(@Body User user);
+    Call<ResponseLogin> login(@Query("username") String username,
+                              @Query("password") String password);
+
+
+//            public final String API_ROUTE_LOGIN = "/api/users/login";
+//            @Headers({
+//                    "Content-Type:application/json"
+//            })
+//            @GET(API_ROUTE_LOGIN)
+//                    Call<ResponseLogin> login(@Body User user;
+
 
     public final String API_ROUTE_FINDBYID = "/api/users/{id}";
     @GET(API_ROUTE_FINDBYID)
