@@ -1,8 +1,10 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                updateUser();
+                loginn();
             }
         });
     }
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if ( (long) response.body().getNroUser() != -1 ) {
                     txtEstado.setText("valido");
                 }else{
-                    txtEstado.setText("invalido");
+                    mostrarDialogo("Login incorrecto", "La combinacion de usuario/contraseña es incorrecta");
                 }
             }
 
@@ -76,8 +78,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void mostrarDialogo(String titulo,String mensaje){
+        new AlertDialog.Builder( this)
+                    .setTitle(titulo)
+                    .setMessage(mensaje)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //va a hacer nada aca, si se quisiera cerrar la app es finish()
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //no le ponemos nada , si queres hacer un log es Log.d("tag", "mensaje")
+                        }
+                    })
+                    .show();
+    }
 
-    private void getUsers () {
+   /* private void getUsers () {
             Retrofit retrofit = UserController.ConfiguracionIP();
             UserService us = retrofit.create(UserService.class);
             Call<List<User>> call = us.getUsers();
@@ -166,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                 txtEstado.setText("fallo por "+t.getMessage());
             }
         });
-    }
+    }*/
 
 
 }
