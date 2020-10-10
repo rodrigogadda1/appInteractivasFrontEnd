@@ -25,7 +25,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityLogin extends AppCompatActivity {
 
     private Button btnLogin;
     private TextView txtEstado;
