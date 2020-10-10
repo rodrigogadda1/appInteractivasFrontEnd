@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                loginn();
+                updateUser();
             }
         });
     }
@@ -122,6 +122,48 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 txtEstado.setText("error aca - "+t.getMessage());
+            }
+        });
+    }
+
+
+    private void createUser(){
+        Retrofit retrofit = UserController.ConfiguracionIP();
+        UserService us = retrofit.create(UserService.class);
+
+        User newUser = new User("rodrigo", "gadda", "rodrigo@gmail.com", "queTi", "que funcione");
+
+        Call<User> call = us.create(newUser);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                txtEstado.setText("Creado exitosamente "+response.body().getId());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                txtEstado.setText("fallo por "+t.getMessage());
+            }
+        });
+    }
+
+
+    private void updateUser(){
+        Retrofit retrofit = UserController.ConfiguracionIP();
+        UserService us = retrofit.create(UserService.class);
+
+        User newUser = new User("cmabiado", "gadda", "rodrigo@gmail.com", "queTi", "que funcione");
+
+        Call<User> call = us.updateUser(7, newUser);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                txtEstado.setText("Creado exitosamente "+response.body().getFirstName());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                txtEstado.setText("fallo por "+t.getMessage());
             }
         });
     }

@@ -10,6 +10,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -37,9 +39,16 @@ public interface UserService {
 //            @GET(API_ROUTE_LOGIN)
 //                    Call<ResponseLogin> login(@Body User user;
 
+    public final String API_ROUTE_CREATE = "/api/users";
+    @POST(API_ROUTE_CREATE)
+    Call<User> create(@Body User user);
 
     public final String API_ROUTE_FINDBYID = "/api/users/{id}";
     @GET(API_ROUTE_FINDBYID)
     Call<User> findBYId(@Path("id") long id);
+
+    public final String API_ROUTE_UPDATE = "/api/users/{id}";
+    @PUT(API_ROUTE_UPDATE)
+    Call<User> updateUser(@Path("id") long id, @Body User user);
 
 }
