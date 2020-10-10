@@ -1,7 +1,6 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,13 +15,10 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.UserCont
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivityLogin extends AppCompatActivity {
@@ -34,7 +30,7 @@ public class MainActivityLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_login);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtEstado = (TextView) findViewById(R.id.txtEstado);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
