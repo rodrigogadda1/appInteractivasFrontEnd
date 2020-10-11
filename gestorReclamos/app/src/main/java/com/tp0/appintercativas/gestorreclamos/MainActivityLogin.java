@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,33 @@ public class MainActivityLogin extends AppCompatActivity {
     }
 
 
+    private void getUserById (long id) {
+        Retrofit retrofit = UserController.ConfiguracionIP();
+        UserService us = retrofit.create(UserService.class);
+        Call<User> call = us.findBYId(id);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (!response.isSuccessful() || response.body() == null) {
+                    mostrarDialogo("Error", "Resultado no correcto ");
+                    return;
+                } else {
+                    if (response.body().getFirstTime().toLowerCase() == "false") {
+                        paso_a_pantallaprincipal((User) response.body());
+                    }else{
+                        txtEstado.setText(response.body().toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+            }
+        });
+    }
+
     private void loginn(){
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
@@ -53,32 +81,38 @@ public class MainActivityLogin extends AppCompatActivity {
         UserService us = retrofit.create(UserService.class);
 
         Call<ResponseLogin> call = us.login(username,password);
-        txtEstado.setText(user_a_validar.getUsername()+"  -  "+user_a_validar.getPassword()+"  -  "+user_a_validar.getId());
 
 
         call.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                if ( (long) response.body().getNroUser() != -1 ) {
-                    txtEstado.setText("valido");
+                ResponseLogin resp = response.body();
+                if ( (long) resp.getNroUser() != -1 ) {
+                    getUserById(resp.getNroUser());
                 }else{
-                    mostrarDialogo("Login incorrecto", "La combinacion de usuario/contraseña es incorrecta");
+                    mostrarDialogo("Error", "No existe");
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                 txtEstado.setText("fallo - " + t.getMessage());
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
             }
         });
 
+    }
+
+    private void paso_a_pantallaprincipal (User user){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 
     private void mostrarDialogo(String titulo,String mensaje){
         new AlertDialog.Builder( this)
                     .setTitle(titulo)
                     .setMessage(mensaje)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    /*.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             //va a hacer nada aca, si se quisiera cerrar la app es finish()
@@ -89,7 +123,7 @@ public class MainActivityLogin extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             //no le ponemos nada , si queres hacer un log es Log.d("tag", "mensaje")
                         }
-                    })
+                    })*/
                     .show();
     }
 

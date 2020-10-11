@@ -12,6 +12,9 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
+    private String firstTime;
+    private String preguntaSeguridad;
+    private String respuestaSeguridad;
 
     public User() {
         super();
@@ -23,13 +26,59 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String email, String username, String password) {
+    public String isFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(String firstTime) {
+        this.firstTime = firstTime;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstTime='" + firstTime + '\'' +
+                ", preguntaSeguridad='" + preguntaSeguridad + '\'' +
+                ", respuestaSeguridad='" + respuestaSeguridad + '\'' +
+                '}';
+    }
+
+    public String getFirstTime() {
+        return firstTime;
+    }
+
+    public String getPreguntaSeguridad() {
+        return preguntaSeguridad;
+    }
+
+    public void setPreguntaSeguridad(String preguntaSeguridad) {
+        this.preguntaSeguridad = preguntaSeguridad;
+    }
+
+    public String getRespuestaSeguridad() {
+        return respuestaSeguridad;
+    }
+
+    public void setRespuestaSeguridad(String respuestaSeguridad) {
+        this.respuestaSeguridad = respuestaSeguridad;
+    }
+
+    public User(String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.firstTime = firstTime;
+        this.preguntaSeguridad = preguntaSeguridad;
+        this.respuestaSeguridad = respuestaSeguridad;
     }
 
     public long getId() {
