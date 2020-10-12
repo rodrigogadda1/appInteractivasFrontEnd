@@ -3,7 +3,6 @@
     package="com.tp0.appintercativas.gestorreclamos">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,15 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".CargaDatosPersonalesFirst"></activity>
+        <activity android:name=".ConsentisacionCargaDatos" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-
         <activity
             android:name=".PantallaPrincipal"
-            android:label="@string/title_activity_pantalla_principal"></activity>
+            android:label="@string/title_activity_pantalla_principal" />
         <activity android:name=".MainActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

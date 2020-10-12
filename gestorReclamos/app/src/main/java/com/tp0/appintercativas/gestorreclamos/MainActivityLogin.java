@@ -60,7 +60,7 @@ public class MainActivityLogin extends AppCompatActivity {
                     if (response.body().getFirstTime().toLowerCase() == "false") {
                         paso_a_pantallaprincipal((User) response.body());
                     }else{
-                        txtEstado.setText(response.body().toString());
+                        paso_a_carga_datos((User) response.body());
                     }
                 }
             }
@@ -104,6 +104,12 @@ public class MainActivityLogin extends AppCompatActivity {
 
     private void paso_a_pantallaprincipal (User user){
         Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void paso_a_carga_datos (User user){
+        Intent intent = new Intent(this, ConsentisacionCargaDatos.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
