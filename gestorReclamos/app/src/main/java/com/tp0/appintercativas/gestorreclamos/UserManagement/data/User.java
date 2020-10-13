@@ -15,6 +15,11 @@ public class User implements Serializable {
     private String firstTime;
     private String preguntaSeguridad;
     private String respuestaSeguridad;
+    private String sexo;
+    private String tipo_identificacion;
+    private String numero_identificacion;
+    private String celular;
+    private String tipoUser;
 
     public User() {
         super();
@@ -26,12 +31,21 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String isFirstTime() {
-        return firstTime;
-    }
-
-    public void setFirstTime(String firstTime) {
+    public User(String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad
+            , String sexo, String tipo_identificacion, String numero_identificacion, String celular, String tipoUser) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
         this.firstTime = firstTime;
+        this.preguntaSeguridad = preguntaSeguridad;
+        this.respuestaSeguridad = respuestaSeguridad;
+        this.sexo = sexo;
+        this.tipo_identificacion = tipo_identificacion;
+        this.numero_identificacion = numero_identificacion;
+        this.celular = celular;
+        this.tipoUser = tipoUser;
     }
 
     @Override
@@ -46,7 +60,20 @@ public class User implements Serializable {
                 ", firstTime='" + firstTime + '\'' +
                 ", preguntaSeguridad='" + preguntaSeguridad + '\'' +
                 ", respuestaSeguridad='" + respuestaSeguridad + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", tipo_identificacion='" + tipo_identificacion + '\'' +
+                ", numero_identificacion='" + numero_identificacion + '\'' +
+                ", celular='" + celular + '\'' +
+                ", tipoUser='" + tipoUser + '\'' +
                 '}';
+    }
+
+    public String isFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(String firstTime) {
+        this.firstTime = firstTime;
     }
 
     public String getFirstTime() {
@@ -66,18 +93,6 @@ public class User implements Serializable {
     }
 
     public void setRespuestaSeguridad(String respuestaSeguridad) {
-        this.respuestaSeguridad = respuestaSeguridad;
-    }
-
-    public User(String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.firstTime = firstTime;
-        this.preguntaSeguridad = preguntaSeguridad;
         this.respuestaSeguridad = respuestaSeguridad;
     }
 
@@ -129,4 +144,43 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getTipo_identificacion() {
+        return tipo_identificacion;
+    }
+
+    public void setTipo_identificacion(String tipo_identificacion) {
+        this.tipo_identificacion = tipo_identificacion;
+    }
+
+    public String getNumero_identificacion() {
+        return numero_identificacion;
+    }
+
+    public void setNumero_identificacion(String numero_identificacion) {
+        this.numero_identificacion = numero_identificacion;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getTipoUser() {
+        return tipoUser;
+    }
+
+    public void setTipoUser(String tipoUser) {
+        this.tipoUser = tipoUser;
+    }
 }
