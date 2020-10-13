@@ -91,6 +91,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
                                                email= String.valueOf(editEmail.getText());
                                                user.setEmail(email);
                                                mostrarDialogo("Probando", user.toString());
+                                               goNextItem(user);
                                            }
                                        }
         );
@@ -103,5 +104,11 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
                 .setTitle(titulo)
                 .setMessage(mensaje)
                 .show();
+    }
+
+    private void goNextItem(User user){
+        Intent intent = new Intent(this, CargaDatosPreguntaFirst.class);
+        intent.putExtra("user",this.user);
+        startActivity(intent);
     }
 }

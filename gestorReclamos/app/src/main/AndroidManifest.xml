@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CargaDatosPersonalesFirst"></activity>
+        <activity android:name=".CargaDatosPreguntaFirst"></activity>
+        <activity android:name=".CargaDatosPersonalesFirst" />
         <activity android:name=".ConsentisacionCargaDatos" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
