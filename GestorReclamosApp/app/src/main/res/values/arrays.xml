@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dni_Tipo">
+        <item></item>
+        <item>DNI</item>
+        <item>Pasaporte</item>
+        <item>Cedula de Identidad</item>
+    </string-array>
+    <string-array name="sexo_Tipo">
+        <item></item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="pregunta_Tipo">
+        <item></item>
+        <item>¿De que color es mi auto?</item>
+        <item>¿Cuántos años tengo?</item>
+        <item>¿Cuál es el nombre de mi mascota?</item>
+        <item>¿Cuál es el nombre de mi colegio?</item>
+        <item>¿Cuál es el apellido madre?</item>
+    </string-array>
+</resources>
