@@ -77,10 +77,13 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
                                            @Override
                                            public void onClick(View view) {
                                                sexo=spnSexo.getSelectedItem().toString();
+                                               user.setSexo(sexo);
                                                tipo=spnTipo.getSelectedItem().toString();
+                                               user.setTipo_identificacion(tipo);
                                                numero = String.valueOf(editNumero.getText());
+                                               user.setNumero_identificacion(numero);
                                                celular = String.valueOf(editCelular.getText());
-                                               //agregar los campos de arriba a las carecteristicas de back y front
+                                               user.setCelular(celular);
                                                nombres= String.valueOf(editNombres.getText());
                                                user.setFirstName(nombres);
                                                apellidos= String.valueOf(editApellidos.getText());
