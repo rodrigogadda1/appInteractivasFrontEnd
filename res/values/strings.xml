@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Gestor Reclamos</string>
+    <string name="app_name">gestorReclamos</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -36,4 +36,5 @@
     <string name="recupera_2">Cambios de Contraseña</string>
     <string name="password_2Texto">Password Validación</string>
     <string name="guardar">Guardar</string>
+    <string name="title_activity_pantalla_principal">Pantalla Principal</string>
 </resources>
