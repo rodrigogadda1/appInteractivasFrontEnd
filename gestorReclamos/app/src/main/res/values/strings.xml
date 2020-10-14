@@ -1,9 +1,40 @@
 <resources>
     <string name="app_name">gestorReclamos</string>
-    <string name="title_activity_pantalla_principal">PantallaPrincipal</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_userNama">User</string>
+    <string name="ingresar">INGRESAR</string>
+    <string name="bienvenido_2">Vamos a pedirte unos datos mas para completar el registro.</string>
+    <string name="bienvenido_1">BIENVENIDO</string>
+    <string name="datos_1">Datos Personales</string>
+    <string name="numero_dni">Numero DNI</string>
+    <string name="nombres">Nombre/s</string>
+    <string name="apellidos">Apellido/s</string>
+    <string name="celular">Celular</string>
+    <string name="prompt_userName">User</string>
+    <string name="dni_Tipo">Tipo</string>
+    <string name="dni_Num">DNI</string>
+    <string name="test">TestApp</string>
+    <string name="sexo">Sexo</string>
+    <string name="pregunta">Pregunta</string>
+    <string name="respuesta">Respuesta</string>
+    <string name="pregunta_Tipo">Ingrese una respuesta</string>
+    <string name="password">Password</string>
+    <string name="password_2">Password V.</string>
+    <string name="datos4">Confirmación de Datos Personales</string>
+    <string name="olvido_Password">¿Ha olvidado la contraseña?</string>
+    <string name="recupera_1">Recuperación de contraseña</string>
+    <string name="usuario">Usuario</string>
+    <string name="validar_Usuario">Validar Usuario</string>
+    <string name="recupera_2">Cambios de Contraseña</string>
+    <string name="password_2Texto">Password Validación</string>
+    <string name="guardar">Guardar</string>
+    <string name="title_activity_pantalla_principal">Pantalla Principal</string>
 </resources>

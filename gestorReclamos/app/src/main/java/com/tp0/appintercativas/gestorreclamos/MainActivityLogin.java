@@ -33,7 +33,6 @@ public class MainActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
         btnLogin = (Button) findViewById(R.id.btnLogin);
-        txtEstado = (TextView) findViewById(R.id.txtEstado);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
