@@ -57,6 +57,7 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
                                                     mostrarDialogo("Validacion incorrecta","Passwords no matchean");
                                                 }
                                                mostrarDialogo("Muestra de datos",user.toString());
+                                                goNextItem(user);
                                            }
                                        }
         );
@@ -70,8 +71,8 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
 
     }
 
-    private void goNextItem(){
-        Intent intent = new Intent(this, CargaDatosPersonalesFirst.class);
+    private void goNextItem(User user){
+        Intent intent = new Intent(this, ConfirmacionDatosFirst.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
