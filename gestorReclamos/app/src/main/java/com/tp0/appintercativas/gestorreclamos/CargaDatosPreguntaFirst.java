@@ -16,7 +16,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 public class CargaDatosPreguntaFirst extends AppCompatActivity {
 
     TextView txtPregunta, txtRespuesta, txtContraseña, txtRepeatContraseña;
-    Button btnNext, btnCancel;
+    Button btnNext, btnCancel, btnBack;
     Spinner spnPregunta;
     EditText editReponse, editContraseña, editRepeatContraseña;
     User user;
@@ -28,6 +28,7 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        String ponerDatosDefault = intent.getStringExtra("ponerDatosDefault");
 
         txtPregunta = (TextView) findViewById(R.id.txtPregunta);
         txtRespuesta = (TextView) findViewById(R.id.txtRespuesta);
@@ -43,30 +44,45 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
         ArrayAdapter<String> adapterPreguntasPosibles = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, preguntasPosibles);
         spnPregunta.setAdapter(adapterPreguntasPosibles);
 
+        if (ponerDatosDefault.toLowerCase().equals("true")){
+            editReponse.setText(user.getRespuestaSeguridad().toString());
+            editContraseña.setText(user.getPassword().toString());
+            editRepeatContraseña.setText(user.getPassword().toString());
+            spnPregunta.setSelection(adapterPreguntasPosibles.getPosition(user.getPreguntaSeguridad().toString()));
+        }
+
         btnNext = (Button) findViewById(R.id.btnNext);
         btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnBack = (Button) findViewById(R.id.btnBack);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
-                                                user.setPreguntaSeguridad(spnPregunta.getSelectedItem().toString());
-                                                user.setRespuestaSeguridad(editReponse.getText().toString());
-                                                if(editContraseña.getText().toString() == editRepeatContraseña.getText().toString()){
-                                                    user.setPassword(editContraseña.getText().toString());
-                                                } else {
-                                                    mostrarDialogo("Validacion incorrecta","Passwords no matchean");
-                                                }
-                                               mostrarDialogo("Muestra de datos",user.toString());
-                                                goNextItem(user);
-                                           }
-                                       }
+                    user.setPreguntaSeguridad(spnPregunta.getSelectedItem().toString());
+                    user.setRespuestaSeguridad(editReponse.getText().toString());
+                    if(editContraseña.getText().toString().equals(editRepeatContraseña.getText().toString())){
+                        user.setPassword(editContraseña.getText().toString());
+                        goNextItem(user);
+                    } else {
+                        mostrarDialogo("Validacion incorrecta","Passwords no matchean");
+                    }
+               }
+           }
         );
         btnCancel.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
-
+                                               cancelar_parseScreen();
                                            }
                                        }
+        );
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View view) {
+                                             goBack(user);
+                                         }
+                                     }
         );
 
     }
@@ -77,10 +93,23 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void goBack(User user){
+        Intent intent = new Intent(this, CargaDatosPersonalesFirst.class);
+        intent.putExtra("user",user);
+        intent.putExtra("ponerDatosDefault" , "true");
+        startActivity(intent);
+    }
+
+    private void cancelar_parseScreen(){
+        Intent intent = new Intent(this, MainActivityLogin.class);
+        startActivity(intent);
+    }
+
     private void mostrarDialogo(String titulo,String mensaje){
         new android.app.AlertDialog.Builder( this)
                 .setTitle(titulo)
                 .setMessage(mensaje)
                 .show();
     }
+
 }

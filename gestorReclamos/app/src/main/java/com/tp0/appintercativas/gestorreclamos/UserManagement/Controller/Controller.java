@@ -15,7 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserController {
+public class Controller {
 
         public static Retrofit ConfiguracionIP() {
             Retrofit retrofit = new Retrofit.Builder()

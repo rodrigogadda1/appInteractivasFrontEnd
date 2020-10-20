@@ -51,6 +51,7 @@ public class ConsentisacionCargaDatos extends AppCompatActivity {
     private void goNextItem(){
         Intent intent = new Intent(this, CargaDatosPersonalesFirst.class);
         intent.putExtra("user",user);
+        intent.putExtra("ponerDatosDefault" , "false");
         startActivity(intent);
     }
 

@@ -69,9 +69,20 @@
         android:layout_below="@id/editRepeatContraseña"
         android:layout_alignRight="@id/btnCancel"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginRight="285dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="160dp"
         android:text="Continue" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editRepeatContraseña"
+        android:layout_alignRight="@id/btnCancel"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="304dp"
+        android:text="Back" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -79,8 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editRepeatContraseña"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginRight="155dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="36dp"
         android:text="@android:string/cancel" />
 
 

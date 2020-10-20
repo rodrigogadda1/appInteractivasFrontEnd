@@ -3,7 +3,6 @@ package com.tp0.appintercativas.gestorreclamos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.tp0.appintercativas.gestorreclamos.ResponseURIs.ResponseLogin;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.UserController;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
@@ -45,7 +44,7 @@ public class MainActivityLogin extends AppCompatActivity {
 
 
     private void getUserById (long id) {
-        Retrofit retrofit = UserController.ConfiguracionIP();
+        Retrofit retrofit = Controller.ConfiguracionIP();
         UserService us = retrofit.create(UserService.class);
         Call<User> call = us.findBYId(id);
 
@@ -76,7 +75,7 @@ public class MainActivityLogin extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
         User user_a_validar = new User(username, password);
 
-        Retrofit retrofit = UserController.ConfiguracionIP();
+        Retrofit retrofit = Controller.ConfiguracionIP();
         UserService us = retrofit.create(UserService.class);
 
         Call<ResponseLogin> call = us.login(username,password);

@@ -3,6 +3,7 @@ package com.tp0.appintercativas.gestorreclamos;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosDeVerificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class CargaDatosPersonalesFirst extends AppCompatActivity {
@@ -29,6 +31,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
     String celular;
     String email;
     User user;
+    String ponerDatosDefault;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        ponerDatosDefault = intent.getStringExtra("ponerDatosDefault");
 
         txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         txtTipo = (TextView) findViewById(R.id.txtTipo);
@@ -63,11 +67,21 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
         ArrayAdapter<String> adapterSexo = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, opcionesSexo);
         spnSexo.setAdapter(adapterSexo);
 
+        if (ponerDatosDefault.toLowerCase().equals("true")){
+            editNumero.setText(user.getNumero_identificacion().toString());
+            editNombres.setText(user.getFirstName().toString());
+            editApellidos.setText(user.getLastName().toString());
+            editCelular.setText(user.getCelular().toString());
+            editEmail.setText(user.getEmail().toString());
+            spnSexo.setSelection(adapterSexo.getPosition(user.getSexo().toString()));
+            spnTipo.setSelection(adapterTipo.getPosition(user.getTipo_identificacion().toString()));
+        }
+
         btnCancelar = (Button) findViewById(R.id.btnCancelar);
         btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        cancelar_parseScreen();
                     }
              }
         );
@@ -76,22 +90,80 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
+                                               Boolean ValidAll = true;
+
                                                sexo=spnSexo.getSelectedItem().toString();
-                                               user.setSexo(sexo);
+                                               if (!sexo.equals("")){
+                                                   user.setSexo(sexo);
+                                               } else {
+                                                   ValidAll = false;
+                                                   mostrarDialogo("Validacion fallida","Seleccione un sexo");
+                                               }
+
                                                tipo=spnTipo.getSelectedItem().toString();
-                                               user.setTipo_identificacion(tipo);
+                                               if (!tipo.equals("")){
+                                                   user.setTipo_identificacion(tipo);
+                                               } else {
+                                                   if(ValidAll) {
+                                                       ValidAll = false;
+                                                       mostrarDialogo("Validacion fallida", "Seleccione un tipo de documento");
+                                                   }
+                                               }
+
                                                numero = String.valueOf(editNumero.getText());
-                                               user.setNumero_identificacion(numero);
+                                               if ( (ValidAll ) && (!numero.equals("")) && (MetodosDeVerificacion.isNumeric(numero))){
+                                                   user.setNumero_identificacion(numero);
+                                               } else {
+                                                   if(ValidAll) {
+                                                       ValidAll = false;
+                                                       mostrarDialogo("Validacion fallida", "Ingrese un numero de documento valido (solo numeros son aceptados)");
+                                                   }
+                                               }
+
                                                celular = String.valueOf(editCelular.getText());
-                                               user.setCelular(celular);
+                                               if ( (ValidAll ) && (!celular.equals("")) && (MetodosDeVerificacion.isNumeric(celular))){
+                                                   user.setCelular(celular);
+                                               } else {
+                                                   if(ValidAll) {
+                                                       ValidAll = false;
+                                                       mostrarDialogo("Validacion fallida", "Ingrese un numero de celular valido (solo numeros son aceptados)");
+                                                   }
+                                               }
+
                                                nombres= String.valueOf(editNombres.getText());
-                                               user.setFirstName(nombres);
+                                               if ( (ValidAll ) && (!nombres.equals("")) && (MetodosDeVerificacion.isJustLetterAndSpaces(nombres))){
+                                                   user.setFirstName(nombres);
+                                               } else {
+                                                   if(ValidAll) {
+                                                       ValidAll = false;
+                                                       mostrarDialogo("Validacion fallida", "Complete el campo nombre de manera valida (solo letras y espacios)");
+                                                   }
+                                               }
+
                                                apellidos= String.valueOf(editApellidos.getText());
-                                               user.setLastName(apellidos);
+                                               if ( (ValidAll ) && (!apellidos.equals("")) && (MetodosDeVerificacion.isJustLetterAndSpaces(apellidos)) ){
+                                                   user.setLastName(apellidos);
+                                               } else {
+                                                   if(ValidAll) {
+                                                       ValidAll = false;
+                                                       mostrarDialogo("Validacion fallida", "Complete el campo apellido de manera valida (solo letras y espacios)");
+                                                   }
+                                               }
+
                                                email= String.valueOf(editEmail.getText());
-                                               user.setEmail(email);
-                                               mostrarDialogo("Probando", user.toString());
-                                               goNextItem(user);
+                                               if ( (ValidAll ) && (!email.equals("")) && (MetodosDeVerificacion.isMail(email)) ){
+                                                   user.setEmail(email);
+                                               } else {
+                                                   if(ValidAll) {
+                                                       ValidAll = false;
+                                                       mostrarDialogo("Validacion fallida", "Mail invalido");
+                                                   }
+                                               }
+
+                                               if(ValidAll){
+                                                   goNextItem(user, ponerDatosDefault);
+                                               }
+
                                            }
                                        }
         );
@@ -103,12 +175,25 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
         new android.app.AlertDialog.Builder( this)
                 .setTitle(titulo)
                 .setMessage(mensaje)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //va a hacer nada aca, si se quisiera cerrar la app es finish()
+                    }
+                })
                 .show();
     }
 
-    private void goNextItem(User user){
+    private void goNextItem(User user, String ponerDatosDefault){
         Intent intent = new Intent(this, CargaDatosPreguntaFirst.class);
         intent.putExtra("user",this.user);
+        intent.putExtra("ponerDatosDefault" , ponerDatosDefault);
         startActivity(intent);
     }
+
+    private void cancelar_parseScreen(){
+        Intent intent = new Intent(this, MainActivityLogin.class);
+        startActivity(intent);
+    }
+
 }
