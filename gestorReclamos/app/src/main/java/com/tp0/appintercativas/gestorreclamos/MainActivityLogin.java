@@ -3,6 +3,7 @@ package com.tp0.appintercativas.gestorreclamos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -88,7 +89,7 @@ public class MainActivityLogin extends AppCompatActivity {
                 if ( (long) resp.getNroUser() != -1 ) {
                     getUserById(resp.getNroUser());
                 }else{
-                    mostrarDialogo("Error", "No existe");
+                    mostrarDialogo("Error", "Combinacion de usuario/contraseña invalida.");
                 }
             }
 
@@ -116,13 +117,13 @@ public class MainActivityLogin extends AppCompatActivity {
         new AlertDialog.Builder( this)
                     .setTitle(titulo)
                     .setMessage(mensaje)
-                    /*.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             //va a hacer nada aca, si se quisiera cerrar la app es finish()
                         }
                     })
-                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    /*.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             //no le ponemos nada , si queres hacer un log es Log.d("tag", "mensaje")

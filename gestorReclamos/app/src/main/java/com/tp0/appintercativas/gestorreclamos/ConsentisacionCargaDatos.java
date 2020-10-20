@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
@@ -13,7 +14,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 public class ConsentisacionCargaDatos extends AppCompatActivity {
 
     TextView txtConsentimiento;
-    Button btnCancel, btnOk;
+    ImageView btnCancel, btnOk;
     User user;
 
     @Override
@@ -21,10 +22,9 @@ public class ConsentisacionCargaDatos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consentisacion_carga_datos);
 
-        btnCancel = (Button) findViewById(R.id.btnCancel);
-        btnOk = (Button) findViewById(R.id.btnOk);
+        btnCancel = (ImageView) findViewById(R.id.btnCancel);
+        btnOk = (ImageView) findViewById(R.id.btnOk);
         txtConsentimiento = (TextView) findViewById(R.id.txtConsentimiento);
-        txtConsentimiento.setText("Se le van a pedir los datos iniciales para la carga de datos.");
 
         //agarro el user
         Intent intent = getIntent();
