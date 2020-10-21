@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
     TextView txtTitulo, txtTipo ,txtNumero, txtNombres, txtApellidos, txtSexo, txtCelular,txtEmail;
     Spinner spnTipo,spnSexo;
     EditText editNumero ,editNombres, editApellidos, editCelular, editEmail;
-    Button btnCancelar, btnSiguiente;
+    ImageView btnCancelar, btnSiguiente;
     String tipo;
     String numero;
     String nombres;
@@ -77,7 +79,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
             spnTipo.setSelection(adapterTipo.getPosition(user.getTipo_identificacion().toString()));
         }
 
-        btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        btnCancelar = (ImageView) findViewById(R.id.btnCancelar);
         btnCancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -86,7 +88,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
              }
         );
 
-        btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
+        btnSiguiente = (ImageView) findViewById(R.id.btnSiguiente);
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
