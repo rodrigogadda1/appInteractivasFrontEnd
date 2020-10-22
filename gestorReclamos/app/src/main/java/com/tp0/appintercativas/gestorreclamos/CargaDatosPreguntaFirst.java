@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 public class CargaDatosPreguntaFirst extends AppCompatActivity {
 
     TextView txtPregunta, txtRespuesta, txtContraseña, txtRepeatContraseña;
-    Button btnNext, btnCancel, btnBack;
+    ImageView btnNext, btnCancel, btnBack;
     Spinner spnPregunta;
     EditText editReponse, editContraseña, editRepeatContraseña;
     User user;
@@ -51,9 +52,9 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
             spnPregunta.setSelection(adapterPreguntasPosibles.getPosition(user.getPreguntaSeguridad().toString()));
         }
 
-        btnNext = (Button) findViewById(R.id.btnNext);
-        btnCancel = (Button) findViewById(R.id.btnCancel);
-        btnBack = (Button) findViewById(R.id.btnBack);
+        btnNext = (ImageView) findViewById(R.id.btnNext);
+        btnCancel = (ImageView) findViewById(R.id.btnCancel);
+        btnBack = (ImageView) findViewById(R.id.btnBack);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
                                            @Override
