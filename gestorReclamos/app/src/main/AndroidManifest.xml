@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ConfirmacionDatosFirst"></activity>
+        <activity android:name=".RecuperaContrasenia2"></activity>
+        <activity android:name=".RecuperaContrasenia1" />
+        <activity android:name=".ConfirmacionDatosFirst" />
         <activity android:name=".CargaDatosPreguntaFirst" />
         <activity android:name=".CargaDatosPersonalesFirst" />
         <activity android:name=".ConsentisacionCargaDatos" />
