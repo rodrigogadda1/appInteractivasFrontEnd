@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
 import java.io.Serializable;
 
@@ -42,6 +44,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        user.setFirstTime("false");
 
         btnBack = (ImageView) findViewById(R.id.btnBack);
         btnCancel = (ImageView) findViewById(R.id.btnCancel);
@@ -57,7 +60,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                     +"Pregunta: "+user.getPreguntaSeguridad()+"\n"
                     +"Respuesta: "+user.getRespuestaSeguridad()+"\n"
                     +"Email: "+user.getEmail()+"\n"
-                    +"Numero: "+user.getCelular()+"\n";
+                    +"Celular: "+user.getCelular()+"\n\n";
 
         Retrofit retrofit = Controller.ConfiguracionIP();
         AdministradoService as= retrofit.create(AdministradoService.class);
@@ -69,13 +72,14 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
              public void onResponse(Call<Administrado> call, Response<Administrado> response) {
                  String salidaUnidades = "";
                  administrado = response.body();
-                 if (response.isSuccessful() && response.body().getUnidades().size() > 0){
-                    for (int i = 0; i < response.body().getUnidades().size(); i++){
-                        Unidad unidad = response.body().getUnidades().get(i);
+                 if ( (response.isSuccessful()) && (response.body().getAdministradoUnidades().size() > 0)  ) {
+                    for (int i = 0; i < response.body().getAdministradoUnidades().size(); i++){
+                        AdministradoUnidad adminUnidad = response.body().getAdministradoUnidades().get(i);
+                        Unidad unidad = adminUnidad.getUnidad();
                         salidaDatos+= "Edificio: "+unidad.getEdificio().getNombre()+ " - "+unidad.getEdificio().getDireccion()
                                 + " Piso: "+ unidad.getPiso() +"\n"
                                 + " Unidad: "+unidad.getUnidad() +"\n"
-                                + " Tipo: "+response.body().getTipo_administriado()+"\n \n";
+                                + " Tipo: "+adminUnidad.getRelacion()+"\n \n";
                     }
                  }
                  txtDatos.setText(salidaDatos);
@@ -109,7 +113,34 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
         });
     }
 
-    private void confirmar_parseScreen(User user, int administrado_id){
+    private void confirmar_parseScreen(final User user, final int administrado_id){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        UserService us = retrofit.create(UserService.class);
+        Call<User> call = us.updateUser(user.getId(),user);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (!response.isSuccessful() || response.body() == null) {
+                    mostrarDialogo("Error", "Resultado no correcto ");
+                    return;
+                } else {
+                    if (response.body().getFirstTime() != "") {
+                        pasar_a_menu_principal(response.body(),administrado_id);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+            }
+        });
+
+
+    }
+
+    private void pasar_a_menu_principal(User user, int administrado_id) {
         Intent intent = new Intent(this, PantallaPrincipal.class);
         intent.putExtra("user",user);
         intent.putExtra("administrado_id", administrado_id);

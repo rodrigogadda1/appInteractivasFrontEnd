@@ -16,8 +16,8 @@ public class User implements Serializable {
     private String preguntaSeguridad;
     private String respuestaSeguridad;
     private String sexo;
-    private String tipo_identificacion;
-    private String numero_identificacion;
+    private String tipoIdentificacion;
+    private String numeroIdentificacion;
     private String celular;
     private String tipoUser;
 
@@ -32,7 +32,7 @@ public class User implements Serializable {
     }
 
     public User(String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad
-            , String sexo, String tipo_identificacion, String numero_identificacion, String celular, String tipoUser) {
+            , String sexo, String tipoIdentificacion, String numeroIdentificacion, String celular, String tipoUser) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -42,8 +42,8 @@ public class User implements Serializable {
         this.preguntaSeguridad = preguntaSeguridad;
         this.respuestaSeguridad = respuestaSeguridad;
         this.sexo = sexo;
-        this.tipo_identificacion = tipo_identificacion;
-        this.numero_identificacion = numero_identificacion;
+        this.tipoIdentificacion = tipoIdentificacion;
+        this.numeroIdentificacion = numeroIdentificacion;
         this.celular = celular;
         this.tipoUser = tipoUser;
     }
@@ -61,8 +61,8 @@ public class User implements Serializable {
                 ", preguntaSeguridad='" + preguntaSeguridad + '\'' +
                 ", respuestaSeguridad='" + respuestaSeguridad + '\'' +
                 ", sexo='" + sexo + '\'' +
-                ", tipo_identificacion='" + tipo_identificacion + '\'' +
-                ", numero_identificacion='" + numero_identificacion + '\'' +
+                ", tipo_identificacion='" + tipoIdentificacion + '\'' +
+                ", numero_identificacion='" + numeroIdentificacion + '\'' +
                 ", celular='" + celular + '\'' +
                 ", tipoUser='" + tipoUser + '\'' +
                 '}';
@@ -153,19 +153,19 @@ public class User implements Serializable {
     }
 
     public String getTipo_identificacion() {
-        return tipo_identificacion;
+        return tipoIdentificacion;
     }
 
-    public void setTipo_identificacion(String tipo_identificacion) {
-        this.tipo_identificacion = tipo_identificacion;
+    public void setTipo_identificacion(String tipoIdentificacion) {
+        this.tipoIdentificacion = tipoIdentificacion;
     }
 
     public String getNumero_identificacion() {
-        return numero_identificacion;
+        return numeroIdentificacion;
     }
 
-    public void setNumero_identificacion(String numero_identificacion) {
-        this.numero_identificacion = numero_identificacion;
+    public void setNumero_identificacion(String numeroIdentificacion) {
+        this.numeroIdentificacion = numeroIdentificacion;
     }
 
     public String getCelular() {

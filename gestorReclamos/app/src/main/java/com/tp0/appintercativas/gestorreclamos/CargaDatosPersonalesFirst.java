@@ -161,7 +161,7 @@ public class CargaDatosPersonalesFirst extends AppCompatActivity {
                                                        mostrarDialogo("Validacion fallida", "Mail invalido");
                                                    }
                                                }
-
+                                               mostrarDialogo("titulo",user.toString());
                                                if(ValidAll){
                                                    goNextItem(user, ponerDatosDefault);
                                                }

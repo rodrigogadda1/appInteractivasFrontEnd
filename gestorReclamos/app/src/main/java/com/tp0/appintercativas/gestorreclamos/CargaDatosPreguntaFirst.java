@@ -30,6 +30,7 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
         String ponerDatosDefault = intent.getStringExtra("ponerDatosDefault");
+        mostrarDialogo("asd", user.toString());
 
         txtPregunta = (TextView) findViewById(R.id.txtPregunta);
         txtRespuesta = (TextView) findViewById(R.id.txtRespuesta);
@@ -63,6 +64,7 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
                     user.setRespuestaSeguridad(editReponse.getText().toString());
                     if(editContraseña.getText().toString().equals(editRepeatContraseña.getText().toString())){
                         user.setPassword(editContraseña.getText().toString());
+                        user.setFirstTime("false");
                         goNextItem(user);
                     } else {
                         mostrarDialogo("Validacion incorrecta","Passwords no matchean");

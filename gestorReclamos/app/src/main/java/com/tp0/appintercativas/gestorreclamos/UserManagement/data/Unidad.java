@@ -1,22 +1,14 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
+import java.util.List;
+
 public class Unidad {
 
     private long id_unidad;
     private String piso;
     private String unidad;
     private Edificio edificio;
-
-    public Unidad(long id_unidad, String piso, String unidad, Edificio edificio) {
-        this.id_unidad = id_unidad;
-        this.piso = piso;
-        this.unidad = unidad;
-        this.edificio = edificio;
-    }
-
-    public Unidad() {
-        super();
-    }
+    private List<AdministradoUnidad> administradoUnidades;
 
     @Override
     public String toString() {
@@ -24,8 +16,21 @@ public class Unidad {
                 "id_unidad=" + id_unidad +
                 ", piso='" + piso + '\'' +
                 ", unidad='" + unidad + '\'' +
-                ", edificio=" + edificio.toString() +
+                ", edificio=" + edificio +
+                ", administradoUnidades=" + administradoUnidades +
                 '}';
+    }
+
+    public Unidad(long id_unidad, String piso, String unidad, Edificio edificio, List<AdministradoUnidad> administradoUnidades) {
+        this.id_unidad = id_unidad;
+        this.piso = piso;
+        this.unidad = unidad;
+        this.edificio = edificio;
+        this.administradoUnidades = administradoUnidades;
+    }
+
+    public Unidad() {
+        super();
     }
 
     public long getId_unidad() {
@@ -59,4 +64,13 @@ public class Unidad {
     public void setEdificio(Edificio edificio) {
         this.edificio = edificio;
     }
+
+    public List<AdministradoUnidad> getAdministradoUnidades() {
+        return administradoUnidades;
+    }
+
+    public void setAdministradoUnidades(List<AdministradoUnidad> administradoUnidades) {
+        this.administradoUnidades = administradoUnidades;
+    }
+
 }
