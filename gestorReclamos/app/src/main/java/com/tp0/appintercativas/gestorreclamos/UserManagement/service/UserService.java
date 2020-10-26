@@ -31,6 +31,10 @@ public interface UserService {
     Call<ResponseLogin> login(@Query("username") String username,
                               @Query("password") String password);
 
+    public final String API_ROUTE_GETUSERBYID = "/api/users/getByUser";
+    @GET(API_ROUTE_GETUSERBYID)
+    Call<User> getUserByUsername(@Query("username") String username);
+
 
 //            public final String API_ROUTE_LOGIN = "/api/users/login";
 //            @Headers({

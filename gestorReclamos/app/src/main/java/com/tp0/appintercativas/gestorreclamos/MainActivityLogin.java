@@ -24,7 +24,7 @@ import retrofit2.Retrofit;
 
 public class MainActivityLogin extends AppCompatActivity {
 
-    private Button btnLogin;
+    private Button btnLogin,btnOlvidoPassword;
     private TextView txtEstado;
     private EditText editTextUsername, editTextPassword;
 
@@ -33,6 +33,7 @@ public class MainActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnOlvidoPassword = (Button) findViewById(R.id.btnOlvidoPassword);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
@@ -41,8 +42,18 @@ public class MainActivityLogin extends AppCompatActivity {
                 loginn();
             }
         });
+        btnOlvidoPassword.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                olvidoPassword();
+            }
+        });
     }
 
+
+    private void olvidoPassword(){
+        Intent intent = new Intent(this, RecuperaContrasenia1.class);
+        startActivity(intent);
+    }
 
     private void getUserById (long id) {
         Retrofit retrofit = Controller.ConfiguracionIP();

@@ -93,7 +93,7 @@
         android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
         android:hint="@string/password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
