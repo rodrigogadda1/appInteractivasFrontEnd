@@ -11,20 +11,7 @@ public class Edificio {
     private long cantUnidades;
     private List<Unidad> unidades;
     private List<EspacioComun> espaciosComunes;
-
-    public Edificio(){
-        super();
-    }
-
-    public Edificio(long id_edificio, String nombre, String direccion, String telefono, long cantUnidades, List<Unidad> unidades, List<EspacioComun> espaciosComunes) {
-        this.id_edificio = id_edificio;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.cantUnidades = cantUnidades;
-        this.unidades = unidades;
-        this.espaciosComunes = espaciosComunes;
-    }
+    private List<InspectorEdificio> inspectoredificio ;
 
     @Override
     public String toString() {
@@ -36,7 +23,24 @@ public class Edificio {
                 ", cantUnidades=" + cantUnidades +
                 ", unidades=" + unidades +
                 ", espaciosComunes=" + espaciosComunes +
+                ", inspectoredificio=" + inspectoredificio +
                 '}';
+    }
+
+    public Edificio(){
+        super();
+    }
+
+    public Edificio(long id_edificio, String nombre, String direccion, String telefono
+                , long cantUnidades, List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<InspectorEdificio> inspectoredificio) {
+        this.id_edificio = id_edificio;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.cantUnidades = cantUnidades;
+        this.unidades = unidades;
+        this.espaciosComunes = espaciosComunes;
+        this.inspectoredificio = inspectoredificio;
     }
 
     public long getId_edificio() {
@@ -93,5 +97,13 @@ public class Edificio {
 
     public void setEspaciosComunes(List<EspacioComun> espaciosComunes) {
         this.espaciosComunes = espaciosComunes;
+    }
+
+    public List<InspectorEdificio> getInspectoredificio() {
+        return inspectoredificio;
+    }
+
+    public void setInspectoredificio(List<InspectorEdificio> inspectoredificio) {
+        this.inspectoredificio = inspectoredificio;
     }
 }

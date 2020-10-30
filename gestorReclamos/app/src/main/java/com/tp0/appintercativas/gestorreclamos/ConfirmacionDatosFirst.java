@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +17,16 @@ import android.widget.TextView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Inspector;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.InspectorEdificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.InspectorService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
 import java.io.Serializable;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -62,34 +67,61 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                     +"Email: "+user.getEmail()+"\n"
                     +"Celular: "+user.getCelular()+"\n\n";
 
-        Retrofit retrofit = Controller.ConfiguracionIP();
-        AdministradoService as= retrofit.create(AdministradoService.class);
-        Call<Administrado> call = as.getAdministradoId((long) user.getId());
+        /*Retrofit retrofit = Controller.ConfiguracionIP();
 
-        call.enqueue(new Callback<Administrado>() {
+        if (user.getTipoUser().toString().toLowerCase().equals("administrado")){
 
-             @Override
-             public void onResponse(Call<Administrado> call, Response<Administrado> response) {
-                 String salidaUnidades = "";
-                 administrado = response.body();
-                 if ( (response.isSuccessful()) && (response.body().getAdministradoUnidades().size() > 0)  ) {
-                    for (int i = 0; i < response.body().getAdministradoUnidades().size(); i++){
-                        AdministradoUnidad adminUnidad = response.body().getAdministradoUnidades().get(i);
-                        Unidad unidad = adminUnidad.getUnidad();
-                        salidaDatos+= "Edificio: "+unidad.getEdificio().getNombre()+ " - "+unidad.getEdificio().getDireccion()
-                                + " Piso: "+ unidad.getPiso() +"\n"
-                                + " Unidad: "+unidad.getUnidad() +"\n"
-                                + " Tipo: "+adminUnidad.getRelacion()+"\n \n";
+            AdministradoService as = retrofit.create(AdministradoService.class);
+            Call<Administrado> call = as.getAdministradoId((long) user.getId());
+
+            call.enqueue(new Callback<Administrado>() {
+
+                @Override
+                public void onResponse(Call<Administrado> call, Response<Administrado> response) {
+                    administrado = response.body();
+                    if ((response.isSuccessful()) && (response.body().getAdministradoUnidades().size() > 0)) {
+                        for (int i = 0; i < response.body().getAdministradoUnidades().size(); i++) {
+                            AdministradoUnidad adminUnidad = response.body().getAdministradoUnidades().get(i);
+                            Unidad unidad = adminUnidad.getUnidad();
+                            salidaDatos += "Edificio: " + unidad.getEdificio().getNombre() + " - " + unidad.getEdificio().getDireccion()
+                                    + " Piso: " + unidad.getPiso() + "\n"
+                                    + " Unidad: " + unidad.getUnidad() + "\n"
+                                    + " Tipo: " + adminUnidad.getRelacion() + "\n \n";
+                        }
                     }
-                 }
-                 txtDatos.setText(salidaDatos);
-             }
+                    txtDatos.setText(salidaDatos);
+                }
 
-             @Override
-             public void onFailure(Call<Administrado> call, Throwable t) {
-                 mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
-             }
-         });
+                @Override
+                public void onFailure(Call<Administrado> call, Throwable t) {
+                    mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+                }
+            });
+
+        } else if (user.getTipoUser().toString().toLowerCase().equals("inspector")) {
+            InspectorService is = retrofit.create(InspectorService.class);
+            Call<Inspector> call = is.getInspectorId(user.getId());
+
+            call.enqueue(new Callback<Inspector>() {
+                     @Override
+                     public void onResponse(Call<Inspector> call, Response<Inspector> response) {
+                        if ( response.body().getInspectoredificio().size() > 0) {
+                            for (int i = 0; i < response.body().getInspectoredificio().size(); i++){
+                                salidaDatos+= "Edificio: " + response.body().getInspectoredificio().get(i).getEdificio().getNombre()
+                                        + " Direccion: "+response.body().getInspectoredificio().get(i).getEdificio().getDireccion()+ "\n";
+                            }
+                        }
+                         txtDatos.setText(salidaDatos);
+                     }
+
+                     @Override
+                     public void onFailure(Call<Inspector> call, Throwable t) {
+                         mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+                     }
+                 }
+            );
+
+        }   */
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +140,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mostrarDialogo("probando", user.toString());
                 confirmar_parseScreen(user, (int) administrado.getId_administrado());
             }
         });
@@ -162,6 +195,12 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
     private void mostrarDialogo(String titulo,String mensaje){
         new AlertDialog.Builder( this)
                 .setTitle(titulo)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //va a hacer nada aca, si se quisiera cerrar la app es finish()
+                    }
+                })
                 .setMessage(mensaje)
                 .show();
     }

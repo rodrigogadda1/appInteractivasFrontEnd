@@ -28,6 +28,4 @@ public interface UnidadService {
     @DELETE(API_ROUTE_BYID)
     Call<ResponseBody> deleteById(@Path("id") long id);
 
-
-
 }

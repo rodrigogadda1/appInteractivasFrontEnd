@@ -2,6 +2,7 @@ package com.tp0.appintercativas.gestorreclamos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,6 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
         String ponerDatosDefault = intent.getStringExtra("ponerDatosDefault");
-        mostrarDialogo("asd", user.toString());
 
         txtPregunta = (TextView) findViewById(R.id.txtPregunta);
         txtRespuesta = (TextView) findViewById(R.id.txtRespuesta);
@@ -112,6 +112,12 @@ public class CargaDatosPreguntaFirst extends AppCompatActivity {
         new android.app.AlertDialog.Builder( this)
                 .setTitle(titulo)
                 .setMessage(mensaje)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //va a hacer nada aca, si se quisiera cerrar la app es finish()
+                    }
+                })
                 .show();
     }
 
