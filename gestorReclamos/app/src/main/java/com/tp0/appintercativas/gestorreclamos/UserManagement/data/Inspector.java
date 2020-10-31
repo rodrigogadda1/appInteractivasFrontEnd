@@ -7,6 +7,7 @@ public class Inspector {
     private long id_inspector;
     private long id_user;
     private List<InspectorEdificio> inspectoredificio;
+    private List<InspectorEspecialidad> inspectorespecialidad;
 
     @Override
     public String toString() {
@@ -14,13 +15,15 @@ public class Inspector {
                 "id_inspector=" + id_inspector +
                 ", id_user=" + id_user +
                 ", inspectoredificio=" + inspectoredificio +
+                ", inspectorespecialidad=" + inspectorespecialidad +
                 '}';
     }
 
-    public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio) {
+    public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio, List<InspectorEspecialidad> inspectorespecialidad) {
         this.id_inspector = id_inspector;
         this.id_user = id_user;
         this.inspectoredificio = inspectoredificio;
+        this.inspectorespecialidad = inspectorespecialidad;
     }
 
     public Inspector() {
@@ -51,4 +54,11 @@ public class Inspector {
         this.id_user = id_user;
     }
 
+    public List<InspectorEspecialidad> getInspectorespecialidad() {
+        return inspectorespecialidad;
+    }
+
+    public void setInspectorespecialidad(List<InspectorEspecialidad> inspectorespecialidad) {
+        this.inspectorespecialidad = inspectorespecialidad;
+    }
 }

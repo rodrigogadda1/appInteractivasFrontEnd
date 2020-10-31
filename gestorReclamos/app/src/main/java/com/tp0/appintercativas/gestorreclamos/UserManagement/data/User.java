@@ -20,19 +20,16 @@ public class User implements Serializable {
     private String numeroIdentificacion;
     private String celular;
     private String tipoUser;
+    private boolean datos_moviles;
+    private boolean recibir_notificaciones;
 
     public User() {
         super();
     }
 
-    public User(String username, String password) {
-        super();
-        this.username = username;
-        this.password = password;
-    }
-
-    public User(String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad
-            , String sexo, String tipoIdentificacion, String numeroIdentificacion, String celular, String tipoUser) {
+    public User(long id, String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
+                String tipoIdentificacion, String numeroIdentificacion, String celular, String tipoUser, boolean datos_moviles, boolean recibir_notificaciones) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -46,6 +43,8 @@ public class User implements Serializable {
         this.numeroIdentificacion = numeroIdentificacion;
         this.celular = celular;
         this.tipoUser = tipoUser;
+        this.datos_moviles = datos_moviles;
+        this.recibir_notificaciones = recibir_notificaciones;
     }
 
     @Override
@@ -61,10 +60,12 @@ public class User implements Serializable {
                 ", preguntaSeguridad='" + preguntaSeguridad + '\'' +
                 ", respuestaSeguridad='" + respuestaSeguridad + '\'' +
                 ", sexo='" + sexo + '\'' +
-                ", tipo_identificacion='" + tipoIdentificacion + '\'' +
-                ", numero_identificacion='" + numeroIdentificacion + '\'' +
+                ", tipoIdentificacion='" + tipoIdentificacion + '\'' +
+                ", numeroIdentificacion='" + numeroIdentificacion + '\'' +
                 ", celular='" + celular + '\'' +
                 ", tipoUser='" + tipoUser + '\'' +
+                ", datos_moviles=" + datos_moviles +
+                ", recibir_notificaciones=" + recibir_notificaciones +
                 '}';
     }
 
@@ -182,5 +183,37 @@ public class User implements Serializable {
 
     public void setTipoUser(String tipoUser) {
         this.tipoUser = tipoUser;
+    }
+
+    public String getTipoIdentificacion() {
+        return tipoIdentificacion;
+    }
+
+    public void setTipoIdentificacion(String tipoIdentificacion) {
+        this.tipoIdentificacion = tipoIdentificacion;
+    }
+
+    public String getNumeroIdentificacion() {
+        return numeroIdentificacion;
+    }
+
+    public void setNumeroIdentificacion(String numeroIdentificacion) {
+        this.numeroIdentificacion = numeroIdentificacion;
+    }
+
+    public boolean isDatos_moviles() {
+        return datos_moviles;
+    }
+
+    public void setDatos_moviles(boolean datos_moviles) {
+        this.datos_moviles = datos_moviles;
+    }
+
+    public boolean isRecibir_notificaciones() {
+        return recibir_notificaciones;
+    }
+
+    public void setRecibir_notificaciones(boolean recibir_notificaciones) {
+        this.recibir_notificaciones = recibir_notificaciones;
     }
 }

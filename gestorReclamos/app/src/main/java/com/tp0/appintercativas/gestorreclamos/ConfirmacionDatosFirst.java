@@ -67,7 +67,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                     +"Email: "+user.getEmail()+"\n"
                     +"Celular: "+user.getCelular()+"\n\n";
 
-        /*Retrofit retrofit = Controller.ConfiguracionIP();
+        Retrofit retrofit = Controller.ConfiguracionIP();
 
         if (user.getTipoUser().toString().toLowerCase().equals("administrado")){
 
@@ -106,10 +106,22 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                      @Override
                      public void onResponse(Call<Inspector> call, Response<Inspector> response) {
                         if ( response.body().getInspectoredificio().size() > 0) {
+
                             for (int i = 0; i < response.body().getInspectoredificio().size(); i++){
                                 salidaDatos+= "Edificio: " + response.body().getInspectoredificio().get(i).getEdificio().getNombre()
                                         + " Direccion: "+response.body().getInspectoredificio().get(i).getEdificio().getDireccion()+ "\n";
                             }
+
+                            if(response.body().getInspectorespecialidad().size() > 0) {
+                                salidaDatos += "\n\n" +
+                                        "Especialidades:\n";
+                            }
+
+                            for (int i = 0; i < response.body().getInspectorespecialidad().size(); i++){
+                                salidaDatos+= response.body().getInspectorespecialidad().get(i).getEspecialidad().getNombre()+" "
+                                                    +response.body().getInspectorespecialidad().get(i).getEspecialidad().getDescripcion()+"\n";
+                            }
+
                         }
                          txtDatos.setText(salidaDatos);
                      }
@@ -121,7 +133,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                  }
             );
 
-        }   */
+        }
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
