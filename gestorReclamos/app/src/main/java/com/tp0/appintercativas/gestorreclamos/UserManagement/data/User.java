@@ -27,6 +27,11 @@ public class User implements Serializable {
         super();
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public User(long id, String firstName, String lastName, String email, String username, String password, String firstTime, String preguntaSeguridad, String respuestaSeguridad, String sexo,
                 String tipoIdentificacion, String numeroIdentificacion, String celular, String tipoUser, boolean datos_moviles, boolean recibir_notificaciones) {
         this.id = id;

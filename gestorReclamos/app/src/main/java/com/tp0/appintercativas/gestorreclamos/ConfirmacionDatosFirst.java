@@ -153,25 +153,28 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mostrarDialogo("probando", user.toString());
-                confirmar_parseScreen(user, (int) administrado.getId_administrado());
+                confirmar_parseScreen(user);
             }
         });
     }
 
-    private void confirmar_parseScreen(final User user, final int administrado_id){
+    private void confirmar_parseScreen(final User user){
         Retrofit retrofit = Controller.ConfiguracionIP();
         UserService us = retrofit.create(UserService.class);
         Call<User> call = us.updateUser(user.getId(),user);
 
+        mostrarDialogo("probando", "llega hasta 1");
+
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                mostrarDialogo("probando","llega hasta 2");
                 if (!response.isSuccessful() || response.body() == null) {
                     mostrarDialogo("Error", "Resultado no correcto ");
                     return;
                 } else {
                     if (response.body().getFirstTime() != "") {
-                        pasar_a_menu_principal(response.body(),administrado_id);
+                        pasar_a_menu_principal(response.body());
                     }
                 }
             }
@@ -185,10 +188,9 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
 
     }
 
-    private void pasar_a_menu_principal(User user, int administrado_id) {
+    private void pasar_a_menu_principal(User user) {
         Intent intent = new Intent(this, PantallaPrincipal.class);
         intent.putExtra("user",user);
-        intent.putExtra("administrado_id", administrado_id);
         startActivity(intent);
     }
 
