@@ -18,6 +18,7 @@
         tools:layout_editor_absoluteX="-5dp" />
 
     <!-- TEST PARA LOS FRAMES -->
+<<<<<<< HEAD:gestorReclamos/app/src/main/res/layout/activity_login.xml
     <Button
         android:id="@+id/test1"
         android:layout_width="wrap_content"
@@ -47,6 +48,8 @@
         app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test1" />
+=======
+>>>>>>> b5f71304d526d2585c0be6d1bd2de403e1c162dc:gestorReclamos/app/src/main/res/layout/activity_main_login.xml
 
     <EditText
         android:id="@+id/editTextUsername"

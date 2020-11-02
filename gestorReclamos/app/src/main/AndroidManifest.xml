@@ -12,8 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+<<<<<<< HEAD
         tools:ignore="ExtraText" >
         <activity android:name=".ui.login.LoginActivity" >
+=======
+        android:usesCleartextTraffic="true">
+        <activity android:name=".RecuperaContrasenia2"></activity>
+        <activity android:name=".RecuperaContrasenia1" />
+        <activity android:name=".ConfirmacionDatosFirst" />
+        <activity android:name=".CargaDatosPreguntaFirst" />
+        <activity android:name=".CargaDatosPersonalesFirst" />
+        <activity android:name=".ConsentisacionCargaDatos" />
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <activity
+            android:name=".PantallaPrincipal"
+            android:label="@string/title_activity_pantalla_principal" />
+        <activity android:name=".MainActivityLogin">
+>>>>>>> b5f71304d526d2585c0be6d1bd2de403e1c162dc
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
