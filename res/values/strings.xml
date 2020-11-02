@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">gestorReclamos</string>
+    <string name="app_name">Gestor de Reclamos</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -14,14 +14,14 @@
     <string name="bienvenido_2">Vamos a pedirte unos datos mas para completar el registro.</string>
     <string name="bienvenido_1">BIENVENIDO</string>
     <string name="datos_1">Datos Personales</string>
-    <string name="numero_dni">Numero DNI</string>
     <string name="nombres">Nombre/s</string>
     <string name="apellidos">Apellido/s</string>
     <string name="celular">Celular</string>
     <string name="prompt_userName">User</string>
     <string name="dni_Tipo">Tipo</string>
     <string name="dni_Num">DNI</string>
-    <string name="test">TestApp</string>
+    <string name="test1">TestApp 1</string>
+    <string name="test2">TestApp 2</string>
     <string name="sexo">Sexo</string>
     <string name="pregunta">Pregunta</string>
     <string name="respuesta">Respuesta</string>
@@ -37,4 +37,34 @@
     <string name="password_2Texto">Password Validación</string>
     <string name="guardar">Guardar</string>
     <string name="title_activity_pantalla_principal">Pantalla Principal</string>
+    <string name="title_activity_principal">Principal</string>
+    <string name="navigation_open">Menu Open</string>
+    <string name="navigation_close">Menu Close</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="principaltexto1">GESTOR DE RECLAMOS App.</string>
+    <string name="principaltexto2">Ultimos Reclamos Activos:</string>
+    <string name="reclamo_1">Ejemplo del  1º Reclamo listado</string>
+    <string name="reclamo_2">Ejemplo del  2º Reclamo listado</string>
+    <string name="reclamo_3">Ejemplo del  3º Reclamo listado</string>
+    <string name="reclamo_4">Ejemplo del  4º Reclamo listado</string>
+    <string name="reclamo_5">Ejemplo del  5º Reclamo listado</string>
+    <string name="reclamonuevo">Nuevo Reclamo</string>
+    <string name="reclamoactivo">Reclamos Activos</string>
+    <string name="reclamohistorial">Historial Reclamos</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="numero">Número</string>
+    <string name="numerodoc">Número de Documento</string>
+    <string name="infoaplicacion_1">Acerca de la App</string>
+    <string name="infoaplicacion_2">GRUPO Nº 6</string>
+    <string name="infoaplicacion_3">MATERIA: Aplicaciones Distribuidas\n\nNOMBRE App: Gestor de Reclamos\n\nINTEGRANTES:</string>
+    <string name="infoaplicacion_4">\tLU: 1105.567\t\tGADDA, Rodrigo Emanuel</string>
+    <string name="infoaplicacion_5">\tLU: 99.514\t\tGIMENEZ, Alejandro Gaston</string>
+    <string name="infoaplicacion_6">\tLU: 110.475\t\tTISSERA, Rodrigo Ezequiel</string>
+    <string name="configuraciones_1">Configuraciones</string>
 </resources>

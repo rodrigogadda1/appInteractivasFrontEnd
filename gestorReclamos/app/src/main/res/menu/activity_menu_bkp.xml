@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu"
+        android:icon="@drawable/image21"
+        app:showAsAction="always"
+        android:title="Menu">
+        <menu>
+            <item android:id="@+id/reclamonuevo"
+                android:icon="@drawable/image22"
+                android:title="Nuevo Reclamo" />
+                // app:showAsAction="always"
+            <item android:id="@+id/reclamoactivo"
+                android:icon="@drawable/image23"
+                android:title="Reclamos Activos" />
+                // app:showAsAction="ifRoom"
+            <item android:id="@+id/reclamohistorial"
+                android:icon="@drawable/image24"
+                android:title="Historial Reclamos" />
+            <item android:id="@+id/notificaciones"
+                android:icon="@drawable/image25"
+                android:title="Notificaciones" />
+            <item android:id="@+id/configuracion"
+                android:icon="@drawable/image26"
+                android:title="Configuraciones" />
+            <item android:id="@+id/cerrarsesion"
+                android:icon="@drawable/image27"
+                android:title="Cerrar Sesion" />
+            <item android:id="@+id/acercaapp"
+                android:icon="@drawable/image28"
+                android:title="Acerca de la App" />
+        </menu>
+    </item>
+
+</menu>
