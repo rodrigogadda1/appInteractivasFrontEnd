@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+        <group android:checkableBehavior="single">
+            <item android:id="@+id/reclamonuevo"
+                android:icon="@drawable/image22"
+                android:title="Nuevo Reclamo" />
+            <item android:id="@+id/reclamoactivo"
+                android:icon="@drawable/image23"
+                android:title="Reclamos Activos" />
+            <item android:id="@+id/reclamohistorial"
+                android:icon="@drawable/image24"
+                android:title="Historial Reclamos" />
+            <item android:id="@+id/notificaciones"
+                android:icon="@drawable/image25"
+                android:title="Notificaciones" />
+            <item android:id="@+id/configuracion"
+                android:icon="@drawable/image26"
+                android:title="Configuraciones" />
+            <item android:id="@+id/acercaapp"
+                android:icon="@drawable/image28"
+                android:title="Acerca de la App" />
+            <item android:id="@+id/cerrarsesion"
+                android:icon="@drawable/image27"
+                android:title="Cerrar Sesion" />
+        </group>
+</menu>
