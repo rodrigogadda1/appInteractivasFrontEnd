@@ -1,10 +1,12 @@
 package com.example.gestorreclamosapp.infoaplicacion;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -12,24 +14,44 @@ import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.principal.activity_principal;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
+import com.google.android.material.navigation.NavigationView;
 
-public class activity_infoaplicacion extends AppCompatActivity {
+public class activity_infoaplicacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infoaplicacion);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        drawerLayout = findViewById(R.id.container);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
+
+        drawerLayout.addDrawerListener(this);
+
         setTitle("Gestor de Reclamos Menu");
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_menu, menu);
-        return true;
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
@@ -49,13 +71,13 @@ public class activity_infoaplicacion extends AppCompatActivity {
                 intent = new Intent(activity_infoaplicacion.this, activity_configuraciones.class);
                 startActivity(intent);
                 break;
+            case R.id.acercaapp:
+                Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.cerrarsesion:
                 Toast.makeText(this, "Cerrar Sesion selected", Toast.LENGTH_SHORT).show();
                 intent = new Intent(activity_infoaplicacion.this, LoginActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.acercaapp:
-                Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -67,4 +89,27 @@ public class activity_infoaplicacion extends AppCompatActivity {
         Intent intent = new Intent(activity_infoaplicacion.this, activity_principal.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onDrawerSlide( View view, float v) {
+        //cambio en la posición del drawer
+    }
+
+    @Override
+    public void onDrawerOpened( View view) {
+        //el drawer se ha abierto completamente
+        Toast.makeText(this, getString(R.string.navigation_open), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDrawerClosed( View view) {
+        //el drawer se ha cerrado completamente
+        Toast.makeText(this, getString(R.string.navigation_close), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDrawerStateChanged(int i) {
+        //cambio de estado, puede ser STATE_IDLE, STATE_DRAGGING or STATE_SETTLING
+    }
+
 }
