@@ -67,4 +67,10 @@
     <string name="infoaplicacion_5">\tLU: 99.514\t\tGIMENEZ, Alejandro Gaston</string>
     <string name="infoaplicacion_6">\tLU: 110.475\t\tTISSERA, Rodrigo Ezequiel</string>
     <string name="configuraciones_1">Configuraciones</string>
+    <string name="uso_movil">Permitir Uso de Datos Móviles (Puede haber datos extra por parte de la compañía)</string>
+    <string name="uso_notificaciones">Recibir Notificaciones</string>
+    <string name="nreclamo1">Nuevo Reclamo</string>
+    <string name="nreclamo2_texto1">Reclamo Número XXX\nSobre Edificio X\nEspacio/Unidad X</string>
+    <string name="nreclamo2_texto2">Detalles del Reclamo</string>
+    <string name="especialidad">Especialidad</string>
 </resources>

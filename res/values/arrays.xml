@@ -19,4 +19,28 @@
         <item>¿Cuál es el nombre de mi colegio?</item>
         <item>¿Cuál es el apellido madre?</item>
     </string-array>
+    <string-array name="listaedificiouser">
+        <item></item>
+        <item>Edificio A - Jose Moreno 1</item>
+        <item>Edificio A - Jose Moreno 1</item>
+        <item>Edificio B - Jose Ignacio 2</item>
+        <item>Eficicio C - Don Bosco</item>
+    </string-array>
+    <string-array name="listaespacios">
+        <item></item>
+        <item>Departamento 3ºB</item>
+        <item>Departamento 5ºC</item>
+        <item>Departamento 1ºA</item>
+        <item>Departamento 2ºC</item>
+        <item>Planta Baja</item>
+        <item>SUM</item>
+    </string-array>
+    <string-array name="especialidad_sp">
+        <item></item>
+        <item>Electricista</item>
+        <item>Pintor</item>
+        <item>Plomero</item>
+        <item>Albañil</item>
+        <item>Carpintero</item>
+    </string-array>
 </resources>
