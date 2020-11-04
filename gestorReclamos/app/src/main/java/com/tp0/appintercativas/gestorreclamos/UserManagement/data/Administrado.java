@@ -7,15 +7,17 @@ public class Administrado {
     private long id_administrado;
     private long id_user;
     private List<AdministradoUnidad> administradoUnidades;
+    private List<Reclamo> reclamo;
 
     public Administrado(){
         super();
     }
 
-    public Administrado(long id_administrado, long id_user, List<AdministradoUnidad> administradoUnidades) {
+    public Administrado(long id_administrado, long id_user, List<AdministradoUnidad> administradoUnidades, List<Reclamo> reclamo) {
         this.id_administrado = id_administrado;
         this.id_user = id_user;
         this.administradoUnidades = administradoUnidades;
+        this.reclamo = reclamo;
     }
 
     @Override
@@ -24,6 +26,7 @@ public class Administrado {
                 "id_administrado=" + id_administrado +
                 ", id_user=" + id_user +
                 ", administradoUnidades=" + administradoUnidades +
+                ", reclamo=" + reclamo +
                 '}';
     }
 
@@ -49,5 +52,13 @@ public class Administrado {
 
     public void setAdministradoUnidades(List<AdministradoUnidad> administradoUnidades) {
         this.administradoUnidades = administradoUnidades;
+    }
+
+    public List<Reclamo> getReclamo() {
+        return reclamo;
+    }
+
+    public void setReclamo(List<Reclamo> reclamo) {
+        this.reclamo = reclamo;
     }
 }

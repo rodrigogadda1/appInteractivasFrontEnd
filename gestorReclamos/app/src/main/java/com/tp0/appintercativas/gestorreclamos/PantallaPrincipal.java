@@ -15,11 +15,15 @@ public class PantallaPrincipal extends AppCompatActivity {
 
     private ScrollView ScrollViewReclamos;
     private Button btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_principal);
+
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
 
         ScrollViewReclamos = (ScrollView) findViewById(R.id.ScrollViewReclamos);
 
@@ -28,9 +32,14 @@ public class PantallaPrincipal extends AppCompatActivity {
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
 
+        //esto es como prueba ya que no esta la barra
+        btnNotificaciones.setText("InfoApp");
+        //fin prueba
+
         btnNotificaciones.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //aca va que hace
+
+                goToInfoApp();
             }
         });
 
@@ -52,8 +61,12 @@ public class PantallaPrincipal extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra("user");
 
+    }
+
+    private void goToInfoApp(){
+        Intent intent = new Intent(this, InfoAppActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 }

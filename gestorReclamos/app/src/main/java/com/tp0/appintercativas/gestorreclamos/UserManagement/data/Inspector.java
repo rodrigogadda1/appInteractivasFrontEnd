@@ -61,4 +61,5 @@ public class Inspector {
     public void setInspectorespecialidad(List<InspectorEspecialidad> inspectorespecialidad) {
         this.inspectorespecialidad = inspectorespecialidad;
     }
+
 }

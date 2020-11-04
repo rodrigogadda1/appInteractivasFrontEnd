@@ -67,7 +67,7 @@ public class MainActivityLogin extends AppCompatActivity {
                     mostrarDialogo("Error", "Resultado no correcto ");
                     return;
                 } else {
-                    if (response.body().getFirstTime().toLowerCase() == "false") {
+                    if (response.body().getFirstTime().toLowerCase().equals("false")) {
                         paso_a_pantallaprincipal((User) response.body());
                     }else{
                         paso_a_carga_datos((User) response.body());

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ConfiguracionesUser">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/infoaplicacion_img"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image07"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/infoaplicacion_1"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="center"
+            android:text="Acerca de la App"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <ImageView
+            android:id="@+id/infoaplicacion_img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/image29"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_1" />
+
+        <LinearLayout
+            android:id="@+id/infoaplicacion"
+            android:layout_width="0dp"
+            android:layout_height="360dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_img2">
+            <TextView
+                android:id="@+id/infoaplicacion_2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GRUPO Nº 6"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textAlignment="center">
+            </TextView>
+            <TextView
+                android:id="@+id/infoaplicacion_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="MATERIA: Aplicaciones Distribuidas\n\nNOMBRE App: Gestor de Reclamos\n\nINTEGRANTES:"
+                android:padding="6dip"
+                android:textColor="#000000">
+            </TextView>
+            <TextView
+                android:id="@+id/infoaplicacion_4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/image_rodrigo_gadda"
+                android:text="\tLU: 1105.567\t\tGADDA, Rodrigo Emanuel"
+                android:padding="6dip"
+                android:textColor="#000000">
+            </TextView>
+            <TextView
+                android:id="@+id/infoaplicacion_5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/image_alejandro_gimenez"
+                android:text="\tLU: 99.514\t\tGIMENEZ, Alejandro Gaston"
+                android:padding="6dip"
+                android:textColor="#000000">
+            </TextView>
+            <TextView
+                android:id="@+id/infoaplicacion_6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/image_rodrigo_tissera"
+                android:text="\tLU: 110.475\t\tTISSERA, Rodrigo Ezequiel"
+                android:padding="6dip"
+                android:textColor="#000000">
+            </TextView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/exit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="170dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/image04"
+            app:layout_constraintBottom_toBottomOf="@+id/infoaplicacion_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout >

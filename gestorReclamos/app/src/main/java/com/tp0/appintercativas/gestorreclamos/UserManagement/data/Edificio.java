@@ -12,6 +12,7 @@ public class Edificio {
     private List<Unidad> unidades;
     private List<EspacioComun> espaciosComunes;
     private List<InspectorEdificio> inspectoredificio ;
+    private List<InspectorEspecialidad> inspectorespecalidad ;
 
     @Override
     public String toString() {
@@ -24,15 +25,12 @@ public class Edificio {
                 ", unidades=" + unidades +
                 ", espaciosComunes=" + espaciosComunes +
                 ", inspectoredificio=" + inspectoredificio +
+                ", inspectorespecalidad=" + inspectorespecalidad +
                 '}';
     }
 
-    public Edificio(){
-        super();
-    }
-
-    public Edificio(long id_edificio, String nombre, String direccion, String telefono
-                , long cantUnidades, List<Unidad> unidades, List<EspacioComun> espaciosComunes, List<InspectorEdificio> inspectoredificio) {
+    public Edificio(long id_edificio, String nombre, String direccion, String telefono, long cantUnidades, List<Unidad> unidades, List<EspacioComun> espaciosComunes,
+                        List<InspectorEdificio> inspectoredificio, List<InspectorEspecialidad> inspectorespecalidad) {
         this.id_edificio = id_edificio;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -41,6 +39,11 @@ public class Edificio {
         this.unidades = unidades;
         this.espaciosComunes = espaciosComunes;
         this.inspectoredificio = inspectoredificio;
+        this.inspectorespecalidad = inspectorespecalidad;
+    }
+
+    public Edificio(){
+        super();
     }
 
     public long getId_edificio() {
@@ -105,5 +108,13 @@ public class Edificio {
 
     public void setInspectoredificio(List<InspectorEdificio> inspectoredificio) {
         this.inspectoredificio = inspectoredificio;
+    }
+
+    public List<InspectorEspecialidad> getInspectorespecalidad() {
+        return inspectorespecalidad;
+    }
+
+    public void setInspectorespecalidad(List<InspectorEspecialidad> inspectorespecalidad) {
+        this.inspectorespecalidad = inspectorespecalidad;
     }
 }

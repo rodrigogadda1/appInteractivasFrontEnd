@@ -9,6 +9,7 @@ public class Unidad {
     private String unidad;
     private Edificio edificio;
     private List<AdministradoUnidad> administradoUnidades;
+    private List<Reclamo> reclamos;
 
     @Override
     public String toString() {
@@ -18,15 +19,19 @@ public class Unidad {
                 ", unidad='" + unidad + '\'' +
                 ", edificio=" + edificio +
                 ", administradoUnidades=" + administradoUnidades +
+                ", reclamos=" + reclamos +
                 '}';
     }
 
-    public Unidad(long id_unidad, String piso, String unidad, Edificio edificio, List<AdministradoUnidad> administradoUnidades) {
+    public Unidad(long id_unidad, String piso, String unidad, Edificio edificio, List<AdministradoUnidad> administradoUnidades,
+                  List<Reclamo> reclamos) {
+        super();
         this.id_unidad = id_unidad;
         this.piso = piso;
         this.unidad = unidad;
         this.edificio = edificio;
         this.administradoUnidades = administradoUnidades;
+        this.reclamos = reclamos;
     }
 
     public Unidad() {
@@ -71,6 +76,14 @@ public class Unidad {
 
     public void setAdministradoUnidades(List<AdministradoUnidad> administradoUnidades) {
         this.administradoUnidades = administradoUnidades;
+    }
+
+    public List<Reclamo> getReclamos() {
+        return reclamos;
+    }
+
+    public void setReclamos(List<Reclamo> reclamos) {
+        this.reclamos = reclamos;
     }
 
 }
