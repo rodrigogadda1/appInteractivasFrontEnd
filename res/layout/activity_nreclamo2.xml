@@ -24,34 +24,35 @@
         android:id="@+id/nreclamo2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:fillViewport="true"
         android:background="@drawable/rounded_edittext"
-        android:gravity="center_vertical"
-        android:scrollbars="vertical"
         android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:gravity="center_vertical"
         android:scrollbarSize="8dp"
         android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical|center_horizontal">
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/nreclamo2_texto1"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="@string/nreclamo2_texto1"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                android:gravity="center">
-            </TextView>
+                android:textSize="20sp"></TextView>
         </LinearLayout>
     </ScrollView>
 
@@ -62,14 +63,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/nreclamo2_texto2"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@drawable/image34"
+        android:gravity="center"
         android:padding="6dip"
+        android:text="@string/nreclamo2_texto2"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/rounded_edittext"
-        android:drawableLeft="@drawable/image34"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +87,7 @@
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/especialidad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nreclamo2_texto2" />
 
@@ -95,31 +97,99 @@
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="80dp"
-        android:gravity="center_vertical"
-        android:text="@string/especialidad"
-        android:padding="6dip"
         android:background="@drawable/rounded_edittext"
+        android:gravity="center_vertical"
+        android:padding="6dip"
+        android:text="@string/especialidad"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/especialidad_sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nreclamo2_texto2" />
+
+    <EditText
+        android:id="@+id/detalle_reclamo"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/rounded_edittext"
+        android:fillViewport="true"
+        android:hint="Ingrese los detalles del Reclamo."
+        android:padding="6dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/especialidad" />
+
+    <ImageView
+        android:id="@+id/camara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="24dp"
+        android:onClick="camara"
+        android:src="@drawable/image35"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/camara_texto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo" />
+
+    <ImageView
+        android:id="@+id/archivos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="76dp"
+        android:onClick="archivos"
+        android:src="@drawable/image36"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/archivos_texto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo" />
+
+    <TextView
+        android:id="@+id/camara_texto"
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="center_vertical"
+        android:padding="6dip"
+        android:text="Camara"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nreclamo2_texto2" />
+        app:layout_constraintTop_toBottomOf="@+id/camara"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <Spinner
-        android:id="@+id/listaespacios"
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/archivos_texto"
+        android:layout_width="95dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="60dp"
         android:background="@drawable/rounded_edittext"
-        android:entries="@array/listaespacios"
         android:gravity="center_vertical"
+        android:padding="6dip"
+        android:text="Archivos"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/especialidad" />
+        app:layout_constraintTop_toBottomOf="@+id/archivos"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/back"
@@ -130,10 +200,10 @@
         android:onClick="back"
         android:src="@drawable/image12"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/logout_1"
+        app:layout_constraintEnd_toStartOf="@id/exit"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -146,7 +216,7 @@
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -160,8 +230,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/exit"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintStart_toEndOf="@id/exit"
+        app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo"
         app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
