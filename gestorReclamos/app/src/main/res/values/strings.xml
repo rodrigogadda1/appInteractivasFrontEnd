@@ -37,4 +37,6 @@
     <string name="password_2Texto">Password Validación</string>
     <string name="guardar">Guardar</string>
     <string name="title_activity_pantalla_principal">Pantalla Principal</string>
+    <string name="navigation_open">Menu Open</string>
+    <string name="navigation_close">Menu Close</string>
 </resources>

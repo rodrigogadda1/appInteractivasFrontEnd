@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
     tools:context=".ConfiguracionesUser">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -14,11 +22,11 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/infoaplicacion_img"
+            android:id="@+id/configuraciones_img"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image07"
+            android:src="@drawable/image31"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/infoaplicacion_1"
+            android:id="@+id/configuraciones_1"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
@@ -34,7 +42,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_edittext"
             android:gravity="center"
-            android:text="Acerca de la App"
+            android:text="Configuraciones"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -48,84 +56,113 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="24dp"
-            android:src="@drawable/image29"
+            android:src="@drawable/image30"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_1" />
+            app:layout_constraintTop_toBottomOf="@+id/configuraciones_1" />
 
-        <LinearLayout
-            android:id="@+id/infoaplicacion"
-            android:layout_width="0dp"
-            android:layout_height="360dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="24dp"
+        <TextView
+            android:id="@+id/uso_movil"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_edittext"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
+            android:gravity="center"
+            android:text="Permitir Uso de Datos Móviles (Puede haber datos extra por parte de la compañía)"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_img2">
-            <TextView
-                android:id="@+id/infoaplicacion_2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="GRUPO Nº 6"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textAlignment="center">
-            </TextView>
-            <TextView
-                android:id="@+id/infoaplicacion_3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="MATERIA: Aplicaciones Distribuidas\n\nNOMBRE App: Gestor de Reclamos\n\nINTEGRANTES:"
-                android:padding="6dip"
-                android:textColor="#000000">
-            </TextView>
-            <TextView
-                android:id="@+id/infoaplicacion_4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/image_rodrigo_gadda"
-                android:text="\tLU: 1105.567\t\tGADDA, Rodrigo Emanuel"
-                android:padding="6dip"
-                android:textColor="#000000">
-            </TextView>
-            <TextView
-                android:id="@+id/infoaplicacion_5"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/image_alejandro_gimenez"
-                android:text="\tLU: 99.514\t\tGIMENEZ, Alejandro Gaston"
-                android:padding="6dip"
-                android:textColor="#000000">
-            </TextView>
-            <TextView
-                android:id="@+id/infoaplicacion_6"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/image_rodrigo_tissera"
-                android:text="\tLU: 110.475\t\tTISSERA, Rodrigo Ezequiel"
-                android:padding="6dip"
-                android:textColor="#000000">
-            </TextView>
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_img2" />
+
+        <CheckBox
+            android:id="@+id/chk_uso_movil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/rounded_edittext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_img2" />
+
+        <TextView
+            android:id="@+id/uso_notificaciones"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="center"
+            android:text="Recibir Notificaciones"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uso_movil" />
+
+        <CheckBox
+            android:id="@+id/chk_uso_notificaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="92dp"
+            android:background="@drawable/rounded_edittext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chk_uso_movil" />
+
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_red"
+            android:text="@string/guardar"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uso_notificaciones" />
 
         <ImageView
             android:id="@+id/exit"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="170dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginStart="164dp"
+            android:layout_marginBottom="24dp"
             android:src="@drawable/image04"
-            app:layout_constraintBottom_toBottomOf="@+id/infoaplicacion_img"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guardar"
+            app:layout_constraintVertical_bias="1.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout >
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_menu"
+        android:background="@drawable/side_nav_bar" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

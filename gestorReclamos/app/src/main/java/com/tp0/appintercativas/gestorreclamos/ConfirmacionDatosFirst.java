@@ -152,7 +152,6 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mostrarDialogo("probando", user.toString());
                 confirmar_parseScreen(user);
             }
         });
@@ -163,12 +162,9 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
         UserService us = retrofit.create(UserService.class);
         Call<User> call = us.updateUser(user.getId(),user);
 
-        mostrarDialogo("probando", "llega hasta 1");
-
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                mostrarDialogo("probando","llega hasta 2");
                 if (!response.isSuccessful() || response.body() == null) {
                     mostrarDialogo("Error", "Resultado no correcto ");
                     return;
