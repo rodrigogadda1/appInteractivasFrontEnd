@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".ConfiguracionesUser">
+    tools:context=".CreacionReclamo1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_content"
@@ -22,11 +22,11 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/configuraciones_img"
+            android:id="@+id/nreclamo1_img"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image31"
+            android:src="@drawable/image33"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,15 +34,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/configuraciones_1"
+            android:id="@+id/nreclamo1"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_edittext"
             android:gravity="center"
-            android:text="Configuraciones"
+            android:text="Nuevo Reclamo"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -52,106 +52,81 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/infoaplicacion_img2"
+            android:id="@+id/nreclamo1_img2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="24dp"
-            android:src="@drawable/image30"
+            android:src="@drawable/image34"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/configuraciones_1" />
+            app:layout_constraintTop_toBottomOf="@+id/nreclamo1" />
 
-        <TextView
-            android:id="@+id/uso_movil"
+        <Spinner
+            android:id="@+id/listaedificiouser"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_edittext"
-            android:gravity="center"
-            android:text="Permitir Uso de Datos Móviles (Puede haber datos extra por parte de la compañía)"
-            android:padding="6dip"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_img2" />
-
-        <CheckBox
-            android:id="@+id/chk_uso_movil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/rounded_edittext"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoaplicacion_img2" />
-
-        <TextView
-            android:id="@+id/uso_notificaciones"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_edittext"
-            android:gravity="center"
-            android:text="Recibir Notificaciones"
-            android:padding="6dip"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uso_movil" />
-
-        <CheckBox
-            android:id="@+id/chk_uso_notificaciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="92dp"
-            android:background="@drawable/rounded_edittext"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chk_uso_movil" />
-
-        <Button
-            android:id="@+id/guardar"
-            android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/button_red"
-            android:text="@string/guardar"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold"
+            android:background="@drawable/rounded_edittext"
+            android:entries="@array/listaedificiouser"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uso_notificaciones" />
+            app:layout_constraintTop_toBottomOf="@+id/nreclamo1_img2" />
+
+        <Spinner
+            android:id="@+id/listaespacios"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rounded_edittext"
+            android:entries="@array/listaespacios"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaedificiouser" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/image12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exit"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/exit"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="164dp"
+            android:layout_marginStart="80dp"
             android:layout_marginBottom="24dp"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guardar"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/image08"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/exit"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -94,6 +94,9 @@ public class InfoAppActivity extends AppCompatActivity implements NavigationView
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
                 Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, CreacionReclamo1.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
@@ -106,12 +109,17 @@ public class InfoAppActivity extends AppCompatActivity implements NavigationView
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, ConfiguracionesUser.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 break;
             case R.id.acercaapp:
                 Toast.makeText(this, "Ya estas en esa seccion!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cerrarsesion:
                 Toast.makeText(this, "Cerrar Sesion selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, MainActivityLogin.class);
+                startActivity(intent);
                 break;
             default:
                 break;

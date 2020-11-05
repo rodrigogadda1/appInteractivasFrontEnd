@@ -78,11 +78,17 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         btnReclamoNuevo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //aca va que hace
+                GoToNewReclamo();
             }
         });
 
 
+    }
+
+    private void GoToNewReclamo (){
+        Intent intent = new Intent(this, CreacionReclamo1.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 
     //metodos de slideBar desde ahora
@@ -113,6 +119,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
                 Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
+                GoToNewReclamo();
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
@@ -125,6 +132,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, ConfiguracionesUser.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 break;
             case R.id.acercaapp:
                     Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
@@ -134,6 +144,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.cerrarsesion:
                 Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, MainActivityLogin.class);
+                startActivity(intent);
                 break;
             default:
                 break;
