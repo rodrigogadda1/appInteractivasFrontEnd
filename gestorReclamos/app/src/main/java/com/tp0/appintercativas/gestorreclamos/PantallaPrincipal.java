@@ -21,9 +21,11 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
     private ScrollView ScrollViewReclamos;
     private Button btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
+    User user;
+
+    //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +41,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnHistorialReclamos = (Button) findViewById(R.id.btnHistorialReclamos);
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
-
-        //esto es como prueba ya que no esta la barra
-        btnNotificaciones.setText("InfoApp");
-        //fin prueba
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -87,6 +85,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
     }
 
+    //metodos de slideBar desde ahora
 
     @Override
     public void onDrawerSlide(View drawerView, float slideOffset) {
