@@ -36,13 +36,6 @@ public interface UserService {
     Call<User> getUserByUsername(@Query("username") String username);
 
 
-//            public final String API_ROUTE_LOGIN = "/api/users/login";
-//            @Headers({
-//                    "Content-Type:application/json"
-//            })
-//            @GET(API_ROUTE_LOGIN)
-//                    Call<ResponseLogin> login(@Body User user;
-
     public final String API_ROUTE_CREATE = "/api/users";
     @POST(API_ROUTE_CREATE)
     Call<User> create(@Body User user);

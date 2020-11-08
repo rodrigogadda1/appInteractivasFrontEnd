@@ -13,6 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ReclamoService {
 
@@ -35,5 +36,5 @@ public interface ReclamoService {
 
     public final String API_ROUTE_BYUSERID = "/api/reclamos/byUserId";
     @GET(API_ROUTE_BYUSERID)
-    Call<List<Reclamo>> getReclamosByUserIdAndStatusId(@Path("user_id") long user_id, @Path("status_id") long status_id);
+    Call<List<Reclamo>> getReclamosByUserIdAndStatusId(@Query("users_ids") String users_ids, @Query("status_ids") String status_ids);
 }
