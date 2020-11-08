@@ -37,6 +37,12 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         ScrollViewReclamos = (ScrollView) findViewById(R.id.ScrollViewReclamos);
 
+        /*  CODIGO PARA SCROLLVIEW RECLAMOS  */
+
+        //hay que verificar  si el user es administrado o inspector o administrador
+
+        /* FIN CODIGO PARA SCROLLVIEW RECLAMOS  */
+
         btnNotificaciones = (Button) findViewById(R.id.btnNotificaciones);
         btnHistorialReclamos = (Button) findViewById(R.id.btnHistorialReclamos);
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
