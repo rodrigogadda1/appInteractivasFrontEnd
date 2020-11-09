@@ -21,11 +21,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.ResponseURIs.ResponseLogin;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,9 +48,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
-    //para los ultimos 5
-    List<Reclamo> first5Reclamos;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +57,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         user = (User) intent.getSerializableExtra("user");
 
         /*  CODIGO PARA SCROLLVIEW RECLAMOS  */
-        first5Reclamos = new ArrayList<>();
-
         ScrollViewReclamos = (ScrollView) findViewById(R.id.ScrollViewReclamos);
+
+
         getReclamosFilteredByUserIdStatus();
 
         /* FIN CODIGO PARA SCROLLVIEW RECLAMOS  */
@@ -123,9 +123,16 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     private void getReclamosFilteredByUserIdStatus(){
         Retrofit retrofit = Controller.ConfiguracionIP();
         ReclamoService rs = retrofit.create(ReclamoService.class);
+        Call<List<Reclamo>> call = null;
 
-        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1");
-
+        if (user.getTipoUser().toLowerCase().equals("administrado")) {
+            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1","","");
+        } else if (user.getTipoUser().toLowerCase().equals("inspector")){
+            call = rs.getReclamosByUserIdAndStatusId("","1","1,2","");
+        } else {
+            //caso administrador
+            call = rs.getReclamosByUserIdAndStatusId("","1","","");
+        }
 
         call.enqueue(new Callback<List<Reclamo>>() {
             @Override
@@ -138,7 +145,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                         if ( i < 5 ) {
                             Reclamo reclamo = reclamos.get(i);
                             strings.add(reclamoToString(reclamo));
-                            first5Reclamos.add(reclamo);
                         }
                     }
 
@@ -184,8 +190,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         ScrollViewReclamos.addView(linearLayout);
     }
 
-    private String reclamoToString(Reclamo reclamo){
-        return reclamo.getId_reclamo()+"-"+reclamo.getId_especialidad()+"-"+reclamo.getDescripcion();
+    private String reclamoToString(Reclamo reclamo) {
+        return reclamo.getId_reclamo()+"-"+reclamo.getEspecialidad().getDescripcion()+"-"+reclamo.getDescripcion();
     }
 
     private void mostrarDialogo(String titulo,String mensaje){

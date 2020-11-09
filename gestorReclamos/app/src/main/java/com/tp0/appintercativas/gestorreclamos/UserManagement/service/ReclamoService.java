@@ -36,5 +36,6 @@ public interface ReclamoService {
 
     public final String API_ROUTE_BYUSERID = "/api/reclamos/byUserId";
     @GET(API_ROUTE_BYUSERID)
-    Call<List<Reclamo>> getReclamosByUserIdAndStatusId(@Query("users_ids") String users_ids, @Query("status_ids") String status_ids);
+    Call<List<Reclamo>> getReclamosByUserIdAndStatusId(@Query("users_ids") String users_ids, @Query("status_ids") String status_ids
+            , @Query("edificios_ids") String edificios_ids, @Query("especialidades_ids") String especialidades_ids);
 }
