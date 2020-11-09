@@ -94,50 +94,7 @@
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical|center_horizontal">
-                <Button
-                    android:id="@+id/reclamo_1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo del  1º Reclamo listado"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo del  2º Reclamo listado"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo del  3º Reclamo listado"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo del  4º Reclamo listado"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_5"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo del  5º Reclamo listado"
-                    android:textAlignment="viewStart">
-                </Button>
-            </LinearLayout>
+
         </ScrollView>
 
         <Button
