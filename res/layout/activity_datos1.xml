@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -22,12 +23,12 @@
 
     <TextView
         android:id="@+id/datos_1"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/rounded_gray"
         android:drawableLeft="@drawable/image10"
         android:gravity="center"
         android:text="@string/datos_1"
@@ -44,29 +45,15 @@
         app:layout_constraintTop_toBottomOf="@+id/datos1_img"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/dni_Tipo"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:entries="@array/dni_Tipo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos_1" />
-
     <TextView
         android:id="@+id/dni_TipoText"
         android:layout_width="110dp"
         android:layout_height="40dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="100dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/dni_Tipo"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -76,108 +63,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datos_1" />
 
-    <EditText
-        android:id="@+id/numerodoc"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:hint="@string/numerodoc"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dni_Tipo" />
-
-    <EditText
-        android:id="@+id/apellidos"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:hint="@string/apellidos"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombres"/>
-
     <Spinner
-        android:id="@+id/sexoTipo"
+        android:id="@+id/dni_Tipo"
         android:layout_width="230dp"
         android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:entries="@array/sexo_Tipo"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:entries="@array/dni_Tipo"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apellidos" />
-
-    <EditText
-        android:id="@+id/celular"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:hint="@string/celular"
-        android:inputType="phone"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexoTipo" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/celular" />
-
-    <EditText
-        android:id="@+id/nombres"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:hint="@string/nombres"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numerodoc" />
+        app:layout_constraintTop_toBottomOf="@+id/datos_1" />
 
     <TextView
         android:id="@+id/numero"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/numero"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -187,15 +99,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dni_TipoText" />
 
+    <EditText
+        android:id="@+id/numerodoc"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/numerodoc"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dni_Tipo" />
+
     <TextView
         android:id="@+id/nombresTexto"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/nombres"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -205,15 +136,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numero" />
 
+    <EditText
+        android:id="@+id/nombres"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/nombres"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numerodoc" />
+
     <TextView
         android:id="@+id/apellidosTexto"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/apellidos"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -223,15 +173,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombresTexto" />
 
+    <EditText
+        android:id="@+id/apellidos"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/apellidos"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombres"/>
+
     <TextView
         android:id="@+id/sexoTexto"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/sexo"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -241,6 +210,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apellidosTexto" />
 
+    <Spinner
+        android:id="@+id/sexoTipo"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:entries="@array/sexo_Tipo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apellidos" />
+
     <TextView
         android:id="@+id/celularTexto"
         android:layout_width="110dp"
@@ -248,8 +235,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/celular"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -259,15 +246,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sexoTexto" />
 
+    <EditText
+        android:id="@+id/celular"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/celular"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sexoTipo" />
+
     <TextView
         android:id="@+id/emailTexto"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/prompt_email"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
         android:padding="6dip"
@@ -276,6 +282,25 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/celularTexto" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celular" />
 
     <ImageView
         android:id="@+id/exit"

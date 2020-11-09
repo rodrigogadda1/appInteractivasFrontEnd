@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -22,12 +23,12 @@
 
     <TextView
         android:id="@+id/datos_2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/rounded_gray"
         android:drawableLeft="@drawable/image13"
         android:gravity="center"
         android:text="@string/datos_1"
@@ -44,36 +45,59 @@
         app:layout_constraintTop_toBottomOf="@+id/datos1_img"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/pregunta_Texto"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
+        android:text="@string/pregunta"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_2" />
+
     <Spinner
         android:id="@+id/pregunta_Tipo"
         android:layout_width="230dp"
         android:layout_height="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:entries="@array/pregunta_Tipo"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:entries="@array/pregunta_Tipo"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datos_2" />
 
     <TextView
-        android:id="@+id/pregunta_Texto"
-        android:layout_width="90dp"
+        android:id="@+id/respuesta_Texto"
+        android:layout_width="110dp"
         android:layout_height="40dp"
+        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="100dp"
         android:gravity="center_vertical"
-        android:text="@string/pregunta"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/rounded_gray"
+        android:text="@string/respuesta"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos_2" />
+        app:layout_constraintTop_toBottomOf="@+id/pregunta_Texto" />
 
     <EditText
         android:id="@+id/pregunta"
@@ -81,8 +105,12 @@
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         android:hint="@string/pregunta_Tipo"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,21 +118,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pregunta_Tipo" />
 
-    <EditText
-        android:id="@+id/password_2"
-        android:layout_width="230dp"
+    <TextView
+        android:id="@+id/password_1Texto"
+        android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
-        android:hint="@string/password_2"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
+        android:background="@drawable/rounded_gray"
+        android:text="@string/password"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_1" />
+        app:layout_constraintTop_toBottomOf="@+id/respuesta_Texto" />
 
     <EditText
         android:id="@+id/password_1"
@@ -112,66 +142,55 @@
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pregunta" />
 
     <TextView
-        android:id="@+id/respuesta_Texto"
-        android:layout_width="95dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
-        android:text="@string/respuesta"
-        android:background="@drawable/rounded_edittext"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pregunta_Texto" />
-
-    <TextView
-        android:id="@+id/password_1Texto"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
-        android:text="@string/password"
-        android:background="@drawable/rounded_edittext"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/respuesta_Texto" />
-
-    <TextView
         android:id="@+id/password_2Texto"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/password_2"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_1Texto" />
+
+    <EditText
+        android:id="@+id/password_2"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/password_2"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_1" />
 
     <ImageView
         android:id="@+id/back"

@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/principaltexto1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"

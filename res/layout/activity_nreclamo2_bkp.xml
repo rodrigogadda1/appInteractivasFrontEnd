@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start"
+    android:orientation="vertical"
     tools:context=".nreclamo2.activity_nreclamo2">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/home_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/AppTheme.Toolbar"
-        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/nreclamo2_img"
@@ -40,7 +28,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_gray"
+        android:background="@drawable/rounded_edittext"
         android:fadeScrollbars="false"
         android:fillViewport="true"
         android:gravity="center_vertical"
@@ -64,7 +52,6 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/nreclamo2_texto1"
-                android:padding="6dip"
                 android:textColor="#000000"
                 android:textSize="20sp"></TextView>
         </LinearLayout>
@@ -77,7 +64,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_gray"
+        android:background="@drawable/rounded_edittext"
         android:drawableLeft="@drawable/image34"
         android:gravity="center"
         android:padding="6dip"
@@ -94,9 +81,9 @@
         android:id="@+id/especialidad_sp"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_white"
+        android:background="@drawable/rounded_edittext"
         android:entries="@array/especialidad_sp"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,8 +97,8 @@
         android:layout_width="130dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_gray"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
         android:padding="6dip"
         android:text="@string/especialidad"
@@ -128,16 +115,14 @@
         android:id="@+id/detalle_reclamo"
         android:layout_width="match_parent"
         android:layout_height="160dp"
+        android:layout_gravity="center"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/rounded_white"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:padding="6dip"
+        android:background="@drawable/rounded_edittext"
+        android:fillViewport="true"
         android:hint="Ingrese los detalles del Reclamo."
-        android:inputType="textPersonName"
+        android:padding="6dip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -175,7 +160,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="2dp"
-        android:background="@drawable/rounded_gray"
+        android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
         android:padding="6dip"
         android:text="Camara"
@@ -194,7 +179,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="60dp"
-        android:background="@drawable/rounded_gray"
+        android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
         android:padding="6dip"
         android:text="Archivos"
@@ -250,15 +235,4 @@
         app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo"
         app:layout_constraintVertical_bias="1.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/activity_menu"
-        android:background="@drawable/side_nav_bar" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
