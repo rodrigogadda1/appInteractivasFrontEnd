@@ -16,10 +16,11 @@ public class Reclamo {
     private String descripcion;
     private Administrado administrado;
     private Unidad unidad;
+    private EspacioComun espacioComun;
     private List<Foto> fotos;
 
-    public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad, Date fecha
-            , Estado estado, long id_agrupador, String descripcion, Administrado administrado, Unidad unidad, List<Foto> fotos) {
+    public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad, Date fecha, Estado estado
+                    , long id_agrupador, String descripcion, Administrado administrado, Unidad unidad, EspacioComun espacioComun, List<Foto> fotos) {
         this.id_reclamo = id_reclamo;
         Nombre = nombre;
         this.username = username;
@@ -31,6 +32,7 @@ public class Reclamo {
         this.descripcion = descripcion;
         this.administrado = administrado;
         this.unidad = unidad;
+        this.espacioComun = espacioComun;
         this.fotos = fotos;
     }
 
@@ -52,6 +54,7 @@ public class Reclamo {
                 ", descripcion='" + descripcion + '\'' +
                 ", administrado=" + administrado +
                 ", unidad=" + unidad +
+                ", espacioComun=" + espacioComun +
                 ", fotos=" + fotos +
                 '}';
     }
@@ -152,4 +155,11 @@ public class Reclamo {
         this.fotos = fotos;
     }
 
+    public EspacioComun getEspacioComun() {
+        return espacioComun;
+    }
+
+    public void setEspacioComun(EspacioComun espacioComun) {
+        this.espacioComun = espacioComun;
+    }
 }

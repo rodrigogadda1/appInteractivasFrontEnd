@@ -24,6 +24,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.EspacioComun;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
@@ -43,6 +44,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
     Spinner listaedificiouser, listaespacios;
     User user;
     Administrado administrado;
+    ArrayList<EspacioComun> espacioComunes;
 
     //para la slide bar
     private NavigationView navigationView;
@@ -65,6 +67,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
         listaespacios = (Spinner) findViewById(R.id.listaespacios);
         listaespacios.setEnabled(false);
+        espacioComunes = new ArrayList<>();
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -119,6 +122,42 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
             }
         });
+    }
+
+    private void pasar_a_creacion_reclamo_2(){
+        String opcionEdificio = listaedificiouser.getSelectedItem().toString();
+        String opcionListaEdificio = listaespacios.getSelectedItem().toString();
+        if (!( (opcionEdificio.equals("Seleccionar edificio")) || (opcionListaEdificio.equals("Seleccionar")) || (opcionListaEdificio.equals("Seleccionar edificio first")) )) {
+            Reclamo reclamo = new Reclamo();
+
+            int indexStart = opcionEdificio.indexOf("-");
+            long id_edificio = Integer.valueOf(opcionEdificio.substring(0,indexStart));
+
+            Edificio edificio = new Edificio();
+            edificio.setId_edificio(id_edificio);
+            reclamo.setEdificio(edificio);
+
+            if (opcionListaEdificio.contains("//")){
+                indexStart = opcionListaEdificio.indexOf("/");
+                long id_unidad = Integer.valueOf(opcionListaEdificio.substring(0,indexStart));
+
+                Unidad unidad = new Unidad();
+                unidad.setId_unidad(id_unidad);
+                reclamo.setUnidad(unidad);
+            } else {
+                EspacioComun espacioComun = new EspacioComun();
+                espacioComun.setId_espaciocomun(busquedaEspacioComunesPorNombre(opcionListaEdificio));
+            }
+
+        }
+    }
+
+    private long busquedaEspacioComunesPorNombre (String opcionListaEdificio){
+        long id = 0;
+        for (int i = 0; i < espacioComunes.size(); i++){
+            seguir por aca
+        }
+        return id;
     }
 
     private void seleccionarSoloUnidadEspacio (){
@@ -181,13 +220,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
     private void agregarEspaciosComunes (final ArrayList<String> listaEspacioComunUnidades, long id_edificio){
 
-        /*
-
-        AdministradoService as = retrofit.create(AdministradoService.class);
-        Call<Administrado> call = as.getAdministradoId((long) user.getId());
-
-        call.enqueue(new Callback<Administrado>() {
-         */
         Retrofit retrofit = Controller.ConfiguracionIP();
         EdificioService es = retrofit.create(EdificioService.class);
         Call<Edificio> call = es.findBYId(id_edificio);
@@ -201,6 +233,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                     List<EspacioComun> espacioComunes = edificio.getEspaciosComunes();
                     for (int i = 0; i < espacioComunes.size(); i++){
                         EspacioComun espacioComun= espacioComunes.get(i);
+                        espacioComunes.add(espacioComun);
                         listaEspacioComunUnidades2.add(espacioComun.getNombre());
                     }
                 } else {

@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CreacionReclamo1"></activity>
+        <activity android:name=".CreacionReclamo2"></activity>
+        <activity android:name=".CreacionReclamo1" />
         <activity android:name=".InfoAppActivity" />
         <activity android:name=".ConfiguracionesUser" />
         <activity android:name=".RecuperaContrasenia2" />

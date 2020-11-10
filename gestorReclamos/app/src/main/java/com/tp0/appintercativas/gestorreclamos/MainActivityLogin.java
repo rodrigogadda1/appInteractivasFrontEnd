@@ -32,6 +32,7 @@ public class MainActivityLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
+
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnOlvidoPassword = (Button) findViewById(R.id.btnOlvidoPassword);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
@@ -142,6 +143,7 @@ public class MainActivityLogin extends AppCompatActivity {
                     })*/
                     .show();
     }
+
 
    /* private void getUsers () {
             Retrofit retrofit = UserController.ConfiguracionIP();
