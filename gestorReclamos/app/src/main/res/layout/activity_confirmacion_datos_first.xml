@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/datos4_img2"
+        android:id="@+id/imgvCambiarReclamo_img3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos4_img2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgvCambiarReclamo_img3" />
 
     <ImageView
         android:id="@+id/btnBack"

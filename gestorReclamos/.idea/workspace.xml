@@ -25,7 +25,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3a_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -46,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/menu" />
   </component>
   <component name="RecentsManager">
@@ -80,6 +80,9 @@
       <recent name="C:\Users\OIC\Desktop\UADE 2020 2 Cuatri\Aplicaciones Distributivas\repositorio-frontend\appInteractivasFrontEnd\gestorReclamos\app\src\main\java\com\tp0\appintercativas\gestorreclamos\ResponseURIs" />
     </key>
     <key name="android.template.60245359">
+      <recent name="com.tp0.appintercativas.gestorreclamos" />
+    </key>
+    <key name="android.template.-1697875655">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
     </key>
     <key name="android.template.-1325245652">
@@ -97,6 +100,9 @@
     </key>
     <key name="android.template.-1097106331">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Repositorio TPO Distribuidas\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunManager">
@@ -179,12 +185,17 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2131" y="-92" key="#com.intellij.ide.util.MemberChooser" timestamp="1604181068774">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state x="392" y="0" key="#app" timestamp="1605038873740">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="392" y="0" key="#app/0.0.1366.768@0.0.1366.768" timestamp="1605038873740" />
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1605061892632">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="544" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1603675806235" />
     <state x="2131" y="-92" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604181068774" />
     <state x="544" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1602997032121" />
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605061892632" />
     <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602782573104">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -217,10 +228,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602386818417" />
-    <state x="2142" y="-15" key="chooseDestDirectoryDialog" timestamp="1604287681316">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state x="776" y="309" key="chooseDestDirectoryDialog" timestamp="1605058766481">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="2142" y="-15" key="chooseDestDirectoryDialog/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604287681316" />
+    <state x="776" y="309" key="chooseDestDirectoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605058766481" />
     <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1602386824019">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
