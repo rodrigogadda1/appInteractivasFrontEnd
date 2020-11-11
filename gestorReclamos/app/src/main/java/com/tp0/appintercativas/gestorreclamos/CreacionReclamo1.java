@@ -30,6 +30,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EdificioService;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
     Spinner listaedificiouser, listaespacios;
     User user;
     Administrado administrado;
-    ArrayList<EspacioComun> espacioComunes;
 
     //para la slide bar
     private NavigationView navigationView;
@@ -67,7 +67,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
         listaespacios = (Spinner) findViewById(R.id.listaespacios);
         listaespacios.setEnabled(false);
-        espacioComunes = new ArrayList<>();
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -119,7 +118,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                pasar_a_creacion_reclamo_2();
             }
         });
     }
@@ -146,18 +145,23 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                 reclamo.setUnidad(unidad);
             } else {
                 EspacioComun espacioComun = new EspacioComun();
-                espacioComun.setId_espaciocomun(busquedaEspacioComunesPorNombre(opcionListaEdificio));
+                indexStart = opcionListaEdificio.indexOf("/");
+                long id_espaciocomun = Integer.valueOf(opcionListaEdificio.substring(0,indexStart));
+                espacioComun.setId_espaciocomun(id_espaciocomun);
+
+                mostrarDialogo("probando", espacioComun.toString());
+
+                //reclamo.setEspacioComun(espacioComun);
             }
 
-        }
-    }
 
-    private long busquedaEspacioComunesPorNombre (String opcionListaEdificio){
-        long id = 0;
-        for (int i = 0; i < espacioComunes.size(); i++){
-            seguir por aca
+            /*Intent intent = new Intent(this, PantallaPrincipal.class);
+            intent.putExtra("user",user);
+            intent.putExtra("reclamo", (Serializable) reclamo);
+
+            startActivity(intent); */
+
         }
-        return id;
     }
 
     private void seleccionarSoloUnidadEspacio (){
@@ -184,7 +188,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                     } else {
                         getUnidadesEspaciosComunes(administrado, opcion);
                     }
-                    //mostrarDialogo("probando",administrado.toString()); aca llega bien el dato
                 } else {
                     mostrarDialogo("Error", "No se encontro al administrado." );
                 }
@@ -214,6 +217,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
             }
         }
 
+        //mostrarDialogo("probando", "llega hasta aca::"+listaUnidadesEspaciosComunes.toString());
         agregarEspaciosComunes(listaUnidadesEspaciosComunes, id_edificio);
 
     }
@@ -223,22 +227,24 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         Retrofit retrofit = Controller.ConfiguracionIP();
         EdificioService es = retrofit.create(EdificioService.class);
         Call<Edificio> call = es.findBYId(id_edificio);
+        //mostrarDialogo("probando", "llega hasta aca 1");
 
         call.enqueue(new Callback<Edificio>() {
             @Override
             public void onResponse(Call<Edificio> call, Response<Edificio> response) {
+                //mostrarDialogo("probando", "llega hasta aca exito");
                 ArrayList<String> listaEspacioComunUnidades2 = listaEspacioComunUnidades;
                 Edificio edificio = response.body();
                 if ( edificio.getNombre() != null ) {
                     List<EspacioComun> espacioComunes = edificio.getEspaciosComunes();
                     for (int i = 0; i < espacioComunes.size(); i++){
                         EspacioComun espacioComun= espacioComunes.get(i);
-                        espacioComunes.add(espacioComun);
-                        listaEspacioComunUnidades2.add(espacioComun.getNombre());
+                        listaEspacioComunUnidades2.add(espacioComun.getId_espaciocomun()+"/ /"+espacioComun.getNombre());
                     }
                 } else {
                     mostrarDialogo("Error", "No se encontro al edificio." );
                 }
+
 
                 listaespacios.setEnabled(true);
                 if (listaEspacioComunUnidades2.size() > 1){
@@ -250,6 +256,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
             @Override
             public void onFailure(Call<Edificio> call, Throwable t) {
+                mostrarDialogo("probando", "llega hasta aca fracaso");
                 mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
             }
         });
