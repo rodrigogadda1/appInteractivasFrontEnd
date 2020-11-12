@@ -1,8 +1,9 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Administrado {
+public class Administrado implements Serializable {
 
     private long id_administrado;
     private long id_user;

@@ -1,6 +1,8 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
-public class InspectorEdificio {
+import java.io.Serializable;
+
+public class InspectorEdificio implements Serializable {
 
     private long id_inspectoredificio;
     private Inspector inspector;

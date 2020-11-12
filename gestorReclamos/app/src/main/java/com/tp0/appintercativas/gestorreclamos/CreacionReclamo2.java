@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -18,11 +21,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+
+import java.io.Serializable;
 
 public class CreacionReclamo2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
 
     User user;
+    Reclamo reclamo;
     ScrollView scrvResumen;
     TextView txtReclamoResumen, txtReclamoDetalle;
     Spinner spnEspecialidades;
@@ -38,8 +45,49 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creacion_reclamo2);
 
+         try{
+             Intent intent = getIntent();
+             user = (User) intent.getSerializableExtra("user");
+             reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
+
+             scrvResumen = (ScrollView) findViewById(R.id.scrvResumen);
+
+             txtReclamoResumen = (TextView) findViewById(R.id.txtReclamoResumen);
+             txtReclamoDetalle = (TextView) findViewById(R.id.txtReclamoDetalle);
+
+             spnEspecialidades = (Spinner) findViewById(R.id.spnEspecialidades);
+
+             editReclamoComentario = (EditText) findViewById(R.id.editReclamoComentario);
+
+             imgvCamara = (ImageView) findViewById(R.id.imgvCamara);
+             imgvArchivos = (ImageView) findViewById(R.id.imgvArchivos);
+             btnBack = (ImageView) findViewById(R.id.btnBack);
+             btnPantallaPrincipal = (ImageView) findViewById(R.id.btnPantallaPrincipal);
+             btnNext = (ImageView) findViewById(R.id.btnNext);
+
+
+             //codigo para slide bar
+             Toolbar toolbar = findViewById(R.id.toolbar);
+             setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+             drawerLayout = findViewById(R.id.container);
+             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
+             drawerLayout.addDrawerListener(toggle);
+             toggle.syncState();
+
+             navigationView = findViewById(R.id.navigation_view);
+             navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+             navigationView.setItemIconTintList(null);
+
+             drawerLayout.addDrawerListener(this);
+             //fin codigo para slide bar
+        } catch (Exception e){
+            mostrarDialogo("error",e.getMessage());
+        }
+
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
 
         scrvResumen = (ScrollView) findViewById(R.id.scrvResumen);
 
@@ -113,6 +161,19 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                                          }
                                      }
         );
+    }
+
+    private void mostrarDialogo(String titulo,String mensaje){
+        new AlertDialog.Builder( this)
+                .setTitle(titulo)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //va a hacer nada aca, si se quisiera cerrar la app es finish()
+                    }
+                })
+                .setMessage(mensaje)
+                .show();
     }
 
     //para la slide bar

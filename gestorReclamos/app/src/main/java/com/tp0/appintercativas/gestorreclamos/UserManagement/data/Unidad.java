@@ -1,8 +1,9 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Unidad {
+public class Unidad implements Serializable {
 
     private long id_unidad;
     private String piso;

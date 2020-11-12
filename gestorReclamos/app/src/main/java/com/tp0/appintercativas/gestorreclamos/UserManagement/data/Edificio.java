@@ -1,8 +1,9 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Edificio {
+public class Edificio implements Serializable {
 
     private long id_edificio;
     private String nombre;

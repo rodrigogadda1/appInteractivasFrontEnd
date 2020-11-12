@@ -1,6 +1,8 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
-public class Estado {
+import java.io.Serializable;
+
+public class Estado implements Serializable {
 
     private long id_estado;
     private String descripcion;
