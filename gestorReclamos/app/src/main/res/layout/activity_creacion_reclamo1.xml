@@ -40,7 +40,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_gray"
             android:gravity="center"
             android:text="Nuevo Reclamo"
             android:textColor="#000000"
@@ -56,8 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/image34"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -66,13 +66,14 @@
 
         <Spinner
             android:id="@+id/listaedificiouser"
-            android:layout_width="300dp"
+            android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginTop="80dp"
+            android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_edittext"
-            android:entries="@array/listaedificiouser"
             android:gravity="center_vertical"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaedificiouser"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,13 +81,14 @@
 
         <Spinner
             android:id="@+id/listaespacios"
-            android:layout_width="300dp"
+            android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_edittext"
-            android:entries="@array/listaespacios"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:gravity="center_vertical"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaespacios"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,11 +100,13 @@
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="24dp"
+            android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/exit"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
@@ -111,9 +115,11 @@
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
             android:layout_marginBottom="24dp"
+            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
@@ -122,22 +128,24 @@
             android:layout_height="60dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
+            android:onClick="next"
             android:src="@drawable/image08"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/exit"
+            app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/activity_menu"
-        android:background="@drawable/side_nav_bar" />
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/activity_menu"
+            android:background="@drawable/side_nav_bar" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>

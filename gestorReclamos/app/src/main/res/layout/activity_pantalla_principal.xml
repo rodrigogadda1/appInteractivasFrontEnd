@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/principaltexto1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
@@ -53,14 +53,18 @@
 
         <ImageView
             android:id="@+id/principal_img2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/image20"
+            android:layout_marginTop="80dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_edittext"
+            android:text="Prueba"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/principaltexto1" />
 
@@ -85,7 +89,7 @@
             android:id="@+id/ScrollViewReclamos"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="2dp"
             android:fillViewport="true"
             android:background="#FFFFFF"
             android:gravity="center_vertical"
@@ -94,25 +98,69 @@
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
-
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical|center_horizontal">
+                <Button
+                    android:id="@+id/reclamo_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo Numero 1"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/reclamo_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo Numero 2"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/reclamo_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo Numero 3"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/reclamo_4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo Numero 4"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/reclamo_5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo Numero 5"
+                    android:textAlignment="viewStart">
+                </Button>
+            </LinearLayout>
         </ScrollView>
 
         <Button
             android:id="@+id/btnReclamoNuevo"
             android:layout_width="193dp"
-            android:layout_height="90dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="4dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/button_red"
             android:drawableLeft="@drawable/image22"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:onClick="reclamonuevo"
             android:text="Nuevo Reclamo"
             android:textColor="@android:color/white"
             android:textStyle="normal|bold"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,19 +169,20 @@
         <Button
             android:id="@+id/btnReclamosActivos"
             android:layout_width="193dp"
-            android:layout_height="90dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="4dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/button_red"
             android:drawableLeft="@drawable/image23"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:onClick="reclamoactivo"
             android:text="Reclamos Activos"
             android:textColor="@android:color/white"
             android:textStyle="normal|bold"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,12 +191,13 @@
         <Button
             android:id="@+id/btnHistorialReclamos"
             android:layout_width="193dp"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/button_red"
             android:drawableLeft="@drawable/image24"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:onClick="reclamohistorial"
             android:text="Historial Reclamos"
             android:textColor="@android:color/white"
             android:textStyle="normal|bold"
@@ -163,12 +213,13 @@
         <Button
             android:id="@+id/btnNotificaciones"
             android:layout_width="192dp"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/button_red"
             android:drawableLeft="@drawable/image25"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:onClick="notificaciones"
             android:text="Notificaciones"
             android:textColor="@android:color/white"
             android:textStyle="normal|bold"
