@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +30,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EdificioService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspacioComunService;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -44,6 +46,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
     ImageView exit, back, next;
     Spinner listaedificiouser, listaespacios;
     User user;
+    Reclamo reclamo;
     Administrado administrado;
 
     //para la slide bar
@@ -143,25 +146,65 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                 Unidad unidad = new Unidad();
                 unidad.setId_unidad(id_unidad);
                 reclamo.setUnidad(unidad);
+
+                /*try{
+                    mostrarDialogo("probando", reclamo.toString());
+                } catch (Exception e){
+                    mostrarDialogo("error",e.getMessage());
+                }*/
+
+                pasar_a_reclamo_2(reclamo);
             } else {
-                EspacioComun espacioComun = new EspacioComun();
+
                 indexStart = opcionListaEdificio.indexOf("/");
                 long id_espaciocomun = Integer.valueOf(opcionListaEdificio.substring(0,indexStart));
-                espacioComun.setId_espaciocomun(id_espaciocomun);
+                pasar_a_creacion_reclamo_2_espacio_comun(reclamo,id_espaciocomun);
 
-                mostrarDialogo("probando", espacioComun.toString());
 
-                //reclamo.setEspacioComun(espacioComun);
             }
 
 
-            /*Intent intent = new Intent(this, PantallaPrincipal.class);
-            intent.putExtra("user",user);
-            intent.putExtra("reclamo", (Serializable) reclamo);
-
-            startActivity(intent); */
-
         }
+    }
+
+    private void pasar_a_creacion_reclamo_2_espacio_comun (final Reclamo reclamo, long id){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        EspacioComunService es = retrofit.create(EspacioComunService.class);
+        Call<EspacioComun> call = es.findBYId(id);
+
+        call.enqueue(new Callback<EspacioComun>() {
+            @Override
+            public void onResponse(Call<EspacioComun> call, Response<EspacioComun> response) {
+                if (response.body().getId_espaciocomun() != 0) {
+                    Reclamo reclamo2 = reclamo;
+                    reclamo2.setEspacioComun(response.body());
+
+                    /*try{
+                        mostrarDialogo("probando", reclamo2.toString());
+                    } catch (Exception e){
+                        mostrarDialogo("error",e.getMessage());
+                    }*/
+
+                    pasar_a_reclamo_2(reclamo2);
+
+                } else {
+                    mostrarDialogo("Error", "No se encontro al espacio comun." );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EspacioComun> call, Throwable t) {
+                mostrarDialogo("Error", t.getMessage() );
+            }
+        });
+    }
+
+    private void pasar_a_reclamo_2 (Reclamo reclamo){
+        Intent intent = new Intent(this, CreacionReclamo2.class);
+        intent.putExtra("user",user);
+        intent.putExtra("reclamo", reclamo);
+
+        startActivity(intent);
     }
 
     private void seleccionarSoloUnidadEspacio (){

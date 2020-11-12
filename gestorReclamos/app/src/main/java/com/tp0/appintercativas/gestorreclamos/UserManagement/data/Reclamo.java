@@ -1,9 +1,10 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Reclamo {
+public class Reclamo implements Serializable {
 
     private long id_reclamo;
     private String Nombre;

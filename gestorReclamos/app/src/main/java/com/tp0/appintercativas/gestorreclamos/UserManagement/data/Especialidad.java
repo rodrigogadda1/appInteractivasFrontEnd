@@ -1,6 +1,8 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
-public class Especialidad {
+import java.io.Serializable;
+
+public class Especialidad implements Serializable {
 
     private long id_especialidad;
     private String nombre;

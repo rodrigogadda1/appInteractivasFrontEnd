@@ -1,6 +1,8 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
-public class Foto {
+import java.io.Serializable;
+
+public class Foto implements Serializable {
 
     private long id_foto;
     private String uri_foto;

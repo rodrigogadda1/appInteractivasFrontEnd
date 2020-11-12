@@ -1,6 +1,8 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.data;
 
-public class EspacioComun {
+import java.io.Serializable;
+
+public class EspacioComun implements Serializable {
 
     private long id_espaciocomun;
     private String nombre;
