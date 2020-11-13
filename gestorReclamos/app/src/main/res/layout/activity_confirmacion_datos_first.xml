@@ -10,7 +10,7 @@
     tools:context=".ConfirmacionDatosFirst">
 
     <ImageView
-        android:id="@+id/datos4_img"
+        android:id="@+id/imgvPrincipal"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
@@ -37,11 +37,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos4_img"
+        app:layout_constraintTop_toBottomOf="@+id/imgvPrincipal"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgvCambiarReclamo_img3"
+        android:id="@+id/imgvCambiarReclamo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
