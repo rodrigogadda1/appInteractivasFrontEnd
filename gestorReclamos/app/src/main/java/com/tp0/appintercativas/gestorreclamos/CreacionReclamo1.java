@@ -25,6 +25,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.EspacioComun;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
@@ -46,8 +47,11 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
     ImageView exit, back, next;
     Spinner listaedificiouser, listaespacios;
     User user;
-    Reclamo reclamo;
     Administrado administrado;
+
+    ArrayList<Edificio> edificios;
+    ArrayList<Unidad> unidades;
+    ArrayList<Long> id_espacios_comunes;
 
     //para la slide bar
     private NavigationView navigationView;
@@ -132,37 +136,27 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         if (!( (opcionEdificio.equals("Seleccionar edificio")) || (opcionListaEdificio.equals("Seleccionar")) || (opcionListaEdificio.equals("Seleccionar edificio first")) )) {
             Reclamo reclamo = new Reclamo();
 
-            int indexStart = opcionEdificio.indexOf("-");
-            long id_edificio = Integer.valueOf(opcionEdificio.substring(0,indexStart));
+            //listaedificiouser.getSelectedItemPosition()        -->   getSelectedItemPosition()    arranca a 0
+            reclamo.setEdificio(edificios.get(listaedificiouser.getSelectedItemPosition()-1));
 
-            Edificio edificio = new Edificio();
-            edificio.setId_edificio(id_edificio);
-            reclamo.setEdificio(edificio);
 
-            if (opcionListaEdificio.contains("//")){
-                indexStart = opcionListaEdificio.indexOf("/");
-                long id_unidad = Integer.valueOf(opcionListaEdificio.substring(0,indexStart));
+            //"Piso:"+unidad.getPiso()+"-Unidad:"+unidad.getUnidad()
+            if (opcionListaEdificio.contains("Piso")){
 
-                Unidad unidad = new Unidad();
-                unidad.setId_unidad(id_unidad);
-                reclamo.setUnidad(unidad);
+
+                reclamo.setUnidad(unidades.get(listaespacios.getSelectedItemPosition()-1));
 
                 /*try{
-                    mostrarDialogo("probando", reclamo.toString());
+                    mostrarDialogo("probando esta linea",reclamo.toStringPersonalizado());
                 } catch (Exception e){
                     mostrarDialogo("error",e.getMessage());
                 }*/
 
                 pasar_a_reclamo_2(reclamo);
             } else {
-
-                indexStart = opcionListaEdificio.indexOf("/");
-                long id_espaciocomun = Integer.valueOf(opcionListaEdificio.substring(0,indexStart));
-                pasar_a_creacion_reclamo_2_espacio_comun(reclamo,id_espaciocomun);
-
-
+                //mostrarDialogo("probando 157", String.valueOf(id_espacios_comunes.get(listaespacios.getSelectedItemPosition()-unidades.size()-1)));
+                pasar_a_creacion_reclamo_2_espacio_comun(reclamo,id_espacios_comunes.get(listaespacios.getSelectedItemPosition()-unidades.size()-1));
             }
-
 
         }
     }
@@ -199,11 +193,22 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         });
     }
 
+    private Edificio getEdificioPorNombre(String opcionEdificio){
+        Edificio edificioSalida = null;
+        for (int i = 0; i < edificios.size(); i++){
+            Edificio edificio = edificios.get(i);
+            if (edificio.getNombre().equals(opcionEdificio)) {
+                edificioSalida = edificio;
+            }
+        }
+        return edificioSalida;
+    }
+
     private void pasar_a_reclamo_2 (Reclamo reclamo){
         Intent intent = new Intent(this, CreacionReclamo2.class);
         intent.putExtra("user",user);
         intent.putExtra("reclamo", reclamo);
-
+        intent.putExtra("administrado",administrado);
         startActivity(intent);
     }
 
@@ -248,15 +253,17 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         listaUnidadesEspaciosComunes.add("Seleccionar");
 
         //mostrarDialogo("probando", edificioParam); este lo muestra bien
-        int indexStart = edificioParam.indexOf("-");
-        long id_edificio = Integer.valueOf(edificioParam.substring(0,indexStart));
+        long id_edificio = getEdificioPorNombre(edificioParam).getId_edificio();
+
+        unidades = new ArrayList<Unidad>();
 
         for (int i = 0; i < administrado2.getAdministradoUnidades().size(); i++) {
             AdministradoUnidad adminUnidad = administrado2.getAdministradoUnidades().get(i);
             Unidad unidad = adminUnidad.getUnidad();
             Edificio edificio = unidad.getEdificio();
             if ( edificio.getId_edificio() ==  id_edificio) {
-                listaUnidadesEspaciosComunes.add(unidad.getId_unidad()+ "// piso:"+unidad.getPiso()+" unidad:"+unidad.getUnidad());
+                unidades.add(unidad);
+                listaUnidadesEspaciosComunes.add("Piso:"+unidad.getPiso()+"-Unidad:"+unidad.getUnidad());
             }
         }
 
@@ -275,15 +282,27 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         call.enqueue(new Callback<Edificio>() {
             @Override
             public void onResponse(Call<Edificio> call, Response<Edificio> response) {
+                id_espacios_comunes = new ArrayList<Long>();
                 //mostrarDialogo("probando", "llega hasta aca exito");
                 ArrayList<String> listaEspacioComunUnidades2 = listaEspacioComunUnidades;
+
                 Edificio edificio = response.body();
                 if ( edificio.getNombre() != null ) {
                     List<EspacioComun> espacioComunes = edificio.getEspaciosComunes();
+
                     for (int i = 0; i < espacioComunes.size(); i++){
                         EspacioComun espacioComun= espacioComunes.get(i);
-                        listaEspacioComunUnidades2.add(espacioComun.getId_espaciocomun()+"/ /"+espacioComun.getNombre());
+                        listaEspacioComunUnidades2.add(espacioComun.getNombre());
+                        id_espacios_comunes.add(espacioComun.getId_espaciocomun());
                     }
+
+                    /*try {
+                        mostrarDialogo("probando linea 300", id_espacios_comunes.toString());
+                    } catch (Exception e) {
+                        mostrarDialogo("error linea 300",e.getMessage());
+                    }*/
+
+
                 } else {
                     mostrarDialogo("Error", "No se encontro al edificio." );
                 }
@@ -299,7 +318,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
             @Override
             public void onFailure(Call<Edificio> call, Throwable t) {
-                mostrarDialogo("probando", "llega hasta aca fracaso");
+                //mostrarDialogo("probando", "llega hasta aca fracaso");
                 mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
             }
         });
@@ -311,15 +330,16 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         listaespacios.setAdapter(adapterEspacioComunUnidades);
     }
 
-
     private void getEdificiosFromAdministrado (Administrado administrado2){
         ArrayList<String> listEdificios = new ArrayList<>();
         listEdificios.add("Seleccionar edificio");
+        edificios =  new ArrayList<Edificio>();
 
         for (int i = 0; i < administrado2.getAdministradoUnidades().size(); i++) {
             AdministradoUnidad adminUnidad = administrado2.getAdministradoUnidades().get(i);
             Edificio edificio = adminUnidad.getUnidad().getEdificio();
-            listEdificios.add(edificio.getId_edificio() + "---" + edificio.getNombre());
+            edificios.add(edificio);
+            listEdificios.add(edificio.getNombre());
         }
 
         if (listEdificios.size() > 1){
@@ -327,17 +347,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
             salida = listEdificios.toArray(salida);
             ArrayAdapter<String> adapterEdificiosUser = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, salida);
             listaedificiouser.setAdapter(adapterEdificiosUser);
-            //listaedificiouser.setSelection(1);
-
-
-            /*codigo para verificar
-            String mostrar = "";
-            for(String s : salida) {
-                mostrar+=s+"\n";
-            }
-            mostrarDialogo("probando", mostrar);
-            */
-
         }
 
     }
@@ -354,7 +363,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //va a hacer nada aca, si se quisiera cerrar la app es finish()
                     }
                 })
                 .setMessage(mensaje)
@@ -425,4 +433,5 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         }
         return true;
     }
+
 }

@@ -1,5 +1,9 @@
 package com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

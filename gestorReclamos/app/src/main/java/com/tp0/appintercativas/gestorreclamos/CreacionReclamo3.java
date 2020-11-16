@@ -1,5 +1,10 @@
 package com.tp0.appintercativas.gestorreclamos;
 
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,12 +23,30 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
+
+import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CreacionReclamo3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
 
     User user;
-    ImageView imgVnreclamo3_img, imgvCambiarReclamo_img3,back, exit,next;
+    Administrado administrado;
+    Reclamo reclamo;
+
+    ImageView back, exit,next;
     TextView txtReclamoConfirmado,txtVisualizaReclamo;
     //para la slide bar
     private NavigationView navigationView;
@@ -35,15 +58,26 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
+        administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        imgVnreclamo3_img = (ImageView) findViewById(R.id.imgVnreclamo3_img);
-        imgvCambiarReclamo_img3 = (ImageView) findViewById(R.id.imgvCambiarReclamo_img3);
         back = (ImageView) findViewById(R.id.back);
         exit = (ImageView) findViewById(R.id.exit);
         next = (ImageView) findViewById(R.id.next);
 
         txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
         txtVisualizaReclamo = (TextView) findViewById(R.id.txtVisualizaReclamo);
+
+        String detalle = null;
+        detalle = "Especialidad :"+reclamo.getEspecialidad().getNombre()+"\n";
+        detalle+= "Edificio :"+reclamo.getEdificio().getNombre()+"\n";
+        if (reclamo.getUnidad() != null) {
+            detalle+= "Unidad: Piso "+reclamo.getUnidad().getPiso()+" Unidad "+reclamo.getUnidad().getUnidad()+"\n";
+        } else if (reclamo.getEspacioComun() != null) {
+            detalle+= "Espacio Comun: "+reclamo.getEspacioComun().getNombre()+"\n";
+        }
+        detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
+        txtVisualizaReclamo.setText(detalle);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -61,27 +95,10 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-
-        imgVnreclamo3_img.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View view) {
-                                              //aca se escribe que hacer
-                                          }
-                                      }
-        );
-
-        imgvCambiarReclamo_img3.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                            }
-                                        }
-        );
-
         back.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View view) {
-                                           //aca se escribe que hacer
+                                           GoBack();
                                        }
                                    }
         );
@@ -89,7 +106,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         exit.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View view) {
-                                                        //aca se escribe que hacer
+                                                        GoPantallaPrincipal();
                                                     }
                                                 }
         );
@@ -97,11 +114,74 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         next.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View view) {
-                                           //aca se escribe que hacer
+                                            mostrarDialogo("probando 113","hasta 1");
+                                            CrearReclamo();
                                        }
                                    }
         );
     }
+
+    private void CrearReclamo(){
+        try {
+            Retrofit retrofit = Controller.ConfiguracionIP();
+            ReclamoService rs = retrofit.create(ReclamoService.class);
+            Call<Reclamo> call= rs.createReclamo(reclamo);
+
+            //METODO PARA COPY TO CLIPBOARD
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label",reclamo.toString());
+            clipboard.setPrimaryClip(clip);
+            //FIN METODO COPY TO CLIPBOARD
+
+            mostrarDialogo("probando 123",reclamo.toString());
+            call.enqueue(new Callback<Reclamo>() {
+                @Override
+                public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
+                    //mostrarDialogo("probando",response.body().toString());
+                    //if (  response.body() != null ) {
+                        //mostrarDialogo("probando",response.body().toString());
+                    //}
+                }
+
+                @Override
+                public void onFailure(Call<Reclamo> call, Throwable t) {
+                    mostrarDialogo("error", t.getMessage());
+                }
+            });
+        } catch (Exception e){
+            mostrarDialogo("error",e.getMessage());
+        }
+
+    }
+
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void GoBack(){
+        Intent intent = new Intent(this, CreacionReclamo2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    private void mostrarDialogo(String titulo,String mensaje){
+        new AlertDialog.Builder( this)
+                .setTitle(titulo)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .setMessage(mensaje)
+                .show();
+    }
+
     //para la slide bar
 
     @Override

@@ -21,8 +21,8 @@ public class Especialidad implements Serializable {
 
     }
 
-    public Especialidad(long id_especialidad, String nombre, String descripcion) {
-        this.id_especialidad = id_especialidad;
+    public Especialidad(long id, String nombre, String descripcion) {
+        this.id = id_especialidad;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }

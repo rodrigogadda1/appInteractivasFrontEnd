@@ -10,6 +10,7 @@ public class EspacioComun implements Serializable {
     private Edificio edificio;
 
     public EspacioComun(long id_espaciocomun, String nombre, String descripcion, Edificio edificio) {
+        super();
         this.id_espaciocomun = id_espaciocomun;
         this.nombre = nombre;
         this.descripcion = descripcion;

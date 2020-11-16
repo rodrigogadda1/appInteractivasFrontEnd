@@ -97,7 +97,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_white"
-            android:entries="@array/especialidad_sp"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -227,9 +226,9 @@
             android:layout_marginBottom="24dp"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintStart_toEndOf="@+id/btnBack"
             app:layout_constraintTop_toBottomOf="@+id/editReclamoComentario"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.977" />
 
         <ImageView
             android:id="@+id/btnNext"

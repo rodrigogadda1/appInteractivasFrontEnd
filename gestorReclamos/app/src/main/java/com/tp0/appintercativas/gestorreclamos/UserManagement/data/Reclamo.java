@@ -20,14 +20,13 @@ public class Reclamo implements Serializable {
     private EspacioComun espacioComun;
     private List<Foto> fotos;
 
-    public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad, Date fecha, Estado estado
+    public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad, Estado estado
                     , long id_agrupador, String descripcion, Administrado administrado, Unidad unidad, EspacioComun espacioComun, List<Foto> fotos) {
         this.id_reclamo = id_reclamo;
         Nombre = nombre;
         this.username = username;
         this.edificio = edificio;
         this.especialidad = especialidad;
-        this.fecha = fecha;
         this.estado = estado;
         this.id_agrupador = id_agrupador;
         this.descripcion = descripcion;
@@ -58,6 +57,48 @@ public class Reclamo implements Serializable {
                 ", espacioComun=" + espacioComun +
                 ", fotos=" + fotos +
                 '}';
+    }
+
+    public String toStringPersonalizado () {
+        String salida = "Reclamo{"+
+                " -id_reclamo" + id_reclamo;
+        if (Nombre != null) {
+            salida+=" -Nombre "+Nombre;
+        }
+        if (username != null){
+            salida+=" -username "+username;
+        }
+        if (edificio != null){
+            salida+=" -edificio "+edificio.toString();
+        }
+        if (especialidad != null){
+            salida+=" -especialidad "+especialidad.toString();
+        }
+        if (fecha != null){
+            salida+=" -fecha "+fecha.toString();
+        }
+        if (estado != null){
+            salida+=" -estado "+estado.toString();
+        }
+        if (id_agrupador != 0){
+            salida+=" -id_agrupador "+String.valueOf(id_agrupador);
+        }
+        if (descripcion != null){
+            salida+=" -descripcion "+descripcion;
+        }
+        if (administrado != null){
+            salida+=" -administrado "+administrado.toString();
+        }
+        if (unidad != null){
+            salida+=" -unidad "+unidad.toString();
+        }
+        if (espacioComun != null){
+            salida+=" -espacio comun "+espacioComun.toString();
+        }
+        if (fotos != null){
+            salida+=" -fotos "+fotos.toString();
+        }
+        return salida;
     }
 
     public long getId_reclamo() {
@@ -102,10 +143,6 @@ public class Reclamo implements Serializable {
 
     public Date getFecha() {
         return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 
     public Estado getEstado() {
