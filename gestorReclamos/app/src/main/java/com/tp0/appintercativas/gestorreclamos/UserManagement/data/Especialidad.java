@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class Especialidad implements Serializable {
 
-    private long id_especialidad;
+    private long id;
     private String nombre;
     private String descripcion;
 
     @Override
     public String toString() {
         return "Especialidad{" +
-                "id_especialidad=" + id_especialidad +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 '}';
@@ -22,17 +22,17 @@ public class Especialidad implements Serializable {
     }
 
     public Especialidad(long id, String nombre, String descripcion) {
-        this.id = id_especialidad;
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
     public long getId_especialidad() {
-        return id_especialidad;
+        return id;
     }
 
-    public void setId_especialidad(long id_especialidad) {
-        this.id_especialidad = id_especialidad;
+    public void setId_especialidad(long id) {
+        this.id = id;
     }
 
     public String getNombre() {

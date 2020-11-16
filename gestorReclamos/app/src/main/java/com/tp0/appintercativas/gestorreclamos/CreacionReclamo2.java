@@ -237,16 +237,17 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                     spinners.add("Seleccione una especialidad");
                     for (int i = 0; i < response.body().size(); i++){
                         Especialidad especialidad = response.body().get(i);
-                        especialidad.setId_especialidad(i+1);
+                        //especialidad.setId_especialidad(i+1);
                         especialidades.add(especialidad);
                         spinners.add(especialidad.getNombre());
                     }
                     spinnerEspecialidades(spinners);
                 }
                 //CLIPBOARD
-                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                //ClipData clip = ClipData.newPlainText("label",response.body().toString());
-                //clipboard.setPrimaryClip(clip);
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label",response.body().toString());
+                clipboard.setPrimaryClip(clip);
+                mostrarToast("se copio");
                 //CLIPBOARD
             }
 
