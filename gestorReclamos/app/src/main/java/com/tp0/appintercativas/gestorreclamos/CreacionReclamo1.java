@@ -10,7 +10,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +32,6 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.service.Administrad
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EdificioService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspacioComunService;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,10 +67,10 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         back = (ImageView) findViewById(R.id.back);
         next = (ImageView) findViewById(R.id.next);
 
-        listaedificiouser = (Spinner) findViewById(R.id.listaedificiouser);
+        listaedificiouser = (Spinner) findViewById(R.id.spnLstEdificioUser);
         returnAdministrado("11edificios11");
 
-        listaespacios = (Spinner) findViewById(R.id.listaespacios);
+        listaespacios = (Spinner) findViewById(R.id.spnLstEspacios);
         listaespacios.setEnabled(false);
 
         //codigo para slide bar

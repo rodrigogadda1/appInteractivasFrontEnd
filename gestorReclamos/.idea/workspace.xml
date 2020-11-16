@@ -68,16 +68,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/menu" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.-1451743652">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\AppInteractivas\FrontEnd\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\menu" />
-      <recent name="C:\AppInteractivas\FrontEnd\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\drawable" />
-      <recent name="C:\Users\OIC\Desktop\UADE 2020 2 Cuatri\Aplicaciones Distributivas\repositorio-frontend\appInteractivasFrontEnd\gestorReclamos\app\src\main\java\com\tp0\appintercativas\gestorreclamos\ResponseURIs" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Repositorio TPO Distribuidas\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\layout" />
     </key>
     <key name="android.template.60245359">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
@@ -91,18 +89,21 @@
     <key name="android.template.351035278">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.tp0.appintercativas.gestorreclamos.UserManagement.service" />
-      <recent name="com.tp0.appintercativas.gestorreclamos.UserManagement.data" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Repositorio TPO Distribuidas\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\layout" />
+      <recent name="C:\AppInteractivas\FrontEnd\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\menu" />
+      <recent name="C:\AppInteractivas\FrontEnd\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\drawable" />
+      <recent name="C:\Users\OIC\Desktop\UADE 2020 2 Cuatri\Aplicaciones Distributivas\repositorio-frontend\appInteractivasFrontEnd\gestorReclamos\app\src\main\java\com\tp0\appintercativas\gestorreclamos\ResponseURIs" />
     </key>
     <key name="android.template.585574332">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tp0.appintercativas.gestorreclamos.UserManagement.service" />
+      <recent name="com.tp0.appintercativas.gestorreclamos.UserManagement.data" />
+    </key>
     <key name="android.template.-1097106331">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Repositorio TPO Distribuidas\appInteractivasFrontEnd\gestorReclamos\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunManager">
@@ -185,6 +186,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="845" y="402" key="#Notifications" timestamp="1605134175674">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="845" y="402" key="#Notifications/0.0.1920.1080@0.0.1920.1080" timestamp="1605134175674" />
     <state x="392" y="0" key="#app" timestamp="1605038873740">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -200,30 +205,39 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602782573104" />
-    <state x="2056" y="-46" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602374477297">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state x="690" y="277" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605146236065">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="2056" y="-46" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1602374477297" />
-    <state width="1877" height="408" key="GridCell.Tab.0.bottom" timestamp="1604183731911">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state x="690" y="277" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605146236065" />
+    <state x="92" y="92" width="1736" height="896" key="AVDManager" timestamp="1605218688609">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="92" y="92" width="1736" height="896" key="AVDManager/0.0.1920.1080@0.0.1920.1080" timestamp="1605218688609" />
+    <state width="1877" height="292" key="GridCell.Tab.0.bottom" timestamp="1605152607669">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1877" height="408" key="GridCell.Tab.0.center" timestamp="1604183731911">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state width="1877" height="292" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605152607669" />
+    <state width="1877" height="292" key="GridCell.Tab.0.center" timestamp="1605152607669">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1877" height="408" key="GridCell.Tab.0.left" timestamp="1604183731911">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state width="1877" height="292" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605152607669" />
+    <state width="1877" height="292" key="GridCell.Tab.0.left" timestamp="1605152607669">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1877" height="408" key="GridCell.Tab.0.right" timestamp="1604183731911">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state width="1877" height="292" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605152607669" />
+    <state width="1877" height="292" key="GridCell.Tab.0.right" timestamp="1605152607669">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
+    <state width="1877" height="292" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605152607669" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1602386818417">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

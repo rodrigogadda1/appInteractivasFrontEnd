@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tp0.appintercativas.gestorreclamos.ResponseURIs.ResponseLogin;
@@ -28,6 +29,7 @@ public class MainActivityLogin extends AppCompatActivity {
     private TextView txtEstado;
     private EditText editTextUsername, editTextPassword;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,8 @@ public class MainActivityLogin extends AppCompatActivity {
         btnOlvidoPassword = (Button) findViewById(R.id.btnOlvidoPassword);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -48,6 +52,7 @@ public class MainActivityLogin extends AppCompatActivity {
                 olvidoPassword();
             }
         });
+
     }
 
 

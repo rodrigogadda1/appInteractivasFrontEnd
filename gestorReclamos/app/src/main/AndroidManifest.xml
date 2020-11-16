@@ -25,6 +25,7 @@
         <activity android:name=".CargaDatosPreguntaFirst" />
         <activity android:name=".CargaDatosPersonalesFirst" />
         <activity android:name=".ConsentisacionCargaDatos" />
+        <activity android:name=".HistorialReclamos1" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

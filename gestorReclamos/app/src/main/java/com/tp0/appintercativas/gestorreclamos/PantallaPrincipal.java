@@ -246,6 +246,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, HistorialReclamos1.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();

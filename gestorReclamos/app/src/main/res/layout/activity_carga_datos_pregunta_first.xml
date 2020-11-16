@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -12,7 +13,6 @@
         android:id="@+id/datos2_img"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:alpha="0.7"
         android:scaleType="centerCrop"
         android:src="@drawable/image07"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,17 +23,22 @@
 
     <TextView
         android:id="@+id/datos_2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/rounded_gray"
+        android:drawableLeft="@drawable/image13"
         android:gravity="center"
         android:text="@string/datos_1"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,44 +59,71 @@
         app:layout_constraintTop_toBottomOf="@+id/datos1_img"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spnPregunta"
-        android:layout_width="230dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
-        android:entries="@array/pregunta_Tipo"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos_2" />
-
     <TextView
         android:id="@+id/txtPregunta"
-        android:layout_width="90dp"
+        android:layout_width="110dp"
         android:layout_height="40dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="100dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/pregunta"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datos_2" />
 
+    <Spinner
+        android:id="@+id/spnPregunta"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:entries="@array/pregunta_Tipo"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datos_2" />
+
+    <TextView
+        android:id="@+id/txtRespuesta"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
+        android:text="@string/respuesta"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPregunta" />
     <EditText
         android:id="@+id/editReponse"
         android:layout_width="230dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         android:hint="@string/pregunta_Tipo"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,21 +131,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnPregunta" />
 
-    <EditText
-        android:id="@+id/editRepeatContraseña"
-        android:layout_width="230dp"
+    <TextView
+        android:id="@+id/txtContraseña"
+        android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_edittext"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
-        android:hint="@string/password_2"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
+        android:background="@drawable/rounded_gray"
+        android:text="@string/password"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editContraseña" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRespuesta" />
+
+
 
     <EditText
         android:id="@+id/editContraseña"
@@ -132,64 +168,55 @@
         app:layout_constraintTop_toBottomOf="@+id/editReponse" />
 
     <TextView
-        android:id="@+id/txtRespuesta"
-        android:layout_width="95dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
-        android:text="@string/respuesta"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPregunta" />
-
-    <TextView
-        android:id="@+id/txtContraseña"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
-        android:text="@string/password"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRespuesta" />
-
-    <TextView
         android:id="@+id/txtRepeatContraseña"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
         android:gravity="center_vertical"
+        android:background="@drawable/rounded_gray"
         android:text="@string/password_2"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContraseña" />
 
+    <EditText
+        android:id="@+id/editRepeatContraseña"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/rounded_white"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:padding="6dip"
+        android:textStyle="bold"
+        android:hint="@string/password_2"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editContraseña" />
+
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="back"
         android:src="@drawable/image12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnCancel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_2Texto"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -197,10 +224,12 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="80dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="exit"
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toBottomOf="@+id/password_2"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -208,12 +237,14 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="next"
         android:src="@drawable/image08"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnCancel"
+        app:layout_constraintTop_toBottomOf="@+id/password_2"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
