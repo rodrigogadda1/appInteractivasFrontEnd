@@ -98,50 +98,6 @@
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical|center_horizontal">
-                <Button
-                    android:id="@+id/reclamo_1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reclamo Numero 1"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reclamo Numero 2"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reclamo Numero 3"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reclamo Numero 4"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/reclamo_5"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reclamo Numero 5"
-                    android:textAlignment="viewStart">
-                </Button>
-            </LinearLayout>
         </ScrollView>
 
         <Button

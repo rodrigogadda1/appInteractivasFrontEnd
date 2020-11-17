@@ -12,6 +12,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
@@ -127,7 +128,9 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
         imgvCamara.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View view) {
-                                                //aca se escribe que hacer
+                                                if (!tengoCamara()){
+                                                    mostrarToast("No tenes camara disponible");
+                                                }
                                          }
                                      }
         );
@@ -188,6 +191,10 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                  }
              }
         );
+    }
+
+    private boolean tengoCamara(){
+        return getBaseContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
 
     private void pasar_a_pantalla_reclamos_3 (Reclamo reclamo2){

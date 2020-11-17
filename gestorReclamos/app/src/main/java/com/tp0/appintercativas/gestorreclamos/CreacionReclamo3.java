@@ -6,6 +6,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -112,13 +114,46 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         );
 
         next.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                            mostrarDialogo("probando 113","hasta 1");
-                                            CrearReclamo();
-                                       }
-                                   }
+                   @Override
+                   public void onClick(View view) {
+                        if (testearConnection().equals("NotConnected")){
+                            mostrarToast("No hay conexion");
+                            //aca se manda a insertar hasta tener wifi
+                        } else if (testearConnection().equals("DataMobile")){
+                            if (user.isDatos_moviles()) {
+                                //mostrarToast("se manda a crear");
+                                CrearReclamo();
+                            } else {
+                                mostrarToast("No tenes habilitado usar datos moviles.");
+                                //aca se manda a insertar hasta tener wifi
+                            }
+                        } else {
+                            CrearReclamo();
+                            //mostrarToast("se manda a crear");
+                        }
+                   }
+           }
         );
+    }
+
+
+    private String testearConnection() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        String salida = null;
+        if (ni != null && ni.isConnected()) {
+            switch (ni.getType()) {
+                case ConnectivityManager.TYPE_WIFI:
+                    salida = "DataWifi";
+                    break;
+                case ConnectivityManager.TYPE_MOBILE:
+                    salida = "DataMobile";
+                    break;
+            }
+        } else {
+            salida = "NotConnected";
+        }
+        return salida;
     }
 
     private void CrearReclamo(){
