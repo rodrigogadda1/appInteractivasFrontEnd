@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".nreclamo3.activity_nreclamo3">
+    tools:context=".phonealbum.activity_phonealbum">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_content"
@@ -22,7 +22,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/datos4_img"
+        android:id="@+id/nreclamo4_img"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/datos4"
+        android:id="@+id/nreclamo4"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
-        android:id="@+id/datos4_img2"
+        android:id="@+id/nreclamo4_img2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -62,10 +62,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos4" />
+        app:layout_constraintTop_toBottomOf="@+id/nreclamo4" />
 
     <TextView
-        android:id="@+id/datos4_Personales"
+        android:id="@+id/nreclamo4_reclamo"
         android:layout_width="0dp"
         android:layout_height="350dp"
         android:layout_marginTop="40dp"
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos4_img2" />
+        app:layout_constraintTop_toBottomOf="@+id/nreclamo4_img2" />
 
     <ImageView
         android:id="@+id/back"
@@ -94,7 +94,7 @@
         app:layout_constraintEnd_toStartOf="@+id/exit"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datos4_Personales"
+        app:layout_constraintTop_toBottomOf="@+id/nreclamo4_reclamo"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -107,7 +107,7 @@
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/datos4_Personales"
+        app:layout_constraintTop_toBottomOf="@+id/nreclamo4_reclamo"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -122,7 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/exit"
-        app:layout_constraintTop_toBottomOf="@+id/datos4_Personales"
+        app:layout_constraintTop_toBottomOf="@+id/nreclamo4_reclamo"
         app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

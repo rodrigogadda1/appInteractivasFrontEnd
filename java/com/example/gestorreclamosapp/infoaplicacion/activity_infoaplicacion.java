@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
+import com.example.gestorreclamosapp.datospers.activity_datospers;
+import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
 import com.example.gestorreclamosapp.principal.activity_principal;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
@@ -65,9 +67,16 @@ public class activity_infoaplicacion extends AppCompatActivity implements Naviga
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_infoaplicacion.this, activity_hreclamo.class);
+                startActivity(intent);
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.datospersonales:
+                Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_infoaplicacion.this, activity_datospers.class);
+                startActivity(intent);
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();

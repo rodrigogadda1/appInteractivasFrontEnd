@@ -74,6 +74,9 @@ public class activity_configuraciones extends AppCompatActivity implements Navig
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.datospersonales:
+                Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
                 break;

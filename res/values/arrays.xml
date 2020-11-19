@@ -43,4 +43,10 @@
         <item><font size="20"><b>Albañil</b></font></item>
         <item><font size="20"><b>Carpintero</b></font></item>
     </string-array>
+    <string-array name="listaestado">
+        <item></item>
+        <item><font size="20"><b>Abierto</b></font></item>
+        <item><font size="20"><b>Cerrado</b></font></item>
+        <item><font size="20"><b>Pausado</b></font></item>
+    </string-array>
 </resources>

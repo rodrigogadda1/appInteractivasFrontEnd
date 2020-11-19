@@ -1,6 +1,5 @@
 package com.example.gestorreclamosapp.nreclamo3;
 
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,8 +12,11 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
+import com.example.gestorreclamosapp.datospers.activity_datospers;
+import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.nreclamo2.activity_nreclamo2;
+import com.example.gestorreclamosapp.nreclamo4.activity_nreclamo4;
 import com.example.gestorreclamosapp.principal.activity_principal;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -65,9 +67,16 @@ public class activity_nreclamo3 extends AppCompatActivity implements NavigationV
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_nreclamo3.this, activity_hreclamo.class);
+                startActivity(intent);
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.datospersonales:
+                Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_nreclamo3.this, activity_datospers.class);
+                startActivity(intent);
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
@@ -95,7 +104,7 @@ public class activity_nreclamo3 extends AppCompatActivity implements NavigationV
     }
 
     public void next(View view) {
-        Intent intent = new Intent(activity_nreclamo3.this, activity_principal.class);
+        Intent intent = new Intent(activity_nreclamo3.this, activity_nreclamo4.class);
         startActivity(intent);
     }
 
