@@ -12,11 +12,12 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
+import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
+import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
 import com.example.gestorreclamosapp.nreclamo2.activity_nreclamo2;
 import com.example.gestorreclamosapp.principal.activity_principal;
-import com.example.gestorreclamosapp.recupera2.activity_recupera2;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -71,9 +72,13 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_hreclamo.this, activity_notificaciones1.class);
+                startActivity(intent);
                 break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_hreclamo.this, activity_datospers.class);
+                startActivity(intent);
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
@@ -96,8 +101,9 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
         return true;
     }
 
-    public void guardar(View view) {
-        Intent intent = new Intent(activity_hreclamo.this, LoginActivity.class);
+    public void continuar(View view) {
+        Toast.makeText(this, "Continuar", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
         startActivity(intent);
     }
 
@@ -107,7 +113,7 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
     }
 
     public void next(View view) {
-        Intent intent = new Intent(activity_hreclamo.this, activity_nreclamo2.class);
+        Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
         startActivity(intent);
     }
 

@@ -15,6 +15,7 @@ import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
+import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
 import com.example.gestorreclamosapp.nreclamo2.activity_nreclamo2;
 import com.example.gestorreclamosapp.nreclamo4.activity_nreclamo4;
 import com.example.gestorreclamosapp.principal.activity_principal;
@@ -72,6 +73,8 @@ public class activity_nreclamo3 extends AppCompatActivity implements NavigationV
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_nreclamo3.this, activity_notificaciones1.class);
+                startActivity(intent);
                 break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();

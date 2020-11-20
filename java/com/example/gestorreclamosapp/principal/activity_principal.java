@@ -15,6 +15,7 @@ import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
+import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -72,6 +73,8 @@ public class activity_principal extends AppCompatActivity implements NavigationV
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_principal.this, activity_notificaciones1.class);
+                startActivity(intent);
                 break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
@@ -115,6 +118,9 @@ public class activity_principal extends AppCompatActivity implements NavigationV
     }
 
     public void notificaciones(View view) {
+        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(activity_principal.this, activity_notificaciones1.class);
+        startActivity(intent);
     }
 
     @Override
@@ -138,5 +144,4 @@ public class activity_principal extends AppCompatActivity implements NavigationV
     public void onDrawerStateChanged(int i) {
         //cambio de estado, puede ser STATE_IDLE, STATE_DRAGGING or STATE_SETTLING
     }
-
 }
