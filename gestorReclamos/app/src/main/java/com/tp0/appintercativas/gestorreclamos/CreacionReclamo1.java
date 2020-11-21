@@ -24,7 +24,6 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.EspacioComun;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
@@ -63,9 +62,9 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        exit = (ImageView) findViewById(R.id.exit);
-        back = (ImageView) findViewById(R.id.back);
-        next = (ImageView) findViewById(R.id.next);
+        exit = (ImageView) findViewById(R.id.btnExitHisto1);
+        back = (ImageView) findViewById(R.id.btnBackHisto1);
+        next = (ImageView) findViewById(R.id.btnNextHisto1);
 
         listaedificiouser = (Spinner) findViewById(R.id.spnLstEdificioUser);
         returnAdministrado("11edificios11");

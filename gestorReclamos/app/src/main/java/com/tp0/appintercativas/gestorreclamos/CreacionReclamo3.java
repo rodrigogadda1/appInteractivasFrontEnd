@@ -11,10 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,17 +22,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
-
-import java.util.Date;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,9 +54,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
         administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        back = (ImageView) findViewById(R.id.back);
-        exit = (ImageView) findViewById(R.id.exit);
-        next = (ImageView) findViewById(R.id.next);
+        back = (ImageView) findViewById(R.id.btnBackHisto1);
+        exit = (ImageView) findViewById(R.id.btnExitHisto1);
+        next = (ImageView) findViewById(R.id.btnNextHisto1);
 
         txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
         txtVisualizaReclamo = (TextView) findViewById(R.id.txtVisualizaReclamo);

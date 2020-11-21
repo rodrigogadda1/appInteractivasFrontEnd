@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgvCambiarReclamo_img3" />
 
-    <EditText
+    <TextView
         android:id="@+id/editPassword"
         android:layout_width="230dp"
         android:layout_height="40dp"
@@ -155,7 +155,7 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_red"
         android:text="@string/guardar"
@@ -180,11 +180,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guardar"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuardarHisto1"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/exit"
+        android:id="@+id/btnExitHisto1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="80dp"
@@ -193,8 +193,8 @@
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/guardar"
+        app:layout_constraintStart_toEndOf="@+id/btnBackHisto1"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuardarHisto1"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

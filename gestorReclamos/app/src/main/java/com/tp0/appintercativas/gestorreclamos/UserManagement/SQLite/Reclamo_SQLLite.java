@@ -146,7 +146,6 @@ public class Reclamo_SQLLite {
         cv.put(ReclamoContract.ClubesEntry.NROZONA, nroZona);
         return cv;
     }
-
     private long id_reclamo;
     private String Nombre;
     private String username;
@@ -159,4 +158,5 @@ public class Reclamo_SQLLite {
     private long id_unidad;
     private long id_espacioComun;
     private List<String> fotos;
+
 }

@@ -25,7 +25,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3a_API_30]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -87,6 +87,9 @@
       <recent name="com.tp0.appintercativas.gestorreclamos" />
     </key>
     <key name="android.template.351035278">
+      <recent name="com.tp0.appintercativas.gestorreclamos" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.tp0.appintercativas.gestorreclamos" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -206,6 +209,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="363" y="100" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602782573104" />
+    <state x="701" y="408" width="518" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605922525871">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="701" y="408" width="518" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1080@0.0.1920.1080" timestamp="1605922525871" />
     <state x="690" y="277" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605146236065">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -253,9 +260,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602386824019" />
-    <state x="1989" y="-88" width="672" height="678" key="search.everywhere.popup" timestamp="1602457322169">
-      <screen x="1366" y="-313" width="1920" height="1040" />
+    <state x="623" y="234" width="672" height="705" key="search.everywhere.popup" timestamp="1605922214367">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1989" y="-88" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1602457322169" />
+    <state x="623" y="234" width="672" height="705" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605922214367" />
   </component>
 </project>

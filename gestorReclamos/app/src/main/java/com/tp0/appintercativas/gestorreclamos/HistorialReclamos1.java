@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -21,10 +22,11 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class HistorialReclamos1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imgvHistorialReclamos,imgvCentral,back,exit,next;
-    TextView txtHistReclamos;
-    Spinner spnLstEdificioUser,spnLstEspacios;
-    CheckBox chkEdificioUser,chkEspacios;
+    ImageView imvPrincipal,nreclamo1_img2,btnBackHisto1,btnExitHisto1,btnNextHisto1;
+    TextView txtPpal;
+    Spinner spnListaedificios,spnListaunidades,spnListaespecialidades,spnListaestado;
+    CheckBox chklistaedificios,chklistaunidades,chklistaespecialidades,chklistaestado;
+    Button  btnGuardarHisto1;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -36,19 +38,25 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imgvHistorialReclamos = (ImageView) findViewById(R.id.imgvHistorialReclamos);
-        imgvCentral = (ImageView) findViewById(R.id.imgvCentral);
-        back = (ImageView) findViewById(R.id.back);
-        exit = (ImageView) findViewById(R.id.exit);
-        next = (ImageView) findViewById(R.id.next);
+        imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
+        nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
+        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackHisto1);
+        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitHisto1);
+        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextHisto1);
 
-        txtHistReclamos = (TextView) findViewById(R.id.txtHistReclamos);
+        txtPpal = (TextView) findViewById(R.id.txtPpal);
 
-        spnLstEdificioUser = (Spinner) findViewById(R.id.spnLstEdificioUser);
-        spnLstEspacios = (Spinner) findViewById(R.id.spnLstEspacios);
+        spnListaedificios = (Spinner) findViewById(R.id.spnListaedificios);
+        spnListaunidades = (Spinner) findViewById(R.id.spnListaunidades);
+        spnListaespecialidades = (Spinner) findViewById(R.id.spnListaespecialidades);
+        spnListaestado = (Spinner) findViewById(R.id.spnListaestado);
 
-        chkEdificioUser = (CheckBox) findViewById(R.id.chkEdificioUser);
-        chkEspacios = (CheckBox) findViewById(R.id.chkEspacios);
+        chklistaedificios = (CheckBox) findViewById(R.id.chklistaedificios);
+        chklistaunidades = (CheckBox) findViewById(R.id.chklistaunidades);
+        chklistaespecialidades = (CheckBox) findViewById(R.id.chklistaespecialidades);
+        chklistaestado = (CheckBox) findViewById(R.id.chklistaestado);
+
+        btnGuardarHisto1 = (Button) findViewById(R.id.btnGuardarHisto1);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -65,7 +73,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        imgvHistorialReclamos.setOnClickListener(new View.OnClickListener() {
+        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
                                                  @Override
                                                  public void onClick(View view) {
                                                      //aca se escribe que hacer
@@ -73,7 +81,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                                              }
         );
 
-        imgvCentral.setOnClickListener(new View.OnClickListener() {
+        btnExitHisto1.setOnClickListener(new View.OnClickListener() {
                                                        @Override
                                                        public void onClick(View view) {
                                                            //aca se escribe que hacer
@@ -81,7 +89,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                                                    }
         );
 
-        back.setOnClickListener(new View.OnClickListener() {
+        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         //aca se escribe que hacer
@@ -89,7 +97,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                                 }
         );
 
-        exit.setOnClickListener(new View.OnClickListener() {
+        btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         //aca se escribe que hacer
@@ -97,7 +105,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                                 }
         );
 
-        next.setOnClickListener(new View.OnClickListener() {
+        nreclamo1_img2.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         //aca se escribe que hacer

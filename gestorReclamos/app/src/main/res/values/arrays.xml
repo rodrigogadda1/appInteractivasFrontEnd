@@ -43,4 +43,13 @@
         <item>Albañil</item>
         <item>Carpintero</item>
     </string-array>
+    <string-array name="listaestado">
+        <item></item>
+        <item>Cerrado</item>
+        <item>Abierto</item>
+        <item>Cancelado</item>
+        <item>En Proceso</item>
+        <item>Carpintero</item>
+    </string-array>
+
 </resources>
