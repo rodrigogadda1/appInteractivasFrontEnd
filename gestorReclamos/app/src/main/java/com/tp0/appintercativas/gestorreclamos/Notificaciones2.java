@@ -122,47 +122,44 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
             Intent intent;
             switch (item.getItemId()) {
                 case R.id.reclamonuevo:
-                    Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
-                    GoToNewReclamo();
+                    GoToNewReclamo ();
                     break;
                 case R.id.reclamoactivo:
-                    Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                    GoToReclamosActivos ();
                     break;
                 case R.id.reclamohistorial:
-                    Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
-                    GoToViewReclamosHist();
+                    GoToViewReclamosHist ();
                     break;
                 case R.id.notificaciones:
-                    Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
                     GoToNotificaciones ();
                     break;
                 case R.id.configuracion:
-                    Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
                     GoToConfiguraciones();
                     break;
                 case R.id.acercaapp:
-                    Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(this, InfoAppActivity.class);
-                    intent.putExtra("user",user);
-                    startActivity(intent);
+                    GoToAcercaApp();
                     break;
                 case R.id.cerrarsesion:
-                    Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(this, MainActivityLogin.class);
-                    startActivity(intent);
+                    GoToCerrarSesion ();
                     break;
                 default:
                     break;
             }
             return true;
         }
+    private void GoToNotificaDetalle (){
+        Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Notificaciones2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
     private void GoToNewReclamo (){
         Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, CreacionReclamo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
-    private void GoToViewReclamosHist() {
+    private void GoToViewReclamosHist () {
         Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, HistorialReclamos1.class);
         intent.putExtra("user", user);
@@ -187,7 +184,26 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
+        Intent intent = new Intent(this, CreacionReclamo4.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
 
+    }
+    private void GoToCerrarSesion () {
+        Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivityLogin.class);
+        startActivity(intent);
+    }
+    private void GoToAcercaApp () {
+        Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, InfoAppActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
     }
 
