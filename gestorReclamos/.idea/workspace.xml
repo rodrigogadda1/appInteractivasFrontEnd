@@ -13,12 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c78d12b-8e79-4d21-92f6-7a1302026c9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/PantallaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/PantallaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/UserManagement/SQLite/Reclamo_SQLLite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/UserManagement/SQLite/Reclamo_SQLLite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pantalla_principal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pantalla_principal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

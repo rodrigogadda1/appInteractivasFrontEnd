@@ -216,21 +216,4 @@ public class Reclamo_SQLLite {
         }
         return cv;
     }
-<<<<<<< HEAD
-    private long id_reclamo;
-    private String Nombre;
-    private String username;
-    private long id_edificio;
-    private long id_especialidad;
-    private long id_estado;
-    private long id_agrupador;
-    private String descripcion;
-    private long id_administrado;
-    private long id_unidad;
-    private long id_espacioComun;
-    private List<String> fotos;
-=======
-
->>>>>>> c03d37ec6383dd2b23a532efa78885fc16ab1b17
-
 }

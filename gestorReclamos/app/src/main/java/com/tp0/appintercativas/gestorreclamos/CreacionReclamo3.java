@@ -30,13 +30,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
->>>>>>> c03d37ec6383dd2b23a532efa78885fc16ab1b17
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

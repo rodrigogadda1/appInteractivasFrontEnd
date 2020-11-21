@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -55,9 +56,11 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     ReclamosHelper reclamosHelper;
     Administrado administrado;
 
+    private ImageView principal_img;
+    private TextView txtNotificacionesPpal,principaltexto2;
     private ScrollView ScrollViewReclamos;
 
-    private Button btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
+    private Button btnReclamo1,btnReclamo2,btnReclamo3,btnReclamo4,btnReclamo5,btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
     User user;
 
     //para la slide bar
@@ -73,6 +76,11 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         user = (User) intent.getSerializableExtra("user");
 
         /*  CODIGO PARA SCROLLVIEW RECLAMOS  */
+        principal_img = (ImageView) findViewById(R.id.principal_img);
+
+        txtNotificacionesPpal = (TextView) findViewById(R.id.txtNotificacionesPpal);
+        principaltexto2 = (TextView) findViewById(R.id.principaltexto2);
+
         ScrollViewReclamos = (ScrollView) findViewById(R.id.ScrollViewReclamos);
 
 
@@ -80,6 +88,11 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         /* FIN CODIGO PARA SCROLLVIEW RECLAMOS  */
 
+        btnReclamo1 = (Button) findViewById(R.id.btnReclamo1);
+        btnReclamo2 = (Button) findViewById(R.id.btnReclamo2);
+        btnReclamo3 = (Button) findViewById(R.id.btnReclamo3);
+        btnReclamo4 = (Button) findViewById(R.id.btnReclamo4);
+        btnReclamo5 = (Button) findViewById(R.id.btnReclamo5);
         btnNotificaciones = (Button) findViewById(R.id.btnNotificaciones);
         btnHistorialReclamos = (Button) findViewById(R.id.btnHistorialReclamos);
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
@@ -122,6 +135,32 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
+        btnReclamo1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnReclamo2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnReclamo3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnReclamo4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnReclamo5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+
         btnNotificaciones.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //aca va que hace
@@ -131,6 +170,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnHistorialReclamos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //aca va que hace
+                GoToViewReclamosHist();
             }
         });
 
@@ -177,7 +217,12 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         intent.putExtra("user",user);
         startActivity(intent);
     }
+    private void GoToViewReclamosHist () {
+        Intent intent= new Intent(this, HistorialReclamos1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
 
+    }
     public void buscarReclamosAdministrado (Administrado administrado){
         reclamosHelper = new ReclamosHelper(this);
         List<Reclamo_SQLLite> reclamitos = reclamosHelper.getReclamosSQLiteByAdminitradoId(administrado.getId_administrado());
@@ -422,6 +467,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, Notificaciones1.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
