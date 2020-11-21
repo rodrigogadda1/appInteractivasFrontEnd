@@ -23,17 +23,29 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+>>>>>>> c03d37ec6383dd2b23a532efa78885fc16ab1b17
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class CreacionReclamo3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+
+    //para SQLite
+    private ReclamosHelper reclamosHelper;
 
     User user;
     Administrado administrado;
@@ -72,6 +84,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
         txtVisualizaReclamo.setText(detalle);
 
+        //para SQLite
+        reclamosHelper = new ReclamosHelper(this);
+
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
@@ -108,14 +123,22 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                    @Override
                    public void onClick(View view) {
                         if (testearConnection().equals("NotConnected")){
-                            mostrarToast("No hay conexion");
+                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
                             //aca se manda a insertar hasta tener wifi
                         } else if (testearConnection().equals("DataMobile")){
                             if (user.isDatos_moviles()) {
                                 //mostrarToast("se manda a crear");
                                 CrearReclamo();
                             } else {
-                                mostrarToast("No tenes habilitado usar datos moviles.");
+                                Reclamo_SQLLite reclamo_sqlLite = pasarDeReclamoAReclamo_SQLite(reclamo);
+                                //CLIPBOARD
+                                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                                //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
+                                //clipboard.setPrimaryClip(clip);
+                                //CLIPBOARD
+                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
                                 //aca se manda a insertar hasta tener wifi
                             }
                         } else {
@@ -125,6 +148,81 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                    }
            }
         );
+    }
+
+    private Reclamo_SQLLite pasarDeReclamoAReclamo_SQLite (Reclamo reclamo){
+        Reclamo_SQLLite reclamo_sqlLite = new Reclamo_SQLLite();
+
+        if(reclamo.getId_reclamo() != 0){
+            reclamo_sqlLite.setId_reclamo(reclamo.getId_reclamo());
+        } else {
+            reclamo_sqlLite.setId_reclamo(0);
+        }
+
+        if(reclamo.getNombre() != null){
+            reclamo_sqlLite.setNombre(reclamo.getNombre());
+        } else {
+            reclamo_sqlLite.setNombre("");
+        }
+
+        if(reclamo.getUsername() != null){
+            reclamo_sqlLite.setUsername(reclamo.getUsername());
+        } else {
+            reclamo_sqlLite.setUsername("");
+        }
+
+        if(reclamo.getEdificio() != null){
+            reclamo_sqlLite.setId_edificio(reclamo.getEdificio().getId_edificio());
+        } else {
+            reclamo_sqlLite.setId_edificio(0);
+        }
+
+        if(reclamo.getEspecialidad() != null){
+            reclamo_sqlLite.setId_especialidad(reclamo.getEspecialidad().getId_especialidad());
+        } else {
+            reclamo_sqlLite.setId_especialidad(0);
+        }
+
+        if(reclamo.getEstado() != null){
+            reclamo_sqlLite.setId_estado(reclamo.getEstado().getId_estado());
+        } else {
+            reclamo_sqlLite.setId_estado(0);
+        }
+
+        if(reclamo.getId_agrupador() != 0){
+            reclamo_sqlLite.setId_agrupador(reclamo.getId_agrupador());
+        } else {
+            reclamo_sqlLite.setId_agrupador(0);
+        }
+
+        if(reclamo.getDescripcion() != null){
+            reclamo_sqlLite.setDescripcion(reclamo.getDescripcion());
+        } else {
+            reclamo_sqlLite.setDescripcion("");
+        }
+
+        if(reclamo.getAdministrado() != null){
+            reclamo_sqlLite.setId_administrado(reclamo.getAdministrado().getId_administrado());
+        } else {
+            reclamo_sqlLite.setId_administrado(0);
+        }
+
+
+        if(reclamo.getUnidad() != null){
+            reclamo_sqlLite.setId_unidad(reclamo.getUnidad().getId_unidad());
+        } else {
+            reclamo_sqlLite.setId_unidad(0);
+        }
+
+        if(reclamo.getEspacioComun() != null){
+            reclamo_sqlLite.setId_espacioComun(reclamo.getEspacioComun().getId_espaciocomun());
+        } else {
+            reclamo_sqlLite.setId_espacioComun(0);
+        }
+
+        //aca falta agregar las ubicaciones de las fotos
+
+        return reclamo_sqlLite;
     }
 
 
