@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +31,7 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_reclamos1);
+        setContentView(R.layout.activity_notificaciones1);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -70,7 +68,7 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        btnNotifica1.setOnClickListener(new View.OnClickListener() {
+     /*   btnNotifica1.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View view) {
                                                  //aca se escribe que hacer
@@ -131,7 +129,7 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                                                 //aca se escribe que hacer
                                             }
                                         }
-        );
+        );*/
 
     }
     //para la slide bar

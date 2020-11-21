@@ -1,8 +1,6 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +23,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.ResponseURIs.ResponseLogin;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
@@ -38,11 +35,8 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -164,6 +158,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnNotificaciones.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //aca va que hace
+                GoToNotificaciones();
             }
         });
 
@@ -177,6 +172,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnReclamosActivos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //aca va que hace
+                GoToReclamosActivos ();
             }
         });
 
@@ -213,14 +209,36 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     }
 
     private void GoToNewReclamo (){
+        Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, CreacionReclamo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     private void GoToViewReclamosHist () {
+        Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, HistorialReclamos1.class);
         intent.putExtra("user", user);
         startActivity(intent);
+
+    }
+    private void GoToNotificaciones () {
+        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, Notificaciones1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
+    private void GoToConfiguraciones(){
+        Intent intent = new Intent(this, ConfiguracionesUser.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void GoToReclamosActivos () {
+        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+        //Intent intent= new Intent(this, Notificaciones1.class);
+        //intent.putExtra("user", user);
+        //startActivity(intent);
 
     }
     public void buscarReclamosAdministrado (Administrado administrado){
@@ -461,21 +479,15 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, HistorialReclamos1.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToViewReclamosHist();
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, Notificaciones1.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToNotificaciones ();
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, ConfiguracionesUser.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
                     Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
