@@ -40,9 +40,9 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
         nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
-        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackHisto1);
-        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitHisto1);
-        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextHisto1);
+        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackRec1);
+        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitRec1);
+        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextRec1);
 
         txtPpal = (TextView) findViewById(R.id.txtPpal);
 
@@ -74,28 +74,20 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
         btnBackHisto1.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View view) {
-                                                     //aca se escribe que hacer
-                                                 }
-                                             }
-        );
+                 @Override
+                 public void onClick(View view) {
+                    //aca se escribe que hacer
+                    GoPantallaPrincipal();
+                 }
+        });
 
         btnExitHisto1.setOnClickListener(new View.OnClickListener() {
-                                                       @Override
-                                                       public void onClick(View view) {
-                                                           //aca se escribe que hacer
-                                                       }
-                                                   }
-        );
-
-        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
+            @Override
+            public void onClick(View view) {
+                //aca se escribe que hacer
+                GoPantallaPrincipal();
+            }
+        });
 
         btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -172,6 +164,10 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                 break;
         }
         return true;
-
+    }
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 }

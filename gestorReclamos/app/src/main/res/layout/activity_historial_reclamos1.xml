@@ -188,7 +188,7 @@
             app:layout_constraintTop_toBottomOf="@+id/spnListaestado" />
 
         <ImageView
-            android:id="@+id/btnBackHisto1"
+            android:id="@+id/btnBackRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
@@ -203,7 +203,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/btnExitHisto1"
+            android:id="@+id/btnExitRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
@@ -211,12 +211,12 @@
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnBackHisto1"
+            app:layout_constraintStart_toEndOf="@+id/btnBackRec1"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/btnNextHisto1"
+            android:id="@+id/btnNextRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="24dp"
@@ -226,7 +226,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btnExitHisto1"
+            app:layout_constraintStart_toEndOf="@+id/btnExitRec1"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 

@@ -46,7 +46,7 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         user = (User) intent.getSerializableExtra("user");
 
         guardar = (Button) findViewById(R.id.btnGuardarHisto1);
-        exit = (ImageView) findViewById(R.id.btnExitHisto1);
+        exit = (ImageView) findViewById(R.id.btnExitRec1);
 
         chk_uso_movil = (CheckBox) findViewById(R.id.chk_uso_movil);
         chk_uso_notificaciones = (CheckBox) findViewById(R.id.chk_uso_notificaciones);

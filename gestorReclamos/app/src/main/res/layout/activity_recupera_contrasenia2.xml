@@ -184,7 +184,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/btnExitHisto1"
+        android:id="@+id/btnExitRec1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="80dp"
@@ -193,7 +193,7 @@
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnBackHisto1"
+        app:layout_constraintStart_toEndOf="@+id/btnBackRec1"
         app:layout_constraintTop_toBottomOf="@+id/btnGuardarHisto1"
         app:layout_constraintVertical_bias="1.0" />
 

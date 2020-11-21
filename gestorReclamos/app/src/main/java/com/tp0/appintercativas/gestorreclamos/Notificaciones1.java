@@ -70,7 +70,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         //fin codigo para slide bar
 
 
-
         btnNotifica1.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View view) {
@@ -78,6 +77,14 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                                                  GoToNotificaDetalle();
                                              }
                                          }
+        );
+        btnExitNotif.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                GoPantallaPrincipal();
+                                            }
+                                        }
         );
 
      /*   btnNotifica2.setOnClickListener(new View.OnClickListener() {
@@ -203,6 +210,11 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

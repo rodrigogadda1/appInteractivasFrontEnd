@@ -60,9 +60,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
         administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        back = (ImageView) findViewById(R.id.btnBackHisto1);
-        exit = (ImageView) findViewById(R.id.btnExitHisto1);
-        next = (ImageView) findViewById(R.id.btnNextHisto1);
+        back = (ImageView) findViewById(R.id.btnBackRec1);
+        exit = (ImageView) findViewById(R.id.btnExitRec1);
+        next = (ImageView) findViewById(R.id.btnNextRec1);
 
         txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
         txtVisualizaReclamo = (TextView) findViewById(R.id.txtVisualizaReclamo);
@@ -137,6 +137,8 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                             }
                         } else {
                             CrearReclamo();
+                            /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
+                            pasar_a_pantalla_reclamos_4();
                             //mostrarToast("se manda a crear");
                         }
                    }
@@ -239,6 +241,11 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         return salida;
     }
 
+    private void pasar_a_pantalla_reclamos_4(){
+        Intent intent = new Intent(this, CreacionReclamo4.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    };
     private void CrearReclamo(){
         try {
             Retrofit retrofit = Controller.ConfiguracionIP();
@@ -259,6 +266,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                     //if (  response.body() != null ) {
                         //mostrarDialogo("probando",response.body().toString());
                     //}
+
                 }
 
                 @Override

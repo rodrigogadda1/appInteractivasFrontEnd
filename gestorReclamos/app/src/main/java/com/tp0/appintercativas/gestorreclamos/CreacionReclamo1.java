@@ -62,9 +62,9 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        exit = (ImageView) findViewById(R.id.btnExitHisto1);
-        back = (ImageView) findViewById(R.id.btnBackHisto1);
-        next = (ImageView) findViewById(R.id.btnNextHisto1);
+        exit = (ImageView) findViewById(R.id.btnExitRec1);
+        back = (ImageView) findViewById(R.id.btnBackRec1);
+        next = (ImageView) findViewById(R.id.btnNextRec1);
 
         listaedificiouser = (Spinner) findViewById(R.id.spnLstEdificioUser);
         returnAdministrado("11edificios11");
@@ -115,7 +115,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //no se para que se utilizaria
+                GoPantallaPrincipal();
             }
         });
 
