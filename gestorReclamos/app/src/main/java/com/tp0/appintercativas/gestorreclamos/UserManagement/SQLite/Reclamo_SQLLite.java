@@ -19,6 +19,24 @@ public class Reclamo_SQLLite {
     private long id_espacioComun;
     private List<String> fotos;
 
+    @Override
+    public String toString() {
+        return "Reclamo_SQLLite{" +
+                "id_reclamo=" + id_reclamo +
+                ", Nombre='" + Nombre + '\'' +
+                ", username='" + username + '\'' +
+                ", id_edificio=" + id_edificio +
+                ", id_especialidad=" + id_especialidad +
+                ", id_estado=" + id_estado +
+                ", id_agrupador=" + id_agrupador +
+                ", descripcion='" + descripcion + '\'' +
+                ", id_administrado=" + id_administrado +
+                ", id_unidad=" + id_unidad +
+                ", id_espacioComun=" + id_espacioComun +
+                ", fotos=" + fotos +
+                '}';
+    }
+
     public Reclamo_SQLLite(long id_reclamo, String nombre, String username, long id_edificio, long id_especialidad, long id_estado, long id_agrupador, String descripcion, long id_administrado,
                            long id_unidad, long id_espacioComun, List<String> fotos) {
         super();
@@ -139,24 +157,65 @@ public class Reclamo_SQLLite {
     /**
      * Convierte el estado en pares clave valor para hacer el insert
      * */
-    public ContentValues toContentValues(){
+    public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-        cv.put(ReclamoContract.ClubesEntry.ID,idClub);
-        cv.put(ReclamoContract.ClubesEntry.NOMBRE, nombre);
-        cv.put(ReclamoContract.ClubesEntry.NROZONA, nroZona);
+        cv.put(ReclamoContract.ReclamosEntry.ID, id_reclamo);
+        if (Nombre != "") {
+            cv.put(ReclamoContract.ReclamosEntry.NOMBRE, Nombre);
+        }
+        if (username != "") {
+            cv.put(ReclamoContract.ReclamosEntry.USERNAME, username);
+        }
+        if (id_edificio != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_EDIFICIO, id_edificio);
+        }
+        if (id_especialidad != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_ESPECIALIDAD, id_especialidad);
+        }
+        if (id_estado != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_ESTADO, id_estado);
+        }
+        if (id_agrupador != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_AGRUPADOR, id_agrupador);
+        }
+        if (descripcion != "") {
+            cv.put(ReclamoContract.ReclamosEntry.DESCRIPCION, descripcion);
+        }
+        if (id_administrado != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_ADMINISTRADO, id_administrado);
+        }
+        if (id_unidad != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_UNIDAD, id_unidad);
+        }
+        if (id_espacioComun != 0) {
+            cv.put(ReclamoContract.ReclamosEntry.ID_ESPACIO_COMUN, id_espacioComun);
+        }
+
+        if (fotos != null) {
+            if (fotos.size() > 0) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_1, fotos.get(0));
+            }
+            if (fotos.size() > 1) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_2, fotos.get(1));
+            }
+            if (fotos.size() > 1) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_3, fotos.get(2));
+            }
+            if (fotos.size() > 1) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_4, fotos.get(3));
+            }
+            if (fotos.size() > 1) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_5, fotos.get(4));
+            }
+            if (fotos.size() > 1) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_6, fotos.get(5));
+            }
+            if (fotos.size() > 1) {
+                cv.put(ReclamoContract.ReclamosEntry.FOTO_7, fotos.get(6));
+            }
+        }
         return cv;
     }
 
-    private long id_reclamo;
-    private String Nombre;
-    private String username;
-    private long id_edificio;
-    private long id_especialidad;
-    private long id_estado;
-    private long id_agrupador;
-    private String descripcion;
-    private long id_administrado;
-    private long id_unidad;
-    private long id_espacioComun;
-    private List<String> fotos;
+
 }

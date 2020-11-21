@@ -1,8 +1,13 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -21,9 +26,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.ResponseURIs.ResponseLogin;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.EspacioComun;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Estado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
@@ -38,6 +51,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class PantallaPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+
+    ReclamosHelper reclamosHelper;
+    Administrado administrado;
 
     private ScrollView ScrollViewReclamos;
 
@@ -68,6 +84,27 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnHistorialReclamos = (Button) findViewById(R.id.btnHistorialReclamos);
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
+
+        //se revisa si hay reclamos pendientes para subir
+        if (user.getTipoUser().toLowerCase().equals("administrado")) {
+            //pruebo que tenga la conexion para poder subir los reclamos
+            if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
+                getAdministradoId();
+            }
+
+        } else if (user.getTipoUser().toLowerCase().equals("inspector")){
+
+        }
+
+
+        //CLIPBOARD
+        //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        //ClipData clip = ClipData.newPlainText("label",reclamitos.toString());
+        //clipboard.setPrimaryClip(clip);
+        /*
+        [Reclamo_SQLLite{id_reclamo=0, Nombre='null', username='user2', id_edificio=2, id_especialidad=2, id_estado=1, id_agrupador=0, descripcion='asdad asdasdsa', id_administrado=2, id_unidad=0, id_espacioComun=5, fotos=null}]
+         */
+        //CLIPBOARD
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -109,7 +146,30 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             }
         });
 
+    }
 
+    private void getAdministradoId(){
+
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        AdministradoService as = retrofit.create(AdministradoService.class);
+        Call<Administrado> call = as.getAdministradoId((long) user.getId());
+
+        call.enqueue(new Callback<Administrado>() {
+
+            @Override
+            public void onResponse(Call<Administrado> call, Response<Administrado> response) {
+                if (response.isSuccessful()){
+                    administrado = response.body();
+                    buscarReclamosAdministrado(administrado);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Administrado> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+            }
+        });
     }
 
     private void GoToNewReclamo (){
@@ -118,6 +178,116 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         startActivity(intent);
     }
 
+    public void buscarReclamosAdministrado (Administrado administrado){
+        reclamosHelper = new ReclamosHelper(this);
+        List<Reclamo_SQLLite> reclamitos = reclamosHelper.getReclamosSQLiteByAdminitradoId(administrado.getId_administrado());
+        if (reclamitos.size() > 0) {
+            mostrarDialogo("probando PantallaPrincipal 179",String.valueOf(reclamitos.size()));
+            CrearReclamosRecursivo(reclamitos,0,reclamosHelper);
+        }
+    }
+
+    private String testearConnection() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        String salida = null;
+        if (ni != null && ni.isConnected()) {
+            switch (ni.getType()) {
+                case ConnectivityManager.TYPE_WIFI:
+                    salida = "DataWifi";
+                    break;
+                case ConnectivityManager.TYPE_MOBILE:
+                    salida = "DataMobile";
+                    break;
+            }
+        } else {
+            salida = "NotConnected";
+        }
+        return salida;
+    }
+
+    //iniciarlo en cero
+    private void CrearReclamosRecursivo(final List<Reclamo_SQLLite> reclamitos, final int posicion, final ReclamosHelper reclamosHelper){
+        try {
+            if (posicion < reclamitos.size()){
+
+                Reclamo_SQLLite reclamitoPos = reclamitos.get(posicion);
+                Reclamo reclamo = pasarDeReclamitoAReclamo(reclamitoPos);
+
+                Retrofit retrofit = Controller.ConfiguracionIP();
+                ReclamoService rs = retrofit.create(ReclamoService.class);
+                Call<Reclamo> call= rs.createReclamo(reclamo);
+
+                call.enqueue(new Callback<Reclamo>() {
+                    @Override
+                    public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
+                        if (response.isSuccessful()){
+                            CrearReclamosRecursivo(reclamitos,posicion+1,reclamosHelper);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Reclamo> call, Throwable t) {
+                        mostrarDialogo("error", t.getMessage());
+                    }
+                });
+            } else {
+                reclamosHelper.deleteRowsOfAdministrado((int) administrado.getId_administrado());
+            }
+
+        } catch (Exception e){
+            mostrarDialogo("error",e.getMessage());
+        }
+
+    }
+
+    private Reclamo pasarDeReclamitoAReclamo(Reclamo_SQLLite reclamitoPos) {
+        Reclamo salida = new Reclamo();
+
+        salida.setDescripcion(reclamitoPos.getDescripcion());
+
+        Administrado administrado = new Administrado();
+        administrado.setId_administrado(reclamitoPos.getId_administrado());
+        salida.setAdministrado(administrado);
+
+        Edificio edificio = new Edificio();
+        edificio.setId_edificio(reclamitoPos.getId_edificio());
+        salida.setEdificio(edificio);
+
+        Estado estado = new Estado();
+        estado.setId_estado(reclamitoPos.getId_estado());
+        salida.setEstado(estado);
+
+        salida.setUsername(reclamitoPos.getUsername());
+
+        Especialidad especialidad = new Especialidad();
+        especialidad.setId_especialidad(reclamitoPos.getId_especialidad());
+        salida.setEspecialidad(especialidad);
+
+        if (reclamitoPos.getId_agrupador() != 0){
+            salida.setId_agrupador(reclamitoPos.getId_agrupador());
+        }
+
+        if (reclamitoPos.getId_espacioComun() != 0){
+            EspacioComun espacioComun = new EspacioComun();
+            espacioComun.setId_espaciocomun(reclamitoPos.getId_espacioComun());
+            salida.setEspacioComun(espacioComun);
+        }
+
+        if (reclamitoPos.getNombre() != ""){
+            salida.setNombre(reclamitoPos.getNombre());
+        }
+
+        if (reclamitoPos.getId_unidad() != 0){
+            Unidad unidad = new Unidad();
+            unidad.setId_unidad(reclamitoPos.getId_unidad());
+            salida.setUnidad(unidad);
+        }
+
+        //aca iria fotos
+
+        return salida;
+    }
 
 
     private void getReclamosFilteredByUserIdStatus(){

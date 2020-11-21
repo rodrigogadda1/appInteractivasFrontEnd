@@ -11,7 +11,7 @@ import java.util.List;
 public class ReclamosHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Reclamos.db";
+    public static final String DATABASE_NAME = "ReclamosSQLite.db";
 
     public ReclamosHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,8 +54,13 @@ public class ReclamosHelper extends SQLiteOpenHelper {
         return db.insert(ReclamoContract.ReclamosEntry.TABLE_NAME, null, reclamo.toContentValues());
     }
 
+    public int deleteRowsOfAdministrado (int idAdministrado){
+        SQLiteDatabase db = getWritableDatabase();
+        return db.delete(ReclamoContract.ReclamosEntry.TABLE_NAME,ReclamoContract.ReclamosEntry.ID_ADMINISTRADO+"=?",new String[] {String.valueOf(idAdministrado)});
+    }
+
     public List<Reclamo_SQLLite> getReclamosSQLite(){
-        List<Reclamo_SQLLite> clubes = new ArrayList<Reclamo_SQLLite>();
+        List<Reclamo_SQLLite> reclamoss = new ArrayList<Reclamo_SQLLite>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor =  db.query(ReclamoContract.ReclamosEntry.TABLE_NAME,
                             null,
@@ -68,13 +73,68 @@ public class ReclamosHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             do{
                 Reclamo_SQLLite aux = new Reclamo_SQLLite();
-                aux.setIdClub(cursor.getInt(cursor.getColumnIndex("idClub")));
-                aux.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
-                aux.setNroZona(cursor.getInt(cursor.getColumnIndex("nroZona")));
-                clubes.add(aux);
-            }while (cursor.moveToNext());
+                aux.setId_reclamo(cursor.getInt(cursor.getColumnIndex("id")));
+
+                if (cursor.getString(cursor.getColumnIndex("nombre")) != ""){
+                    aux.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+                }
+
+                if (cursor.getString(cursor.getColumnIndex("username")) != ""){
+                    aux.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+                }
+
+                aux.setId_edificio(cursor.getInt(cursor.getColumnIndex("id_edificio")));
+                aux.setId_especialidad(cursor.getInt(cursor.getColumnIndex("id_especialidad")));
+                aux.setId_estado(cursor.getInt(cursor.getColumnIndex("id_estado")));
+
+                if (cursor.getInt(cursor.getColumnIndex("id_agrupador")) != 0) {
+                    aux.setId_agrupador(cursor.getInt(cursor.getColumnIndex("id_agrupador")));
+                }
+
+                if (cursor.getString(cursor.getColumnIndex("descripcion")) != ""){
+                    aux.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
+                }
+
+                aux.setId_administrado(cursor.getInt(cursor.getColumnIndex("id_administrado")));
+
+                if (cursor.getInt(cursor.getColumnIndex("id_unidad")) != 0) {
+                    aux.setId_unidad(cursor.getInt(cursor.getColumnIndex("id_unidad")));
+                }
+
+                if (cursor.getInt(cursor.getColumnIndex("id_espacio_comun")) != 0){
+                    aux.setId_espacioComun(cursor.getInt(cursor.getColumnIndex("id_espacio_comun")));
+                }
+
+                List<String> fotos = new ArrayList<String>();
+                if (cursor.getString(cursor.getColumnIndex("foto1")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto1")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto2")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto2")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto3")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto3")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto4")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto4")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto5")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto5")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto6")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto6")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto7")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto7")));
+                }
+                if (fotos.size() > 0){
+                    aux.setFotos(fotos);
+                }
+
+                reclamoss.add(aux);
+            } while (cursor.moveToNext());
         }
-        return clubes;
+        return reclamoss;
     }
 
     public Reclamo_SQLLite getClubById(int idReclamo){
@@ -90,11 +150,146 @@ public class ReclamosHelper extends SQLiteOpenHelper {
                         null);
         if(cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-            aux.setIdClub(cursor.getInt(cursor.getColumnIndex("id_Club")));
-            aux.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
-            aux.setNroZona(cursor.getInt(cursor.getColumnIndex("nroZona")));
+            aux.setId_reclamo(cursor.getInt(cursor.getColumnIndex("id")));
+
+            if (cursor.getString(cursor.getColumnIndex("nombre")) != null){
+                aux.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+            }
+
+            if (cursor.getString(cursor.getColumnIndex("username")) != null){
+                aux.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+            }
+
+            aux.setId_edificio(cursor.getInt(cursor.getColumnIndex("id_edificio")));
+            aux.setId_especialidad(cursor.getInt(cursor.getColumnIndex("id_especialidad")));
+            aux.setId_estado(cursor.getInt(cursor.getColumnIndex("id_estado")));
+
+            if (cursor.getInt(cursor.getColumnIndex("id_agrupador")) != 0) {
+                aux.setId_agrupador(cursor.getInt(cursor.getColumnIndex("id_agrupador")));
+            }
+
+            if (cursor.getString(cursor.getColumnIndex("descripcion")) != null){
+                aux.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
+            }
+
+            aux.setId_administrado(cursor.getInt(cursor.getColumnIndex("id_administrado")));
+
+            if (cursor.getInt(cursor.getColumnIndex("id_unidad")) != 0) {
+                aux.setId_unidad(cursor.getInt(cursor.getColumnIndex("id_unidad")));
+            }
+
+            if (cursor.getInt(cursor.getColumnIndex("id_espacio_comun")) != 0){
+                aux.setId_espacioComun(cursor.getInt(cursor.getColumnIndex("id_espacio_comun")));
+            }
+
+            List<String> fotos = new ArrayList<String>();
+            if (cursor.getString(cursor.getColumnIndex("foto1")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto1")));
+            }
+            if (cursor.getString(cursor.getColumnIndex("foto2")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto2")));
+            }
+            if (cursor.getString(cursor.getColumnIndex("foto3")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto3")));
+            }
+            if (cursor.getString(cursor.getColumnIndex("foto4")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto4")));
+            }
+            if (cursor.getString(cursor.getColumnIndex("foto5")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto5")));
+            }
+            if (cursor.getString(cursor.getColumnIndex("foto6")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto6")));
+            }
+            if (cursor.getString(cursor.getColumnIndex("foto7")) != null){
+                fotos.add(cursor.getString(cursor.getColumnIndex("foto7")));
+            }
+            if (fotos.size() > 0){
+                aux.setFotos(fotos);
+            }
         }
         return aux;
     }
+
+
+    public List<Reclamo_SQLLite> getReclamosSQLiteByAdminitradoId(long administrado_id){
+        List<Reclamo_SQLLite> reclamoss = new ArrayList<Reclamo_SQLLite>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor =  db.query(ReclamoContract.ReclamosEntry.TABLE_NAME,
+                null,
+                ReclamoContract.ReclamosEntry.ID_ADMINISTRADO + " = ? ",
+                new String[] {String.valueOf(administrado_id)},
+                null,
+                null,
+                null,
+                null);
+        if(cursor != null && cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do{
+                Reclamo_SQLLite aux = new Reclamo_SQLLite();
+                aux.setId_reclamo(cursor.getInt(cursor.getColumnIndex("id")));
+
+                if (cursor.getString(cursor.getColumnIndex("nombre")) != ""){
+                    aux.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+                }
+
+                if (cursor.getString(cursor.getColumnIndex("username")) != ""){
+                    aux.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+                }
+
+                aux.setId_edificio(cursor.getInt(cursor.getColumnIndex("id_edificio")));
+                aux.setId_especialidad(cursor.getInt(cursor.getColumnIndex("id_especialidad")));
+                aux.setId_estado(cursor.getInt(cursor.getColumnIndex("id_estado")));
+
+                if (cursor.getInt(cursor.getColumnIndex("id_agrupador")) != 0) {
+                    aux.setId_agrupador(cursor.getInt(cursor.getColumnIndex("id_agrupador")));
+                }
+
+                if (cursor.getString(cursor.getColumnIndex("descripcion")) != ""){
+                    aux.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
+                }
+
+                aux.setId_administrado(cursor.getInt(cursor.getColumnIndex("id_administrado")));
+
+                if (cursor.getInt(cursor.getColumnIndex("id_unidad")) != 0) {
+                    aux.setId_unidad(cursor.getInt(cursor.getColumnIndex("id_unidad")));
+                }
+
+                if (cursor.getInt(cursor.getColumnIndex("id_espacio_comun")) != 0){
+                    aux.setId_espacioComun(cursor.getInt(cursor.getColumnIndex("id_espacio_comun")));
+                }
+
+                List<String> fotos = new ArrayList<String>();
+                if (cursor.getString(cursor.getColumnIndex("foto1")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto1")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto2")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto2")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto3")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto3")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto4")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto4")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto5")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto5")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto6")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto6")));
+                }
+                if (cursor.getString(cursor.getColumnIndex("foto7")) != null){
+                    fotos.add(cursor.getString(cursor.getColumnIndex("foto7")));
+                }
+                if (fotos.size() > 0){
+                    aux.setFotos(fotos);
+                }
+
+                reclamoss.add(aux);
+            } while (cursor.moveToNext());
+        }
+        return reclamoss;
+    }
+
 }
 
