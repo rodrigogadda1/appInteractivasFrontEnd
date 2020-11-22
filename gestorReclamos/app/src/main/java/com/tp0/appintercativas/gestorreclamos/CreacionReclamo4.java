@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,43 +17,30 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class HistorialReclamos1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class CreacionReclamo4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imvPrincipal,nreclamo1_img2,btnBackHisto1,btnExitHisto1,btnNextHisto1;
-    TextView txtPpal;
-    Spinner spnListaedificios,spnListaunidades,spnListaespecialidades,spnListaestado;
-    CheckBox chklistaedificios,chklistaunidades,chklistaespecialidades,chklistaestado;
-    Button  btnGuardarHisto1;
+    ImageView imgReclamoConfirm,imgvAddReclamo,imgvBackRecConf,imgvExitRecConf,imgvNextRecConf;
+    TextView txtReclConfTitulo,txtDetalleReclamo;
+
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_reclamos1);
+        setContentView(R.layout.activity_creacion_reclamos4);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
-        nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
-        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackRec1);
-        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitRec1);
-        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextRec1);
+        imgReclamoConfirm = (ImageView) findViewById(R.id.imgReclamoConfirm);
+        imgvAddReclamo = (ImageView) findViewById(R.id.imgvAddReclamo);
+        imgvBackRecConf = (ImageView) findViewById(R.id.imgvBackRecConf);
+        imgvExitRecConf = (ImageView) findViewById(R.id.imgvExitRecConf);
+        imgvNextRecConf = (ImageView) findViewById(R.id.imgvNextRecConf);
 
-        txtPpal = (TextView) findViewById(R.id.txtPpal);
-
-        spnListaedificios = (Spinner) findViewById(R.id.spnListaedificios);
-        spnListaunidades = (Spinner) findViewById(R.id.spnListaunidades);
-        spnListaespecialidades = (Spinner) findViewById(R.id.spnListaespecialidades);
-        spnListaestado = (Spinner) findViewById(R.id.spnListaestado);
-
-        chklistaedificios = (CheckBox) findViewById(R.id.chklistaedificios);
-        chklistaunidades = (CheckBox) findViewById(R.id.chklistaunidades);
-        chklistaespecialidades = (CheckBox) findViewById(R.id.chklistaespecialidades);
-        chklistaestado = (CheckBox) findViewById(R.id.chklistaestado);
-
-        btnGuardarHisto1 = (Button) findViewById(R.id.btnGuardarHisto1);
+        txtReclConfTitulo = (TextView) findViewById(R.id.txtReclConfTitulo);
+        txtDetalleReclamo = (TextView) findViewById(R.id.txtDetalleReclamo);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -73,37 +57,44 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                    //aca se escribe que hacer
-                    GoPantallaPrincipal();
-                 }
-        });
 
-        btnExitHisto1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //aca se escribe que hacer
-                GoPantallaPrincipal();
+        imgReclamoConfirm.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        imgvAddReclamo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        imgvBackRecConf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        imgvExitRecConf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        imgvNextRecConf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        txtReclConfTitulo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        txtDetalleReclamo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
             }
         });
 
-        btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
 
-        nreclamo1_img2.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
     }
     //metodos de slideBar desde ahora
     @Override
@@ -207,11 +198,6 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
     private void GoToAcercaApp () {
         Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, InfoAppActivity.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-    }
-    private void GoPantallaPrincipal(){
-        Intent intent = new Intent(this, PantallaPrincipal.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

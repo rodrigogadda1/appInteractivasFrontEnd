@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,43 +19,39 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class HistorialReclamos1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class Notificaciones1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imvPrincipal,nreclamo1_img2,btnBackHisto1,btnExitHisto1,btnNextHisto1;
-    TextView txtPpal;
-    Spinner spnListaedificios,spnListaunidades,spnListaespecialidades,spnListaestado;
-    CheckBox chklistaedificios,chklistaunidades,chklistaespecialidades,chklistaestado;
-    Button  btnGuardarHisto1;
+    ImageView principal_img,btnExitNotif;
+    TextView txtNotificacionesPpal,principaltexto2;
+    ScrollView listanotificaciones;
+    Button btnNotifica1,btnNotifica2,btnNotifica3,btnNotifica4,btnNotifica5,btnNotifica6,btnNotifica7,btnBorrarNotif;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_reclamos1);
+        setContentView(R.layout.activity_notificaciones1);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
-        nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
-        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackRec1);
-        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitRec1);
-        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextRec1);
+        principal_img = (ImageView) findViewById(R.id.principal_img);
+        btnExitNotif = (ImageView) findViewById(R.id.btnExitNotif);
 
-        txtPpal = (TextView) findViewById(R.id.txtPpal);
+        txtNotificacionesPpal = (TextView) findViewById(R.id.txtNotificacionesPpal);
+        principaltexto2 = (TextView) findViewById(R.id.principaltexto2);
 
-        spnListaedificios = (Spinner) findViewById(R.id.spnListaedificios);
-        spnListaunidades = (Spinner) findViewById(R.id.spnListaunidades);
-        spnListaespecialidades = (Spinner) findViewById(R.id.spnListaespecialidades);
-        spnListaestado = (Spinner) findViewById(R.id.spnListaestado);
+        listanotificaciones = (ScrollView) findViewById(R.id.listanotificaciones);
 
-        chklistaedificios = (CheckBox) findViewById(R.id.chklistaedificios);
-        chklistaunidades = (CheckBox) findViewById(R.id.chklistaunidades);
-        chklistaespecialidades = (CheckBox) findViewById(R.id.chklistaespecialidades);
-        chklistaestado = (CheckBox) findViewById(R.id.chklistaestado);
-
-        btnGuardarHisto1 = (Button) findViewById(R.id.btnGuardarHisto1);
+        btnNotifica1 = (Button) findViewById(R.id.btnNotifica1);
+        btnNotifica2 = (Button) findViewById(R.id.btnNotifica2);
+        btnNotifica3 = (Button) findViewById(R.id.btnNotifica3);
+        btnNotifica4 = (Button) findViewById(R.id.btnNotifica4);
+        btnNotifica5 = (Button) findViewById(R.id.btnNotifica5);
+        btnNotifica6 = (Button) findViewById(R.id.btnNotifica6);
+        btnNotifica7 = (Button) findViewById(R.id.btnNotifica7);
+        btnBorrarNotif = (Button) findViewById(R.id.btnBorrarNotif);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -73,37 +68,80 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                    //aca se escribe que hacer
-                    GoPantallaPrincipal();
-                 }
-        });
 
-        btnExitHisto1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //aca se escribe que hacer
-                GoPantallaPrincipal();
-            }
-        });
 
-        btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
+        btnNotifica1.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View view) {
+                                             //aca se escribe que hacer
+                                                 GoToNotificaDetalle();
+                                             }
+                                         }
+        );
+        btnExitNotif.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                GoPantallaPrincipal();
+                                            }
+                                        }
         );
 
-        nreclamo1_img2.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
+     /*   btnNotifica2.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View view) {
+                                                 //aca se escribe que hacer
+                                             }
+                                         }
         );
+
+        btnNotifica3.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View view) {
+                                                 //aca se escribe que hacer
+                                             }
+                                         }
+        );
+
+        btnNotifica4.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    //aca se escribe que hacer
+                                                }
+                                            }
+        );
+
+        btnNotifica5.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View view) {
+                                                  //aca se escribe que hacer
+                                              }
+                                          }
+        );
+        btnNotifica6.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                            }
+                                        }
+        );
+
+        btnNotifica7.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                            }
+                                        }
+        );
+
+        btnBorrarNotif.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                            }
+                                        }
+        );*/
+
     }
     //metodos de slideBar desde ahora
     @Override

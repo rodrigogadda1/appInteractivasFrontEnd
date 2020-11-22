@@ -22,7 +22,7 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/nreclamo1_img"
+            android:id="@+id/imvPrincipal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
@@ -40,9 +40,9 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Nuevo Reclamo"
+            android:background="@drawable/rounded_gray"
+            android:text="NumeroDeReclamo"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -95,7 +95,7 @@
             app:layout_constraintTop_toBottomOf="@+id/spnLstEdificioUser" />
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/btnBackRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
@@ -103,14 +103,14 @@
             android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/exit"
+            app:layout_constraintEnd_toStartOf="@+id/btnExitRec1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/exit"
+            android:id="@+id/btnExitRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
@@ -118,12 +118,12 @@
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintStart_toEndOf="@+id/btnBackRec1"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/next"
+            android:id="@+id/btnNextRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="24dp"
@@ -133,19 +133,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/exit"
+            app:layout_constraintStart_toEndOf="@+id/btnExitRec1"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:menu="@menu/activity_menu"
-            android:background="@drawable/side_nav_bar" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_menu"
+        android:background="@drawable/side_nav_bar" />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

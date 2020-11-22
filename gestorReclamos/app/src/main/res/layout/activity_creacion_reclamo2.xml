@@ -50,7 +50,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="fill_parent"
@@ -66,7 +65,8 @@
                     android:text="Reclamo Número XXX\nSobre Edificio X\nEspacio/Unidad X\nDueño/Inquilino"
                     android:padding="6dip"
                     android:textColor="#000000"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="20sp">
+                </TextView>
             </LinearLayout>
         </ScrollView>
 
@@ -97,6 +97,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_white"
+            android:entries="@array/especialidad_sp"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -232,7 +233,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBack"
             app:layout_constraintTop_toBottomOf="@+id/editReclamoComentario"
-            app:layout_constraintVertical_bias="0.977" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/btnNext"

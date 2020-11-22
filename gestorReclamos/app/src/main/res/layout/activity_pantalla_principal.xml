@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/principaltexto1"
+            android:id="@+id/txtNotificacionesPpal"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
@@ -51,39 +51,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <ImageView
-            android:id="@+id/principal_img2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/rounded_edittext"
-            android:text="Prueba"
-            android:padding="6dip"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/principaltexto1" />
-
         <TextView
             android:id="@+id/principaltexto2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/rounded_edittext"
             android:gravity="center_vertical"
             android:padding="6dip"
-            android:text="Ultimos Reclamos Activos:"
+            android:text="Reclamos Recientes:"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/principal_img2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNotificacionesPpal" />
 
         <ScrollView
             android:id="@+id/ScrollViewReclamos"
@@ -98,6 +81,50 @@
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical|center_horizontal">
+                <Button
+                    android:id="@+id/btnReclamo1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo1"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/btnReclamo2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="REclamo2"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/btnReclamo3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo3"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/btnReclamo4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="REclamo4"
+                    android:textAlignment="viewStart">
+                </Button>
+                <Button
+                    android:id="@+id/btnReclamo5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reclamo5"
+                    android:textAlignment="viewStart">
+                </Button>
+            </LinearLayout>
         </ScrollView>
 
         <Button

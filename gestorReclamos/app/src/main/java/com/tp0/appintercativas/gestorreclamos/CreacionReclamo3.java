@@ -11,10 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,17 +22,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
-import java.util.Date;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +37,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class CreacionReclamo3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+
+    //para SQLite
+    private ReclamosHelper reclamosHelper;
 
     User user;
     Administrado administrado;
@@ -63,9 +60,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
         administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        back = (ImageView) findViewById(R.id.back);
-        exit = (ImageView) findViewById(R.id.exit);
-        next = (ImageView) findViewById(R.id.next);
+        back = (ImageView) findViewById(R.id.btnBackRec1);
+        exit = (ImageView) findViewById(R.id.btnExitRec1);
+        next = (ImageView) findViewById(R.id.btnNextRec1);
 
         txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
         txtVisualizaReclamo = (TextView) findViewById(R.id.txtVisualizaReclamo);
@@ -80,6 +77,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         }
         detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
         txtVisualizaReclamo.setText(detalle);
+
+        //para SQLite
+        reclamosHelper = new ReclamosHelper(this);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -117,23 +117,108 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                    @Override
                    public void onClick(View view) {
                         if (testearConnection().equals("NotConnected")){
-                            mostrarToast("No hay conexion");
+                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
                             //aca se manda a insertar hasta tener wifi
                         } else if (testearConnection().equals("DataMobile")){
                             if (user.isDatos_moviles()) {
                                 //mostrarToast("se manda a crear");
                                 CrearReclamo();
                             } else {
-                                mostrarToast("No tenes habilitado usar datos moviles.");
+                                Reclamo_SQLLite reclamo_sqlLite = pasarDeReclamoAReclamo_SQLite(reclamo);
+                                //CLIPBOARD
+                                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                                //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
+                                //clipboard.setPrimaryClip(clip);
+                                //CLIPBOARD
+                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
                                 //aca se manda a insertar hasta tener wifi
                             }
                         } else {
                             CrearReclamo();
+                            /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
+                            pasar_a_pantalla_reclamos_4();
                             //mostrarToast("se manda a crear");
                         }
                    }
            }
         );
+    }
+
+    private Reclamo_SQLLite pasarDeReclamoAReclamo_SQLite (Reclamo reclamo){
+        Reclamo_SQLLite reclamo_sqlLite = new Reclamo_SQLLite();
+
+        if(reclamo.getId_reclamo() != 0){
+            reclamo_sqlLite.setId_reclamo(reclamo.getId_reclamo());
+        } else {
+            reclamo_sqlLite.setId_reclamo(0);
+        }
+
+        if(reclamo.getNombre() != null){
+            reclamo_sqlLite.setNombre(reclamo.getNombre());
+        } else {
+            reclamo_sqlLite.setNombre("");
+        }
+
+        if(reclamo.getUsername() != null){
+            reclamo_sqlLite.setUsername(reclamo.getUsername());
+        } else {
+            reclamo_sqlLite.setUsername("");
+        }
+
+        if(reclamo.getEdificio() != null){
+            reclamo_sqlLite.setId_edificio(reclamo.getEdificio().getId_edificio());
+        } else {
+            reclamo_sqlLite.setId_edificio(0);
+        }
+
+        if(reclamo.getEspecialidad() != null){
+            reclamo_sqlLite.setId_especialidad(reclamo.getEspecialidad().getId_especialidad());
+        } else {
+            reclamo_sqlLite.setId_especialidad(0);
+        }
+
+        if(reclamo.getEstado() != null){
+            reclamo_sqlLite.setId_estado(reclamo.getEstado().getId_estado());
+        } else {
+            reclamo_sqlLite.setId_estado(0);
+        }
+
+        if(reclamo.getId_agrupador() != 0){
+            reclamo_sqlLite.setId_agrupador(reclamo.getId_agrupador());
+        } else {
+            reclamo_sqlLite.setId_agrupador(0);
+        }
+
+        if(reclamo.getDescripcion() != null){
+            reclamo_sqlLite.setDescripcion(reclamo.getDescripcion());
+        } else {
+            reclamo_sqlLite.setDescripcion("");
+        }
+
+        if(reclamo.getAdministrado() != null){
+            reclamo_sqlLite.setId_administrado(reclamo.getAdministrado().getId_administrado());
+        } else {
+            reclamo_sqlLite.setId_administrado(0);
+        }
+
+
+        if(reclamo.getUnidad() != null){
+            reclamo_sqlLite.setId_unidad(reclamo.getUnidad().getId_unidad());
+        } else {
+            reclamo_sqlLite.setId_unidad(0);
+        }
+
+        if(reclamo.getEspacioComun() != null){
+            reclamo_sqlLite.setId_espacioComun(reclamo.getEspacioComun().getId_espaciocomun());
+        } else {
+            reclamo_sqlLite.setId_espacioComun(0);
+        }
+
+        //aca falta agregar las ubicaciones de las fotos
+
+        return reclamo_sqlLite;
     }
 
 
@@ -156,6 +241,11 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         return salida;
     }
 
+    private void pasar_a_pantalla_reclamos_4(){
+        Intent intent = new Intent(this, CreacionReclamo4.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    };
     private void CrearReclamo(){
         try {
             Retrofit retrofit = Controller.ConfiguracionIP();
@@ -176,6 +266,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                     //if (  response.body() != null ) {
                         //mostrarDialogo("probando",response.body().toString());
                     //}
+
                 }
 
                 @Override
@@ -217,8 +308,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                 .show();
     }
 
-    //para la slide bar
-
+    //metodos de slideBar desde ahora
     @Override
     public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
@@ -244,37 +334,83 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                Toast.makeText(this, "Ya estas en esa pantalla!", Toast.LENGTH_SHORT).show();
+                GoToNewReclamo ();
                 break;
             case R.id.reclamoactivo:
-                Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                GoToReclamosActivos ();
                 break;
             case R.id.reclamohistorial:
-                Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
-                Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                GoToNotificaciones ();
                 break;
             case R.id.configuracion:
-                Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, ConfiguracionesUser.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
-                Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, InfoAppActivity.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToAcercaApp();
                 break;
             case R.id.cerrarsesion:
-                Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, MainActivityLogin.class);
-                startActivity(intent);
+                GoToCerrarSesion ();
                 break;
             default:
                 break;
         }
         return true;
+
+    }
+    private void GoToNotificaDetalle (){
+        Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Notificaciones2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToNewReclamo (){
+        Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CreacionReclamo1.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToViewReclamosHist () {
+        Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, HistorialReclamos1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+
+    }
+    private void GoToNotificaciones () {
+        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, Notificaciones1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
+    private void GoToConfiguraciones(){
+        Intent intent = new Intent(this, ConfiguracionesUser.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void GoToReclamosActivos () {
+        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+        //Intent intent= new Intent(this, Notificaciones1.class);
+        //intent.putExtra("user", user);
+        //startActivity(intent);
+        Intent intent = new Intent(this, CreacionReclamo4.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+
+    }
+    private void GoToCerrarSesion () {
+        Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivityLogin.class);
+        startActivity(intent);
+    }
+    private void GoToAcercaApp () {
+        Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, InfoAppActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 }

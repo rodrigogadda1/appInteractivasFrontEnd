@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,43 +19,37 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class HistorialReclamos1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class Notificaciones2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imvPrincipal,nreclamo1_img2,btnBackHisto1,btnExitHisto1,btnNextHisto1;
-    TextView txtPpal;
-    Spinner spnListaedificios,spnListaunidades,spnListaespecialidades,spnListaestado;
-    CheckBox chklistaedificios,chklistaunidades,chklistaespecialidades,chklistaestado;
-    Button  btnGuardarHisto1;
+    ImageView imvPpalNotificaciones,btnBackNotifica,btnExitNotifica,btnNextNotifica;
+    TextView txtNotificaDetalles,txtTituloNotifica,txtDetalleNotifica;
+    ScrollView notificaciones3;
+    Button btnBorrarNotifica;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_reclamos1);
+        setContentView(R.layout.activity_notificaciones2);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
-        nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
-        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackRec1);
-        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitRec1);
-        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextRec1);
+        imvPpalNotificaciones = (ImageView) findViewById(R.id.imvPpalNotificaciones);
+        btnBackNotifica = (ImageView) findViewById(R.id.btnBackNotifica);
+        btnExitNotifica = (ImageView) findViewById(R.id.btnExitNotifica);
+        btnNextNotifica = (ImageView) findViewById(R.id.btnNextNotifica);
 
-        txtPpal = (TextView) findViewById(R.id.txtPpal);
+        txtNotificaDetalles = (TextView) findViewById(R.id.txtNotificaDetalles);
+        txtTituloNotifica = (TextView) findViewById(R.id.txtTituloNotifica);
+        txtDetalleNotifica = (TextView) findViewById(R.id.txtDetalleNotifica);
 
-        spnListaedificios = (Spinner) findViewById(R.id.spnListaedificios);
-        spnListaunidades = (Spinner) findViewById(R.id.spnListaunidades);
-        spnListaespecialidades = (Spinner) findViewById(R.id.spnListaespecialidades);
-        spnListaestado = (Spinner) findViewById(R.id.spnListaestado);
+        notificaciones3 = (ScrollView) findViewById(R.id.notificaciones3);
 
-        chklistaedificios = (CheckBox) findViewById(R.id.chklistaedificios);
-        chklistaunidades = (CheckBox) findViewById(R.id.chklistaunidades);
-        chklistaespecialidades = (CheckBox) findViewById(R.id.chklistaespecialidades);
-        chklistaestado = (CheckBox) findViewById(R.id.chklistaestado);
+        btnBorrarNotifica = (Button) findViewById(R.id.btnBorrarNotifica);
 
-        btnGuardarHisto1 = (Button) findViewById(R.id.btnGuardarHisto1);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -73,90 +66,87 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                    //aca se escribe que hacer
-                    GoPantallaPrincipal();
-                 }
-        });
 
-        btnExitHisto1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //aca se escribe que hacer
-                GoPantallaPrincipal();
+
+        imvPpalNotificaciones.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnBackNotifica.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnExitNotifica.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        btnNextNotifica.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
+            }
+        });
+        txtDetalleNotifica.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //aca va que hace
             }
         });
 
-        btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
 
-        nreclamo1_img2.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
+        //para la slide bar
     }
-    //metodos de slideBar desde ahora
-    @Override
-    public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
-    }
-
-    @Override
-    public void onDrawerOpened(@NonNull View drawerView) {
-
-    }
-
-    @Override
-    public void onDrawerClosed(@NonNull View drawerView) {
-
-    }
-
-    @Override
-    public void onDrawerStateChanged(int newState) {
-
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.reclamonuevo:
-                GoToNewReclamo ();
-                break;
-            case R.id.reclamoactivo:
-                GoToReclamosActivos ();
-                break;
-            case R.id.reclamohistorial:
-                GoToViewReclamosHist ();
-                break;
-            case R.id.notificaciones:
-                GoToNotificaciones ();
-                break;
-            case R.id.configuracion:
-                GoToConfiguraciones();
-                break;
-            case R.id.acercaapp:
-                GoToAcercaApp();
-                break;
-            case R.id.cerrarsesion:
-                GoToCerrarSesion ();
-                break;
-            default:
-                break;
         }
-        return true;
 
-    }
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {
+
+        }
+
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {
+
+        }
+
+        @Override
+        public void onDrawerStateChanged(int newState) {
+
+        }
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Intent intent;
+            switch (item.getItemId()) {
+                case R.id.reclamonuevo:
+                    GoToNewReclamo ();
+                    break;
+                case R.id.reclamoactivo:
+                    GoToReclamosActivos ();
+                    break;
+                case R.id.reclamohistorial:
+                    GoToViewReclamosHist ();
+                    break;
+                case R.id.notificaciones:
+                    GoToNotificaciones ();
+                    break;
+                case R.id.configuracion:
+                    GoToConfiguraciones();
+                    break;
+                case R.id.acercaapp:
+                    GoToAcercaApp();
+                    break;
+                case R.id.cerrarsesion:
+                    GoToCerrarSesion ();
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
@@ -215,4 +205,6 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         intent.putExtra("user",user);
         startActivity(intent);
     }
-}
+    }
+
+

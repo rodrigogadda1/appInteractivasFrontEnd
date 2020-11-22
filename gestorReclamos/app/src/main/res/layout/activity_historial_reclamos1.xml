@@ -16,17 +16,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/AppTheme.Toolbar"
-        tools:ignore="MissingConstraints" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/imgvHistorialReclamos"
+            android:id="@+id/imvPrincipal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image33"
+            android:src="@drawable/image51"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,15 +34,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtHistReclamos"
+            android:id="@+id/txtPpal"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Historial de Reclamos"
+            android:text="Historial Reclamos"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -52,72 +52,143 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/imgvCentral"
+            android:id="@+id/nreclamo1_img2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:src="@drawable/image34"
+            android:src="@drawable/image50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHistReclamos" />
+            app:layout_constraintTop_toBottomOf="@+id/txtPpal" />
+
+        <CheckBox
+            android:id="@+id/chklistaedificios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nreclamo1_img2" />
 
         <Spinner
-            android:id="@+id/spnLstEdificioUser"
+            android:id="@+id/spnListaedificios"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_white"
             android:entries="@array/listaedificiouser"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgvCentral" />
+            app:layout_constraintTop_toBottomOf="@+id/nreclamo1_img2" />
 
         <CheckBox
-            android:id="@+id/chkEdificioUser"
+            android:id="@+id/chklistaunidades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/rounded_edittext"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/rounded_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgvCentral" />
+            app:layout_constraintTop_toBottomOf="@+id/chklistaedificios" />
 
         <Spinner
-            android:id="@+id/spnLstEspacios"
+            android:id="@+id/spnListaunidades"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_white"
             android:entries="@array/listaespacios"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnLstEdificioUser" />
+            app:layout_constraintTop_toBottomOf="@+id/spnListaedificios" />
 
         <CheckBox
-            android:id="@+id/chkEspacios"
+            android:id="@+id/chklistaespecialidades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="48dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chkEdificioUser" />
+            app:layout_constraintTop_toBottomOf="@+id/chklistaunidades" />
+
+        <Spinner
+            android:id="@+id/spnListaespecialidades"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/especialidad_sp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnListaunidades" />
+
+        <CheckBox
+            android:id="@+id/chklistaestado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/rounded_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chklistaespecialidades" />
+
+        <Spinner
+            android:id="@+id/spnListaestado"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaestado"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnListaespecialidades" />
+
+        <Button
+            android:id="@+id/btnGuardarHisto1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_red"
+            android:text="Continuar"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold"
+            android:onClick="continuar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnListaestado" />
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/btnBackRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
@@ -132,7 +203,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/exit"
+            android:id="@+id/btnExitRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
@@ -140,12 +211,12 @@
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintStart_toEndOf="@+id/btnBackRec1"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/next"
+            android:id="@+id/btnNextRec1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="24dp"
@@ -155,7 +226,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/exit"
+            app:layout_constraintStart_toEndOf="@+id/btnExitRec1"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 
