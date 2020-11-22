@@ -49,13 +49,13 @@
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" >
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/nreclamo2_texto1"
@@ -65,7 +65,7 @@
                 android:text="@string/nreclamo2_texto1"
                 android:padding="6dip"
                 android:textColor="#000000"
-                android:textSize="20sp">
+                android:textSize="18sp" >
             </TextView>
         </LinearLayout>
     </ScrollView>

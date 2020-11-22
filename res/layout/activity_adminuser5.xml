@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".nreclamo1.activity_nreclamo1">
+    tools:context=".adminuser5.activity_adminuser5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_content"
@@ -22,11 +22,11 @@
         tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/nreclamo1_img"
+            android:id="@+id/adminuser5_img"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image33"
+            android:src="@drawable/image03"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,15 +34,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/nreclamo1"
+            android:id="@+id/principaltexto1"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:gravity="center"
             android:background="@drawable/rounded_gray"
-            android:text="@string/nreclamo1"
+            android:gravity="center"
+            android:text="Asignación de Unidad"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -52,23 +52,23 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/nreclamo1_img2"
+            android:id="@+id/adminuser5_img2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/image34"
+            android:src="@drawable/image20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nreclamo1" />
+            app:layout_constraintTop_toBottomOf="@+id/principaltexto1" />
 
         <TextView
             android:id="@+id/edificios"
             android:layout_width="110dp"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="24dp"
             android:layout_marginStart="24dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_gray"
@@ -80,18 +80,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nreclamo1_img2" />
+            app:layout_constraintTop_toBottomOf="@+id/adminuser5_img2" />
 
         <Spinner
-            android:id="@+id/listaedificiouser"
-            android:layout_width="fill_parent"
+            android:id="@+id/listaedificios"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:gravity="center_vertical"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaedificiouser"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,22 +113,74 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaedificiouser" />
+            app:layout_constraintTop_toBottomOf="@+id/listaedificios" />
 
         <Spinner
-            android:id="@+id/listaespacios"
-            android:layout_width="fill_parent"
+            android:id="@+id/listaunidades"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:gravity="center_vertical"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaespacios"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/unidades" />
+
+        <TextView
+            android:id="@+id/ocupantes"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Ocupante :"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaunidades" />
+
+        <Spinner
+            android:id="@+id/listaocupantes"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaocupantes"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ocupantes" />
+
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_red"
+            android:text="@string/guardar"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold"
+            android:onClick="guardar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaocupantes" />
 
         <ImageView
             android:id="@+id/back"
@@ -155,21 +207,6 @@
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <ImageView
-            android:id="@+id/next"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            android:onClick="next"
-            android:src="@drawable/image08"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/exit"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 

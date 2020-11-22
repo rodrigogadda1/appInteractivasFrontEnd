@@ -16,17 +16,16 @@ public class activity_recupera2 extends Activity {
         setContentView(R.layout.activity_recupera2);
     }
 
-    public void back(View view) {
-        Intent intent = new Intent(activity_recupera2.this, activity_recupera1.class);
-        startActivity(intent);
-    }
-
-    public void exit(View view) {
+    public void guardar(View view) {
         Intent intent = new Intent(activity_recupera2.this, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void guardar(View view) {
+    public void back(View view) {
+        Intent intent = new Intent(activity_recupera2.this, activity_recupera1.class);
+        startActivity(intent);
+    }
+    public void exit(View view) {
         Intent intent = new Intent(activity_recupera2.this, LoginActivity.class);
         startActivity(intent);
     }

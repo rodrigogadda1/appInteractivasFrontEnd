@@ -2,51 +2,58 @@
 <resources>
     <string-array name="dni_Tipo">
         <item></item>
-        <item><font size="20"><b>DNI</b></font></item>
-        <item><font size="20"><b>Pasaporte</b></font></item>
-        <item><font size="20"><b>Cedula de Identidad</b></font></item>
+        <item><font size="18"><b>DNI</b></font></item>
+        <item><font size="18"><b>Pasaporte</b></font></item>
+        <item><font size="18"><b>Cedula de Identidad</b></font></item>
     </string-array>
     <string-array name="sexo_Tipo">
         <item></item>
-        <item><font size="20"><b>Masculino</b></font></item>
-        <item><font size="20"><b>Femenino</b></font></item>
+        <item><font size="18"><b>Masculino</b></font></item>
+        <item><font size="18"><b>Femenino</b></font></item>
     </string-array>
     <string-array name="pregunta_Tipo">
         <item></item>
-        <item><font size="20"><b>¿De que color es mi auto?</b></font></item>
-        <item><font size="20"><b>¿Cuántos años tengo?</b></font></item>
-        <item><font size="20"><b>¿Cuál es el nombre de mi mascota?</b></font></item>
-        <item><font size="20"><b>¿Cuál es el nombre de mi colegio?</b></font></item>
-        <item><font size="20"><b>¿Cuál es el apellido madre?</b></font></item>
+        <item><font size="18"><b>¿De que color es mi auto?</b></font></item>
+        <item><font size="18"><b>¿Cuántos años tengo?</b></font></item>
+        <item><font size="18"><b>¿Cuál es el nombre de mi mascota?</b></font></item>
+        <item><font size="18"><b>¿Cuál es el nombre de mi colegio?</b></font></item>
+        <item><font size="18"><b>¿Cuál es el apellido madre?</b></font></item>
     </string-array>
     <string-array name="listaedificiouser">
         <item></item>
-        <item><font size="20"><b>Edificio A - Jose Moreno 1</b></font></item>
-        <item><font size="20"><b>Edificio A - Jose Moreno 1</b></font></item>
-        <item><font size="20"><b>Edificio B - Jose Ignacio 2</b></font></item>
-        <item><font size="20"><b>Eficicio C - Don Bosco</b></font></item>
+        <item><font size="18"><b>Edificio A - Jose Moreno 1</b></font></item>
+        <item><font size="18"><b>Edificio A - Jose Moreno 1</b></font></item>
+        <item><font size="18"><b>Edificio B - Jose Ignacio 2</b></font></item>
+        <item><font size="18"><b>Eficicio C - Don Bosco</b></font></item>
     </string-array>
     <string-array name="listaespacios">
         <item></item>
-        <item><font size="20"><b>Departamento 3ºB</b></font></item>
-        <item><font size="20"><b>Departamento 5ºC</b></font></item>
-        <item><font size="20"><b>Departamento 1ºA</b></font></item>
-        <item><font size="20"><b>Departamento 2ºC</b></font></item>
-        <item><font size="20"><b>Planta Baja</b></font></item>
-        <item><font size="20"><b>SUM</b></font></item>
+        <item><font size="18"><b>Departamento 3ºB</b></font></item>
+        <item><font size="18"><b>Departamento 5ºC</b></font></item>
+        <item><font size="18"><b>Departamento 1ºA</b></font></item>
+        <item><font size="18"><b>Departamento 2ºC</b></font></item>
+        <item><font size="18"><b>Planta Baja</b></font></item>
+        <item><font size="18"><b>SUM</b></font></item>
     </string-array>
     <string-array name="especialidad_sp">
         <item></item>
-        <item><font size="20"><b>Electricista</b></font></item>
-        <item><font size="20"><b>Pintor</b></font></item>
-        <item><font size="20"><b>Plomero</b></font></item>
-        <item><font size="20"><b>Albañil</b></font></item>
-        <item><font size="20"><b>Carpintero</b></font></item>
+        <item><font size="18"><b>Electricista</b></font></item>
+        <item><font size="18"><b>Pintor</b></font></item>
+        <item><font size="18"><b>Plomero</b></font></item>
+        <item><font size="18"><b>Albañil</b></font></item>
+        <item><font size="18"><b>Carpintero</b></font></item>
     </string-array>
     <string-array name="listaestado">
         <item></item>
-        <item><font size="20"><b>Abierto</b></font></item>
-        <item><font size="20"><b>Cerrado</b></font></item>
-        <item><font size="20"><b>Pausado</b></font></item>
+        <item><font size="18"><b>Abierto</b></font></item>
+        <item><font size="18"><b>Cerrado</b></font></item>
+        <item><font size="18"><b>Pausado</b></font></item>
+    </string-array>
+    <string-array name="listaocupantes">
+        <item></item>
+        <item><font size="18"><b>Dueño</b></font></item>
+        <item><font size="18"><b>Vividor</b></font></item>
+        <item><font size="18"><b>Inquilino</b></font></item>
+        <item><font size="18"><b>Vacio</b></font></item>
     </string-array>
 </resources>

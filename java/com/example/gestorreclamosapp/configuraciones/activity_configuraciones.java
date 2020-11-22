@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
+import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
@@ -75,6 +76,11 @@ public class activity_configuraciones extends AppCompatActivity implements Navig
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
                 intent = new Intent(activity_configuraciones.this, activity_notificaciones1.class);
+                startActivity(intent);
+                break;
+            case R.id.usuarios:
+                Toast.makeText(this, "Usuarios selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_configuraciones.this, activity_adminuser1.class);
                 startActivity(intent);
                 break;
             case R.id.datospersonales:
