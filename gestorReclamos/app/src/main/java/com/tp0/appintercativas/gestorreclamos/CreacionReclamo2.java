@@ -14,13 +14,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,19 +28,13 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.Generado
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EdificioService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -414,7 +406,7 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
     }
     private void GoToAdministracionUsuarios () {
         Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, adminuser1.class);
+        Intent intent = new Intent(this, adminuserPrincipal.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

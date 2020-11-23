@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,44 +21,41 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class HistorialReclamos1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class adminuserNewUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imvPrincipal,nreclamo1_img2,btnBackHisto1,btnExitHisto1,btnNextHisto1;
-    TextView txtPpal;
-    Spinner spnListaedificios,spnListaunidades,spnListaespecialidades,spnListaestado;
-    CheckBox chklistaedificios,chklistaunidades,chklistaespecialidades,chklistaestado;
-    Button  btnGuardarHisto1;
+    ImageView imgvAdminUserNewUser,adminuser2_img2,imgvBackNewUser,imgvExitNewUser,imgvNextNeuUser;
+    TextView txtNewUser,txtUsuarioNew,txtEdificiosNewUser,txtUnidadesNewUser,txtOcupantesNewUser;
+    EditText txtedtUserID;
+    Spinner spnListaEdificiosNewUser,spnUnidadesNewUser,spnListaOcupantesNewUser;
+
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_reclamos1);
+        setContentView(R.layout.activity_adminuser1_principal);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
-        nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
-        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackRec1);
-        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitRec1);
-        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextRec1);
+        imgvAdminUserNewUser = (ImageView) findViewById(R.id.imgvAdminUserNewUser);
+        adminuser2_img2 = (ImageView) findViewById(R.id.adminuser2_img2);
+        imgvBackNewUser = (ImageView) findViewById(R.id.imgvBackNewUser);
+        imgvExitNewUser = (ImageView) findViewById(R.id.imgvExitNewUser);
+        imgvNextNeuUser = (ImageView) findViewById(R.id.imgvNextNeuUser);
 
-        txtPpal = (TextView) findViewById(R.id.txtPpal);
+        txtNewUser = (TextView) findViewById(R.id.txtNewUser);
+        txtUsuarioNew = (TextView) findViewById(R.id.txtUsuarioNew);
+        txtEdificiosNewUser = (TextView) findViewById(R.id.txtEdificiosNewUser);
+        txtUnidadesNewUser = (TextView) findViewById(R.id.txtUnidadesNewUser);
+        txtOcupantesNewUser = (TextView) findViewById(R.id.txtOcupantesNewUser);
 
-        spnListaedificios = (Spinner) findViewById(R.id.spnListaedificios);
-        spnListaunidades = (Spinner) findViewById(R.id.spnListaunidades);
-        spnListaespecialidades = (Spinner) findViewById(R.id.spnListaespecialidades);
-        spnListaestado = (Spinner) findViewById(R.id.spnListaestado);
+        txtedtUserID = (EditText) findViewById(R.id.txtedtUserID);
 
-        chklistaedificios = (CheckBox) findViewById(R.id.chklistaedificios);
-        chklistaunidades = (CheckBox) findViewById(R.id.chklistaunidades);
-        chklistaespecialidades = (CheckBox) findViewById(R.id.chklistaespecialidades);
-        chklistaestado = (CheckBox) findViewById(R.id.chklistaestado);
-
-        btnGuardarHisto1 = (Button) findViewById(R.id.btnGuardarHisto1);
-
+        spnListaEdificiosNewUser = (Spinner) findViewById(R.id.spnListaEdificiosNewUser);
+        spnUnidadesNewUser = (Spinner) findViewById(R.id.spnUnidadesNewUser);
+        spnListaOcupantesNewUser = (Spinner) findViewById(R.id.spnListaOcupantesNewUser);
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
@@ -73,37 +71,23 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                    //aca se escribe que hacer
-                    GoPantallaPrincipal();
-                 }
-        });
-
-        btnExitHisto1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //aca se escribe que hacer
-                GoPantallaPrincipal();
-            }
-        });
-
-        btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
+        imgvBackNewUser.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View view) {
+                                                   //aca se escribe que hacer
+                                                   GoToAdministracionUsuarios();
+                                               }
+                                           }
+        );
+        imgvExitNewUser.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View view) {
+                                                   //aca se escribe que hacer
+                                                   GoToAdministracionUsuarios();
+                                               }
+                                           }
         );
 
-        nreclamo1_img2.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
     }
     //metodos de slideBar desde ahora
     @Override

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".adminuser1">
+    tools:context=".adminuserNewUser">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_content"
@@ -16,13 +16,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/AppTheme.Toolbar"
-            tools:ignore="MissingConstraints" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/AppTheme.Toolbar"
+        tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/imgvPpal"
+            android:id="@+id/imgvAdminUserNewUser"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
@@ -34,15 +34,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtUsuarios"
-            android:layout_width="match_parent"
+            android:id="@+id/txtNewUser"
+            android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Usuarios"
+            android:text="Nuevo Usuario"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -51,169 +51,157 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+        <ImageView
+            android:id="@+id/adminuser2_img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/image53"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNewUser" />
+
         <TextView
-            android:id="@+id/txtEdificios"
-            android:layout_width="100dp"
+            android:id="@+id/txtUsuarioNew"
+            android:layout_width="110dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_gray"
+            android:layout_marginStart="24dp"
             android:gravity="center_vertical"
-            android:text="Edificio :"
-            android:padding="6dip"
+            android:background="@drawable/rounded_gray"
+            android:text="Usuario :"
             android:textColor="#000000"
             android:textSize="18sp"
+            android:padding="6dip"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtUsuarios" />
+            app:layout_constraintTop_toBottomOf="@+id/adminuser2_img2" />
 
-        <TextView
-            android:id="@+id/txtEstados"
-            android:layout_width="100dp"
+        <EditText
+            android:id="@+id/txtedtUserID"
+            android:layout_width="220dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/rounded_gray"
+            android:layout_marginEnd="24dp"
             android:gravity="center_vertical"
-            android:text="Estado :"
-            android:padding="6dip"
+            android:background="@drawable/rounded_white"
             android:textColor="#000000"
             android:textSize="18sp"
+            android:padding="6dip"
             android:textStyle="bold"
+            android:hint="Nombre del usuario"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtUsuarios" />
+            app:layout_constraintTop_toBottomOf="@+id/adminuser2_img2" />
+
+        <TextView
+            android:id="@+id/txtEdificiosNewUser"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Edificio :"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsuarioNew" />
 
         <Spinner
-            android:id="@+id/spnEdificios"
-            android:layout_width="240dp"
+            android:id="@+id/spnListaEdificiosNewUser"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaedificiouser"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEdificios" />
-
-        <Spinner
-            android:id="@+id/spnEstado"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/rounded_white"
-            android:entries="@array/listaestado"
-            android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEstados" />
+            app:layout_constraintTop_toBottomOf="@+id/txtEdificiosNewUser" />
 
         <TextView
-            android:id="@+id/txtListaUsuarios"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/txtUnidadesNewUser"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_gray"
-            android:text="Lista de Usuarios :"
-            android:padding="6dip"
+            android:text="Unidad :"
             android:textColor="#000000"
             android:textSize="18sp"
+            android:padding="6dip"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnEdificios" />
+            app:layout_constraintTop_toBottomOf="@+id/spnListaEdificiosNewUser" />
 
-        <ScrollView
-            android:id="@+id/listausuarios"
+        <Spinner
+            android:id="@+id/spnUnidadesNewUser"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="2dp"
-            android:fillViewport="true"
-            android:background="#FFFFFF"
-            android:gravity="center_vertical"
-            android:scrollbars="vertical"
-            android:fadeScrollbars="false"
-            android:scrollbarSize="8dp"
-            android:scrollbarThumbVertical="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/txtListaUsuarios">
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical|center_horizontal">
-                <Button
-                    android:id="@+id/btnUsuario1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 1"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_1">
-                </Button>
-                <Button
-                    android:id="@+id/btnUsuario2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 2"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_2">
-                </Button>
-                <Button
-                    android:id="@+id/btnUsuario3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 3"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_3">
-                </Button>
-                <Button
-                    android:id="@+id/btnUsuario4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 4"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_4">
-                </Button>
-                <Button
-                    android:id="@+id/btnUsuario5"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 5"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_5">
-                </Button>
-            </LinearLayout>
-        </ScrollView>
-
-        <Button
-            android:id="@+id/btnAgregarUsuario"
-            android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_marginTop="2dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/button_yellow"
-            android:text="Nuevo Usuario"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textStyle="normal|bold"
-            android:onClick="usuarionuevo"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaespacios"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
+            app:layout_constraintTop_toBottomOf="@+id/txtUnidadesNewUser" />
+
+        <TextView
+            android:id="@+id/txtOcupantesNewUser"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Ocupante :"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnUnidadesNewUser" />
+
+        <Spinner
+            android:id="@+id/spnListaOcupantesNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaocupantes"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtOcupantesNewUser" />
 
         <ImageView
-            android:id="@+id/btnBackUsuario1"
+            android:id="@+id/imgvBackNewUser"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
@@ -228,7 +216,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/btnExitUsuario1"
+            android:id="@+id/imgvExitNewUser"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
@@ -236,7 +224,22 @@
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnBackUsuario1"
+            app:layout_constraintStart_toEndOf="@+id/imgvBackNewUser"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imgvNextNeuUser"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="next"
+            android:src="@drawable/image08"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/imgvExitNewUser"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 

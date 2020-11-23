@@ -51,5 +51,13 @@
         <item>En Proceso</item>
         <item>Carpintero</item>
     </string-array>
+    <string-array name="listaocupantes">
+        <item></item>
+        <item>Juan Perez</item>
+        <item>Pedro Goicoechea</item>
+        <item>Andrea Sabito</item>
+        <item>Angel Rama</item>
+        <item>Cleopatra Egipcia</item>
+    </string-array>
 
 </resources>

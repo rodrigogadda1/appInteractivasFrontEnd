@@ -20,7 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class adminuser1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class adminuserPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
     ImageView imgvPpal,btnBackUsuario1,btnExitUsuario1;
     TextView txtUsuarios,txtEdificios,txtEstados,txtListaUsuarios;
@@ -34,7 +34,7 @@ public class adminuser1 extends AppCompatActivity implements NavigationView.OnNa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adminuser1);
+        setContentView(R.layout.activity_adminuser1_principal);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -92,7 +92,14 @@ public class adminuser1 extends AppCompatActivity implements NavigationView.OnNa
                                             }
                                         }
         );
-
+        btnAgregarUsuario.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View view) {
+                                                   //aca se escribe que hacer
+                                                   GoToAdminUserNewUser();
+                                               }
+                                           }
+        );
     }
     //metodos de slideBar desde ahora
     @Override
@@ -139,6 +146,9 @@ public class adminuser1 extends AppCompatActivity implements NavigationView.OnNa
                 break;
             case R.id.cerrarsesion:
                 GoToCerrarSesion ();
+                break;
+            case R.id.usuarios:
+                GoToAdministracionUsuarios ();
                 break;
             default:
                 break;
@@ -201,6 +211,19 @@ public class adminuser1 extends AppCompatActivity implements NavigationView.OnNa
     }
     private void GoPantallaPrincipal(){
         Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToAdministracionUsuarios () {
+        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, adminuserPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    //Metodo para ir a la pantalla de nuevo usuario
+    private void GoToAdminUserNewUser(){
+        Toast.makeText(this, "Nuevo Usuario selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, adminuserNewUser.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

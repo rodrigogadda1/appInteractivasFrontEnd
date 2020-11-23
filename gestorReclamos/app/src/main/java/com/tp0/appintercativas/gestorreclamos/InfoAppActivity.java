@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -177,7 +176,7 @@ public class InfoAppActivity extends AppCompatActivity implements NavigationView
     }
     private void GoToAdministracionUsuarios () {
         Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, adminuser1.class);
+        Intent intent = new Intent(this, adminuserPrincipal.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
