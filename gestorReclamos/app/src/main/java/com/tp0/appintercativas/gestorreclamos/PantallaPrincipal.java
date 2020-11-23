@@ -71,10 +71,10 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         user = (User) intent.getSerializableExtra("user");
 
         /*  CODIGO PARA SCROLLVIEW RECLAMOS  */
-        principal_img = (ImageView) findViewById(R.id.principal_img);
+        principal_img = (ImageView) findViewById(R.id.imgvPpal);
 
         txtNotificacionesPpal = (TextView) findViewById(R.id.txtNotificacionesPpal);
-        principaltexto2 = (TextView) findViewById(R.id.principaltexto2);
+        principaltexto2 = (TextView) findViewById(R.id.txtListaUsuarios);
 
         ScrollViewReclamos = (ScrollView) findViewById(R.id.ScrollViewReclamos);
 
@@ -459,6 +459,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             case R.id.cerrarsesion:
                 GoToCerrarSesion ();
                 break;
+            case R.id.usuarios:
+                GoToAdministracionUsuarios ();
+                break;
             default:
                 break;
         }
@@ -518,6 +521,11 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         intent.putExtra("user",user);
         startActivity(intent);
     }
-
+    private void GoToAdministracionUsuarios () {
+        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, adminuser1.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
 
 }

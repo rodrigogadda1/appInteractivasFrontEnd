@@ -350,6 +350,9 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
             case R.id.cerrarsesion:
                 GoToCerrarSesion ();
                 break;
+            case R.id.usuarios:
+                GoToAdministracionUsuarios ();
+                break;
             default:
                 break;
         }
@@ -406,6 +409,12 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
     private void GoToAcercaApp () {
         Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, InfoAppActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToAdministracionUsuarios () {
+        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, adminuser1.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,37 +20,45 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class Notificaciones2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class adminuser1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imvPpalNotificaciones,btnBackNotifica,btnExitNotifica,btnNextNotifica;
-    TextView txtNotificaDetalles,txtTituloNotifica,txtDetalleNotifica;
-    ScrollView notificaciones3;
-    Button btnBorrarNotifica;
+    ImageView imgvPpal,btnBackUsuario1,btnExitUsuario1;
+    TextView txtUsuarios,txtEdificios,txtEstados,txtListaUsuarios;
+    Spinner spnEdificios,spnEstado;
+    Button btnUsuario1,btnUsuario2,btnUsuario3,btnUsuario4,btnUsuario5,btnAgregarUsuario;
+    ScrollView listausuarios;
+
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notificaciones2);
+        setContentView(R.layout.activity_adminuser1);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imvPpalNotificaciones = (ImageView) findViewById(R.id.imvPpalNotificaciones);
-        btnBackNotifica = (ImageView) findViewById(R.id.btnBackNotifica);
-        btnExitNotifica = (ImageView) findViewById(R.id.btnExitNotifica);
-        btnNextNotifica = (ImageView) findViewById(R.id.btnNextNotifica);
+        imgvPpal = (ImageView) findViewById(R.id.imgvPpal);
+        btnBackUsuario1 = (ImageView) findViewById(R.id.btnBackUsuario1);
+        btnExitUsuario1 = (ImageView) findViewById(R.id.btnExitUsuario1);
 
-        txtNotificaDetalles = (TextView) findViewById(R.id.txtNotificaDetalles);
-        txtTituloNotifica = (TextView) findViewById(R.id.txtTituloNotifica);
-        txtDetalleNotifica = (TextView) findViewById(R.id.txtDetalleNotifica);
+        txtUsuarios = (TextView) findViewById(R.id.txtUsuarios);
+        txtEdificios = (TextView) findViewById(R.id.txtEdificios);
+        txtEstados = (TextView) findViewById(R.id.txtEstados);
+        txtListaUsuarios = (TextView) findViewById(R.id.txtListaUsuarios);
 
-        notificaciones3 = (ScrollView) findViewById(R.id.notificaciones3);
+        spnEdificios = (Spinner) findViewById(R.id.spnEdificios);
+        spnEstado = (Spinner) findViewById(R.id.spnEstado);
 
-        btnBorrarNotifica = (Button) findViewById(R.id.btnBorrarNotifica);
+        btnUsuario1 = (Button) findViewById(R.id.btnUsuario1);
+        btnUsuario2 = (Button) findViewById(R.id.btnUsuario2);
+        btnUsuario3 = (Button) findViewById(R.id.btnUsuario3);
+        btnUsuario4 = (Button) findViewById(R.id.btnUsuario4);
+        btnUsuario5 = (Button) findViewById(R.id.btnUsuario5);
+        btnAgregarUsuario = (Button) findViewById(R.id.btnAgregarUsuario);
 
+        listausuarios = (ScrollView) findViewById(R.id.listausuarios);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -67,89 +76,76 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
+        btnBackUsuario1.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                GoPantallaPrincipal();
+                                            }
+                                        }
+        );
+        btnExitUsuario1.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                GoPantallaPrincipal();
+                                            }
+                                        }
+        );
 
-        imvPpalNotificaciones.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnBackNotifica.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnExitNotifica.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnNextNotifica.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        txtDetalleNotifica.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-
-
-        //para la slide bar
     }
-        @Override
-        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+    //metodos de slideBar desde ahora
+    @Override
+    public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
+    }
+
+    @Override
+    public void onDrawerOpened(@NonNull View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerClosed(@NonNull View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.reclamonuevo:
+                GoToNewReclamo ();
+                break;
+            case R.id.reclamoactivo:
+                GoToReclamosActivos ();
+                break;
+            case R.id.reclamohistorial:
+                GoToViewReclamosHist ();
+                break;
+            case R.id.notificaciones:
+                GoToNotificaciones ();
+                break;
+            case R.id.configuracion:
+                GoToConfiguraciones();
+                break;
+            case R.id.acercaapp:
+                GoToAcercaApp();
+                break;
+            case R.id.cerrarsesion:
+                GoToCerrarSesion ();
+                break;
+            default:
+                break;
         }
+        return true;
 
-        @Override
-        public void onDrawerOpened(@NonNull View drawerView) {
-
-        }
-
-        @Override
-        public void onDrawerClosed(@NonNull View drawerView) {
-
-        }
-
-        @Override
-        public void onDrawerStateChanged(int newState) {
-
-        }
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Intent intent;
-            switch (item.getItemId()) {
-                case R.id.reclamonuevo:
-                    GoToNewReclamo ();
-                    break;
-                case R.id.reclamoactivo:
-                    GoToReclamosActivos ();
-                    break;
-                case R.id.reclamohistorial:
-                    GoToViewReclamosHist ();
-                    break;
-                case R.id.notificaciones:
-                    GoToNotificaciones ();
-                    break;
-                case R.id.configuracion:
-                    GoToConfiguraciones();
-                    break;
-                case R.id.acercaapp:
-                    GoToAcercaApp();
-                    break;
-                case R.id.cerrarsesion:
-                    GoToCerrarSesion ();
-                    break;
-                case R.id.usuarios:
-                    GoToAdministracionUsuarios ();
-                    break;
-                default:
-                    break;
-            }
-            return true;
-        }
+    }
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
@@ -208,12 +204,4 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
         intent.putExtra("user",user);
         startActivity(intent);
     }
-    private void GoToAdministracionUsuarios () {
-        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, adminuser1.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-    }
 }
-
-

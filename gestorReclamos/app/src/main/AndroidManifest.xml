@@ -30,6 +30,7 @@
         <activity android:name=".HistorialReclamos1" />
         <activity android:name=".Notificaciones1" />
         <activity android:name=".Notificaciones2" />
+        <activity android:name=".adminuser1" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
