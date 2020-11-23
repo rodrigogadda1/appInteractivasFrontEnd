@@ -6,13 +6,17 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,11 +30,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosDeVerificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
@@ -54,6 +60,8 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
     Administrado administrado;
     Reclamo reclamo;
 
+    ScrollView listaimagenes;
+
     ImageView back, exit,next;
     TextView txtReclamoConfirmado,txtVisualizaReclamo;
     //para la slide bar
@@ -64,31 +72,70 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creacion_reclamo3);
 
-        Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("user");
-        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
-        administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        back = (ImageView) findViewById(R.id.back);
-        exit = (ImageView) findViewById(R.id.exit);
-        next = (ImageView) findViewById(R.id.next);
+        try {
+            Intent intent = getIntent();
+            user = (User) intent.getSerializableExtra("user");
+            //mostrarDialogo("probando 81", "se llego");
+            reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
 
-        txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
-        txtVisualizaReclamo = (TextView) findViewById(R.id.txtVisualizaReclamo);
+            //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            //ClipData clip = ClipData.newPlainText("label", "linea 80 " + String.valueOf(reclamo.toString()));
+            //clipboard.setPrimaryClip(clip);
 
-        String detalle = null;
-        detalle = "Especialidad :"+reclamo.getEspecialidad().getNombre()+"\n";
-        detalle+= "Edificio :"+reclamo.getEdificio().getNombre()+"\n";
-        if (reclamo.getUnidad() != null) {
-            detalle+= "Unidad: Piso "+reclamo.getUnidad().getPiso()+" Unidad "+reclamo.getUnidad().getUnidad()+"\n";
-        } else if (reclamo.getEspacioComun() != null) {
-            detalle+= "Espacio Comun: "+reclamo.getEspacioComun().getNombre()+"\n";
+            administrado = (Administrado)  intent.getSerializableExtra("administrado");
+
+            back = (ImageView) findViewById(R.id.back);
+            exit = (ImageView) findViewById(R.id.exit);
+            next = (ImageView) findViewById(R.id.next);
+
+            listaimagenes = (ScrollView) findViewById(R.id.listaimagenes);
+
+            if (  (reclamo.getFotos() != null) && (reclamo.getFotos().size() > 0)  ) {
+                //se agregan al scrollview
+                mostrarDialogo("probando 95", String.valueOf(reclamo.getFotos().size()));
+                rellenarConImagenes(reclamo.getFotos());
+                //next.set
+                //next.setImageBitmap(MetodosDeVerificacion.resizeBitmap(MetodosDeVerificacion.stringToBitmap(reclamo.getFotos().get(0).getUri_foto())));
+            }
+
+        } catch (Exception e) {
+            mostrarDialogo("error en linea 87","ver clipboard");
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", e.getMessage());
+            clipboard.setPrimaryClip(clip);
         }
-        detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
-        txtVisualizaReclamo.setText(detalle);
 
-        //para SQLite
-        reclamosHelper = new ReclamosHelper(this);
+
+
+
+        /*
+        Caused by: java.lang.NullPointerException: Attempt to invoke interface method 'int java.util.List.size()' on a null object reference
+        at com.tp0.appintercativas.gestorreclamos.CreacionReclamo3.onCreate(CreacionReclamo3.java:84)
+         */
+
+        try {
+            txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
+
+            String detalle = null;
+            detalle = "Especialidad :"+reclamo.getEspecialidad().getNombre()+"\n";
+            detalle+= "Edificio :"+reclamo.getEdificio().getNombre()+"\n";
+            if (reclamo.getUnidad() != null) {
+                detalle+= "Unidad: Piso "+reclamo.getUnidad().getPiso()+" Unidad "+reclamo.getUnidad().getUnidad()+"\n";
+            } else if (reclamo.getEspacioComun() != null) {
+                detalle+= "Espacio Comun: "+reclamo.getEspacioComun().getNombre()+"\n";
+            }
+            detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
+            txtReclamoConfirmado.setText(detalle);
+            //para SQLite
+            reclamosHelper = new ReclamosHelper(this);
+        }  catch (Exception e) {
+            mostrarDialogo("error en linea 128","ver clipboard");
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", e.getMessage());
+            clipboard.setPrimaryClip(clip);
+        }
+
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -151,6 +198,25 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                    }
            }
         );
+    }
+
+    protected void rellenarConImagenes(List<Foto> fotos) {
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        for (int i = 0; i < fotos.size(); i++) {
+            LinearLayout line = new LinearLayout(this);
+            line.setOrientation(LinearLayout.HORIZONTAL);
+            line.setGravity(Gravity.CENTER);
+            ImageView imageView = new ImageView(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
+            lp.gravity = Gravity.CENTER;
+            imageView.setLayoutParams(lp);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(fotos.get(i).getUri_foto()));
+            //imageView.setImageBitmap(MetodosDeVerificacion.stringToBitmap(fotos.get(i).getUri_foto()));
+            line.addView(imageView);
+            linearLayout.addView(line);
+        }
+        listaimagenes.addView(linearLayout);
     }
 
     private Reclamo_SQLLite pasarDeReclamoAReclamo_SQLite (Reclamo reclamo){
@@ -223,7 +289,22 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             reclamo_sqlLite.setId_espacioComun(0);
         }
 
-        //aca falta agregar las ubicaciones de las fotos
+        if ( (reclamo.getFotos() != null) &&  (reclamo.getFotos().size() > 0)  ) {
+            List <String> fotos = new ArrayList<String>();
+            for (int i = 0; i < reclamo.getFotos().size(); i++) {
+                Foto foto = reclamo.getFotos().get(i);
+                fotos.add(foto.getUri_foto());
+            }
+            reclamo_sqlLite.setFotos(fotos);
+        }
+
+        if (reclamo.getFotos().size() > 0) {
+            List <String> fotosString = new ArrayList<String>();
+            for(int i = 0; i < reclamo.getFotos().size(); i++){
+                fotosString.add(reclamo.getFotos().get(i).getUri_foto());
+            }
+            reclamo_sqlLite.setFotos(fotosString);
+        }
 
         return reclamo_sqlLite;
     }

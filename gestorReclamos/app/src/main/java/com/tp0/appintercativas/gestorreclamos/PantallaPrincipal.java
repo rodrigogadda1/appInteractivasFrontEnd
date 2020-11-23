@@ -1,6 +1,10 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import android.app.AlertDialog;
+import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -8,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -21,6 +26,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
@@ -51,6 +58,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class PantallaPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+
+    NotificationManager notificationManagerAux;
+    private NotificationManagerCompat notificationManager;
 
     ReclamosHelper reclamosHelper;
     Administrado administrado;
@@ -85,13 +95,16 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
 
+        //para las notifications
+        notificationManager =  NotificationManagerCompat.from(this);
+
         //se revisa si hay reclamos pendientes para subir
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
             //pruebo que tenga la conexion para poder subir los reclamos
             if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
                 getAdministradoId();
             }
-
+            generarNotificacion();
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
 
         }
@@ -146,6 +159,17 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             }
         });
 
+    }
+
+    private void generarNotificacion(){
+        Notification notification = new NotificationCompat.Builder(this, com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.NotificationManager.CHENNEL_1_ID)
+                    .setSmallIcon(R.drawable.ic_notification)
+                    .setContentTitle("titulo")
+                    .setContentText("contenido")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .build();
+        notificationManager.notify(1, notification);
     }
 
     private void getAdministradoId(){

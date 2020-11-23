@@ -1,6 +1,7 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,8 +14,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,11 +34,13 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosDeVerificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
@@ -39,6 +48,10 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.service.Administrad
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EdificioService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +64,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class CreacionReclamo2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+
+    //for image view
+    List<String> url_fotos;
+    private static final int GALLERY_REQUEST_CODE = 100;
+    private static final int CAMERA_REQUEST_CODE = 200;
 
     User user;
     Reclamo reclamo;
@@ -125,11 +143,17 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
          drawerLayout.addDrawerListener(this);
          //fin codigo para slide bar
 
+        //para captura de fotos
+        url_fotos = new ArrayList<String>();
+        //para captura de fotos
+
         imgvCamara.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View view) {
                                                 if (!tengoCamara()){
                                                     mostrarToast("No tenes camara disponible");
+                                                } else {
+                                                    OpenCamara();
                                                 }
                                          }
                                      }
@@ -139,6 +163,11 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                                          @Override
                                          public void onClick(View view) {
                                              //aca se escribe que hacer
+                                             if (  (reclamo.getFotos() == null) ||  (reclamo.getFotos().size() < 7)  ) {
+                                                 OpenGallery();
+                                             } else  {
+                                                 mostrarToast("No se pueden cargar mas imagenes.");
+                                             }
                                          }
                                      }
         );
@@ -186,11 +215,77 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                          administrado2.setId_user(administrado.getId_user());
                          reclamo.setAdministrado(administrado2);
                          reclamo.setUsername(user.getUsername());
+
+                         //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                         //ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
+                         //clipboard.setPrimaryClip(clip);
+
                          pasar_a_pantalla_reclamos_3(reclamo);
                      }
                  }
              }
         );
+    }
+
+    private void OpenGallery () {
+        if (url_fotos.size() < 7) {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent,"Select picture"), GALLERY_REQUEST_CODE);
+        } else {
+            mostrarToast("No se puden cargar mas imagenes. (Max. 7)");
+        }
+    }
+
+    private void OpenCamara () {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(intent, CAMERA_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == GALLERY_REQUEST_CODE) {
+            try {
+                //mostrarDialogo("probando 230 creacion reclamo2","funciona");
+                Uri selectedImage = data.getData();
+                InputStream imageStream = getContentResolver().openInputStream(selectedImage);
+                List<Foto> reclamoFotos = reclamo.getFotos();
+                if (reclamoFotos == null) {
+                    reclamoFotos = new ArrayList<Foto>();
+                }
+                Foto fotoNew = new Foto();
+                if (  (selectedImage!=null) ) {
+                    String[] projection = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = managedQuery(selectedImage,projection,null,null,null);
+                    if (cursor!=null){
+                        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                        cursor.moveToFirst();
+                        cursor.getString(column_index);
+                    }
+                    fotoNew.setUri_foto(selectedImage.getPath());
+                }
+                reclamoFotos.add(fotoNew);
+                reclamo.setFotos(reclamoFotos);
+                //BitmapFactory.decodeStream(imageStream)  --> imagen
+                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                //ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.getFotos().size()));
+                //clipboard.setPrimaryClip(clip);
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        }
+
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //selectedImageView.setImageBitmap(imageBitmap);
+        }
+
     }
 
     private boolean tengoCamara(){
@@ -202,6 +297,9 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
         intent.putExtra("user",user);
         intent.putExtra("reclamo", reclamo2);
         intent.putExtra("administrado",administrado);
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
+        clipboard.setPrimaryClip(clip);
         startActivity(intent);
     }
 
@@ -251,10 +349,10 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                     spinnerEspecialidades(spinners);
                 }
                 //CLIPBOARD
-                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("label",response.body().toString());
-                clipboard.setPrimaryClip(clip);
-                mostrarToast("se copio");
+                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                //ClipData clip = ClipData.newPlainText("label",response.body().toString());
+                //clipboard.setPrimaryClip(clip);
+                //mostrarToast("se copio");
                 //CLIPBOARD
             }
 
