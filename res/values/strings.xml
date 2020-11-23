@@ -48,7 +48,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="principaltexto1">GESTOR DE RECLAMOS App.</string>
-    <string name="principaltexto2">Ultimos Reclamos Activos:</string>
+    <string name="principaltexto2">Ultimos Reclamos Activos :</string>
     <string name="reclamo_1">Ejemplo del  1º Reclamo listado</string>
     <string name="reclamo_2">Ejemplo del  2º Reclamo listado</string>
     <string name="reclamo_3">Ejemplo del  3º Reclamo listado</string>
@@ -62,7 +62,7 @@
     <string name="numerodoc">Número de Documento</string>
     <string name="infoaplicacion_1">Acerca de la App</string>
     <string name="infoaplicacion_2">GRUPO Nº 6</string>
-    <string name="infoaplicacion_3">MATERIA: Aplicaciones Distribuidas\n\nNOMBRE App: Gestor de Reclamos\n\nINTEGRANTES:</string>
+    <string name="infoaplicacion_3"><b>MATERIA :</b> APLICACIONES DISTRIBUIDAS\n\n<b>NOMBRE App :</b> GESTOR DE RECLAMOS\n\n<b>INTEGRANTES :</b></string>
     <string name="infoaplicacion_4">\tLU: 1105.567\t\tGADDA, Rodrigo Emanuel</string>
     <string name="infoaplicacion_5">\tLU: 99.514\t\tGIMENEZ, Alejandro Gaston</string>
     <string name="infoaplicacion_6">\tLU: 110.475\t\tTISSERA, Rodrigo Ezequiel</string>

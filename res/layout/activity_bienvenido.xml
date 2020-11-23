@@ -22,15 +22,15 @@
 
     <TextView
         android:id="@+id/bienvenido"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginTop="14dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/rounded_gray"
         android:gravity="center"
         android:text="@string/bienvenido_1"
-        android:textColor="#000000"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,55 +39,76 @@
         app:layout_constraintTop_toBottomOf="@+id/bienvenido_img"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/bienvenido_text"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="24dp"
+    <RelativeLayout
+        android:id="@+id/bienvenido_t1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_marginTop="150dp"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_white"
-        android:gravity="center"
-        android:text="@string/bienvenido_2"
-        android:padding="6dip"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="150dp"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+        <TextView
+            android:id="@+id/bienvenido_t2"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/rounded_white"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/bienvenido_2"
+            android:padding="6dip"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="back"
+        android:src="@drawable/image12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/exit"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bienvenido" />
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido_t1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/exit"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="4dp"
         android:onClick="exit"
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bienvenido_text"
+        app:layout_constraintEnd_toStartOf="@id/next"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido_t1"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/next"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
         android:onClick="next"
         android:src="@drawable/image08"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/exit"
-        app:layout_constraintTop_toBottomOf="@+id/bienvenido_text"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido_t1"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

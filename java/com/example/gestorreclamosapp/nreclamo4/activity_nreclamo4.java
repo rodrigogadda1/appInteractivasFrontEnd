@@ -12,11 +12,13 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
+import com.example.gestorreclamosapp.areclamo1.activity_areclamo1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
+import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
 import com.example.gestorreclamosapp.nreclamo2.activity_nreclamo2;
 import com.example.gestorreclamosapp.nreclamo3.activity_nreclamo3;
 import com.example.gestorreclamosapp.principal.activity_principal;
@@ -66,6 +68,8 @@ public class activity_nreclamo4 extends AppCompatActivity implements NavigationV
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_nreclamo4.this, activity_areclamo1.class);
+                startActivity(intent);
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
@@ -107,18 +111,16 @@ public class activity_nreclamo4 extends AppCompatActivity implements NavigationV
         return true;
     }
 
+    public void back(View view) {
+        Intent intent = new Intent(activity_nreclamo4.this, activity_nreclamo3.class);
+        startActivity(intent);
+    }
     public void exit(View view) {
         Intent intent = new Intent(activity_nreclamo4.this, activity_principal.class);
         startActivity(intent);
     }
-
     public void next(View view) {
         Intent intent = new Intent(activity_nreclamo4.this, activity_principal.class);
-        startActivity(intent);
-    }
-
-    public void back(View view) {
-        Intent intent = new Intent(activity_nreclamo4.this, activity_nreclamo3.class);
         startActivity(intent);
     }
 

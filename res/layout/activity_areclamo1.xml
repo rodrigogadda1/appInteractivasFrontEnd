@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".adminuser1.activity_adminuser1">
+    tools:context=".areclamo1.activity_areclamo1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_content"
@@ -26,7 +26,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image03"
+            android:src="@drawable/image19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Usuarios"
+            android:text="Reclamos Activos"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -51,75 +51,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <TextView
-            android:id="@+id/edificios"
-            android:layout_width="100dp"
+        <Button
+            android:id="@+id/filtro"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_gray"
-            android:gravity="center_vertical"
-            android:text="Edificio :"
-            android:padding="6dip"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_yellow"
+            android:text="Filtro"
+            android:gravity="center"
+            android:textAllCaps="true"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/principaltexto1" />
-
-        <TextView
-            android:id="@+id/estados"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/rounded_gray"
-            android:gravity="center_vertical"
-            android:text="Estado :"
-            android:padding="6dip"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textStyle="normal|bold"
+            android:onClick="filtro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/principaltexto1" />
-
-        <Spinner
-            android:id="@+id/listaedificios"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/rounded_white"
-            android:entries="@array/listaedificiouser"
-            android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edificios" />
-
-        <Spinner
-            android:id="@+id/listaestado"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/rounded_white"
-            android:entries="@array/listaestado"
-            android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/estados" />
 
         <TextView
             android:id="@+id/principaltexto2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_gray"
-            android:text="Lista de Usuarios :"
+            android:text="Reclamos Activos :"
             android:padding="6dip"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -127,12 +85,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaedificios" />
+            app:layout_constraintTop_toBottomOf="@+id/filtro" />
 
         <ScrollView
-            android:id="@+id/listausuarios"
+            android:id="@+id/listareclamos"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:layout_marginTop="2dp"
             android:fillViewport="true"
             android:background="#FFFFFF"
@@ -150,67 +108,134 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center_vertical|center_horizontal">
-                <Button
-                    android:id="@+id/usuario_1"
+                <CheckBox
+                    android:id="@+id/reclamo_1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 1"
+                    android:text="Ejemplo del 1º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
                     android:textAlignment="viewStart"
-                    android:onClick="usuario_1">
-                </Button>
-                <Button
-                    android:id="@+id/usuario_2"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 2"
+                    android:text="Ejemplo del 2º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
                     android:textAlignment="viewStart"
-                    android:onClick="usuario_2">
-                </Button>
-                <Button
-                    android:id="@+id/usuario_3"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 3"
+                    android:text="Ejemplo del 3º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
                     android:textAlignment="viewStart"
-                    android:onClick="usuario_3">
-                </Button>
-                <Button
-                    android:id="@+id/usuario_4"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 4"
+                    android:text="Ejemplo del 4º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
                     android:textAlignment="viewStart"
-                    android:onClick="usuario_4">
-                </Button>
-                <Button
-                    android:id="@+id/usuario_5"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_5"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo Usuario numero 5"
+                    android:text="Ejemplo del 5º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
                     android:textAlignment="viewStart"
-                    android:onClick="usuario_5">
-                </Button>
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_6"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 6º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_7"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 7º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_8"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 8º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
             </LinearLayout>
         </ScrollView>
 
         <Button
-            android:id="@+id/usuarionuevo"
-            android:layout_width="0dp"
+            android:id="@+id/agrupar"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/button_yellow"
-            android:text="Nuevo Usuario"
+            android:background="@drawable/button_red"
+            android:text="Nuevo Reclamo Agrupado"
             android:gravity="center"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textStyle="normal|bold"
-            android:onClick="usuarionuevo"
+            android:onClick="agrupar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
+            app:layout_constraintTop_toBottomOf="@+id/listareclamos" />
+
+        <Button
+            android:id="@+id/editar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_yellow"
+            android:text="Editar Reclamo"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:onClick="editar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agrupar" />
 
         <ImageView
             android:id="@+id/back"
@@ -223,9 +248,9 @@
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/exit"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuarionuevo"
+            app:layout_constraintTop_toBottomOf="@+id/editar"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
@@ -240,7 +265,7 @@
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toBottomOf="@+id/usuarionuevo"
+            app:layout_constraintTop_toBottomOf="@+id/editar"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

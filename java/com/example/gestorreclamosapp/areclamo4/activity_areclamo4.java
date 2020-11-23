@@ -1,4 +1,4 @@
-package com.example.gestorreclamosapp.datospers;
+package com.example.gestorreclamosapp.areclamo4;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.areclamo1.activity_areclamo1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
+import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
@@ -22,13 +23,13 @@ import com.example.gestorreclamosapp.principal.activity_principal;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
-public class activity_datospers extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
+public class activity_areclamo4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
     private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datospers);
+        setContentView(R.layout.activity_areclamo4);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
@@ -62,45 +63,45 @@ public class activity_datospers extends AppCompatActivity implements NavigationV
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
                 Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_nreclamo1.class);
+                intent = new Intent(activity_areclamo4.this, activity_nreclamo1.class);
                 startActivity(intent);
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_areclamo1.class);
-                startActivity(intent);
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_hreclamo.class);
+                intent = new Intent(activity_areclamo4.this, activity_hreclamo.class);
                 startActivity(intent);
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_notificaciones1.class);
+                intent = new Intent(activity_areclamo4.this, activity_notificaciones1.class);
                 startActivity(intent);
                 break;
             case R.id.usuarios:
                 Toast.makeText(this, "Usuarios selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_adminuser1.class);
+                intent = new Intent(activity_areclamo4.this, activity_adminuser1.class);
                 startActivity(intent);
                 break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_areclamo4.this, activity_datospers.class);
+                startActivity(intent);
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_configuraciones.class);
+                intent = new Intent(activity_areclamo4.this, activity_configuraciones.class);
                 startActivity(intent);
                 break;
             case R.id.acercaapp:
                 Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, activity_infoaplicacion.class);
+                intent = new Intent(activity_areclamo4.this, activity_infoaplicacion.class);
                 startActivity(intent);
                 break;
             case R.id.cerrarsesion:
-                Toast.makeText(this, "Cerrar Sesion selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(activity_datospers.this, LoginActivity.class);
+                Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_areclamo4.this, LoginActivity.class);
                 startActivity(intent);
                 break;
             default:
@@ -109,8 +110,37 @@ public class activity_datospers extends AppCompatActivity implements NavigationV
         return true;
     }
 
+    public void camara(View view) {
+        Toast.makeText(this, "Camara selected", Toast.LENGTH_SHORT).show();
+    }
+
+    public void archivos(View view) {
+        Toast.makeText(this, "Archivos selected", Toast.LENGTH_SHORT).show();
+    }
+
+    public void guardar(View view) {
+        Toast.makeText(this, "Guardar selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(activity_areclamo4.this, activity_areclamo1.class);
+        startActivity(intent);
+    }
+
+    public void reclamo_1(View view) {
+    }
+    public void reclamo_2(View view) {
+    }
+    public void reclamo_3(View view) {
+    }
+    public void reclamo_4(View view) {
+    }
+    public void reclamo_5(View view) {
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(activity_areclamo4.this, activity_areclamo1.class);
+        startActivity(intent);
+    }
     public void exit(View view) {
-        Intent intent = new Intent(activity_datospers.this, activity_principal.class);
+        Intent intent = new Intent(activity_areclamo4.this, activity_principal.class);
         startActivity(intent);
     }
 
