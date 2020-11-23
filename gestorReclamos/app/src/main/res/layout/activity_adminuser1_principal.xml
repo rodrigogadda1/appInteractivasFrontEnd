@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context=".adminuserPrincipal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imgvPpal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_gray"
+            android:gravity="center"
+            android:text="Usuarios"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <TextView
+            android:id="@+id/txtEdificios"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_gray"
+            android:gravity="center_vertical"
+            android:text="Edificio :"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsuarios" />
+
+        <TextView
+            android:id="@+id/txtEstados"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/rounded_gray"
+            android:gravity="center_vertical"
+            android:text="Estado :"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsuarios" />
+
+        <Spinner
+            android:id="@+id/spnEdificios"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaedificiouser"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEdificios" />
+
+        <Spinner
+            android:id="@+id/spnEstado"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaestado"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEstados" />
+
+        <TextView
+            android:id="@+id/txtListaUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Lista de Usuarios :"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnEdificios" />
+
+        <ScrollView
+            android:id="@+id/listausuarios"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="2dp"
+            android:fillViewport="true"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="8dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/txtListaUsuarios">
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical|center_horizontal">
+                <Button
+                    android:id="@+id/btnUsuario1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo Usuario numero 1"
+                    android:textAlignment="viewStart"
+                    android:onClick="usuario_1">
+                </Button>
+                <Button
+                    android:id="@+id/btnUsuario2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo Usuario numero 2"
+                    android:textAlignment="viewStart"
+                    android:onClick="usuario_2">
+                </Button>
+                <Button
+                    android:id="@+id/btnUsuario3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo Usuario numero 3"
+                    android:textAlignment="viewStart"
+                    android:onClick="usuario_3">
+                </Button>
+                <Button
+                    android:id="@+id/btnUsuario4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo Usuario numero 4"
+                    android:textAlignment="viewStart"
+                    android:onClick="usuario_4">
+                </Button>
+                <Button
+                    android:id="@+id/btnUsuario5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo Usuario numero 5"
+                    android:textAlignment="viewStart"
+                    android:onClick="usuario_5">
+                </Button>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnAgregarUsuario"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_yellow"
+            android:text="Nuevo Usuario"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textStyle="normal|bold"
+            android:onClick="usuarionuevo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
+
+        <ImageView
+            android:id="@+id/btnBackUsuario1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="back"
+            android:src="@drawable/image12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logout_1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/btnExitUsuario1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="exit"
+            android:src="@drawable/image04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnBackUsuario1"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_menu"
+        android:background="@drawable/side_nav_bar" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

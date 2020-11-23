@@ -20,6 +20,10 @@
                 android:icon="@drawable/image25"
                 android:title="Notificaciones"
                 android:textSize="20sp" />
+            <item android:id="@+id/usuarios"
+                android:icon="@drawable/image11"
+                android:title="Usuarios"
+                android:textSize="20sp" />
             <item android:id="@+id/datospersonales"
                 android:icon="@drawable/image37"
                 android:title="Datos Personales"

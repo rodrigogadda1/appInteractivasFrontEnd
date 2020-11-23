@@ -11,13 +11,14 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.gestorreclamosapp.R;
+import com.example.gestorreclamosapp.ui.login.LoginActivity;
+import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
-import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class activity_principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
@@ -74,6 +75,11 @@ public class activity_principal extends AppCompatActivity implements NavigationV
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
                 intent = new Intent(activity_principal.this, activity_notificaciones1.class);
+                startActivity(intent);
+                break;
+            case R.id.usuarios:
+                Toast.makeText(this, "Usuarios selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_principal.this, activity_adminuser1.class);
                 startActivity(intent);
                 break;
             case R.id.datospersonales:

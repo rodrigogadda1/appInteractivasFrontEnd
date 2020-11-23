@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -21,10 +22,11 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class HistorialReclamos1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    ImageView imgvHistorialReclamos,imgvCentral,back,exit,next;
-    TextView txtHistReclamos;
-    Spinner spnLstEdificioUser,spnLstEspacios;
-    CheckBox chkEdificioUser,chkEspacios;
+    ImageView imvPrincipal,nreclamo1_img2,btnBackHisto1,btnExitHisto1,btnNextHisto1;
+    TextView txtPpal;
+    Spinner spnListaedificios,spnListaunidades,spnListaespecialidades,spnListaestado;
+    CheckBox chklistaedificios,chklistaunidades,chklistaespecialidades,chklistaestado;
+    Button  btnGuardarHisto1;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -36,19 +38,25 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        imgvHistorialReclamos = (ImageView) findViewById(R.id.imgvHistorialReclamos);
-        imgvCentral = (ImageView) findViewById(R.id.imgvCentral);
-        back = (ImageView) findViewById(R.id.back);
-        exit = (ImageView) findViewById(R.id.exit);
-        next = (ImageView) findViewById(R.id.next);
+        imvPrincipal = (ImageView) findViewById(R.id.imvPrincipal);
+        nreclamo1_img2 = (ImageView) findViewById(R.id.nreclamo1_img2);
+        btnBackHisto1 = (ImageView) findViewById(R.id.btnBackRec1);
+        btnExitHisto1 = (ImageView) findViewById(R.id.btnExitRec1);
+        btnNextHisto1 = (ImageView) findViewById(R.id.btnNextRec1);
 
-        txtHistReclamos = (TextView) findViewById(R.id.txtHistReclamos);
+        txtPpal = (TextView) findViewById(R.id.txtPpal);
 
-        spnLstEdificioUser = (Spinner) findViewById(R.id.spnLstEdificioUser);
-        spnLstEspacios = (Spinner) findViewById(R.id.spnLstEspacios);
+        spnListaedificios = (Spinner) findViewById(R.id.spnListaedificios);
+        spnListaunidades = (Spinner) findViewById(R.id.spnListaunidades);
+        spnListaespecialidades = (Spinner) findViewById(R.id.spnListaespecialidades);
+        spnListaestado = (Spinner) findViewById(R.id.spnListaestado);
 
-        chkEdificioUser = (CheckBox) findViewById(R.id.chkEdificioUser);
-        chkEspacios = (CheckBox) findViewById(R.id.chkEspacios);
+        chklistaedificios = (CheckBox) findViewById(R.id.chklistaedificios);
+        chklistaunidades = (CheckBox) findViewById(R.id.chklistaunidades);
+        chklistaespecialidades = (CheckBox) findViewById(R.id.chklistaespecialidades);
+        chklistaestado = (CheckBox) findViewById(R.id.chklistaestado);
+
+        btnGuardarHisto1 = (Button) findViewById(R.id.btnGuardarHisto1);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -65,23 +73,23 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-        imgvHistorialReclamos.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View view) {
-                                                     //aca se escribe que hacer
-                                                 }
-                                             }
-        );
+        btnBackHisto1.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                    //aca se escribe que hacer
+                    GoPantallaPrincipal();
+                 }
+        });
 
-        imgvCentral.setOnClickListener(new View.OnClickListener() {
-                                                       @Override
-                                                       public void onClick(View view) {
-                                                           //aca se escribe que hacer
-                                                       }
-                                                   }
-        );
+        btnExitHisto1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //aca se escribe que hacer
+                GoPantallaPrincipal();
+            }
+        });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        btnGuardarHisto1.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         //aca se escribe que hacer
@@ -89,15 +97,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                                 }
         );
 
-        exit.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        //aca se escribe que hacer
-                                    }
-                                }
-        );
-
-        next.setOnClickListener(new View.OnClickListener() {
+        nreclamo1_img2.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         //aca se escribe que hacer
@@ -105,8 +105,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                                 }
         );
     }
-    //para la slide bar
-
+    //metodos de slideBar desde ahora
     @Override
     public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
@@ -132,38 +131,97 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                Toast.makeText(this, "Ya estas en esa pantalla!", Toast.LENGTH_SHORT).show();
+                GoToNewReclamo ();
                 break;
             case R.id.reclamoactivo:
-                Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                GoToReclamosActivos ();
                 break;
             case R.id.reclamohistorial:
-                Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
-                Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                GoToNotificaciones ();
                 break;
             case R.id.configuracion:
-                Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, ConfiguracionesUser.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
-                Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, InfoAppActivity.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToAcercaApp();
                 break;
             case R.id.cerrarsesion:
-                Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, MainActivityLogin.class);
-                startActivity(intent);
+                GoToCerrarSesion ();
+                break;
+            case R.id.usuarios:
+                GoToAdministracionUsuarios ();
                 break;
             default:
                 break;
         }
         return true;
 
+    }
+    private void GoToNotificaDetalle (){
+        Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Notificaciones2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToNewReclamo (){
+        Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CreacionReclamo1.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToViewReclamosHist () {
+        Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, HistorialReclamos1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+
+    }
+    private void GoToNotificaciones () {
+        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, Notificaciones1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
+    private void GoToConfiguraciones(){
+        Intent intent = new Intent(this, ConfiguracionesUser.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void GoToReclamosActivos () {
+        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+        //Intent intent= new Intent(this, Notificaciones1.class);
+        //intent.putExtra("user", user);
+        //startActivity(intent);
+        Intent intent = new Intent(this, CreacionReclamo4.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+
+    }
+    private void GoToCerrarSesion () {
+        Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivityLogin.class);
+        startActivity(intent);
+    }
+    private void GoToAcercaApp () {
+        Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, InfoAppActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToAdministracionUsuarios () {
+        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, adminuserPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 }

@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
+import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.notificaciones2.activity_notificaciones2;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
+import com.example.gestorreclamosapp.nreclamo2.activity_nreclamo2;
 import com.example.gestorreclamosapp.principal.activity_principal;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -74,6 +76,11 @@ public class activity_notificaciones1 extends AppCompatActivity implements Navig
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.usuarios:
+                Toast.makeText(this, "Usuarios selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_notificaciones1.this, activity_adminuser1.class);
+                startActivity(intent);
                 break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();

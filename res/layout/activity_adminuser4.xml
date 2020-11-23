@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context=".adminuser4.activity_adminuser4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/principal_img"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/principaltexto1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_gray"
+            android:gravity="center"
+            android:text="Asignaciones del Usuario"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <ScrollView
+            android:id="@+id/detalles"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_gray"
+            android:fadeScrollbars="false"
+            android:fillViewport="true"
+            android:gravity="center_vertical"
+            android:scrollbarSize="8dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray"
+            android:scrollbars="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/principaltexto1" >
+            <LinearLayout
+                android:id="@+id/linearLayout_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/detalle_usuario"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/detalle_usuario"
+                    android:padding="6dip"
+                    android:textColor="#000000"
+                    android:textSize="18sp" >
+                </TextView>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/cambiarpassword"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_red"
+            android:text="Cambiar Password"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold"
+            android:onClick="cambiarpassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detalles" />
+
+        <TextView
+            android:id="@+id/principaltexto2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Lista de Asignaciones :"
+            android:padding="6dip"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cambiarpassword" />
+
+        <ScrollView
+            android:id="@+id/listausuarios"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="2dp"
+            android:fillViewport="true"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="8dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
+            <LinearLayout
+                android:id="@+id/linearLayout_2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical|center_horizontal">
+                <Button
+                    android:id="@+id/asignacion_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo de Asignación 1"
+                    android:textAlignment="viewStart"
+                    android:onClick="asignacion_1">
+                </Button>
+                <Button
+                    android:id="@+id/asignacion_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo de Asignación 2"
+                    android:textAlignment="viewStart"
+                    android:onClick="asignacion_2">
+                </Button>
+                <Button
+                    android:id="@+id/asignacion_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo de Asignación 3"
+                    android:textAlignment="viewStart"
+                    android:onClick="asignacion_3">
+                </Button>
+                <Button
+                    android:id="@+id/asignacion_4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo de Asignación 4"
+                    android:textAlignment="viewStart"
+                    android:onClick="asignacion_4">
+                </Button>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/asignarunidad"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_yellow"
+            android:text="Asignar Unidad"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textStyle="normal|bold"
+            android:onClick="asignarunidad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
+
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_red"
+            android:text="Guardar"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="normal|bold"
+            android:onClick="guardar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/asignarunidad" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="back"
+            android:src="@drawable/image12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logout_1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/exit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="exit"
+            android:src="@drawable/image04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_menu"
+        android:background="@drawable/side_nav_bar" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

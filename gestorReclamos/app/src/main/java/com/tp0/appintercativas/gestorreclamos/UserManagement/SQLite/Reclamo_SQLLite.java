@@ -216,6 +216,4 @@ public class Reclamo_SQLLite {
         }
         return cv;
     }
-
-
 }

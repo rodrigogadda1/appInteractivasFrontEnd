@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
+import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
@@ -73,6 +74,11 @@ public class activity_nreclamo1 extends AppCompatActivity implements NavigationV
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
                 intent = new Intent(activity_nreclamo1.this, activity_notificaciones1.class);
+                startActivity(intent);
+                break;
+            case R.id.usuarios:
+                Toast.makeText(this, "Usuarios selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_nreclamo1.this, activity_adminuser1.class);
                 startActivity(intent);
                 break;
             case R.id.datospersonales:

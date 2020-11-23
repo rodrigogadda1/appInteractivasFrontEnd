@@ -27,7 +27,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,14 +37,11 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosD
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.AdministradoUnidad;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EdificioService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.EspecialidadService;
 
 import java.io.FileNotFoundException;
@@ -55,7 +51,6 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -402,8 +397,7 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                 .show();
     }
 
-    //para la slide bar
-
+    //metodos de slideBar desde ahora
     @Override
     public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
@@ -429,37 +423,92 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                Toast.makeText(this, "Ya estas en esa pantalla!", Toast.LENGTH_SHORT).show();
+                GoToNewReclamo ();
                 break;
             case R.id.reclamoactivo:
-                Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                GoToReclamosActivos ();
                 break;
             case R.id.reclamohistorial:
-                Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
-                Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+                GoToNotificaciones ();
                 break;
             case R.id.configuracion:
-                Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, ConfiguracionesUser.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
-                Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, InfoAppActivity.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
+                GoToAcercaApp();
                 break;
             case R.id.cerrarsesion:
-                Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, MainActivityLogin.class);
-                startActivity(intent);
+                GoToCerrarSesion ();
+                break;
+            case R.id.usuarios:
+                GoToAdministracionUsuarios ();
                 break;
             default:
                 break;
         }
         return true;
+
+    }
+    private void GoToNotificaDetalle (){
+        Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Notificaciones2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToNewReclamo (){
+        Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CreacionReclamo1.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToViewReclamosHist () {
+        Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, HistorialReclamos1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+
+    }
+    private void GoToNotificaciones () {
+        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(this, Notificaciones1.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
+    private void GoToConfiguraciones(){
+        Intent intent = new Intent(this, ConfiguracionesUser.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    private void GoToReclamosActivos () {
+        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+        //Intent intent= new Intent(this, Notificaciones1.class);
+        //intent.putExtra("user", user);
+        //startActivity(intent);
+        Intent intent = new Intent(this, CreacionReclamo4.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+
+    }
+    private void GoToCerrarSesion () {
+        Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivityLogin.class);
+        startActivity(intent);
+    }
+    private void GoToAcercaApp () {
+        Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, InfoAppActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToAdministracionUsuarios () {
+        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, adminuserPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
     }
 }

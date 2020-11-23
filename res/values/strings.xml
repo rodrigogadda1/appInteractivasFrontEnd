@@ -72,5 +72,6 @@
     <string name="nreclamo1">Nuevo Reclamo</string>
     <string name="nreclamo2_texto1">\nReclamo Número XXX\nSobre Edificio X\nEspacio/Unidad X\nDueño/Inquilino</string>
     <string name="nreclamo2_texto2">Detalles del Reclamo</string>
+    <string name="detalle_usuario">\nNombre: XXX\nApellido: XXX\nDNI: 1234\nDueño/Inquilino</string>
     <string name="especialidad">Especialidad</string>
 </resources>

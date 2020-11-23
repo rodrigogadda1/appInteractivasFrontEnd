@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <activity android:name=".CreacionReclamo4"></activity>
         <activity android:name=".CreacionReclamo3"></activity>
         <activity android:name=".CreacionReclamo2"></activity>
         <activity android:name=".CreacionReclamo1" />
@@ -28,6 +29,10 @@
         <activity android:name=".CargaDatosPersonalesFirst" />
         <activity android:name=".ConsentisacionCargaDatos" />
         <activity android:name=".HistorialReclamos1" />
+        <activity android:name=".Notificaciones1" />
+        <activity android:name=".Notificaciones2" />
+        <activity android:name=".adminuserPrincipal" />
+        <activity android:name=".adminuserNewUser" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

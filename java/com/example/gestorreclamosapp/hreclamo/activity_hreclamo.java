@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
+import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
@@ -75,6 +76,11 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
                 intent = new Intent(activity_hreclamo.this, activity_notificaciones1.class);
                 startActivity(intent);
                 break;
+            case R.id.usuarios:
+                Toast.makeText(this, "Usuarios selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_hreclamo.this, activity_adminuser1.class);
+                startActivity(intent);
+                break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
                 intent = new Intent(activity_hreclamo.this, activity_datospers.class);
@@ -111,12 +117,10 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
         Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
         startActivity(intent);
     }
-
     public void next(View view) {
         Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
         startActivity(intent);
     }
-
     public void back(View view) {
         Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
         startActivity(intent);
