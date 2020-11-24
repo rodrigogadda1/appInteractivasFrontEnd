@@ -99,7 +99,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
 
             if (  (reclamo.getFotos() != null) && (reclamo.getFotos().size() > 0)  ) {
                 //se agregan al scrollview
-                mostrarDialogo("probando 95", String.valueOf(reclamo.getFotos().size()));
+                //mostrarDialogo("probando 95", String.valueOf(reclamo.getFotos().size()));
                 rellenarConImagenes(reclamo.getFotos());
                 //next.set
                 //next.setImageBitmap(MetodosDeVerificacion.resizeBitmap(MetodosDeVerificacion.stringToBitmap(reclamo.getFotos().get(0).getUri_foto())));
@@ -178,6 +178,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         next.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
+                                        reclamo.setFotos(null);
                                         if (testearConnection().equals("NotConnected")){
                                             long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
                                             mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
@@ -200,7 +201,6 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                                         } else {
                                             CrearReclamo();
                                             /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
-                                            pasar_a_pantalla_reclamos_4();
                                             //mostrarToast("se manda a crear");
                                         }
                                     }
@@ -354,9 +354,10 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         return salida;
     }
 
-    private void pasar_a_pantalla_reclamos_4(){
+    private void pasar_a_pantalla_reclamos_4(long id_reclamo){
         Intent intent = new Intent(this, CreacionReclamo4.class);
         intent.putExtra("user",user);
+        intent.putExtra("id_reclamo",id_reclamo);
         startActivity(intent);
     };
     private void CrearReclamo(){
@@ -375,7 +376,10 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             call.enqueue(new Callback<Reclamo>() {
                 @Override
                 public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
-                    //mostrarDialogo("probando",response.body().toString());
+                    if (response.isSuccessful()){
+                        pasar_a_pantalla_reclamos_4(response.body().getId_reclamo());
+                    }
+
                     //if (  response.body() != null ) {
                     //mostrarDialogo("probando",response.body().toString());
                     //}
@@ -447,7 +451,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                GoToNewReclamo ();
+                mostrarToast("ya estas en esta pantalla.");
                 break;
             case R.id.reclamoactivo:
                 GoToReclamosActivos ();
