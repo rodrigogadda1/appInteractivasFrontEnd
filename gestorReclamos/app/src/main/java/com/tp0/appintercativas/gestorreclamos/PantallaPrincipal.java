@@ -67,7 +67,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     private TextView txtNotificacionesPpal,principaltexto2;
     private ScrollView ScrollViewReclamos;
 
-    private Button btnReclamo1,btnReclamo2,btnReclamo3,btnReclamo4,btnReclamo5,btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
+    private Button btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
     User user;
 
     //para la slide bar
@@ -95,11 +95,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         /* FIN CODIGO PARA SCROLLVIEW RECLAMOS  */
 
-        btnReclamo1 = (Button) findViewById(R.id.btnReclamo1);
-        btnReclamo2 = (Button) findViewById(R.id.btnReclamo2);
-        btnReclamo3 = (Button) findViewById(R.id.btnReclamo3);
-        btnReclamo4 = (Button) findViewById(R.id.btnReclamo4);
-        btnReclamo5 = (Button) findViewById(R.id.btnReclamo5);
         btnNotificaciones = (Button) findViewById(R.id.btnNotificaciones);
         btnHistorialReclamos = (Button) findViewById(R.id.btnHistorialReclamos);
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
@@ -144,32 +139,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
-
-        btnReclamo1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
 
         btnNotificaciones.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

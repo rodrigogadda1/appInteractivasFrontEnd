@@ -6,10 +6,12 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +44,9 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,6 +56,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
 
     //para SQLite
     private ReclamosHelper reclamosHelper;
+
+    //para las imagenes
+    ImageView image1,image2,image3,image4,image5,image6,image7;
 
     User user;
     Administrado administrado;
@@ -74,11 +82,6 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             user = (User) intent.getSerializableExtra("user");
             //mostrarDialogo("probando 81", "se llego");
             reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
-
-            //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            //ClipData clip = ClipData.newPlainText("label", "linea 80 " + String.valueOf(reclamo.toString()));
-            //clipboard.setPrimaryClip(clip);
-
             administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
             back = (ImageView) findViewById(R.id.back);
@@ -86,6 +89,13 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             next = (ImageView) findViewById(R.id.next);
 
             listaimagenes = (ScrollView) findViewById(R.id.listaimagenes);
+            image1 = (ImageView) findViewById(R.id.image1);
+            image2 = (ImageView) findViewById(R.id.image2);
+            image3 = (ImageView) findViewById(R.id.image3);
+            image4 = (ImageView) findViewById(R.id.image4);
+            image5 = (ImageView) findViewById(R.id.image5);
+            image6 = (ImageView) findViewById(R.id.image6);
+            image7 = (ImageView) findViewById(R.id.image7);
 
             if (  (reclamo.getFotos() != null) && (reclamo.getFotos().size() > 0)  ) {
                 //se agregan al scrollview
@@ -150,72 +160,89 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         //fin codigo para slide bar
 
         back.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                           GoBack();
-                                       }
-                                   }
+                                    @Override
+                                    public void onClick(View view) {
+                                        GoBack();
+                                    }
+                                }
         );
 
         exit.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View view) {
-                                                        GoPantallaPrincipal();
-                                                    }
-                                                }
+                                    @Override
+                                    public void onClick(View view) {
+                                        GoPantallaPrincipal();
+                                    }
+                                }
         );
 
         next.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View view) {
-                        if (testearConnection().equals("NotConnected")){
-                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
-                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
-                            //aca se manda a insertar hasta tener wifi
-                        } else if (testearConnection().equals("DataMobile")){
-                            if (user.isDatos_moviles()) {
-                                //mostrarToast("se manda a crear");
-                                CrearReclamo();
-                            } else {
-                                Reclamo_SQLLite reclamo_sqlLite = pasarDeReclamoAReclamo_SQLite(reclamo);
-                                //CLIPBOARD
-                                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                                //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
-                                //clipboard.setPrimaryClip(clip);
-                                //CLIPBOARD
-                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
-                                mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
-                                //aca se manda a insertar hasta tener wifi
-                            }
-                        } else {
-                            CrearReclamo();
-                            /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
-                            pasar_a_pantalla_reclamos_4();
-                            //mostrarToast("se manda a crear");
-                        }
-                   }
-           }
+                                    @Override
+                                    public void onClick(View view) {
+                                        if (testearConnection().equals("NotConnected")){
+                                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
+                                            //aca se manda a insertar hasta tener wifi
+                                        } else if (testearConnection().equals("DataMobile")){
+                                            if (user.isDatos_moviles()) {
+                                                //mostrarToast("se manda a crear");
+                                                CrearReclamo();
+                                            } else {
+                                                Reclamo_SQLLite reclamo_sqlLite = pasarDeReclamoAReclamo_SQLite(reclamo);
+                                                //CLIPBOARD
+                                                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                                                //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
+                                                //clipboard.setPrimaryClip(clip);
+                                                //CLIPBOARD
+                                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                                mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
+                                                //aca se manda a insertar hasta tener wifi
+                                            }
+                                        } else {
+                                            CrearReclamo();
+                                            /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
+                                            pasar_a_pantalla_reclamos_4();
+                                            //mostrarToast("se manda a crear");
+                                        }
+                                    }
+                                }
         );
     }
 
     protected void rellenarConImagenes(List<Foto> fotos) {
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
         for (int i = 0; i < fotos.size(); i++) {
-            LinearLayout line = new LinearLayout(this);
-            line.setOrientation(LinearLayout.HORIZONTAL);
-            line.setGravity(Gravity.CENTER);
-            ImageView imageView = new ImageView(this);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-            lp.gravity = Gravity.CENTER;
-            imageView.setLayoutParams(lp);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(fotos.get(i).getUri_foto()));
-            //imageView.setImageBitmap(MetodosDeVerificacion.stringToBitmap(fotos.get(i).getUri_foto()));
-            line.addView(imageView);
-            linearLayout.addView(line);
+            Bitmap bitmap =pasar_a_Bitmap(fotos.get(i).getUri_foto());
+            switch(i) {
+                case 0:
+                    image1.setImageBitmap(bitmap);
+                    break;
+                case 1:
+                    image2.setImageBitmap(bitmap);
+                    break;
+                case 2:
+                    image3.setImageBitmap(bitmap);
+                    break;
+                case 3:
+                    image4.setImageBitmap(bitmap);
+                    break;
+                case 4:
+                    image5.setImageBitmap(bitmap);
+                    break;
+                case 5:
+                    image6.setImageBitmap(bitmap);
+                    break;
+                case 6:
+                    image7.setImageBitmap(bitmap);
+                    break;
+            }
         }
-        listaimagenes.addView(linearLayout);
     }
+
+    private Bitmap pasar_a_Bitmap (String encodedImage){
+        byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+    }
+
 
     private Reclamo_SQLLite pasarDeReclamoAReclamo_SQLite (Reclamo reclamo){
         Reclamo_SQLLite reclamo_sqlLite = new Reclamo_SQLLite();
@@ -350,7 +377,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                 public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
                     //mostrarDialogo("probando",response.body().toString());
                     //if (  response.body() != null ) {
-                        //mostrarDialogo("probando",response.body().toString());
+                    //mostrarDialogo("probando",response.body().toString());
                     //}
 
                 }

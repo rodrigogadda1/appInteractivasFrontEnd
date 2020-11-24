@@ -211,9 +211,9 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                          reclamo.setAdministrado(administrado2);
                          reclamo.setUsername(user.getUsername());
 
-                         //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                         //ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
-                         //clipboard.setPrimaryClip(clip);
+                         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                         ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
+                         clipboard.setPrimaryClip(clip);
 
                          pasar_a_pantalla_reclamos_3(reclamo);
                      }
@@ -262,7 +262,8 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                         cursor.moveToFirst();
                         cursor.getString(column_index);
                     }
-                    fotoNew.setUri_foto(selectedImage.getPath());
+                    fotoNew.setUri_foto(MetodosDeVerificacion.getEncoded64ImageStringFromBitmap(BitmapFactory.decodeStream(imageStream)));
+                    //selectedImage.getPath()
                 }
                 reclamoFotos.add(fotoNew);
                 reclamo.setFotos(reclamoFotos);
