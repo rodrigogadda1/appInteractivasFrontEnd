@@ -85,140 +85,140 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creacion_reclamo2);
 
-         Intent intent = getIntent();
-         user = (User) intent.getSerializableExtra("user");
-         reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
-         administrado = (Administrado)  intent.getSerializableExtra("administrado");
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
+        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
+        administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-         txtReclamoResumen = (TextView) findViewById(R.id.txtReclamoResumen);
-         txtReclamoDetalle = (TextView) findViewById(R.id.txtReclamoDetalle);
+        txtReclamoResumen = (TextView) findViewById(R.id.txtReclamoResumen);
+        txtReclamoDetalle = (TextView) findViewById(R.id.txtReclamoDetalle);
 
-         //aca va el codigo para poner resumen de la pantalla anterior --> txtReclamoResumen
-         //Reclamo Número XXX\nSobre Edificio X\nEspacio/Unidad X\nDueño/Inquilino --> string a tener en cuenta
-         String reclamoResumen = ""+"Edificio "+reclamo.getEdificio().getNombre()+"\n";
+        //aca va el codigo para poner resumen de la pantalla anterior --> txtReclamoResumen
+        //Reclamo Número XXX\nSobre Edificio X\nEspacio/Unidad X\nDueño/Inquilino --> string a tener en cuenta
+        String reclamoResumen = ""+"Edificio "+reclamo.getEdificio().getNombre()+"\n";
 
-         if ( (reclamo.getUnidad() != null ) && (reclamo.getUnidad().getId_unidad() != 0) ) {
+        if ( (reclamo.getUnidad() != null ) && (reclamo.getUnidad().getId_unidad() != 0) ) {
             try {
                 reclamoResumen += "Unidad " + " Piso:" +reclamo.getUnidad().getPiso()+ " Unidad: "+ reclamo.getUnidad().getUnidad() + "\n";
                 reclamoResumen += " Relacion " + getRelacion() ;
             } catch (Exception e){
                 mostrarDialogo("error", e.getMessage());
-             }
-         } else {
+            }
+        } else {
             reclamoResumen+=" Espacio Comun "+reclamo.getEspacioComun().getNombre();
-         }
+        }
 
-         txtReclamoResumen.setText(reclamoResumen);
-         //fin codigo resumen de la pantalla anterior
+        txtReclamoResumen.setText(reclamoResumen);
+        //fin codigo resumen de la pantalla anterior
 
-         spnEspecialidades = (Spinner) findViewById(R.id.spnEspecialidades);
-         agregarEspecialidades();
+        spnEspecialidades = (Spinner) findViewById(R.id.spnEspecialidades);
+        agregarEspecialidades();
 
-         editReclamoComentario = (EditText) findViewById(R.id.editReclamoComentario);
+        editReclamoComentario = (EditText) findViewById(R.id.editReclamoComentario);
 
-         imgvCamara = (ImageView) findViewById(R.id.imgvCamara);
-         imgvArchivos = (ImageView) findViewById(R.id.imgvArchivos);
-         btnBack = (ImageView) findViewById(R.id.btnBack);
-         btnPantallaPrincipal = (ImageView) findViewById(R.id.btnPantallaPrincipal);
-         btnNext = (ImageView) findViewById(R.id.btnNext);
+        imgvCamara = (ImageView) findViewById(R.id.imgvCamara);
+        imgvArchivos = (ImageView) findViewById(R.id.imgvArchivos);
+        btnBack = (ImageView) findViewById(R.id.btnBack);
+        btnPantallaPrincipal = (ImageView) findViewById(R.id.btnPantallaPrincipal);
+        btnNext = (ImageView) findViewById(R.id.btnNext);
 
-         //codigo para slide bar
-         Toolbar toolbar = findViewById(R.id.toolbar);
-         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        //codigo para slide bar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-         drawerLayout = findViewById(R.id.container);
-         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
-         drawerLayout.addDrawerListener(toggle);
-         toggle.syncState();
+        drawerLayout = findViewById(R.id.container);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-         navigationView = findViewById(R.id.navigation_view);
-         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-         navigationView.setItemIconTintList(null);
+        navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+        navigationView.setItemIconTintList(null);
 
-         drawerLayout.addDrawerListener(this);
-         //fin codigo para slide bar
+        drawerLayout.addDrawerListener(this);
+        //fin codigo para slide bar
 
         //para captura de fotos
         url_fotos = new ArrayList<String>();
         //para captura de fotos
 
         imgvCamara.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
-                                                if (!tengoCamara()){
-                                                    mostrarToast("No tenes camara disponible");
-                                                } else {
-                                                    OpenCamara();
-                                                }
-                                         }
-                                     }
+                                          @Override
+                                          public void onClick(View view) {
+                                              if (!tengoCamara()){
+                                                  mostrarToast("No tenes camara disponible");
+                                              } else {
+                                                  OpenCamara();
+                                              }
+                                          }
+                                      }
         );
 
         imgvArchivos.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
-                                             //aca se escribe que hacer
-                                             if (  (reclamo.getFotos() == null) ||  (reclamo.getFotos().size() < 7)  ) {
-                                                 OpenGallery();
-                                             } else  {
-                                                 mostrarToast("No se pueden cargar mas imagenes.");
-                                             }
-                                         }
-                                     }
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                if (  (reclamo.getFotos() == null) ||  (reclamo.getFotos().size() < 7)  ) {
+                                                    OpenGallery();
+                                                } else  {
+                                                    mostrarToast("No se pueden cargar mas imagenes.");
+                                                }
+                                            }
+                                        }
         );
 
         btnBack.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                     GoBack();
-                 }
-             }
+                                       @Override
+                                       public void onClick(View view) {
+                                           GoBack();
+                                       }
+                                   }
         );
 
         btnPantallaPrincipal.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                     GoPantallaPrincipal();
-                 }
-             }
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        GoPantallaPrincipal();
+                                                    }
+                                                }
         );
 
         btnNext.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                     boolean valido = true;
+                                       @Override
+                                       public void onClick(View view) {
+                                           boolean valido = true;
 
-                     if (!spnEspecialidades.getSelectedItem().toString().equals("Seleccione una especialidad")){
-                         reclamo.setEspecialidad(especialidades.get(spnEspecialidades.getSelectedItemPosition()-1));
-                     } else {
-                         valido = false;
-                         mostrarToast("Es necesario seleccionar una categoria valida.");
-                     }
+                                           if (!spnEspecialidades.getSelectedItem().toString().equals("Seleccione una especialidad")){
+                                               reclamo.setEspecialidad(especialidades.get(spnEspecialidades.getSelectedItemPosition()-1));
+                                           } else {
+                                               valido = false;
+                                               mostrarToast("Es necesario seleccionar una categoria valida.");
+                                           }
 
-                     if (!editReclamoComentario.getText().toString().equals("")){
-                         reclamo.setDescripcion(editReclamoComentario.getText().toString());
-                     } else {
-                         valido = false;
-                         mostrarToast("Es necesario completar el detalle del reclamo para continuar.");
-                     }
+                                           if (!editReclamoComentario.getText().toString().equals("")){
+                                               reclamo.setDescripcion(editReclamoComentario.getText().toString());
+                                           } else {
+                                               valido = false;
+                                               mostrarToast("Es necesario completar el detalle del reclamo para continuar.");
+                                           }
 
-                     if ( valido ) {
-                         //mostrarDialogo("probando", reclamo.toString());
-                         reclamo.setEstado(GeneradorEstadosObjects.getEstadoObject("Abierto"));
-                         Administrado administrado2 = new Administrado();
-                         administrado2.setId_administrado(administrado.getId_administrado());
-                         administrado2.setId_user(administrado.getId_user());
-                         reclamo.setAdministrado(administrado2);
-                         reclamo.setUsername(user.getUsername());
+                                           if ( valido ) {
+                                               //mostrarDialogo("probando", reclamo.toString());
+                                               reclamo.setEstado(GeneradorEstadosObjects.getEstadoObject("Abierto"));
+                                               Administrado administrado2 = new Administrado();
+                                               administrado2.setId_administrado(administrado.getId_administrado());
+                                               administrado2.setId_user(administrado.getId_user());
+                                               reclamo.setAdministrado(administrado2);
+                                               reclamo.setUsername(user.getUsername());
 
-                         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                         ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
-                         clipboard.setPrimaryClip(clip);
+                                               ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                                               ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
+                                               clipboard.setPrimaryClip(clip);
 
-                         pasar_a_pantalla_reclamos_3(reclamo);
-                     }
-                 }
-             }
+                                               pasar_a_pantalla_reclamos_3(reclamo);
+                                           }
+                                       }
+                                   }
         );
     }
 
