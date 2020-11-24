@@ -15,13 +15,16 @@ public class activity_bienvenido extends Activity {
         setContentView(R.layout.activity_bienvenido);
     }
 
-    public void next(View view) {
-        Intent intent = new Intent(activity_bienvenido.this, activity_datos1.class);
+    public void back(View view) {
+        Intent intent = new Intent(activity_bienvenido.this, LoginActivity.class);
         startActivity(intent);
     }
-
     public void exit(View view) {
         Intent intent = new Intent(activity_bienvenido.this, LoginActivity.class);
+        startActivity(intent);
+    }
+    public void next(View view) {
+        Intent intent = new Intent(activity_bienvenido.this, activity_datos1.class);
         startActivity(intent);
     }
 }

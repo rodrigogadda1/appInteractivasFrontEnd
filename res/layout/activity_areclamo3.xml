@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".adminuser4.activity_adminuser4">
+    tools:context=".areclamo3.activity_areclamo3">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_content"
@@ -22,11 +22,11 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/principal_img"
+            android:id="@+id/areclamo3_img"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/image03"
+            android:src="@drawable/image19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +42,9 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Asignaciones del Usuario"
+            android:text="Editar Reclamo Agrupado"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -52,11 +52,11 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ScrollView
-            android:id="@+id/detalles"
+            android:id="@+id/areclamo3"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="14dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:fadeScrollbars="false"
@@ -74,13 +74,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:orientation="vertical" >
-
                 <TextView
-                    android:id="@+id/detalle_usuario"
+                    android:id="@+id/areclamo3_texto1"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/detalle_usuario"
+                    android:text="@string/nreclamo2_texto1"
                     android:padding="6dip"
                     android:textColor="#000000"
                     android:textSize="18sp" >
@@ -88,55 +87,100 @@
             </LinearLayout>
         </ScrollView>
 
-        <Button
-            android:id="@+id/cambiarpassword"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/button_red"
-            android:text="Cambiar Password"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold"
-            android:onClick="cambiarpassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detalles" />
-
         <TextView
-            android:id="@+id/principaltexto2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:id="@+id/especialidad"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="24dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_gray"
-            android:text="Lista de Asignaciones :"
-            android:padding="6dip"
+            android:text="Especialidad :"
             android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:padding="6dip"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cambiarpassword" />
+            app:layout_constraintTop_toBottomOf="@+id/areclamo3" />
+
+        <Spinner
+            android:id="@+id/listaespecialidades"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/especialidad_sp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/areclamo3" />
+
+        <TextView
+            android:id="@+id/asignarreclamo"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Asignar Agrupado :"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/especialidad" />
+
+        <Spinner
+            android:id="@+id/listaasignados"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaasignados"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaespecialidades" />
+
+        <EditText
+            android:id="@+id/detalle_reclamo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_white"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:hint="Ingrese los detalles del Reclamo."
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaasignados" />
 
         <ScrollView
-            android:id="@+id/listausuarios"
+            android:id="@+id/listaimagenes"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="2dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="14dp"
             android:fillViewport="true"
-            android:background="#FFFFFF"
             android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
             android:scrollbars="vertical"
             android:fadeScrollbars="false"
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
+            app:layout_constraintTop_toBottomOf="@+id/detalle_reclamo" >
             <LinearLayout
                 android:id="@+id/linearLayout_2"
                 android:layout_width="fill_parent"
@@ -145,78 +189,71 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center_vertical|center_horizontal">
-                <Button
-                    android:id="@+id/asignacion_1"
+                <ImageView
+                    android:id="@+id/image1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo de Asignación 1"
-                    android:textAlignment="viewStart"
-                    android:onClick="asignacion_1">
-                </Button>
-                <Button
-                    android:id="@+id/asignacion_2"
+                    android:src="@drawable/image40"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/image2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo de Asignación 2"
-                    android:textAlignment="viewStart"
-                    android:onClick="asignacion_2">
-                </Button>
-                <Button
-                    android:id="@+id/asignacion_3"
+                    android:src="@drawable/image41"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/image3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo de Asignación 3"
-                    android:textAlignment="viewStart"
-                    android:onClick="asignacion_3">
-                </Button>
-                <Button
-                    android:id="@+id/asignacion_4"
+                    android:src="@drawable/image42"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/image4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo de Asignación 4"
-                    android:textAlignment="viewStart"
-                    android:onClick="asignacion_4">
-                </Button>
+                    android:src="@drawable/image43"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ListView android:layout_weight="1"
+                    android:layout_height="0dp"
+                    android:layout_width="0dp" />
             </LinearLayout>
         </ScrollView>
 
-        <Button
-            android:id="@+id/asignarunidad"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/estados"
+            android:layout_width="130dp"
             android:layout_height="40dp"
+            android:layout_marginTop="14dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/button_yellow"
-            android:text="Asignar Unidad"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textStyle="normal|bold"
-            android:onClick="asignarunidad"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Estados :"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
+            app:layout_constraintTop_toBottomOf="@+id/listaimagenes" />
 
-        <Button
-            android:id="@+id/guardar"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/listaestado"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="14dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/button_red"
-            android:text="Guardar"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold"
-            android:onClick="guardar"
+            android:background="@drawable/rounded_white"
+            android:entries="@array/listaestado"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/asignarunidad" />
+            app:layout_constraintTop_toBottomOf="@+id/listaimagenes" />
 
         <ImageView
             android:id="@+id/back"
@@ -228,26 +265,43 @@
             android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/exit"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guardar"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintEnd_toStartOf="@id/exit"
+            app:layout_constraintTop_toBottomOf="@+id/listaestado" />
 
         <ImageView
             android:id="@+id/exit"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="90dp"
-            android:layout_marginEnd="90dp"
+            android:layout_marginStart="85dp"
             android:layout_marginBottom="4dp"
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toBottomOf="@+id/guardar"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintEnd_toStartOf="@+id/next"
+            app:layout_constraintTop_toBottomOf="@+id/listaestado" />
+
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="guardar"
+            android:background="@drawable/button_red"
+            android:text="Guardar"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/exit"
+            app:layout_constraintTop_toBottomOf="@+id/listaestado" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

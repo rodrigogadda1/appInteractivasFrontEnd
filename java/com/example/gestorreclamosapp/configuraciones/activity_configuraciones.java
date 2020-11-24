@@ -13,6 +13,10 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
+import com.example.gestorreclamosapp.adminuser2.activity_adminuser2;
+import com.example.gestorreclamosapp.areclamo1.activity_areclamo1;
+import com.example.gestorreclamosapp.datospers.activity_datospers;
+import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
 import com.example.gestorreclamosapp.notificaciones1.activity_notificaciones1;
 import com.example.gestorreclamosapp.nreclamo1.activity_nreclamo1;
@@ -69,9 +73,13 @@ public class activity_configuraciones extends AppCompatActivity implements Navig
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_configuraciones.this, activity_areclamo1.class);
+                startActivity(intent);
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_configuraciones.this, activity_hreclamo.class);
+                startActivity(intent);
                 break;
             case R.id.notificaciones:
                 Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
@@ -85,6 +93,8 @@ public class activity_configuraciones extends AppCompatActivity implements Navig
                 break;
             case R.id.datospersonales:
                 Toast.makeText(this, "Datos Personales selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_configuraciones.this, activity_datospers.class);
+                startActivity(intent);
                 break;
             case R.id.configuracion:
                 Toast.makeText(this, "Configuraciones selected", Toast.LENGTH_SHORT).show();
@@ -111,8 +121,9 @@ public class activity_configuraciones extends AppCompatActivity implements Navig
     }
 
     public void guardar(View view) {
-        String s = "Estado: " + (seleccionBox.isChecked() ? "Marcado" : "No Marcado");
-        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Guardar", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(activity_configuraciones.this, activity_principal.class);
+        startActivity(intent);
     }
 
     @Override
