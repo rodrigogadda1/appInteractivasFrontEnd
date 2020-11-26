@@ -180,8 +180,8 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                                     public void onClick(View view) {
                                         reclamo.setFotos(null);
                                         if (testearConnection().equals("NotConnected")){
-                                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
-                                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
+                                            //long nro = reclamosHelper.saveReclamo(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                            //mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
                                             //aca se manda a insertar hasta tener wifi
                                         } else if (testearConnection().equals("DataMobile")){
                                             if (user.isDatos_moviles()) {
@@ -194,8 +194,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                                                 //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
                                                 //clipboard.setPrimaryClip(clip);
                                                 //CLIPBOARD
-                                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                                long nro =  reclamosHelper.saveReclamo(pasarDeReclamoAReclamo_SQLite(reclamo));
                                                 mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
+                                                pasar_a_pantalla_reclamos_4(0,false);
                                                 //aca se manda a insertar hasta tener wifi
                                             }
                                         } else {
@@ -323,14 +324,6 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             reclamo_sqlLite.setFotos(fotos);
         }
 
-        if (reclamo.getFotos().size() > 0) {
-            List <String> fotosString = new ArrayList<String>();
-            for(int i = 0; i < reclamo.getFotos().size(); i++){
-                fotosString.add(reclamo.getFotos().get(i).getUri_foto());
-            }
-            reclamo_sqlLite.setFotos(fotosString);
-        }
-
         return reclamo_sqlLite;
     }
 
@@ -354,10 +347,11 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         return salida;
     }
 
-    private void pasar_a_pantalla_reclamos_4(long id_reclamo){
+    private void pasar_a_pantalla_reclamos_4(long id_reclamo, boolean alreadyLoaded){
         Intent intent = new Intent(this, CreacionReclamo4.class);
         intent.putExtra("user",user);
         intent.putExtra("id_reclamo",id_reclamo);
+        intent.putExtra("alreadyLoaded", alreadyLoaded);
         startActivity(intent);
     };
     private void CrearReclamo(){
@@ -377,7 +371,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                 @Override
                 public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
                     if (response.isSuccessful()){
-                        pasar_a_pantalla_reclamos_4(response.body().getId_reclamo());
+                        pasar_a_pantalla_reclamos_4(response.body().getId_reclamo(),true);
                     }
 
                     //if (  response.body() != null ) {

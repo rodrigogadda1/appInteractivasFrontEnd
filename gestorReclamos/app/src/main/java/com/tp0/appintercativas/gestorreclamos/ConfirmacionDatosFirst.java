@@ -51,9 +51,9 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
         user = (User) intent.getSerializableExtra("user");
         user.setFirstTime("false");
 
-        btnBack = (ImageView) findViewById(R.id.btnBack);
+        btnBack = (ImageView) findViewById(R.id.btnBackRec2);
         btnCancel = (ImageView) findViewById(R.id.btnCancel);
-        btnOk = (ImageView) findViewById(R.id.btnOk);
+        btnOk = (ImageView) findViewById(R.id.btnNextRec);
 
         txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         txtDatos = (TextView) findViewById(R.id.txtDatos);
@@ -65,7 +65,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                     +"Pregunta: "+user.getPreguntaSeguridad()+"\n"
                     +"Respuesta: "+user.getRespuestaSeguridad()+"\n"
                     +"Email: "+user.getEmail()+"\n"
-                    +"Celular: "+user.getCelular()+"\n\n";
+                    +"Celular: "+user.getCelular()+"\n";
 
         Retrofit retrofit = Controller.ConfiguracionIP();
 
@@ -86,7 +86,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                             salidaDatos += "Edificio: " + unidad.getEdificio().getNombre() + " - " + unidad.getEdificio().getDireccion()
                                     + " Piso: " + unidad.getPiso() + "\n"
                                     + " Unidad: " + unidad.getUnidad() + "\n"
-                                    + " Tipo: " + adminUnidad.getRelacion() + "\n \n";
+                                    + " Tipo: " + adminUnidad.getRelacion() ;
                         }
                     }
                     txtDatos.setText(salidaDatos);
@@ -113,8 +113,7 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                             }
 
                             if(response.body().getInspectorespecialidad().size() > 0) {
-                                salidaDatos += "\n\n" +
-                                        "Especialidades:\n";
+                                salidaDatos += "Especialidades:\n";
                             }
 
                             for (int i = 0; i < response.body().getInspectorespecialidad().size(); i++){
