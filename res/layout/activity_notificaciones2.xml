@@ -37,8 +37,8 @@
             android:id="@+id/notificaciones2"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_marginTop="14dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:gravity="center"
@@ -90,7 +90,7 @@
 
     <TextView
         android:id="@+id/notificaciones2_Detalle"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
@@ -108,7 +108,7 @@
 
         <Button
             android:id="@+id/borrar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
@@ -125,48 +125,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notificaciones2_Detalle" />
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:onClick="back"
-        android:src="@drawable/image12"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/exit"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/borrar"
-        app:layout_constraintVertical_bias="1.0" />
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="back"
+            android:src="@drawable/image12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exit"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/borrar"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/exit"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="24dp"
-        android:onClick="exit"
-        android:src="@drawable/image04"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/borrar"
-        app:layout_constraintVertical_bias="1.0" />
+        <ImageView
+            android:id="@+id/exit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginEnd="90dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="exit"
+            android:src="@drawable/image04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/next"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/borrar"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/next"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:onClick="next"
-        android:src="@drawable/image05"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/exit"
-        app:layout_constraintTop_toBottomOf="@+id/borrar"
-        app:layout_constraintVertical_bias="1.0" />
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="next"
+            android:src="@drawable/image05"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/exit"
+            app:layout_constraintTop_toBottomOf="@+id/borrar"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

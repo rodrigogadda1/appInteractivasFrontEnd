@@ -56,4 +56,11 @@
         <item><font size="18"><b>Inquilino</b></font></item>
         <item><font size="18"><b>Vacio</b></font></item>
     </string-array>
+    <string-array name="listaasignados">
+        <item></item>
+        <item><font size="18"><b>Inspector Alejandro</b></font></item>
+        <item><font size="18"><b>Inspector Rodrigo</b></font></item>
+        <item><font size="18"><b>Inspector Pedro</b></font></item>
+        <item><font size="18"><b>Inspector Juan</b></font></item>
+    </string-array>
 </resources>

@@ -130,7 +130,6 @@
             android:layout_height="60dp"
             android:layout_marginEnd="170dp"
             android:layout_marginBottom="24dp"
-            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="@+id/infoaplicacion_img"
             app:layout_constraintEnd_toEndOf="parent"

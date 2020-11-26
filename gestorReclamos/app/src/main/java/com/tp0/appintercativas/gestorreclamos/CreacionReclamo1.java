@@ -7,6 +7,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -91,7 +94,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         listaedificiouser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mostrarToast(listaedificiouser.getSelectedItem().toString());
                 if(!listaedificiouser.getSelectedItem().toString().equals("Seleccionar edificio") ){
                     returnAdministrado(listaedificiouser.getSelectedItem().toString());
                 } else {
@@ -142,16 +144,11 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
 
 
                 reclamo.setUnidad(unidades.get(listaespacios.getSelectedItemPosition()-1));
-
-                /*try{
-                    mostrarDialogo("probando esta linea",reclamo.toStringPersonalizado());
-                } catch (Exception e){
-                    mostrarDialogo("error",e.getMessage());
-                }*/
-
+                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                //ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
+                //clipboard.setPrimaryClip(clip);
                 pasar_a_reclamo_2(reclamo);
             } else {
-                //mostrarDialogo("probando 157", String.valueOf(id_espacios_comunes.get(listaespacios.getSelectedItemPosition()-unidades.size()-1)));
                 pasar_a_creacion_reclamo_2_espacio_comun(reclamo,id_espacios_comunes.get(listaespacios.getSelectedItemPosition()-unidades.size()-1));
             }
 
@@ -169,13 +166,6 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                 if (response.body().getId_espaciocomun() != 0) {
                     Reclamo reclamo2 = reclamo;
                     reclamo2.setEspacioComun(response.body());
-
-                    /*try{
-                        mostrarDialogo("probando", reclamo2.toString());
-                    } catch (Exception e){
-                        mostrarDialogo("error",e.getMessage());
-                    }*/
-
                     pasar_a_reclamo_2(reclamo2);
 
                 } else {
@@ -198,6 +188,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
                 edificioSalida = edificio;
             }
         }
+        //mostrarDialogo("probando linea 193",edificioSalida.toString());
         return edificioSalida;
     }
 
@@ -206,6 +197,9 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         intent.putExtra("user",user);
         intent.putExtra("reclamo", reclamo);
         intent.putExtra("administrado",administrado);
+        //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        //ClipData clip = ClipData.newPlainText("label",String.valueOf(reclamo.toString()));
+        //clipboard.setPrimaryClip(clip);
         startActivity(intent);
     }
 

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context=".areclamo1.activity_areclamo1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/principal_img"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/principaltexto1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_gray"
+            android:gravity="center"
+            android:text="Reclamos Activos"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <Button
+            android:id="@+id/filtro"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_yellow"
+            android:text="Filtro"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:onClick="filtro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/principaltexto1" />
+
+        <TextView
+            android:id="@+id/principaltexto2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Reclamos Activos :"
+            android:padding="6dip"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filtro" />
+
+        <ScrollView
+            android:id="@+id/listareclamos"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="2dp"
+            android:fillViewport="true"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="8dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical|center_horizontal">
+                <CheckBox
+                    android:id="@+id/reclamo_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 1º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 2º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 3º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 4º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 5º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_6"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 6º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_7"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 7º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+                <CheckBox
+                    android:id="@+id/reclamo_8"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo del 8º Reclamo Activo"
+                    android:padding="6dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"
+                    android:background="@drawable/rounded_white">
+                </CheckBox>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/agrupar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_red"
+            android:text="Nuevo Reclamo Agrupado"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:onClick="agrupar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listareclamos" />
+
+        <Button
+            android:id="@+id/editar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/button_yellow"
+            android:text="Editar Reclamo"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:onClick="editar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agrupar" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="back"
+            android:src="@drawable/image12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/exit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginEnd="90dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="exit"
+            android:src="@drawable/image04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/editar"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_menu"
+        android:background="@drawable/side_nav_bar" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

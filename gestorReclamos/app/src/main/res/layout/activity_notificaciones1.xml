@@ -94,56 +94,49 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 1º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_1">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnNotifica2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 2º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_2">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnNotifica3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 3º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_3">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnNotifica4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 4º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_4">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnNotifica5"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 5º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_5">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnNotifica6"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 6º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_6">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnNotifica7"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo de la 7º Notificación listada"
-                    android:textAlignment="viewStart"
-                    android:onClick="notificacion_7">
+                    android:textAlignment="viewStart">
                 </Button>
             </LinearLayout>
         </ScrollView>
@@ -161,7 +154,6 @@
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textStyle="normal|bold"
-            android:onClick="borrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +165,6 @@
             android:layout_height="60dp"
             android:layout_marginEnd="170dp"
             android:layout_marginBottom="24dp"
-            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="@+id/imgvPpal"
             app:layout_constraintEnd_toEndOf="parent"

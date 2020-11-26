@@ -6,12 +6,21 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Base64;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,14 +31,21 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosDeVerificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,9 +57,14 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
     //para SQLite
     private ReclamosHelper reclamosHelper;
 
+    //para las imagenes
+    ImageView image1,image2,image3,image4,image5,image6,image7;
+
     User user;
     Administrado administrado;
     Reclamo reclamo;
+
+    ScrollView listaimagenes;
 
     ImageView back, exit,next;
     TextView txtReclamoConfirmado,txtVisualizaReclamo;
@@ -55,31 +76,72 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creacion_reclamo3);
 
-        Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("user");
-        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
-        administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        back = (ImageView) findViewById(R.id.btnBackRec1);
-        exit = (ImageView) findViewById(R.id.btnExitRec1);
-        next = (ImageView) findViewById(R.id.btnNextRec1);
+        try {
+            Intent intent = getIntent();
+            user = (User) intent.getSerializableExtra("user");
+            //mostrarDialogo("probando 81", "se llego");
+            reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
+            administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-        txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
-        txtVisualizaReclamo = (TextView) findViewById(R.id.txtVisualizaReclamo);
+            back = (ImageView) findViewById(R.id.back);
+            exit = (ImageView) findViewById(R.id.exit);
+            next = (ImageView) findViewById(R.id.next);
 
-        String detalle = null;
-        detalle = "Especialidad :"+reclamo.getEspecialidad().getNombre()+"\n";
-        detalle+= "Edificio :"+reclamo.getEdificio().getNombre()+"\n";
-        if (reclamo.getUnidad() != null) {
-            detalle+= "Unidad: Piso "+reclamo.getUnidad().getPiso()+" Unidad "+reclamo.getUnidad().getUnidad()+"\n";
-        } else if (reclamo.getEspacioComun() != null) {
-            detalle+= "Espacio Comun: "+reclamo.getEspacioComun().getNombre()+"\n";
+            listaimagenes = (ScrollView) findViewById(R.id.listaimagenes);
+            image1 = (ImageView) findViewById(R.id.image1);
+            image2 = (ImageView) findViewById(R.id.image2);
+            image3 = (ImageView) findViewById(R.id.image3);
+            image4 = (ImageView) findViewById(R.id.image4);
+            image5 = (ImageView) findViewById(R.id.image5);
+            image6 = (ImageView) findViewById(R.id.image6);
+            image7 = (ImageView) findViewById(R.id.image7);
+
+            if (  (reclamo.getFotos() != null) && (reclamo.getFotos().size() > 0)  ) {
+                //se agregan al scrollview
+                //mostrarDialogo("probando 95", String.valueOf(reclamo.getFotos().size()));
+                rellenarConImagenes(reclamo.getFotos());
+                //next.set
+                //next.setImageBitmap(MetodosDeVerificacion.resizeBitmap(MetodosDeVerificacion.stringToBitmap(reclamo.getFotos().get(0).getUri_foto())));
+            }
+
+        } catch (Exception e) {
+            mostrarDialogo("error en linea 87","ver clipboard");
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", e.getMessage());
+            clipboard.setPrimaryClip(clip);
         }
-        detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
-        txtVisualizaReclamo.setText(detalle);
 
-        //para SQLite
-        reclamosHelper = new ReclamosHelper(this);
+
+
+
+        /*
+        Caused by: java.lang.NullPointerException: Attempt to invoke interface method 'int java.util.List.size()' on a null object reference
+        at com.tp0.appintercativas.gestorreclamos.CreacionReclamo3.onCreate(CreacionReclamo3.java:84)
+         */
+
+        try {
+            txtReclamoConfirmado = (TextView) findViewById(R.id.txtReclamoConfirmado);
+
+            String detalle = null;
+            detalle = "Especialidad :"+reclamo.getEspecialidad().getNombre()+"\n";
+            detalle+= "Edificio :"+reclamo.getEdificio().getNombre()+"\n";
+            if (reclamo.getUnidad() != null) {
+                detalle+= "Unidad: Piso "+reclamo.getUnidad().getPiso()+" Unidad "+reclamo.getUnidad().getUnidad()+"\n";
+            } else if (reclamo.getEspacioComun() != null) {
+                detalle+= "Espacio Comun: "+reclamo.getEspacioComun().getNombre()+"\n";
+            }
+            detalle+= "\n"+"Descripcion: "+reclamo.getDescripcion()+"\n";
+            txtReclamoConfirmado.setText(detalle);
+            //para SQLite
+            reclamosHelper = new ReclamosHelper(this);
+        }  catch (Exception e) {
+            mostrarDialogo("error en linea 128","ver clipboard");
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", e.getMessage());
+            clipboard.setPrimaryClip(clip);
+        }
+
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -98,53 +160,89 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         //fin codigo para slide bar
 
         back.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                           GoBack();
-                                       }
-                                   }
+                                    @Override
+                                    public void onClick(View view) {
+                                        GoBack();
+                                    }
+                                }
         );
 
         exit.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View view) {
-                                                        GoPantallaPrincipal();
-                                                    }
-                                                }
+                                    @Override
+                                    public void onClick(View view) {
+                                        GoPantallaPrincipal();
+                                    }
+                                }
         );
 
         next.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View view) {
-                        if (testearConnection().equals("NotConnected")){
-                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
-                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
-                            //aca se manda a insertar hasta tener wifi
-                        } else if (testearConnection().equals("DataMobile")){
-                            if (user.isDatos_moviles()) {
-                                //mostrarToast("se manda a crear");
-                                CrearReclamo();
-                            } else {
-                                Reclamo_SQLLite reclamo_sqlLite = pasarDeReclamoAReclamo_SQLite(reclamo);
-                                //CLIPBOARD
-                                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                                //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
-                                //clipboard.setPrimaryClip(clip);
-                                //CLIPBOARD
-                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
-                                mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
-                                //aca se manda a insertar hasta tener wifi
-                            }
-                        } else {
-                            CrearReclamo();
-                            /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
-                            pasar_a_pantalla_reclamos_4();
-                            //mostrarToast("se manda a crear");
-                        }
-                   }
-           }
+                                    @Override
+                                    public void onClick(View view) {
+                                        reclamo.setFotos(null);
+                                        if (testearConnection().equals("NotConnected")){
+                                            long nro = reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                            mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
+                                            //aca se manda a insertar hasta tener wifi
+                                        } else if (testearConnection().equals("DataMobile")){
+                                            if (user.isDatos_moviles()) {
+                                                //mostrarToast("se manda a crear");
+                                                CrearReclamo();
+                                            } else {
+                                                Reclamo_SQLLite reclamo_sqlLite = pasarDeReclamoAReclamo_SQLite(reclamo);
+                                                //CLIPBOARD
+                                                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                                                //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
+                                                //clipboard.setPrimaryClip(clip);
+                                                //CLIPBOARD
+                                                long nro =  reclamosHelper.saveClub(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                                mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
+                                                //aca se manda a insertar hasta tener wifi
+                                            }
+                                        } else {
+                                            CrearReclamo();
+                                            /*OJO; LLAMO A LA PANTALLA A MODO DE PRUEBA*/
+                                            //mostrarToast("se manda a crear");
+                                        }
+                                    }
+                                }
         );
     }
+
+    protected void rellenarConImagenes(List<Foto> fotos) {
+        for (int i = 0; i < fotos.size(); i++) {
+            Bitmap bitmap =pasar_a_Bitmap(fotos.get(i).getUri_foto());
+            switch(i) {
+                case 0:
+                    image1.setImageBitmap(bitmap);
+                    break;
+                case 1:
+                    image2.setImageBitmap(bitmap);
+                    break;
+                case 2:
+                    image3.setImageBitmap(bitmap);
+                    break;
+                case 3:
+                    image4.setImageBitmap(bitmap);
+                    break;
+                case 4:
+                    image5.setImageBitmap(bitmap);
+                    break;
+                case 5:
+                    image6.setImageBitmap(bitmap);
+                    break;
+                case 6:
+                    image7.setImageBitmap(bitmap);
+                    break;
+            }
+        }
+    }
+
+    private Bitmap pasar_a_Bitmap (String encodedImage){
+        byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+    }
+
 
     private Reclamo_SQLLite pasarDeReclamoAReclamo_SQLite (Reclamo reclamo){
         Reclamo_SQLLite reclamo_sqlLite = new Reclamo_SQLLite();
@@ -216,7 +314,22 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             reclamo_sqlLite.setId_espacioComun(0);
         }
 
-        //aca falta agregar las ubicaciones de las fotos
+        if ( (reclamo.getFotos() != null) &&  (reclamo.getFotos().size() > 0)  ) {
+            List <String> fotos = new ArrayList<String>();
+            for (int i = 0; i < reclamo.getFotos().size(); i++) {
+                Foto foto = reclamo.getFotos().get(i);
+                fotos.add(foto.getUri_foto());
+            }
+            reclamo_sqlLite.setFotos(fotos);
+        }
+
+        if (reclamo.getFotos().size() > 0) {
+            List <String> fotosString = new ArrayList<String>();
+            for(int i = 0; i < reclamo.getFotos().size(); i++){
+                fotosString.add(reclamo.getFotos().get(i).getUri_foto());
+            }
+            reclamo_sqlLite.setFotos(fotosString);
+        }
 
         return reclamo_sqlLite;
     }
@@ -241,9 +354,10 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         return salida;
     }
 
-    private void pasar_a_pantalla_reclamos_4(){
+    private void pasar_a_pantalla_reclamos_4(long id_reclamo){
         Intent intent = new Intent(this, CreacionReclamo4.class);
         intent.putExtra("user",user);
+        intent.putExtra("id_reclamo",id_reclamo);
         startActivity(intent);
     };
     private void CrearReclamo(){
@@ -262,9 +376,12 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             call.enqueue(new Callback<Reclamo>() {
                 @Override
                 public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
-                    //mostrarDialogo("probando",response.body().toString());
+                    if (response.isSuccessful()){
+                        pasar_a_pantalla_reclamos_4(response.body().getId_reclamo());
+                    }
+
                     //if (  response.body() != null ) {
-                        //mostrarDialogo("probando",response.body().toString());
+                    //mostrarDialogo("probando",response.body().toString());
                     //}
 
                 }
@@ -334,7 +451,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                GoToNewReclamo ();
+                mostrarToast("ya estas en esta pantalla.");
                 break;
             case R.id.reclamoactivo:
                 GoToReclamosActivos ();

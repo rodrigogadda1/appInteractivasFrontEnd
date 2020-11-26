@@ -1,5 +1,7 @@
 package com.tp0.appintercativas.gestorreclamos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -32,15 +34,22 @@ public class CreacionReclamo4 extends AppCompatActivity implements NavigationVie
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        Long id_reclamo_confirmado = intent.getLongExtra("id_reclamo",0);
 
         imgReclamoConfirm = (ImageView) findViewById(R.id.imgReclamoConfirm);
         imgvAddReclamo = (ImageView) findViewById(R.id.imgvAddReclamo);
         imgvBackRecConf = (ImageView) findViewById(R.id.imgvBackRecConf);
+        imgvBackRecConf.setVisibility(View.INVISIBLE);
+        imgvBackRecConf.setEnabled(false);
         imgvExitRecConf = (ImageView) findViewById(R.id.imgvExitRecConf);
+        imgvExitRecConf.setVisibility(View.INVISIBLE);
+        imgvExitRecConf.setEnabled(false);
         imgvNextRecConf = (ImageView) findViewById(R.id.imgvNextRecConf);
 
         txtReclConfTitulo = (TextView) findViewById(R.id.txtReclConfTitulo);
         txtDetalleReclamo = (TextView) findViewById(R.id.txtDetalleReclamo);
+
+        txtDetalleReclamo.setText("Numero de reclamo confirmado:"+String.valueOf(id_reclamo_confirmado));
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -68,19 +77,14 @@ public class CreacionReclamo4 extends AppCompatActivity implements NavigationVie
                 //aca va que hace
             }
         });
-        imgvBackRecConf.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
         imgvExitRecConf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //aca va que hace
+                GoPantallaPrincipal();
             }
         });
         imgvNextRecConf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //aca va que hace
+                GoPantallaPrincipal();
             }
         });
         txtReclConfTitulo.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +100,13 @@ public class CreacionReclamo4 extends AppCompatActivity implements NavigationVie
 
 
     }
+
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
     //metodos de slideBar desde ahora
     @Override
     public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -151,6 +162,23 @@ public class CreacionReclamo4 extends AppCompatActivity implements NavigationVie
         return true;
 
     }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    private void mostrarDialogo(String titulo,String mensaje){
+        new AlertDialog.Builder( this)
+                .setTitle(titulo)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                })
+                .setMessage(mensaje)
+                .show();
+    }
+
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);

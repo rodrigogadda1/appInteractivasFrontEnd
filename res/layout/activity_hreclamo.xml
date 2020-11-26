@@ -35,52 +35,62 @@
 
         <TextView
             android:id="@+id/nreclamo1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_marginTop="14dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
+            android:drawableLeft="@drawable/image50"
             android:gravity="center"
             android:text="Historial Reclamos"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <ImageView
-            android:id="@+id/nreclamo1_img2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/image50"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nreclamo1" />
-
         <CheckBox
             android:id="@+id/chk_listaedificios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:background="@drawable/rounded_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nreclamo1_img2" />
+            app:layout_constraintTop_toBottomOf="@+id/nreclamo1" />
+
+        <TextView
+            android:id="@+id/edificios"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="69dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Edificios :"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nreclamo1" />
 
         <Spinner
             android:id="@+id/listaedificios"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaedificiouser"
@@ -88,85 +98,139 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nreclamo1_img2" />
+            app:layout_constraintTop_toBottomOf="@+id/edificios" />
 
         <CheckBox
             android:id="@+id/chk_listaunidades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="48dp"
             android:background="@drawable/rounded_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chk_listaedificios" />
 
+        <TextView
+            android:id="@+id/unidades"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="69dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Unidades :"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaedificios" />
+
         <Spinner
             android:id="@+id/listaunidades"
             android:layout_width="300dp"
             android:layout_height="40dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="40dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaespacios"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaedificios" />
+            app:layout_constraintTop_toBottomOf="@+id/unidades" />
 
         <CheckBox
             android:id="@+id/chk_listaespecialidades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="48dp"
             android:background="@drawable/rounded_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chk_listaunidades" />
 
+        <TextView
+            android:id="@+id/especialidad"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="69dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Especialidades :"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaunidades" />
+
         <Spinner
             android:id="@+id/listaespecialidades"
             android:layout_width="300dp"
             android:layout_height="40dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="40dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/especialidad_sp"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaunidades" />
+            app:layout_constraintTop_toBottomOf="@+id/especialidad" />
 
         <CheckBox
             android:id="@+id/chk_listaestado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="48dp"
             android:background="@drawable/rounded_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chk_listaespecialidades" />
 
+        <TextView
+            android:id="@+id/estados"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="69dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/rounded_gray"
+            android:text="Estados :"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:padding="6dip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listaespecialidades" />
+
         <Spinner
             android:id="@+id/listaestado"
             android:layout_width="300dp"
             android:layout_height="40dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="40dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaestado"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaespecialidades" />
+            app:layout_constraintTop_toBottomOf="@+id/estados" />
 
         <Button
             android:id="@+id/guardar"
@@ -192,14 +256,14 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="4dp"
             android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logout_1"
+            app:layout_constraintEnd_toStartOf="@+id/exit"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/guardar"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
@@ -207,12 +271,12 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="4dp"
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/guardar"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
@@ -220,14 +284,14 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="4dp"
             android:onClick="next"
             android:src="@drawable/image08"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/exit"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/guardar"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

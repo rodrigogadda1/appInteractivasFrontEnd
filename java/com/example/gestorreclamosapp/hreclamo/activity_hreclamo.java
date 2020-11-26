@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
+import com.example.gestorreclamosapp.areclamo1.activity_areclamo1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.datospers.activity_datospers;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
@@ -67,6 +68,8 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_hreclamo.this, activity_areclamo1.class);
+                startActivity(intent);
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
@@ -109,7 +112,7 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
 
     public void continuar(View view) {
         Toast.makeText(this, "Continuar", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
+        Intent intent = new Intent(activity_hreclamo.this, activity_areclamo1.class);
         startActivity(intent);
     }
 
@@ -118,7 +121,7 @@ public class activity_hreclamo extends AppCompatActivity implements NavigationVi
         startActivity(intent);
     }
     public void next(View view) {
-        Intent intent = new Intent(activity_hreclamo.this, activity_principal.class);
+        Intent intent = new Intent(activity_hreclamo.this, activity_areclamo1.class);
         startActivity(intent);
     }
     public void back(View view) {

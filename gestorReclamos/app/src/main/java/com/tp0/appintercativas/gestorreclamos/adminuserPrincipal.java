@@ -96,7 +96,7 @@ public class adminuserPrincipal extends AppCompatActivity implements NavigationV
                                                @Override
                                                public void onClick(View view) {
                                                    //aca se escribe que hacer
-                                                   GoToAdminUserNewUser();
+                                                   //GoToAdminUserNewUser();
                                                }
                                            }
         );

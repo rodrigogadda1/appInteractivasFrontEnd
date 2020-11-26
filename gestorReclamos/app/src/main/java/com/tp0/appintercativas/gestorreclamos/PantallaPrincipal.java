@@ -1,11 +1,18 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import android.app.AlertDialog;
+import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -21,6 +28,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
@@ -48,6 +57,9 @@ import retrofit2.Retrofit;
 
 public class PantallaPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
 
+    NotificationManager notificationManagerAux;
+    private NotificationManagerCompat notificationManager;
+
     ReclamosHelper reclamosHelper;
     Administrado administrado;
 
@@ -55,7 +67,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     private TextView txtNotificacionesPpal,principaltexto2;
     private ScrollView ScrollViewReclamos;
 
-    private Button btnReclamo1,btnReclamo2,btnReclamo3,btnReclamo4,btnReclamo5,btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
+    private Button btnNotificaciones, btnHistorialReclamos, btnReclamosActivos, btnReclamoNuevo;
     User user;
 
     //para la slide bar
@@ -83,15 +95,13 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         /* FIN CODIGO PARA SCROLLVIEW RECLAMOS  */
 
-        btnReclamo1 = (Button) findViewById(R.id.btnReclamo1);
-        btnReclamo2 = (Button) findViewById(R.id.btnReclamo2);
-        btnReclamo3 = (Button) findViewById(R.id.btnReclamo3);
-        btnReclamo4 = (Button) findViewById(R.id.btnReclamo4);
-        btnReclamo5 = (Button) findViewById(R.id.btnReclamo5);
         btnNotificaciones = (Button) findViewById(R.id.btnNotificaciones);
         btnHistorialReclamos = (Button) findViewById(R.id.btnHistorialReclamos);
         btnReclamosActivos = (Button) findViewById(R.id.btnReclamosActivos);
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
+
+        //para las notifications
+        notificationManager =  NotificationManagerCompat.from(this);
 
         //se revisa si hay reclamos pendientes para subir
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
@@ -99,7 +109,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
                 getAdministradoId();
             }
-
+            generarNotificacion();
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
 
         }
@@ -130,32 +140,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-        btnReclamo1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnReclamo5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-
         btnNotificaciones.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //aca va que hace
@@ -183,6 +167,17 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             }
         });
 
+    }
+
+    private void generarNotificacion(){
+        Notification notification = new NotificationCompat.Builder(this, com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.NotificationManager.CHENNEL_1_ID)
+                    .setSmallIcon(R.drawable.ic_notification)
+                    .setContentTitle("titulo")
+                    .setContentText("contenido")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .build();
+        notificationManager.notify(1, notification);
     }
 
     private void getAdministradoId(){

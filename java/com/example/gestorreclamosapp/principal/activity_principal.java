@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.gestorreclamosapp.R;
+import com.example.gestorreclamosapp.areclamo1.activity_areclamo1;
 import com.example.gestorreclamosapp.ui.login.LoginActivity;
 import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
@@ -66,6 +67,8 @@ public class activity_principal extends AppCompatActivity implements NavigationV
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_principal.this, activity_areclamo1.class);
+                startActivity(intent);
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
@@ -115,6 +118,9 @@ public class activity_principal extends AppCompatActivity implements NavigationV
     }
 
     public void reclamoactivo(View view) {
+        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(activity_principal.this, activity_areclamo1.class);
+        startActivity(intent);
     }
 
     public void reclamohistorial(View view) {

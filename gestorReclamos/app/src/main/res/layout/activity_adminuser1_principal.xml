@@ -155,40 +155,35 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo Usuario numero 1"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_1">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnUsuario2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo Usuario numero 2"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_2">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnUsuario3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo Usuario numero 3"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_3">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnUsuario4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo Usuario numero 4"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_4">
+                    android:textAlignment="viewStart">
                 </Button>
                 <Button
                     android:id="@+id/btnUsuario5"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Ejemplo Usuario numero 5"
-                    android:textAlignment="viewStart"
-                    android:onClick="usuario_5">
+                    android:textAlignment="viewStart">
                 </Button>
             </LinearLayout>
         </ScrollView>
@@ -206,7 +201,6 @@
             android:textAllCaps="true"
             android:textColor="#000000"
             android:textStyle="normal|bold"
-            android:onClick="usuarionuevo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -218,7 +212,6 @@
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="24dp"
-            android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/logout_1"
@@ -233,7 +226,6 @@
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
             android:layout_marginBottom="24dp"
-            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBackUsuario1"

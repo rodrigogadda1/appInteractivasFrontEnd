@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.gestorreclamosapp.R;
 import com.example.gestorreclamosapp.adminuser1.activity_adminuser1;
+import com.example.gestorreclamosapp.areclamo1.activity_areclamo1;
 import com.example.gestorreclamosapp.configuraciones.activity_configuraciones;
 import com.example.gestorreclamosapp.hreclamo.activity_hreclamo;
 import com.example.gestorreclamosapp.infoaplicacion.activity_infoaplicacion;
@@ -66,6 +67,8 @@ public class activity_datospers extends AppCompatActivity implements NavigationV
                 break;
             case R.id.reclamoactivo:
                 Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
+                intent = new Intent(activity_datospers.this, activity_areclamo1.class);
+                startActivity(intent);
                 break;
             case R.id.reclamohistorial:
                 Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
