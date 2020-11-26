@@ -203,7 +203,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnCancel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_2Texto"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordNewVerificacion"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -216,7 +216,7 @@
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
-        app:layout_constraintTop_toBottomOf="@+id/password_2"
+        app:layout_constraintTop_toBottomOf="@+id/txtNewPasswordVerficacion"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -231,7 +231,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnCancel"
-        app:layout_constraintTop_toBottomOf="@+id/password_2"
+        app:layout_constraintTop_toBottomOf="@+id/txtNewPasswordVerficacion"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
