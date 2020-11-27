@@ -124,7 +124,8 @@ public class adminuserChangePassword extends AppCompatActivity implements Naviga
                 GoToCerrarSesion ();
                 break;
             case R.id.usuarios:
-                GoToAdministracionUsuarios ();
+                //GoToAdministracionUsuarios ();
+                mostrarToast("Ya estás en el Menú de Usuarios");
                 break;
             default:
                 break;
@@ -132,6 +133,11 @@ public class adminuserChangePassword extends AppCompatActivity implements Naviga
         return true;
 
     }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);

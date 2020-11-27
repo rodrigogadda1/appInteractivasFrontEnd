@@ -137,7 +137,8 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
                 GoToReclamosActivos ();
                 break;
             case R.id.reclamohistorial:
-                GoToViewReclamosHist ();
+                //GoToViewReclamosHist ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.notificaciones:
                 GoToNotificaciones ();
@@ -160,6 +161,11 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         return true;
 
     }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);

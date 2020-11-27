@@ -14,11 +14,19 @@
   <component name="ChangeListManager">
     <list default="true" id="4c78d12b-8e79-4d21-92f6-7a1302026c9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_adminuser2_new_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adminuser2_new_user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/ConfiguracionesUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/ConfiguracionesUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo4.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/HistorialReclamos1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/HistorialReclamos1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/InfoAppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/InfoAppActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserChangePassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserNewUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserNewUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_carga_datos_pregunta_first.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_carga_datos_pregunta_first.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/layout/activity_adminuser2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/layout/activity_adminuser3.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,38 +289,38 @@
     </state>
     <state x="2056" y="-46" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1602374477297" />
     <state x="690" y="277" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605146236065" />
-    <state x="111" y="67" width="1236" height="638" key="AVDManager" timestamp="1606088844551">
+    <state x="111" y="67" width="1236" height="638" key="AVDManager" timestamp="1606391563865">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="111" y="67" width="1236" height="638" key="AVDManager/0.0.1366.768@0.0.1366.768" timestamp="1606088844551" />
+    <state x="111" y="67" width="1236" height="638" key="AVDManager/0.0.1366.768@0.0.1366.768" timestamp="1606391563865" />
     <state x="92" y="92" width="1736" height="896" key="AVDManager/0.0.1920.1080@0.0.1920.1080" timestamp="1605218688609" />
-    <state width="1876" height="416" key="GridCell.Tab.0.bottom" timestamp="1606188807229">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1306" height="115" key="GridCell.Tab.0.bottom" timestamp="1606480673309">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1306" height="187" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1606175047781" />
+    <state width="1306" height="115" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1606480673309" />
     <state width="1876" height="416" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606188807229" />
-    <state width="1876" height="416" key="GridCell.Tab.0.center" timestamp="1606188807229">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1306" height="115" key="GridCell.Tab.0.center" timestamp="1606480673308">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1306" height="187" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1606175047781" />
+    <state width="1306" height="115" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1606480673308" />
     <state width="1876" height="416" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606188807229" />
-    <state width="1876" height="416" key="GridCell.Tab.0.left" timestamp="1606188807229">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1306" height="115" key="GridCell.Tab.0.left" timestamp="1606480673308">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1306" height="187" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1606175047780" />
+    <state width="1306" height="115" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1606480673308" />
     <state width="1876" height="416" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606188807229" />
-    <state width="1876" height="416" key="GridCell.Tab.0.right" timestamp="1606188807229">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1306" height="115" key="GridCell.Tab.0.right" timestamp="1606480673308">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1306" height="187" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1606175047781" />
+    <state width="1306" height="115" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1606480673308" />
     <state width="1876" height="416" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606188807229" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1602386818417">
       <screen x="0" y="0" width="1366" height="728" />
@@ -328,11 +336,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602386824019" />
-    <state x="443" y="166" width="672" height="502" key="search.everywhere.popup" timestamp="1606164529661">
+    <state x="443" y="166" width="672" height="502" key="search.everywhere.popup" timestamp="1606476348977">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="1989" y="-88" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1602457322169" />
-    <state x="443" y="166" width="672" height="502" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1606164529661" />
+    <state x="443" y="166" width="672" height="502" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1606476348977" />
     <state x="623" y="234" width="672" height="705" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605922214367" />
   </component>
 </project>

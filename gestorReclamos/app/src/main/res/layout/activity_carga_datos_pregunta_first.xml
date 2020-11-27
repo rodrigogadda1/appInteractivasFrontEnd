@@ -202,10 +202,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnCancel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/txtPasswordNewVerificacion"
-=======
->>>>>>> ff265d32471765bae877d79196f825f52576e349
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -216,12 +213,8 @@
         android:layout_marginBottom="24dp"
         android:src="@drawable/image04"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
-<<<<<<< HEAD
-        app:layout_constraintTop_toBottomOf="@+id/txtNewPasswordVerficacion"
-=======
->>>>>>> ff265d32471765bae877d79196f825f52576e349
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/btnBack"/>
+
 
     <ImageView
         android:id="@+id/btnNext"
@@ -234,10 +227,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnCancel"
-<<<<<<< HEAD
-        app:layout_constraintTop_toBottomOf="@+id/txtNewPasswordVerficacion"
-=======
->>>>>>> ff265d32471765bae877d79196f825f52576e349
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
