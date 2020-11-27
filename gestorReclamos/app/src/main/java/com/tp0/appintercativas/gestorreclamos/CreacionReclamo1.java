@@ -390,7 +390,8 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                GoToNewReclamo ();
+                //GoToNewReclamo ();
+                mostrarToast("Ya estás Creando Nuevo Reclamo");
                 break;
             case R.id.reclamoactivo:
                 GoToReclamosActivos ();

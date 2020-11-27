@@ -176,7 +176,8 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                 GoToNotificaciones ();
                 break;
             case R.id.configuracion:
-                GoToConfiguraciones();
+                //GoToConfiguraciones();
+                mostrarToast("Ya estás en el Menú de Configuraciones");
                 break;
             case R.id.acercaapp:
                 GoToAcercaApp();

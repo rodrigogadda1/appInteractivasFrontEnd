@@ -107,7 +107,8 @@ public class InfoAppActivity extends AppCompatActivity implements NavigationView
                 GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
-                GoToAcercaApp();
+                //GoToAcercaApp();
+                mostrarToast("Ya estás en la pantalla de Información");
                 break;
             case R.id.cerrarsesion:
                 GoToCerrarSesion ();
@@ -121,6 +122,11 @@ public class InfoAppActivity extends AppCompatActivity implements NavigationView
         return true;
 
     }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);

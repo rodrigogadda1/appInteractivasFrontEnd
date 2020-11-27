@@ -131,7 +131,8 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
                     GoToViewReclamosHist ();
                     break;
                 case R.id.notificaciones:
-                    GoToNotificaciones ();
+                    //GoToNotificaciones ();
+                    mostrarToast("Ya estás en el menú de Notificaciones");
                     break;
                 case R.id.configuracion:
                     GoToConfiguraciones();
@@ -150,6 +151,11 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
             }
             return true;
         }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
