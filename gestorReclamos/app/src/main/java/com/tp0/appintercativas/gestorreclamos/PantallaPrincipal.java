@@ -5,6 +5,7 @@ import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -106,7 +107,25 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
 
         //para las notifications
-        notificationManager =  NotificationManagerCompat.from(this);
+        String message = "Nueva notificacion, dirigite a notificacion para ver mas detalle.";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                PantallaPrincipal.this
+        )
+            .setSmallIcon(R.drawable.ic_message)
+            .setContentTitle("Nueva notificacion")
+            .setContentText(message)
+            .setAutoCancel(true);
+        Intent intentNotification = new Intent(this, NotificationActivity.class);
+        intentNotification.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intentNotification.putExtra("message", message);
+        PendingIntent pendingIntent = PendingIntent.getActivity(PantallaPrincipal.this,0, intentNotification,PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0,builder.build());
+
+
+
+
 
         //se revisa si hay reclamos pendientes para subir
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
@@ -114,7 +133,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
                 getAdministradoId();
             }
-            generarNotificacion();
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
 
         }
@@ -183,21 +201,10 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
                 getAdministradoId();
             }
-            generarNotificacion();
+
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
 
         }
-    }
-
-    private void generarNotificacion(){
-        Notification notification = new NotificationCompat.Builder(this, com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.NotificationManager.CHENNEL_1_ID)
-                    .setSmallIcon(R.drawable.ic_notification)
-                    .setContentTitle("titulo")
-                    .setContentText("contenido")
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                    .build();
-        notificationManager.notify(1, notification);
     }
 
     private void getAdministradoId(){
@@ -388,12 +395,11 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             public void onResponse(Call<Inspector> call, Response<Inspector> response) {
                 if (response.isSuccessful()){
                     Inspector inspector = response.body();
-                    if ( (inspector.getInspectoredificio().size() > 9) && (inspector.getInspectorespecialidad().size() > 0)){
+                    if ( (inspector.getEdificios().size() > 9) && (inspector.getEspecialidads().size() > 0)){
                         String lista_edificios = "", lista_especialidades = "";
 
-                        for (int i = 0; i < inspector.getInspectoredificio().size(); i++) {
-                            InspectorEdificio inspectorEdificio = inspector.getInspectoredificio().get(i);
-                            Edificio edificio = inspectorEdificio.getEdificio();
+                        for (int i = 0; i < inspector.getEdificios().size(); i++) {
+                            Edificio edificio = inspector.getEdificios().get(i);
                             if (i==0){
                                 lista_edificios=String.valueOf(edificio.getId_edificio());
                             } else {
@@ -401,9 +407,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                             }
                         }
 
-                        for (int i = 0; i < inspector.getInspectorespecialidad().size(); i++) {
-                            InspectorEspecialidad inspectorEspecialidad = inspector.getInspectorespecialidad().get(i);
-                            Especialidad especialidad = inspectorEspecialidad.getEspecialidad();
+                        for (int i = 0; i < inspector.getEspecialidads().size(); i++) {
+                            Especialidad especialidad = inspector.getEspecialidads().get(i);
                             if (i == 0){
                                 lista_especialidades=String.valueOf(especialidad.getId_especialidad());
                             } else {
@@ -477,6 +482,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 @Override
                 public void onClick(View v) {
                     mostrarToast(item);
+                    //aca se tiene que pasar al detalle
                 }
             });
             line.addView(btnReclamo);

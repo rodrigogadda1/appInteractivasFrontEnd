@@ -7,24 +7,24 @@ public class Inspector implements Serializable {
 
     private long id_inspector;
     private long id_user;
-    private List<InspectorEdificio> inspectoredificio;
-    private List<InspectorEspecialidad> inspectorespecialidad;
+    private List<Edificio> edificios;
+    private List<Especialidad> especialidads;
 
     @Override
     public String toString() {
         return "Inspector{" +
                 "id_inspector=" + id_inspector +
                 ", id_user=" + id_user +
-                ", inspectoredificio=" + inspectoredificio +
-                ", inspectorespecialidad=" + inspectorespecialidad +
+                ", inspectoredificio=" + edificios +
+                ", inspectorespecialidad=" + especialidads +
                 '}';
     }
 
-    public Inspector(long id_inspector, long id_user, List<InspectorEdificio> inspectoredificio, List<InspectorEspecialidad> inspectorespecialidad) {
+    public Inspector(long id_inspector, long id_user, List<Edificio> edificios, List<Especialidad> especialidads) {
         this.id_inspector = id_inspector;
         this.id_user = id_user;
-        this.inspectoredificio = inspectoredificio;
-        this.inspectorespecialidad = inspectorespecialidad;
+        this.edificios = edificios;
+        this.especialidads = especialidads;
     }
 
     public Inspector() {
@@ -39,12 +39,12 @@ public class Inspector implements Serializable {
         this.id_inspector = id_inspector;
     }
 
-    public List<InspectorEdificio> getInspectoredificio() {
-        return inspectoredificio;
+    public List<Edificio> getEdificios() {
+        return edificios;
     }
 
-    public void setInspectoredificio(List<InspectorEdificio> inspectoredificio) {
-        this.inspectoredificio = inspectoredificio;
+    public void setEdificios(List<Edificio> edificios) {
+        this.edificios = edificios;
     }
 
     public long getId_user() {
@@ -55,12 +55,12 @@ public class Inspector implements Serializable {
         this.id_user = id_user;
     }
 
-    public List<InspectorEspecialidad> getInspectorespecialidad() {
-        return inspectorespecialidad;
+    public List<Especialidad> getEspecialidads() {
+        return especialidads;
     }
 
-    public void setInspectorespecialidad(List<InspectorEspecialidad> inspectorespecialidad) {
-        this.inspectorespecialidad = inspectorespecialidad;
+    public void setEspecialidads(List<Especialidad> especialidads) {
+        this.especialidads = especialidads;
     }
 
 }

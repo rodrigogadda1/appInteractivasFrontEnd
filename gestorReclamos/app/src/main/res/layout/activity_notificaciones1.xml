@@ -81,64 +81,6 @@
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/txtListaUsuarios">
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical|center_horizontal">
-                <Button
-                    android:id="@+id/btnNotifica1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 1º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/btnNotifica2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 2º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/btnNotifica3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 3º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/btnNotifica4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 4º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/btnNotifica5"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 5º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/btnNotifica6"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 6º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-                <Button
-                    android:id="@+id/btnNotifica7"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ejemplo de la 7º Notificación listada"
-                    android:textAlignment="viewStart">
-                </Button>
-            </LinearLayout>
         </ScrollView>
 
         <Button

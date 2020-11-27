@@ -5,13 +5,11 @@ import java.io.Serializable;
 public class AdministradoUnidad implements Serializable {
 
     private long id_administradounidad;
-    private Administrado administrado;
     private Unidad unidad;
     private String relacion;
 
-    public AdministradoUnidad(long id_administradounidad, Administrado administrado, Unidad unidad, String relacion) {
+    public AdministradoUnidad(long id_administradounidad, Unidad unidad, String relacion) {
         this.id_administradounidad = id_administradounidad;
-        this.administrado = administrado;
         this.unidad = unidad;
         this.relacion = relacion;
     }
@@ -24,7 +22,6 @@ public class AdministradoUnidad implements Serializable {
     public String toString() {
         return "AdministradoUnidad{" +
                 "id_administradounidad=" + id_administradounidad +
-                ", administrado=" + administrado +
                 ", unidad=" + unidad +
                 ", relacion='" + relacion + '\'' +
                 '}';
@@ -36,14 +33,6 @@ public class AdministradoUnidad implements Serializable {
 
     public void setId_administradounidad(long id_administradounidad) {
         this.id_administradounidad = id_administradounidad;
-    }
-
-    public Administrado getAdministrado() {
-        return administrado;
-    }
-
-    public void setAdministrado(Administrado administrado) {
-        this.administrado = administrado;
     }
 
     public Unidad getUnidad() {

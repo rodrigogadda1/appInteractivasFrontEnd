@@ -38,7 +38,7 @@ public class RecuperaContrasenia1 extends AppCompatActivity {
         btnValidarUsuario = (Button) findViewById(R.id.btnValidarUsuario);
 
         btnBack = (ImageView) findViewById(R.id.btnBack);
-        btnLogin = (ImageView) findViewById(R.id.btnLogin);
+        btnLogin = (ImageView) findViewById(R.id.btnNextRec1);
 
         txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         txtUsuario = (TextView) findViewById(R.id.txtUsuario);

@@ -1,11 +1,15 @@
 package com.tp0.appintercativas.gestorreclamos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +28,11 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
     ImageView principal_img,btnExitNotif;
     TextView txtNotificacionesPpal,principaltexto2;
     ScrollView listanotificaciones;
-    Button btnNotifica1,btnNotifica2,btnNotifica3,btnNotifica4,btnNotifica5,btnNotifica6,btnNotifica7,btnBorrarNotif;
+    Button btnBorrarNotif;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +49,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
         listanotificaciones = (ScrollView) findViewById(R.id.listanotificaciones);
 
-        btnNotifica1 = (Button) findViewById(R.id.btnNotifica1);
-        btnNotifica2 = (Button) findViewById(R.id.btnNotifica2);
-        btnNotifica3 = (Button) findViewById(R.id.btnNotifica3);
-        btnNotifica4 = (Button) findViewById(R.id.btnNotifica4);
-        btnNotifica5 = (Button) findViewById(R.id.btnNotifica5);
-        btnNotifica6 = (Button) findViewById(R.id.btnNotifica6);
-        btnNotifica7 = (Button) findViewById(R.id.btnNotifica7);
         btnBorrarNotif = (Button) findViewById(R.id.btnBorrarNotif);
 
         //codigo para slide bar
@@ -69,15 +67,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-
-        btnNotifica1.setOnClickListener(new View.OnClickListener() {
-                                             @Override
-                                             public void onClick(View view) {
-                                             //aca se escribe que hacer
-                                                 GoToNotificaDetalle();
-                                             }
-                                         }
-        );
         btnExitNotif.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
@@ -87,52 +76,7 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                                         }
         );
 
-     /*   btnNotifica2.setOnClickListener(new View.OnClickListener() {
-                                             @Override
-                                             public void onClick(View view) {
-                                                 //aca se escribe que hacer
-                                             }
-                                         }
-        );
 
-        btnNotifica3.setOnClickListener(new View.OnClickListener() {
-                                             @Override
-                                             public void onClick(View view) {
-                                                 //aca se escribe que hacer
-                                             }
-                                         }
-        );
-
-        btnNotifica4.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    //aca se escribe que hacer
-                                                }
-                                            }
-        );
-
-        btnNotifica5.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View view) {
-                                                  //aca se escribe que hacer
-                                              }
-                                          }
-        );
-        btnNotifica6.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                            }
-                                        }
-        );
-
-        btnNotifica7.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                            }
-                                        }
-        );
 
         btnBorrarNotif.setOnClickListener(new View.OnClickListener() {
                                             @Override
@@ -140,9 +84,53 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                                                 //aca se escribe que hacer
                                             }
                                         }
-        );*/
+        );
 
     }
+
+    protected void makeCenterView(String[] items) {
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        for (final String item : items) {
+            LinearLayout line = new LinearLayout(this);
+            line.setOrientation(LinearLayout.HORIZONTAL);
+            line.setGravity(Gravity.CENTER);
+            Button btnNotificacion = new Button(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
+            lp.gravity = Gravity.CENTER;
+            btnNotificacion.setLayoutParams(lp);
+            btnNotificacion.setText(item); //aca iria el texto
+            btnNotificacion.setGravity(Gravity.CENTER);
+            btnNotificacion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mostrarToast(item);
+                    //aca se tiene que pasar al detalle
+                }
+            });
+            line.addView(btnNotificacion);
+            linearLayout.addView(line);
+        }
+        listanotificaciones.addView(linearLayout);
+    }
+
+    private void mostrarDialogo(String titulo,String mensaje){
+        new AlertDialog.Builder( this)
+                .setTitle(titulo)
+                .setMessage(mensaje)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //va a hacer nada aca, si se quisiera cerrar la app es finish()
+                    }
+                })
+                .show();
+    }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     //metodos de slideBar desde ahora
     @Override
     public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {

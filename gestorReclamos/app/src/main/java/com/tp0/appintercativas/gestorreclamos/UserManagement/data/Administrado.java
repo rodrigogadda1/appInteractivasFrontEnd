@@ -8,17 +8,17 @@ public class Administrado implements Serializable {
     private long id_administrado;
     private long id_user;
     private List<AdministradoUnidad> administradoUnidades;
-    private List<Reclamo> reclamo;
+    private List<Reclamo> reclamos;
 
     public Administrado(){
         super();
     }
 
-    public Administrado(long id_administrado, long id_user, List<AdministradoUnidad> administradoUnidades, List<Reclamo> reclamo) {
+    public Administrado(long id_administrado, long id_user, List<AdministradoUnidad> administradoUnidades, List<Reclamo> reclamos) {
         this.id_administrado = id_administrado;
         this.id_user = id_user;
         this.administradoUnidades = administradoUnidades;
-        this.reclamo = reclamo;
+        this.reclamos = reclamos;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Administrado implements Serializable {
                 "id_administrado=" + id_administrado +
                 ", id_user=" + id_user +
                 ", administradoUnidades=" + administradoUnidades +
-                ", reclamo=" + reclamo +
+                ", reclamo=" + reclamos +
                 '}';
     }
 
@@ -56,10 +56,10 @@ public class Administrado implements Serializable {
     }
 
     public List<Reclamo> getReclamo() {
-        return reclamo;
+        return reclamos;
     }
 
-    public void setReclamo(List<Reclamo> reclamo) {
-        this.reclamo = reclamo;
+    public void setReclamo(List<Reclamo> reclamos) {
+        this.reclamos = reclamos;
     }
 }

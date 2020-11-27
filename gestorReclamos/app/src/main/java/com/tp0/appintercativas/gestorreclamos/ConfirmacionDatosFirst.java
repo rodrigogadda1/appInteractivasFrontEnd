@@ -105,20 +105,20 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
             call.enqueue(new Callback<Inspector>() {
                      @Override
                      public void onResponse(Call<Inspector> call, Response<Inspector> response) {
-                        if ( response.body().getInspectoredificio().size() > 0) {
+                        if ( response.body().getEdificios().size() > 0) {
 
-                            for (int i = 0; i < response.body().getInspectoredificio().size(); i++){
-                                salidaDatos+= "Edificio: " + response.body().getInspectoredificio().get(i).getEdificio().getNombre()
-                                        + " Direccion: "+response.body().getInspectoredificio().get(i).getEdificio().getDireccion()+ "\n";
+                            for (int i = 0; i < response.body().getEdificios().size(); i++){
+                                salidaDatos+= "Edificio: " + response.body().getEdificios().get(i).getNombre()
+                                        + " Direccion: "+response.body().getEdificios().get(i).getDireccion()+ "\n";
                             }
 
-                            if(response.body().getInspectorespecialidad().size() > 0) {
+                            if(response.body().getEspecialidads().size() > 0) {
                                 salidaDatos += "Especialidades:\n";
                             }
 
-                            for (int i = 0; i < response.body().getInspectorespecialidad().size(); i++){
-                                salidaDatos+= response.body().getInspectorespecialidad().get(i).getEspecialidad().getNombre()+" "
-                                                    +response.body().getInspectorespecialidad().get(i).getEspecialidad().getDescripcion()+"\n";
+                            for (int i = 0; i < response.body().getEspecialidads().size(); i++){
+                                salidaDatos+= response.body().getEspecialidads().get(i).getNombre()+" "
+                                                    +response.body().getEspecialidads().get(i).getDescripcion()+"\n";
                             }
 
                         }

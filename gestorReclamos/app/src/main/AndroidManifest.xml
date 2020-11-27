@@ -4,10 +4,9 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".UserManagement.Auxiliares.NotificationManager"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".CreacionReclamo4"></activity>
-        <activity android:name=".CreacionReclamo3"></activity>
-        <activity android:name=".CreacionReclamo2"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".CreacionReclamo4" />
+        <activity android:name=".CreacionReclamo3" />
+        <activity android:name=".CreacionReclamo2" />
         <activity android:name=".CreacionReclamo1" />
         <activity android:name=".InfoAppActivity" />
         <activity android:name=".ConfiguracionesUser" />
@@ -34,7 +33,6 @@
         <activity android:name=".adminuserPrincipal" />
         <activity android:name=".adminuserNewUser" />
         <activity android:name=".adminuserChangePassword" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
