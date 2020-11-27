@@ -49,7 +49,7 @@ public class ReclamosHelper extends SQLiteOpenHelper {
 
     }
 
-    public long saveClub(Reclamo_SQLLite reclamo){
+    public long saveReclamo(Reclamo_SQLLite reclamo){
         SQLiteDatabase db = getWritableDatabase();
         return db.insert(ReclamoContract.ReclamosEntry.TABLE_NAME, null, reclamo.toContentValues());
     }
@@ -57,6 +57,11 @@ public class ReclamosHelper extends SQLiteOpenHelper {
     public int deleteRowsOfAdministrado (int idAdministrado){
         SQLiteDatabase db = getWritableDatabase();
         return db.delete(ReclamoContract.ReclamosEntry.TABLE_NAME,ReclamoContract.ReclamosEntry.ID_ADMINISTRADO+"=?",new String[] {String.valueOf(idAdministrado)});
+    }
+
+    public int deleteRowById (long nro_reclamo){
+        SQLiteDatabase db = getWritableDatabase();
+        return db.delete(ReclamoContract.ReclamosEntry.TABLE_NAME,ReclamoContract.ReclamosEntry.ID+"=?",new String[] {String.valueOf(nro_reclamo)});
     }
 
     public List<Reclamo_SQLLite> getReclamosSQLite(){

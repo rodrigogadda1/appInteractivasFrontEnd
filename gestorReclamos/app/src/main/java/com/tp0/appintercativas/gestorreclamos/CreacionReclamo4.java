@@ -35,6 +35,7 @@ public class CreacionReclamo4 extends AppCompatActivity implements NavigationVie
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
         Long id_reclamo_confirmado = intent.getLongExtra("id_reclamo",0);
+        boolean alreadyLoaded = intent.getBooleanExtra("alreadyLoaded", true);
 
         imgReclamoConfirm = (ImageView) findViewById(R.id.imgReclamoConfirm);
         imgvAddReclamo = (ImageView) findViewById(R.id.imgvAddReclamo);
@@ -49,7 +50,12 @@ public class CreacionReclamo4 extends AppCompatActivity implements NavigationVie
         txtReclConfTitulo = (TextView) findViewById(R.id.txtReclConfTitulo);
         txtDetalleReclamo = (TextView) findViewById(R.id.txtDetalleReclamo);
 
-        txtDetalleReclamo.setText("Numero de reclamo confirmado:"+String.valueOf(id_reclamo_confirmado));
+        if (alreadyLoaded) {
+            txtDetalleReclamo.setText("Numero de reclamo confirmado:"+String.valueOf(id_reclamo_confirmado));
+        } else {
+            txtDetalleReclamo.setText("Se va a cargar cuando haya WiFi o actives uso de datos moviles");
+        }
+
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);

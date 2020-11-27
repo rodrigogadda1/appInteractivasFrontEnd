@@ -41,10 +41,14 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.EspacioComun;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Estado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Inspector;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.InspectorEdificio;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.InspectorEspecialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Unidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.InspectorService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
 import java.util.ArrayList;
@@ -90,8 +94,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         ScrollViewReclamos = (ScrollView) findViewById(R.id.ScrollViewReclamos);
 
-
+        //pongo los ultimos 5 reclamos a la vista
         getReclamosFilteredByUserIdStatus();
+
 
         /* FIN CODIGO PARA SCROLLVIEW RECLAMOS  */
 
@@ -169,6 +174,21 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //se revisa si hay reclamos pendientes para subir
+        if (user.getTipoUser().toLowerCase().equals("administrado")) {
+            //pruebo que tenga la conexion para poder subir los reclamos
+            if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
+                getAdministradoId();
+            }
+            generarNotificacion();
+        } else if (user.getTipoUser().toLowerCase().equals("inspector")){
+
+        }
+    }
+
     private void generarNotificacion(){
         Notification notification = new NotificationCompat.Builder(this, com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.NotificationManager.CHENNEL_1_ID)
                     .setSmallIcon(R.drawable.ic_notification)
@@ -208,9 +228,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     public void buscarReclamosAdministrado (Administrado administrado){
         reclamosHelper = new ReclamosHelper(this);
         List<Reclamo_SQLLite> reclamitos = reclamosHelper.getReclamosSQLiteByAdminitradoId(administrado.getId_administrado());
+        mostrarDialogo("probando PantallaPrincipal 179",String.valueOf(reclamitos.size()));
         if (reclamitos.size() > 0) {
-            mostrarDialogo("probando PantallaPrincipal 179",String.valueOf(reclamitos.size()));
-            CrearReclamosRecursivo(reclamitos,0,reclamosHelper);
+            CrearReclamosIterativo(reclamitos,reclamosHelper);
         }
     }
 
@@ -234,11 +254,10 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     }
 
     //iniciarlo en cero
-    private void CrearReclamosRecursivo(final List<Reclamo_SQLLite> reclamitos, final int posicion, final ReclamosHelper reclamosHelper){
+    private void CrearReclamosIterativo(final List<Reclamo_SQLLite> reclamitos, final ReclamosHelper reclamosHelper){
         try {
-            if (posicion < reclamitos.size()){
-
-                Reclamo_SQLLite reclamitoPos = reclamitos.get(posicion);
+            for (int i = 0; i < reclamitos.size(); i++) {
+                final Reclamo_SQLLite reclamitoPos = reclamitos.get(i);
                 Reclamo reclamo = pasarDeReclamitoAReclamo(reclamitoPos);
 
                 Retrofit retrofit = Controller.ConfiguracionIP();
@@ -249,7 +268,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                     @Override
                     public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {
                         if (response.isSuccessful()){
-                            CrearReclamosRecursivo(reclamitos,posicion+1,reclamosHelper);
+                            reclamosHelper.deleteRowById(reclamitoPos.getId_reclamo());
                         }
                     }
 
@@ -258,12 +277,10 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                         mostrarDialogo("error", t.getMessage());
                     }
                 });
-            } else {
-                reclamosHelper.deleteRowsOfAdministrado((int) administrado.getId_administrado());
             }
 
         } catch (Exception e){
-            mostrarDialogo("error",e.getMessage());
+            mostrarDialogo("error en linea 263 pantalla principal",e.getMessage());
         }
 
     }
@@ -325,7 +342,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
             call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1","","");
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
-            call = rs.getReclamosByUserIdAndStatusId("","1","1,2","");
+            getInspector();
         } else {
             //caso administrador
             call = rs.getReclamosByUserIdAndStatusId("","1","","");
@@ -361,6 +378,87 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
     }
 
+    private void getInspector (){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        InspectorService is = retrofit.create(InspectorService.class);
+        Call<Inspector> call = is.getInspectorId((long) user.getId());
+
+        call.enqueue(new Callback<Inspector>() {
+            @Override
+            public void onResponse(Call<Inspector> call, Response<Inspector> response) {
+                if (response.isSuccessful()){
+                    Inspector inspector = response.body();
+                    if ( (inspector.getInspectoredificio().size() > 9) && (inspector.getInspectorespecialidad().size() > 0)){
+                        String lista_edificios = "", lista_especialidades = "";
+
+                        for (int i = 0; i < inspector.getInspectoredificio().size(); i++) {
+                            InspectorEdificio inspectorEdificio = inspector.getInspectoredificio().get(i);
+                            Edificio edificio = inspectorEdificio.getEdificio();
+                            if (i==0){
+                                lista_edificios=String.valueOf(edificio.getId_edificio());
+                            } else {
+                                lista_edificios+=","+String.valueOf(edificio.getId_edificio());
+                            }
+                        }
+
+                        for (int i = 0; i < inspector.getInspectorespecialidad().size(); i++) {
+                            InspectorEspecialidad inspectorEspecialidad = inspector.getInspectorespecialidad().get(i);
+                            Especialidad especialidad = inspectorEspecialidad.getEspecialidad();
+                            if (i == 0){
+                                lista_especialidades=String.valueOf(especialidad.getId_especialidad());
+                            } else {
+                                lista_especialidades+=","+String.valueOf(especialidad.getId_especialidad());
+                            }
+                        }
+
+                        getReclamosInspector(lista_edificios,lista_especialidades);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Inspector> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+            }
+        });
+    }
+
+    private void getReclamosInspector(String lista_edificios,String lista_especialidades){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        ReclamoService rs = retrofit.create(ReclamoService.class);
+        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId("","1",lista_edificios,lista_especialidades);
+
+        call.enqueue(new Callback<List<Reclamo>>() {
+            @Override
+            public void onResponse(Call<List<Reclamo>> call, Response<List<Reclamo>> response) {
+
+                if (response.isSuccessful()){
+                    List<Reclamo> reclamos = response.body();
+                    ArrayList<String> strings = new ArrayList<>();
+
+                    for (int i = 0; i < reclamos.size(); i++) {
+                        if ( i < 5 ) {
+                            Reclamo reclamo = reclamos.get(i);
+                            strings.add(reclamoToString(reclamo));
+                        }
+                    }
+
+                    if (strings.size() > 0) {
+                        String[] reclamosToAdd = new String[strings.size()];
+                        reclamosToAdd = strings.toArray(reclamosToAdd);
+                        makeCenterView(reclamosToAdd);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Reclamo>> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+            }
+        });
+    }
 
     protected void makeCenterView(String[] items) {
         LinearLayout linearLayout = new LinearLayout(this);

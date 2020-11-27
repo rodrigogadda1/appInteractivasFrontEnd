@@ -49,7 +49,9 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         exit = (ImageView) findViewById(R.id.btnExitRec1);
 
         chk_uso_movil = (CheckBox) findViewById(R.id.chk_uso_movil);
+        chk_uso_movil.setChecked(user.isDatos_moviles());
         chk_uso_notificaciones = (CheckBox) findViewById(R.id.chk_uso_notificaciones);
+        chk_uso_notificaciones.setChecked(user.isRecibir_notificaciones());
 
         //para la slideBar
         Toolbar toolbar = findViewById(R.id.toolbar);

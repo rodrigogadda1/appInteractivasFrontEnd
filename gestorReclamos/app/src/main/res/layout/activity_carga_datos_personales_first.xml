@@ -185,23 +185,25 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNombres"/>
+
     <TextView
         android:id="@+id/txtSexo"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="88dp"
         android:background="@drawable/rounded_gray"
+        android:gravity="center_vertical"
+        android:padding="6dip"
         android:text="@string/sexo"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombres" />
+
     <Spinner
         android:id="@+id/spnSexo"
         android:layout_width="230dp"
@@ -219,23 +221,25 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editApellidos" />
+
     <TextView
         android:id="@+id/txtCelular"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rounded_gray"
+        android:gravity="center_vertical"
+        android:padding="6dip"
         android:text="@string/celular"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSexo" />
+
     <EditText
         android:id="@+id/editCelular"
         android:layout_width="230dp"
@@ -254,23 +258,25 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnSexo" />
+
     <TextView
         android:id="@+id/txtEmail"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rounded_gray"
+        android:gravity="center_vertical"
+        android:padding="6dip"
         android:text="@string/prompt_email"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:padding="6dip"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCelular" />
+
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="230dp"
