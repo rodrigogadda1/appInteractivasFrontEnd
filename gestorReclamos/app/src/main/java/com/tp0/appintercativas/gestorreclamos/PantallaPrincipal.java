@@ -42,6 +42,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.EspacioComun;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Estado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Inspector;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.InspectorEdificio;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.InspectorEspecialidad;
@@ -123,10 +124,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0,builder.build());
 
-
-
-
-
         //se revisa si hay reclamos pendientes para subir
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
             //pruebo que tenga la conexion para poder subir los reclamos
@@ -136,7 +133,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
 
         }
-
 
         //CLIPBOARD
         //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -336,10 +332,18 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         }
 
         //aca iria fotos
+        if ( (reclamitoPos.getFotos() != null) && (reclamitoPos.getFotos().size() > 0)){
+            List<Foto> fotos = new ArrayList<Foto>();
+            for (int i = 0; i < reclamitoPos.getFotos().size(); i++) {
+                Foto foto = new Foto();
+                foto.setFoto(reclamitoPos.getFotos().get(i));
+                fotos.add(foto);
+            }
+            salida.setFotos(fotos);
+        }
 
         return salida;
     }
-
 
     private void getReclamosFilteredByUserIdStatus(){
         Retrofit retrofit = Controller.ConfiguracionIP();
@@ -354,34 +358,36 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             //caso administrador
             call = rs.getReclamosByUserIdAndStatusId("","1","","");
         }
+        if (!user.getTipoUser().toLowerCase().equals("inspector")){
+            call.enqueue(new Callback<List<Reclamo>>() {
+                @Override
+                public void onResponse(Call<List<Reclamo>> call, Response<List<Reclamo>> response) {
+                    if (response.isSuccessful()){
+                        List<Reclamo> reclamos = response.body();
+                        ArrayList<String> strings = new ArrayList<>();
 
-        call.enqueue(new Callback<List<Reclamo>>() {
-            @Override
-            public void onResponse(Call<List<Reclamo>> call, Response<List<Reclamo>> response) {
-                if (response.isSuccessful()){
-                    List<Reclamo> reclamos = response.body();
-                    ArrayList<String> strings = new ArrayList<>();
+                        for (int i = 0; i < reclamos.size(); i++) {
+                            if ( i < 5 ) {
+                                Reclamo reclamo = reclamos.get(i);
+                                strings.add(reclamoToString(reclamo));
+                            }
+                        }
 
-                    for (int i = 0; i < reclamos.size(); i++) {
-                        if ( i < 5 ) {
-                            Reclamo reclamo = reclamos.get(i);
-                            strings.add(reclamoToString(reclamo));
+                        if (strings.size() > 0) {
+                            String[] reclamosToAdd = new String[strings.size()];
+                            reclamosToAdd = strings.toArray(reclamosToAdd);
+                            makeCenterView(reclamosToAdd);
                         }
                     }
-
-                    if (strings.size() > 0) {
-                        String[] reclamosToAdd = new String[strings.size()];
-                        reclamosToAdd = strings.toArray(reclamosToAdd);
-                        makeCenterView(reclamosToAdd);
-                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<Reclamo>> call, Throwable t) {
-                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<List<Reclamo>> call, Throwable t) {
+                    mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+                }
+            });
+        }
+
 
     }
 
@@ -389,13 +395,19 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         Retrofit retrofit = Controller.ConfiguracionIP();
         InspectorService is = retrofit.create(InspectorService.class);
         Call<Inspector> call = is.getInspectorId((long) user.getId());
-
+        mostrarDialogo("probando hasta donde llega 398", "llega bien hasta aca? "+String.valueOf(user.getId()));
         call.enqueue(new Callback<Inspector>() {
             @Override
             public void onResponse(Call<Inspector> call, Response<Inspector> response) {
+                //mostrarDialogo("probando hasta donde llega 402", "llega bien hasta aca? "+response.body().toString());
+
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label",response.body().toString());
+                clipboard.setPrimaryClip(clip);
+
                 if (response.isSuccessful()){
                     Inspector inspector = response.body();
-                    if ( (inspector.getEdificios().size() > 9) && (inspector.getEspecialidads().size() > 0)){
+                    if ( (inspector.getEdificios().size() > 0) && (inspector.getEspecialidades().size() > 0)){
                         String lista_edificios = "", lista_especialidades = "";
 
                         for (int i = 0; i < inspector.getEdificios().size(); i++) {
@@ -407,14 +419,18 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                             }
                         }
 
-                        for (int i = 0; i < inspector.getEspecialidads().size(); i++) {
-                            Especialidad especialidad = inspector.getEspecialidads().get(i);
+                        mostrarDialogo("probando 414",lista_edificios);
+
+                        for (int i = 0; i < inspector.getEspecialidades().size(); i++) {
+                            Especialidad especialidad = inspector.getEspecialidades().get(i);
                             if (i == 0){
                                 lista_especialidades=String.valueOf(especialidad.getId_especialidad());
                             } else {
                                 lista_especialidades+=","+String.valueOf(especialidad.getId_especialidad());
                             }
                         }
+
+                        mostrarDialogo("probando 425",lista_especialidades);
 
                         getReclamosInspector(lista_edificios,lista_especialidades);
 

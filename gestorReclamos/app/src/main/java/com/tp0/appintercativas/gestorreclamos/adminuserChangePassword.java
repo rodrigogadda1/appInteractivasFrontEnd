@@ -39,21 +39,20 @@ public class adminuserChangePassword extends AppCompatActivity implements Naviga
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        adminuser3_img = (ImageView) findViewById(R.id.adminuser3_img);
-        adminuser3_img2 = (ImageView) findViewById(R.id.adminuser3_img2);
-        btnBackNewPassword = (ImageView) findViewById(R.id.btnBackNewPassword);
-        btnExitNewPassword = (ImageView) findViewById(R.id.btnExitNewPassword);
-        ;
-        txtChangePassword = (TextView) findViewById(R.id.txtChangePassword);
-        txtUsuarioChangePassword = (TextView) findViewById(R.id.txtUsuarioChangePassword);
-        txtUsuarioNombreChangePassword = (TextView) findViewById(R.id.txtUsuarioNombreChangePassword);
-        txtPasswordChangePassword = (TextView) findViewById(R.id.txtPasswordChangePassword);
-        txtPasswordewPassword = (TextView) findViewById(R.id.txtPasswordewPassword);
-        txtPasswordNewVerificacion = (TextView) findViewById(R.id.txtPasswordNewVerificacion);
+        adminuser3_img = findViewById(R.id.adminuser3_img);
+        adminuser3_img2 = findViewById(R.id.adminuser3_img2);
+        btnBackNewPassword = findViewById(R.id.btnBackNewPassword);
+        btnExitNewPassword = findViewById(R.id.btnExitNewPassword);
+        txtChangePassword = findViewById(R.id.txtChangePassword);
+        txtUsuarioChangePassword = findViewById(R.id.txtUsuarioChangePassword);
+        txtUsuarioNombreChangePassword = findViewById(R.id.txtUsuarioNombreChangePassword);
+        txtPasswordChangePassword = findViewById(R.id.txtPasswordChangePassword);
+        txtPasswordewPassword = findViewById(R.id.txtPasswordewPassword);
+        txtPasswordNewVerificacion = findViewById(R.id.txtPasswordNewVerificacion);
 
-        txtNewPasswordVerficacion = (EditText) findViewById(R.id.txtNewPasswordVerficacion);
+        txtNewPasswordVerficacion = findViewById(R.id.txtNewPasswordVerficacion);
 
-        btnGuardarNewPassword = (Button) findViewById(R.id.btnGuardarNewPassword);
+        btnGuardarNewPassword = findViewById(R.id.btnGuardarNewPassword);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -65,7 +64,7 @@ public class adminuserChangePassword extends AppCompatActivity implements Naviga
         toggle.syncState();
 
         navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+        navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
         drawerLayout.addDrawerListener(this);

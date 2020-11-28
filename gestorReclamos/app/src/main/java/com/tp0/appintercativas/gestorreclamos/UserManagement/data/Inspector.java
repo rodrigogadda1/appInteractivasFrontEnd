@@ -8,23 +8,23 @@ public class Inspector implements Serializable {
     private long id_inspector;
     private long id_user;
     private List<Edificio> edificios;
-    private List<Especialidad> especialidads;
+    private List<Especialidad> especialidades;
 
     @Override
     public String toString() {
         return "Inspector{" +
                 "id_inspector=" + id_inspector +
                 ", id_user=" + id_user +
-                ", inspectoredificio=" + edificios +
-                ", inspectorespecialidad=" + especialidads +
+                ", edificios =" + edificios +
+                ", especialidades=" + especialidades +
                 '}';
     }
 
-    public Inspector(long id_inspector, long id_user, List<Edificio> edificios, List<Especialidad> especialidads) {
+    public Inspector(long id_inspector, long id_user, List<Edificio> edificios, List<Especialidad> especialidades) {
         this.id_inspector = id_inspector;
         this.id_user = id_user;
         this.edificios = edificios;
-        this.especialidads = especialidads;
+        this.especialidades = especialidades;
     }
 
     public Inspector() {
@@ -55,12 +55,12 @@ public class Inspector implements Serializable {
         this.id_user = id_user;
     }
 
-    public List<Especialidad> getEspecialidads() {
-        return especialidads;
+    public List<Especialidad> getEspecialidades() {
+        return especialidades;
     }
 
-    public void setEspecialidads(List<Especialidad> especialidads) {
-        this.especialidads = especialidads;
+    public void setEspecialidades(List<Especialidad> especialidades) {
+        this.especialidades = especialidades;
     }
 
 }

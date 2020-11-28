@@ -198,19 +198,19 @@ public class Reclamo_SQLLite {
             if (fotos.size() > 1) {
                 cv.put(ReclamoContract.ReclamosEntry.FOTO_2, fotos.get(1));
             }
-            if (fotos.size() > 1) {
+            if (fotos.size() > 2) {
                 cv.put(ReclamoContract.ReclamosEntry.FOTO_3, fotos.get(2));
             }
-            if (fotos.size() > 1) {
+            if (fotos.size() > 3) {
                 cv.put(ReclamoContract.ReclamosEntry.FOTO_4, fotos.get(3));
             }
-            if (fotos.size() > 1) {
+            if (fotos.size() > 4) {
                 cv.put(ReclamoContract.ReclamosEntry.FOTO_5, fotos.get(4));
             }
-            if (fotos.size() > 1) {
+            if (fotos.size() > 5) {
                 cv.put(ReclamoContract.ReclamosEntry.FOTO_6, fotos.get(5));
             }
-            if (fotos.size() > 1) {
+            if (fotos.size() > 6) {
                 cv.put(ReclamoContract.ReclamosEntry.FOTO_7, fotos.get(6));
             }
         }

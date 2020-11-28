@@ -112,13 +112,13 @@ public class ConfirmacionDatosFirst extends AppCompatActivity {
                                         + " Direccion: "+response.body().getEdificios().get(i).getDireccion()+ "\n";
                             }
 
-                            if(response.body().getEspecialidads().size() > 0) {
+                            if(response.body().getEspecialidades().size() > 0) {
                                 salidaDatos += "Especialidades:\n";
                             }
 
-                            for (int i = 0; i < response.body().getEspecialidads().size(); i++){
-                                salidaDatos+= response.body().getEspecialidads().get(i).getNombre()+" "
-                                                    +response.body().getEspecialidads().get(i).getDescripcion()+"\n";
+                            for (int i = 0; i < response.body().getEspecialidades().size(); i++){
+                                salidaDatos+= response.body().getEspecialidades().get(i).getNombre()+" "
+                                                    +response.body().getEspecialidades().get(i).getDescripcion()+"\n";
                             }
 
                         }

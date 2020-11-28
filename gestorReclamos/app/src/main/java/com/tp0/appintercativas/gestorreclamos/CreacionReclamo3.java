@@ -194,7 +194,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                                                 //ClipData clip = ClipData.newPlainText("label",reclamo_sqlLite.toString());
                                                 //clipboard.setPrimaryClip(clip);
                                                 //CLIPBOARD
-                                                long nro =  reclamosHelper.saveReclamo(pasarDeReclamoAReclamo_SQLite(reclamo));
+                                                long nro =  reclamosHelper.saveReclamo(reclamo_sqlLite);
                                                 mostrarToast("No tenes habilitado usar datos moviles, se va a guardar cuando haya wi fi."+String.valueOf(nro));
                                                 pasar_a_pantalla_reclamos_4(0,false);
                                                 //aca se manda a insertar hasta tener wifi
