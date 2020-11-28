@@ -188,9 +188,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
     }
 
-    private void mostrarToast(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
-    }
 
     private void GoToNotificaDetalle (){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();

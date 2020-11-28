@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class Foto implements Serializable {
 
     private long id_foto;
-    private String uri_foto;
+    private String foto;
 
-    public Foto(long id_foto, String uri_foto) {
+    public Foto(long id_foto, String foto) {
         super();
         this.id_foto = id_foto;
-        this.uri_foto = uri_foto;
+        this.foto = foto;
     }
 
     public Foto(){
@@ -21,7 +21,7 @@ public class Foto implements Serializable {
     public String toString() {
         return "Foto{" +
                 "id_foto=" + id_foto +
-                ", uri_foto='" + uri_foto + '\'' +
+                ", foto='" + foto + '\'' +
                 '}';
     }
 
@@ -33,12 +33,12 @@ public class Foto implements Serializable {
         this.id_foto = id_foto;
     }
 
-    public String getUri_foto() {
-        return uri_foto;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setUri_foto(String uri_foto) {
-        this.uri_foto = uri_foto;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 }

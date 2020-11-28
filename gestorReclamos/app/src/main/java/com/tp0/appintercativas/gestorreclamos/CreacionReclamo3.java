@@ -178,7 +178,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         next.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        reclamo.setFotos(null);
+                                        //reclamo.setFotos(null);
                                         if (testearConnection().equals("NotConnected")){
                                             //long nro = reclamosHelper.saveReclamo(pasarDeReclamoAReclamo_SQLite(reclamo));
                                             //mostrarToast("No hay conexion, se va a guardar cuando haya conexion."+String.valueOf(nro));
@@ -211,7 +211,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
 
     protected void rellenarConImagenes(List<Foto> fotos) {
         for (int i = 0; i < fotos.size(); i++) {
-            Bitmap bitmap =pasar_a_Bitmap(fotos.get(i).getUri_foto());
+            Bitmap bitmap =pasar_a_Bitmap(fotos.get(i).getFoto());
             switch(i) {
                 case 0:
                     image1.setImageBitmap(bitmap);
@@ -319,7 +319,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             List <String> fotos = new ArrayList<String>();
             for (int i = 0; i < reclamo.getFotos().size(); i++) {
                 Foto foto = reclamo.getFotos().get(i);
-                fotos.add(foto.getUri_foto());
+                fotos.add(foto.getFoto());
             }
             reclamo_sqlLite.setFotos(fotos);
         }
@@ -354,6 +354,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         intent.putExtra("alreadyLoaded", alreadyLoaded);
         startActivity(intent);
     };
+
     private void CrearReclamo(){
         try {
             Retrofit retrofit = Controller.ConfiguracionIP();
@@ -373,10 +374,6 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                     if (response.isSuccessful()){
                         pasar_a_pantalla_reclamos_4(response.body().getId_reclamo(),true);
                     }
-
-                    //if (  response.body() != null ) {
-                    //mostrarDialogo("probando",response.body().toString());
-                    //}
 
                 }
 

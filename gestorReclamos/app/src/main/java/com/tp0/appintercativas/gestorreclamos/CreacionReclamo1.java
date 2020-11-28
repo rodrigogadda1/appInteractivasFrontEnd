@@ -240,7 +240,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
     }
 
     private void getUnidadesEspaciosComunes (Administrado administrado2, String edificioParam){
-        ArrayList<String> listaUnidadesEspaciosComunes = new ArrayList<>();
+        ArrayList<String> listaUnidadesEspaciosComunes = new ArrayList<String>();
         listaUnidadesEspaciosComunes.add("Seleccionar");
 
         //mostrarDialogo("probando", edificioParam); este lo muestra bien
@@ -253,8 +253,10 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
             Unidad unidad = adminUnidad.getUnidad();
             Edificio edificio = unidad.getEdificio();
             if ( edificio.getId_edificio() ==  id_edificio) {
-                unidades.add(unidad);
-                listaUnidadesEspaciosComunes.add("Piso:"+unidad.getPiso()+"-Unidad:"+unidad.getUnidad());
+                if (adminUnidad.getRelacion().toLowerCase().contains("vividor")) {
+                    unidades.add(unidad);
+                    listaUnidadesEspaciosComunes.add("Piso:"+unidad.getPiso()+"-Unidad:"+unidad.getUnidad());
+                }
             }
         }
 

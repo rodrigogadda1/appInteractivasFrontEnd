@@ -262,7 +262,7 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                         cursor.moveToFirst();
                         cursor.getString(column_index);
                     }
-                    fotoNew.setUri_foto(MetodosDeVerificacion.getEncoded64ImageStringFromBitmap(BitmapFactory.decodeStream(imageStream)));
+                    fotoNew.setFoto(MetodosDeVerificacion.getEncoded64ImageStringFromBitmap(BitmapFactory.decodeStream(imageStream)));
                     //selectedImage.getPath()
                 }
                 reclamoFotos.add(fotoNew);
@@ -345,10 +345,10 @@ public class CreacionReclamo2 extends AppCompatActivity implements NavigationVie
                     spinnerEspecialidades(spinners);
                 }
                 //CLIPBOARD
-                //ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                //ClipData clip = ClipData.newPlainText("label",response.body().toString());
-                //clipboard.setPrimaryClip(clip);
-                //mostrarToast("se copio");
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label",response.body().toString());
+                clipboard.setPrimaryClip(clip);
+                mostrarToast("se copio");
                 //CLIPBOARD
             }
 
