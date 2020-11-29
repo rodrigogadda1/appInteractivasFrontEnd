@@ -157,7 +157,12 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                GoToNewReclamo ();
+                if (user.getTipoUser().toLowerCase().equals("administrado")){
+                    GoToNewReclamo();
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Abrir Reclamos");
+                }
                 break;
             case R.id.reclamoactivo:
                 GoToReclamosActivos ();
@@ -179,8 +184,14 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                 GoToCerrarSesion ();
                 break;
             case R.id.usuarios:
-                GoToAdministracionUsuarios ();
-                break;
+                if (user.getTipoUser().toLowerCase().equals("administrador")){
+                    GoToAdministracionUsuarios ();
+                    break;
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Usuarios");
+                    break;
+                }
             default:
                 break;
         }
@@ -190,26 +201,22 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
 
     private void GoToNotificaDetalle (){
-        Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     private void GoToNewReclamo (){
-        Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, CreacionReclamo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     private void GoToViewReclamosHist () {
-        Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, HistorialReclamos1.class);
         intent.putExtra("user", user);
         startActivity(intent);
 
     }
     private void GoToNotificaciones () {
-        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, Notificaciones1.class);
         intent.putExtra("user", user);
         startActivity(intent);
@@ -222,7 +229,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
     }
 
     private void GoToReclamosActivos () {
-        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
@@ -232,12 +238,10 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
     }
     private void GoToCerrarSesion () {
-        Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivityLogin.class);
         startActivity(intent);
     }
     private void GoToAcercaApp () {
-        Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, InfoAppActivity.class);
         intent.putExtra("user",user);
         startActivity(intent);
@@ -248,7 +252,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         startActivity(intent);
     }
     private void GoToAdministracionUsuarios () {
-        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, adminuserPrincipal.class);
         intent.putExtra("user",user);
         startActivity(intent);

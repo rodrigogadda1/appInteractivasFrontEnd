@@ -127,7 +127,12 @@ public class adminuserPrincipal extends AppCompatActivity implements NavigationV
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                GoToNewReclamo ();
+                if (user.getTipoUser().toLowerCase().equals("administrado")){
+                    GoToNewReclamo();
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Abrir Reclamos");
+                }
                 break;
             case R.id.reclamoactivo:
                 GoToReclamosActivos ();
@@ -136,8 +141,14 @@ public class adminuserPrincipal extends AppCompatActivity implements NavigationV
                 GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
-                GoToNotificaciones ();
-                break;
+                if (user.getTipoUser().toLowerCase().equals("administrado")){
+                    GoToNotificaciones ();
+                    break;
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Notificaciones");
+                    break;
+                }
             case R.id.configuracion:
                 GoToConfiguraciones();
                 break;
