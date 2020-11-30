@@ -4,12 +4,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,36 +19,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+
+
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
-public class Notificaciones1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
     User user;
-    ImageView principal_img,btnExitNotif;
-    TextView txtNotificacionesPpal,principaltexto2;
-    ScrollView listanotificaciones;
-    Button btnBorrarNotif;
-    //para la slide bar
+    ImageView areclamo2_img, btnBackRecAct, btnExitRecAct, btnNextRecAct;
+    TextView areclamo2_texto1, txtDetallesReclamoAct, txtEspecialidadRecActivo, txtEspecialidadRecActDetalle, txtEstadoRecActivo, txtRecActivoDetalle, txtDetalleDelReclamoRecAct;
+    ScrollView scvInfoREclamo2, scvListaImagenesRecActivo;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notificaciones1);
+        setContentView(R.layout.activity_reclamo_activo2);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        principal_img = (ImageView) findViewById(R.id.imgvPpal);
-        btnExitNotif = (ImageView) findViewById(R.id.btnExitNotif);
+        areclamo2_img = (ImageView) findViewById(R.id.areclamo2_img);
+        btnBackRecAct = (ImageView) findViewById(R.id.btnBackRecAct);
+        btnExitRecAct = (ImageView) findViewById(R.id.btnExitRecAct);
+        btnNextRecAct = (ImageView) findViewById(R.id.btnNextRecAct);
 
-        txtNotificacionesPpal = (TextView) findViewById(R.id.txtNotificacionesPpal);
-        principaltexto2 = (TextView) findViewById(R.id.txtListaUsuarios);
+        areclamo2_texto1 = (TextView) findViewById(R.id.areclamo2_texto1);
+        txtDetallesReclamoAct = (TextView) findViewById(R.id.txtDetallesReclamoAct);
+        txtEspecialidadRecActivo = (TextView) findViewById(R.id.txtEspecialidadRecActivo);
+        txtEspecialidadRecActDetalle = (TextView) findViewById(R.id.txtEspecialidadRecActDetalle);
+        txtEstadoRecActivo = (TextView) findViewById(R.id.txtEstadoRecActivo);
+        txtRecActivoDetalle = (TextView) findViewById(R.id.txtRecActivoDetalle);
+        txtDetalleDelReclamoRecAct = (TextView) findViewById(R.id.txtDetalleDelReclamoRecAct);
 
-        listanotificaciones = (ScrollView) findViewById(R.id.listanotificaciones);
+        scvInfoREclamo2 = (ScrollView) findViewById(R.id.scvInfoREclamo2);
+        scvListaImagenesRecActivo = (ScrollView) findViewById(R.id.scvListaImagenesRecActivo);
+        //para la slide bar
 
-        btnBorrarNotif = (Button) findViewById(R.id.btnBorrarNotif);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -67,52 +73,25 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-        btnExitNotif.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                                GoPantallaPrincipal();
-                                            }
-                                        }
-        );
+    scvInfoREclamo2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //aca se escribe que hacer
 
-
-
-        btnBorrarNotif.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                            }
-                                        }
-        );
-
-    }
-
-    protected void makeCenterView(String[] items) {
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        for (final String item : items) {
-            LinearLayout line = new LinearLayout(this);
-            line.setOrientation(LinearLayout.HORIZONTAL);
-            line.setGravity(Gravity.CENTER);
-            Button btnNotificacion = new Button(this);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-            lp.gravity = Gravity.CENTER;
-            btnNotificacion.setLayoutParams(lp);
-            btnNotificacion.setText(item); //aca iria el texto
-            btnNotificacion.setGravity(Gravity.CENTER);
-            btnNotificacion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mostrarToast(item);
-                    //aca se tiene que pasar al detalle
-                }
-            });
-            line.addView(btnNotificacion);
-            linearLayout.addView(line);
         }
-        listanotificaciones.addView(linearLayout);
     }
+        );
+        scvListaImagenesRecActivo.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //aca se escribe que hacer
+
+        }
+    }
+        );
+
+
+}
 
     private void mostrarDialogo(String titulo,String mensaje){
         new AlertDialog.Builder( this)
@@ -125,10 +104,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                     }
                 })
                 .show();
-    }
-
-    private void mostrarToast(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     //metodos de slideBar desde ahora
@@ -165,15 +140,22 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                 }
                 break;
             case R.id.reclamoactivo:
-                GoToReclamosActivos ();
+                //GoToReclamosActivos ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.reclamohistorial:
-                GoToViewReclamosHist ();
+                //GoToViewReclamosHist ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.notificaciones:
-                //GoToNotificaciones ();
-                mostrarToast("Ya estás en el Menú de Notificaciones");
-                break;
+                if (user.getTipoUser().toLowerCase().equals("administrado")){
+                    GoToNotificaciones ();
+                    break;
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Notificaciones");
+                    break;
+                }
             case R.id.configuracion:
                 GoToConfiguraciones();
                 break;
@@ -199,6 +181,9 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
     }
 
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
 
     private void GoToNotificaDetalle (){
         Intent intent = new Intent(this, Notificaciones2.class);

@@ -210,7 +210,7 @@ public class adminuserPrincipal extends AppCompatActivity implements NavigationV
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 

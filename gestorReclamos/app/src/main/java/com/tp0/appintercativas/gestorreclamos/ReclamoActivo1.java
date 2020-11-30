@@ -37,7 +37,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notificaciones1);
+        setContentView(R.layout.activity_reclamo_activo1);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -82,7 +82,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                                             @Override
                                             public void onClick(View view) {
                                                 //aca se escribe que hacer
-
+                                        GoToREclamoActivo2();
                                             }
                                         }
         );
@@ -120,6 +120,8 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         );
 
     }
+
+
 
     private void mostrarDialogo(String titulo,String mensaje){
         new AlertDialog.Builder( this)
@@ -245,7 +247,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 
@@ -266,6 +268,11 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
     }
     private void GoToAdministracionUsuarios () {
         Intent intent = new Intent(this, adminuserPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToREclamoActivo2() {
+        Intent intent = new Intent(this, ReclamoActivo2.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

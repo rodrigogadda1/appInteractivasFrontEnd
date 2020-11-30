@@ -12,15 +12,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Base64;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +26,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosDeVerificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
@@ -84,11 +76,11 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
             administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-            back = (ImageView) findViewById(R.id.back);
-            exit = (ImageView) findViewById(R.id.exit);
-            next = (ImageView) findViewById(R.id.next);
+            back = (ImageView) findViewById(R.id.btnBackRecAct);
+            exit = (ImageView) findViewById(R.id.btnExitRecAct);
+            next = (ImageView) findViewById(R.id.btnNextRecAct);
 
-            listaimagenes = (ScrollView) findViewById(R.id.listaimagenes);
+            listaimagenes = (ScrollView) findViewById(R.id.scvListaImagenesRecActivo);
             image1 = (ImageView) findViewById(R.id.image1);
             image2 = (ImageView) findViewById(R.id.image2);
             image3 = (ImageView) findViewById(R.id.image3);
@@ -515,7 +507,7 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 

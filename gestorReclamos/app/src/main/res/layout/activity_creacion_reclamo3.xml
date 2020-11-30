@@ -51,7 +51,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ScrollView
-            android:id="@+id/listaimagenes"
+            android:id="@+id/scvListaImagenesRecActivo"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="40dp"
@@ -120,7 +120,7 @@
         </ScrollView>
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/btnBackRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
@@ -130,23 +130,23 @@
             app:layout_constraintEnd_toStartOf="@+id/btnExitRec1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaimagenes"
+            app:layout_constraintTop_toBottomOf="@+id/scvListaImagenesRecActivo"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/exit"
+            android:id="@+id/btnExitRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
             android:layout_marginBottom="24dp"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toBottomOf="@+id/listaimagenes"
+            app:layout_constraintStart_toEndOf="@+id/btnBackRecAct"
+            app:layout_constraintTop_toBottomOf="@+id/scvListaImagenesRecActivo"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/next"
+            android:id="@+id/btnNextRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="24dp"
@@ -155,8 +155,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/exit"
-            app:layout_constraintTop_toBottomOf="@+id/listaimagenes"
+            app:layout_constraintStart_toEndOf="@+id/btnExitRecAct"
+            app:layout_constraintTop_toBottomOf="@+id/scvListaImagenesRecActivo"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

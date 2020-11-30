@@ -466,7 +466,7 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 
