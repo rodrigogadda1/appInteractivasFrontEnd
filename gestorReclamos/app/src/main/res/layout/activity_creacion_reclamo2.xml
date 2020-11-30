@@ -101,12 +101,12 @@
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/especialidad"
+            app:layout_constraintStart_toEndOf="@+id/txtEditRecActEspecialidad"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtReclamoDetalle" />
 
         <TextView
-            android:id="@+id/especialidad"
+            android:id="@+id/txtEditRecActEspecialidad"
             android:layout_width="130dp"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
@@ -141,7 +141,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/especialidad" />
+            app:layout_constraintTop_toBottomOf="@+id/txtEditRecActEspecialidad" />
 
         <ImageView
             android:id="@+id/imgvCamara"

@@ -33,21 +33,14 @@
     <list default="true" id="4c78d12b-8e79-4d21-92f6-7a1302026c9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/ConfiguracionesUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/ConfiguracionesUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo4.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/CreacionReclamo4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/HistorialReclamos1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/HistorialReclamos1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/InfoAppActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/InfoAppActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/Notificaciones2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/ReclamoActivo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/ReclamoActivo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserNewUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserNewUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tp0/appintercativas/gestorreclamos/adminuserPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_adminuser4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adminuser4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_creacion_reclamo2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_creacion_reclamo2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_creacion_reclamo3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_creacion_reclamo3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_reclamo_activo2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_reclamo_activo2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/layout/activity_areclamo2.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,30 +319,34 @@
     </state>
     <state x="111" y="67" width="1236" height="638" key="AVDManager/0.0.1366.768@0.0.1366.768" timestamp="1606391563865" />
     <state x="92" y="92" width="1736" height="896" key="AVDManager/0.0.1920.1080@0.0.1920.1080" timestamp="1606604165302" />
-    <state width="1322" height="114" key="GridCell.Tab.0.bottom" timestamp="1606742804455">
+    <state x="528" y="187" key="AndroidCreateXmlResourceDialog" timestamp="1606764267107">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="528" y="187" key="AndroidCreateXmlResourceDialog/0.0.1366.768@0.0.1366.768" timestamp="1606764267107" />
+    <state width="1322" height="114" key="GridCell.Tab.0.bottom" timestamp="1606764711488">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1322" height="114" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1606742804455" />
-    <state width="1322" height="114" key="GridCell.Tab.0.center" timestamp="1606742804455">
+    <state width="1322" height="114" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1606764711488" />
+    <state width="1322" height="114" key="GridCell.Tab.0.center" timestamp="1606764711487">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1322" height="114" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1606742804455" />
-    <state width="1322" height="114" key="GridCell.Tab.0.left" timestamp="1606742804455">
+    <state width="1322" height="114" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1606764711487" />
+    <state width="1322" height="114" key="GridCell.Tab.0.left" timestamp="1606764711487">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1322" height="114" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1606742804455" />
-    <state width="1322" height="114" key="GridCell.Tab.0.right" timestamp="1606742804455">
+    <state width="1322" height="114" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1606764711487" />
+    <state width="1322" height="114" key="GridCell.Tab.0.right" timestamp="1606764711488">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1920.1040@0.0.1366.728" timestamp="1602436740101" />
     <state width="1877" height="408" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1920.1040@1366.-313.1920.1040" timestamp="1604183731911" />
-    <state width="1322" height="114" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1606742804455" />
+    <state width="1322" height="114" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1606764711488" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1602386818417">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

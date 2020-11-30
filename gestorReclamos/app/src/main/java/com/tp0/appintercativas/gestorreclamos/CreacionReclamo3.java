@@ -81,10 +81,10 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             next = (ImageView) findViewById(R.id.btnNextRecAct);
 
             listaimagenes = (ScrollView) findViewById(R.id.scvListaImagenesRecActivo);
-            image1 = (ImageView) findViewById(R.id.image1);
-            image2 = (ImageView) findViewById(R.id.image2);
-            image3 = (ImageView) findViewById(R.id.image3);
-            image4 = (ImageView) findViewById(R.id.image4);
+            image1 = (ImageView) findViewById(R.id.imgEditRecAct1);
+            image2 = (ImageView) findViewById(R.id.imgEditRecAct2);
+            image3 = (ImageView) findViewById(R.id.imgEditRecAct3);
+            image4 = (ImageView) findViewById(R.id.imgEditRecAct4);
             image5 = (ImageView) findViewById(R.id.image5);
             image6 = (ImageView) findViewById(R.id.image6);
             image7 = (ImageView) findViewById(R.id.image7);

@@ -200,7 +200,7 @@
             app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
 
         <Button
-            android:id="@+id/guardar"
+            android:id="@+id/btnEditRecActGuardar"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"

@@ -59,5 +59,13 @@
         <item>Angel Rama</item>
         <item>Cleopatra Egipcia</item>
     </string-array>
+    <string-array name="listaasignados">
+        <item></item>
+        <item>Valor1</item>
+        <item>Valor2</item>
+        <item>Valor3</item>
+        <item>Valor4</item>
+        <item>Valor5</item>
+    </string-array>
 
 </resources>

@@ -4,14 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,44 +22,50 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
-        User user;
-        Button btnFiltroRec,btnAgruparReclamo,btnEditarReclamo;
-        ImageView btnBackRelcamo,btnExitReclamo;
-        TextView txtPpal1,txtPpal2;
-        ScrollView svwlistareclamos;
-        CheckBox chkReclamo1,chkReclamo2,chkReclamo3,chkReclamo4,chkReclamo5,chkReclamo6,chkReclamo7,chkReclamo8;
+
+public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+    User user;
+    Button btnEditRecActGuardar;
+    ImageView imgPpalRecAct3,imgEditRecAct1,imgEditRecAct2,imgEditRecAct3,imgEditRecAct4,imgEditRecActBack,imgEditRecActExit;
+    TextView txtPpalRecAct3,txtEditRecAct,txtEditRecActEspecialidad,txtEditRecActAgrupado,txtEditRecActEstados;
+    ScrollView scvEditReclamoTexto,scvEditRecActListImagenes;
+    Spinner spnEditRecActEspecialidades,spnEditRecActReclamosAg,spnEditRecActEstados;
+    EditText edtTxtEditRecActivoAgrupadosTexto;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reclamo_activo1);
+        setContentView(R.layout.activity_reclamo_activo3);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        btnFiltroRec = (Button) findViewById(R.id.btnFiltroRec);
-        btnAgruparReclamo = (Button) findViewById(R.id.btnAgruparReclamo);
-        btnEditarReclamo = (Button) findViewById(R.id.btnEditarReclamo);
-        btnBackRelcamo = (ImageView) findViewById(R.id.btnBackRelcamo);
-        btnExitReclamo = (ImageView) findViewById(R.id.btnExitReclamo);
+        btnEditRecActGuardar = (Button) findViewById(R.id.btnEditRecActGuardar);
 
-        txtPpal1 = (TextView) findViewById(R.id.txtPpal1);
-        txtPpal2 = (TextView) findViewById(R.id.txtPpal2);
+        imgPpalRecAct3 = (ImageView) findViewById(R.id.imgPpalRecAct3);
+        imgEditRecAct1 = (ImageView) findViewById(R.id.imgEditRecAct1);
+        imgEditRecAct2 = (ImageView) findViewById(R.id.imgEditRecAct2);
+        imgEditRecAct3 = (ImageView) findViewById(R.id.imgEditRecAct3);
+        imgEditRecAct4 = (ImageView) findViewById(R.id.imgEditRecAct4);
+        imgEditRecActBack = (ImageView) findViewById(R.id.imgEditRecActBack);
+        imgEditRecActExit = (ImageView) findViewById(R.id.imgEditRecActExit);
 
-        svwlistareclamos = (ScrollView) findViewById(R.id.svwlistareclamos);
+        txtPpalRecAct3 = (TextView) findViewById(R.id.txtPpalRecAct3);
+        txtEditRecAct = (TextView) findViewById(R.id.txtEditRecAct);
+        txtEditRecActEspecialidad = (TextView) findViewById(R.id.txtEditRecActEspecialidad);
+        txtEditRecActAgrupado = (TextView) findViewById(R.id.txtEditRecActAgrupado);
+        txtEditRecActEstados = (TextView) findViewById(R.id.txtEditRecActEstados);
 
-        chkReclamo1 = (CheckBox) findViewById(R.id.chkReclamo1);
-        chkReclamo2 = (CheckBox) findViewById(R.id.chkReclamo2);
-        chkReclamo3 = (CheckBox) findViewById(R.id.chkReclamo3);
-        chkReclamo4 = (CheckBox) findViewById(R.id.chkReclamo4);
-        chkReclamo5 = (CheckBox) findViewById(R.id.chkReclamo5);
-        chkReclamo6 = (CheckBox) findViewById(R.id.chkReclamo6);
-        chkReclamo7 = (CheckBox) findViewById(R.id.chkReclamo7);
-        chkReclamo8 = (CheckBox) findViewById(R.id.chkReclamo8);
+        scvEditReclamoTexto = (ScrollView) findViewById(R.id.scvEditReclamoTexto);
+        scvEditRecActListImagenes = (ScrollView) findViewById(R.id.scvEditRecActListImagenes);
+
+        spnEditRecActEspecialidades = (Spinner) findViewById(R.id.spnEditRecActEspecialidades);
+        spnEditRecActReclamosAg = (Spinner) findViewById(R.id.spnEditRecActReclamosAg);
+        spnEditRecActEstados = (Spinner) findViewById(R.id.spnEditRecActEstados);
+
+        edtTxtEditRecActivoAgrupadosTexto = (EditText) findViewById(R.id.edtTxtEditRecActivoAgrupadosTexto);
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -78,46 +83,23 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-        btnFiltroRec.setOnClickListener(new View.OnClickListener() {
+        imgEditRecActBack.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
                                                 //aca se escribe que hacer
-                                        GoToREclamoActivo2();
+                                                GoToREclamoActivo2();
                                             }
                                         }
         );
-        btnAgruparReclamo.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
+        imgEditRecActExit.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View view) {
+                                                     //aca se escribe que hacer
 
-                                            }
-                                        }
+                                                 }
+                                             }
         );
-        btnEditarReclamo.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                                GoToREclamoActivo3();
-                                            }
-                                        }
-        );
-        btnBackRelcamo.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    //aca se escribe que hacer
 
-                                                }
-                                            }
-        );
-        btnExitReclamo.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    //aca se escribe que hacer
-
-                                                }
-                                            }
-        );
 
     }
 
@@ -273,11 +255,6 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
     }
     private void GoToREclamoActivo2() {
         Intent intent = new Intent(this, ReclamoActivo2.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-    }
-    private void GoToREclamoActivo3() {
-        Intent intent = new Intent(this, ReclamoActivo3.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
