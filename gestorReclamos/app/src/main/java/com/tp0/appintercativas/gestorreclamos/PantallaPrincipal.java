@@ -11,6 +11,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -55,6 +57,7 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoServ
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,6 +83,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +112,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         btnReclamoNuevo = (Button) findViewById(R.id.btnReclamoNuevo);
 
         //para las notifications
-        String message = "Nueva notificacion, dirigite a notificacion para ver mas detalle.";
+
+        /*String message = "Nueva notificacion, dirigite a notificacion para ver mas detalle.";
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 PantallaPrincipal.this
         )
@@ -122,7 +127,55 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         PendingIntent pendingIntent = PendingIntent.getActivity(PantallaPrincipal.this,0, intentNotification,PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,builder.build());
+        notificationManager.notify(0,builder.build());*/
+
+        //Condigo de Notificaciones RODRIGO T
+
+        // https://codigofacilito.com/articulos/articulo_22_10_2019_21_24_39
+        /*
+        String message = "Nueva notificacion, dirigite a notificacion para ver mas detalle.";
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel notificationChannel = new NotificationChannel("NOTIFICATION_URGENT _ID", "Urgent", NotificationManager.IMPORTANCE_HIGH);
+        notificationChannel.setDescription("Canal para Notificaciones");
+        //con true mostramos el icono de la notificacion
+        notificationChannel.setShowBadge(true);
+        assert notificationManager != null;
+        //creamos el canal de las notificaciones
+        notificationManager.createNotificationChannel(notificationChannel);
+        //Vamos a creaar la notificacion
+        Intent notificationIntent = new Intent(this,NotificationActivity.class);
+        notificationIntent.putExtra("message","Hola");
+        // set intent so it does not start a new activity
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent.getActivity(this, 0,notificationIntent, 0);
+        //ya esta el canal, ahora vamos a crear la notificacion y especificamos el canal
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "NOTIFICATION_URGENT_ID");
+        notificationBuilder.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setTicker("Nueva Notificacion")
+                .setContentTitle("Titulo")
+                //.setContentIntent(onclick())
+                .setContentText("Esta es una descripción")
+                .setContentInfo("New");
+        //asignamos un ID random a las notificaciones para que el usuario pueda ver todas
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
+        assert notificationManager != null;
+        notificationManager.notify(/*notification id*/
+
+        //m, notificationBuilder.build());
+
+        //generateNotification();
+
+        //FIN DE CODIGO NOTIFICACIONES RODRIGO T
+
+
+
+
 
         //se revisa si hay reclamos pendientes para subir
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
@@ -197,6 +250,53 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         });
 
     }
+
+    private void generateNotification() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel("NOTIFICATION_URGENT _ID", "My Notifications", NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.setDescription("Channel description");
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            notificationChannel.enableVibration(true);
+
+            notificationChannel.setGroup("id");
+            notificationChannel.setShowBadge(true);
+            assert notificationManager != null;
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "NOTIFICATION_URGENT _ID");
+
+        notificationBuilder.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setTicker("Mensajes")
+                .setContentTitle("Titulo")
+                .setContentIntent(onClick())
+                .setContentText("Esta es una descripción")
+                .setContentInfo("New");
+
+
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
+        assert notificationManager != null;
+        notificationManager.notify(/*notification id*/m, notificationBuilder.build());
+
+    }
+    public PendingIntent  onClick(){
+        Intent notificationIntent = new Intent(this,NotificationActivity.class);
+        notificationIntent.putExtra("age", "13");
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return PendingIntent.getActivity(this, 0,
+                notificationIntent, 0);
+    }
+
 
     @Override
     protected void onResume() {
@@ -642,7 +742,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 
