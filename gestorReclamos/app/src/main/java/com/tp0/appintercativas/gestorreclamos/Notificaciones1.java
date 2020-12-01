@@ -21,10 +21,25 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Notificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.NotificacionService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class Notificaciones1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
+    Administrado administrado;
+    List<Notificacion> notificacionsNoLeidas;
     ImageView principal_img,btnExitNotif;
     TextView txtNotificacionesPpal,principaltexto2;
     ScrollView listanotificaciones;
@@ -49,7 +64,7 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
         listanotificaciones = (ScrollView) findViewById(R.id.listanotificaciones);
 
-        btnBorrarNotif = (Button) findViewById(R.id.btnBorrarNotif);
+        revisarNotificaciones();
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -88,6 +103,105 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
 
     }
 
+    private Notificacion getNotificacionByIdDescr (String busqueda){
+        Notificacion salida = null;
+        for (int i = 0; i < notificacionsNoLeidas.size(); i++) {
+            Notificacion notificacionActual = notificacionsNoLeidas.get(i);
+            String newComp = notificacionActual.getId_notificacion()+"-"+notificacionActual.getDescripcion();
+            if (newComp.startsWith(busqueda)){
+                salida = notificacionActual;
+            }
+        }
+        return salida;
+    }
+
+    private void revisarNotificaciones(){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        AdministradoService as = retrofit.create(AdministradoService.class);
+        Call<Administrado> call = as.getAdministradoId((long) user.getId());
+
+        call.enqueue(new Callback<Administrado>() {
+
+            @Override
+            public void onResponse(Call<Administrado> call, Response<Administrado> response) {
+                administrado = response.body();
+                mostrarDialogo("revisarNotificaciones ",administrado.toString());
+                if (response.isSuccessful()){
+                    administrado = response.body();
+                    buscarNotificaciones(administrado);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Administrado> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+            }
+        });
+    }
+
+    private void buscarNotificaciones(Administrado administrado){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        NotificacionService ns = retrofit.create(NotificacionService.class);
+        Call<List<Notificacion>> call = ns.getNotificacionId(administrado.getId_administrado());
+
+        call.enqueue(new Callback<List<Notificacion>>() {
+            @Override
+            public void onResponse(Call<List<Notificacion>> call, Response<List<Notificacion>> response) {
+                mostrarDialogo("probando buscarNotificaciones",response.body().toString());
+                if (response.isSuccessful()){
+                    List<Notificacion> notificaciones = response.body();
+                    notificacionsNoLeidas = new ArrayList<Notificacion>();
+                    for (int i = 0; i < notificaciones.size(); i++) {
+                        Notificacion notificacion = notificaciones.get(i);
+                        if (!notificacion.isLeido()) {
+                            notificacionsNoLeidas.add(notificacion);
+                            actualizarALeido(notificacion);
+                        }
+                    }
+
+                    if (notificacionsNoLeidas.size() > 0){
+                        List<String> notificacionesString = new ArrayList<String>();
+                        for (int i = 0; i < notificacionsNoLeidas.size(); i++) {
+                            Notificacion notificacion = notificacionsNoLeidas.get(i);
+                            if (notificacion.getDescripcion().length() < 10){
+                                notificacionesString.add(notificacion.getId_notificacion()+"-"+notificacion.getDescripcion());
+                            } else {
+                                notificacionesString.add(notificacion.getId_notificacion()+"-"+notificacion.getDescripcion().substring(0,9));
+                            }
+
+                        }
+                        String[] strings = new String[notificacionesString.size()];
+                        strings = notificacionesString.toArray(strings);
+                        makeCenterView(strings);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Notificacion>> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+            }
+        });
+    }
+
+    private void actualizarALeido(Notificacion notificacion){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        NotificacionService ns = retrofit.create(NotificacionService.class);
+        Call<Notificacion> call = ns.updateNotificacion(notificacion.getId_notificacion(),notificacion);
+
+        call.enqueue(new Callback<Notificacion>() {
+            @Override
+            public void onResponse(Call<Notificacion> call, Response<Notificacion> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Notificacion> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+            }
+        });
+    }
+
     protected void makeCenterView(String[] items) {
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -105,7 +219,7 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
                 @Override
                 public void onClick(View v) {
                     mostrarToast(item);
-                    //aca se tiene que pasar al detalle
+                    GoToNotificaDetalle(getNotificacionByIdDescr(item));
                 }
             });
             line.addView(btnNotificacion);
@@ -189,10 +303,11 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
     }
 
 
-    private void GoToNotificaDetalle (){
+    private void GoToNotificaDetalle (Notificacion notificacionSend){
         Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
         intent.putExtra("user",user);
+        intent.putExtra("notificacion", notificacionSend);
         startActivity(intent);
     }
     private void GoToNewReclamo (){
@@ -214,13 +329,11 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         intent.putExtra("user", user);
         startActivity(intent);
     }
-
     private void GoToConfiguraciones(){
         Intent intent = new Intent(this, ConfiguracionesUser.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
-
     private void GoToReclamosActivos () {
         Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
         //Intent intent= new Intent(this, Notificaciones1.class);
@@ -253,4 +366,5 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         intent.putExtra("user",user);
         startActivity(intent);
     }
+
 }

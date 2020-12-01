@@ -83,24 +83,6 @@
             app:layout_constraintTop_toBottomOf="@+id/txtListaUsuarios">
         </ScrollView>
 
-        <Button
-            android:id="@+id/btnBorrarNotif"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/button_red"
-            android:text="Borrar Notificaciones"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listanotificaciones" />
-
         <ImageView
             android:id="@+id/btnExitNotif"
             android:layout_width="60dp"

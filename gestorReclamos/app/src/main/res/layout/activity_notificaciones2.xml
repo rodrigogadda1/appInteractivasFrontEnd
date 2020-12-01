@@ -105,63 +105,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notificaciones3" />
 
-        <Button
-            android:id="@+id/btnBorrarNotifica"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+        <ImageView
+            android:id="@+id/btnBackNotifica"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/button_red"
-            android:text="Borrar Notificación"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textStyle="normal|bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDetalleNotifica" />
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/image12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnExitNotifica"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/btnBackNotifica"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/image12"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnExitNotifica"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBorrarNotifica"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/btnExitNotifica"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/image04"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnBackNotifica"
-        app:layout_constraintTop_toBottomOf="@+id/btnBorrarNotifica"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/btnNextNotifica"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/image05"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btnExitNotifica"
-        app:layout_constraintTop_toBottomOf="@+id/btnBorrarNotifica"
-        app:layout_constraintVertical_bias="1.0" />
+        <ImageView
+            android:id="@+id/btnExitNotifica"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/image04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnBackNotifica" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

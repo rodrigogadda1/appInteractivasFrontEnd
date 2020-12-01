@@ -217,7 +217,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                     administrado = response.body();
                     buscarReclamosAdministrado(administrado);
                 }
-
             }
 
             @Override
@@ -231,7 +230,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     public void buscarReclamosAdministrado (Administrado administrado){
         reclamosHelper = new ReclamosHelper(this);
         List<Reclamo_SQLLite> reclamitos = reclamosHelper.getReclamosSQLiteByAdminitradoId(administrado.getId_administrado());
-        mostrarDialogo("probando PantallaPrincipal 179",String.valueOf(reclamitos.size()));
         if (reclamitos.size() > 0) {
             CrearReclamosIterativo(reclamitos,reclamosHelper);
         }
@@ -395,11 +393,9 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         Retrofit retrofit = Controller.ConfiguracionIP();
         InspectorService is = retrofit.create(InspectorService.class);
         Call<Inspector> call = is.getInspectorId((long) user.getId());
-        mostrarDialogo("probando hasta donde llega 398", "llega bien hasta aca? "+String.valueOf(user.getId()));
         call.enqueue(new Callback<Inspector>() {
             @Override
             public void onResponse(Call<Inspector> call, Response<Inspector> response) {
-                //mostrarDialogo("probando hasta donde llega 402", "llega bien hasta aca? "+response.body().toString());
 
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("label",response.body().toString());
@@ -419,8 +415,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                             }
                         }
 
-                        mostrarDialogo("probando 414",lista_edificios);
-
                         for (int i = 0; i < inspector.getEspecialidades().size(); i++) {
                             Especialidad especialidad = inspector.getEspecialidades().get(i);
                             if (i == 0){
@@ -429,8 +423,6 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                                 lista_especialidades+=","+String.valueOf(especialidad.getId_especialidad());
                             }
                         }
-
-                        mostrarDialogo("probando 425",lista_especialidades);
 
                         getReclamosInspector(lista_edificios,lista_especialidades);
 

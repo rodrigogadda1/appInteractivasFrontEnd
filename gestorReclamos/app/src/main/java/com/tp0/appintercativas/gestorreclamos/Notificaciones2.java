@@ -17,10 +17,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Notificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class Notificaciones2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
+    Notificacion notificacion;
     ImageView imvPpalNotificaciones,btnBackNotifica,btnExitNotifica,btnNextNotifica;
     TextView txtNotificaDetalles,txtTituloNotifica,txtDetalleNotifica;
     ScrollView notificaciones3;
@@ -36,11 +38,11 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        notificacion = (Notificacion) intent.getSerializableExtra("notificacion");
 
         imvPpalNotificaciones = (ImageView) findViewById(R.id.imvPpalNotificaciones);
         btnBackNotifica = (ImageView) findViewById(R.id.btnBackNotifica);
         btnExitNotifica = (ImageView) findViewById(R.id.btnExitNotifica);
-        btnNextNotifica = (ImageView) findViewById(R.id.btnNextNotifica);
 
         txtNotificaDetalles = (TextView) findViewById(R.id.txtNotificaDetalles);
         txtTituloNotifica = (TextView) findViewById(R.id.txtTituloNotifica);
@@ -48,7 +50,7 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
 
         notificaciones3 = (ScrollView) findViewById(R.id.notificaciones3);
 
-        btnBorrarNotifica = (Button) findViewById(R.id.btnBorrarNotifica);
+        txtDetalleNotifica.setText(notificacion.getDescripcion());
 
 
         //codigo para slide bar
@@ -75,28 +77,18 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
         });
         btnBackNotifica.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //aca va que hace
+                GoToNotificaciones();
             }
         });
         btnExitNotifica.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        btnNextNotifica.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
-            }
-        });
-        txtDetalleNotifica.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //aca va que hace
+                GoPantallaPrincipal();
             }
         });
 
+    }
 
         //para la slide bar
-    }
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
@@ -176,7 +168,6 @@ public class Notificaciones2 extends AppCompatActivity implements NavigationView
 
     }
     private void GoToNotificaciones () {
-        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, Notificaciones1.class);
         intent.putExtra("user", user);
         startActivity(intent);
