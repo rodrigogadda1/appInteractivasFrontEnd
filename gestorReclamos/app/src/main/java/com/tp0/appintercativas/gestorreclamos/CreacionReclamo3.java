@@ -12,15 +12,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Base64;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +26,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.GeneradorEstadosObjects;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Auxiliares.MetodosDeVerificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.Reclamo_SQLLite;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.SQLite.ReclamosHelper;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Foto;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
@@ -84,15 +76,15 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
             administrado = (Administrado)  intent.getSerializableExtra("administrado");
 
-            back = (ImageView) findViewById(R.id.back);
-            exit = (ImageView) findViewById(R.id.exit);
-            next = (ImageView) findViewById(R.id.next);
+            back = (ImageView) findViewById(R.id.btnBackRecAct);
+            exit = (ImageView) findViewById(R.id.btnExitRecAct);
+            next = (ImageView) findViewById(R.id.btnNextRecAct);
 
-            listaimagenes = (ScrollView) findViewById(R.id.listaimagenes);
-            image1 = (ImageView) findViewById(R.id.image1);
-            image2 = (ImageView) findViewById(R.id.image2);
-            image3 = (ImageView) findViewById(R.id.image3);
-            image4 = (ImageView) findViewById(R.id.image4);
+            listaimagenes = (ScrollView) findViewById(R.id.scvListaImagenesRecActivo);
+            image1 = (ImageView) findViewById(R.id.imgEditRecAct1);
+            image2 = (ImageView) findViewById(R.id.imgEditRecAct2);
+            image3 = (ImageView) findViewById(R.id.imgEditRecAct3);
+            image4 = (ImageView) findViewById(R.id.imgEditRecAct4);
             image5 = (ImageView) findViewById(R.id.image5);
             image6 = (ImageView) findViewById(R.id.image6);
             image7 = (ImageView) findViewById(R.id.image7);
@@ -451,8 +443,14 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                 GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
-                GoToNotificaciones ();
-                break;
+                if (user.getTipoUser().toLowerCase().equals("administrador")){
+                    GoToNotificaciones ();
+                    break;
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Notificaciones");
+                    break;
+                }
             case R.id.configuracion:
                 GoToConfiguraciones();
                 break;
@@ -463,8 +461,14 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
                 GoToCerrarSesion ();
                 break;
             case R.id.usuarios:
-                GoToAdministracionUsuarios ();
-                break;
+                if (user.getTipoUser().toLowerCase().equals("administrador")){
+                    GoToAdministracionUsuarios ();
+                    break;
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Usuarios");
+                    break;
+                }
             default:
                 break;
         }
@@ -472,26 +476,22 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
 
     }
     private void GoToNotificaDetalle (){
-        Toast.makeText(this, "DEscripcion de Notificacion", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Notificaciones2.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     private void GoToNewReclamo (){
-        Toast.makeText(this, "Nuevo Reclamo selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, CreacionReclamo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     private void GoToViewReclamosHist () {
-        Toast.makeText(this, "Historial Reclamos selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, HistorialReclamos1.class);
         intent.putExtra("user", user);
         startActivity(intent);
 
     }
     private void GoToNotificaciones () {
-        Toast.makeText(this, "Notificaciones selected", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, Notificaciones1.class);
         intent.putExtra("user", user);
         startActivity(intent);
@@ -504,28 +504,24 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
     }
 
     private void GoToReclamosActivos () {
-        Toast.makeText(this, "Reclamos Activos selected", Toast.LENGTH_SHORT).show();
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 
     }
     private void GoToCerrarSesion () {
-        Toast.makeText(this, "Cerrar Sesión selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivityLogin.class);
         startActivity(intent);
     }
     private void GoToAcercaApp () {
-        Toast.makeText(this, "Acerca de la App selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, InfoAppActivity.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
     private void GoToAdministracionUsuarios () {
-        Toast.makeText(this, "Administracion de Usuarios selected", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, adminuserPrincipal.class);
         intent.putExtra("user",user);
         startActivity(intent);

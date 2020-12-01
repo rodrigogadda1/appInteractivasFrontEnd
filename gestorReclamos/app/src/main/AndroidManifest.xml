@@ -33,6 +33,9 @@
         <activity android:name=".adminuserPrincipal" />
         <activity android:name=".adminuserNewUser" />
         <activity android:name=".adminuserChangePassword" />
+        <activity android:name=".ReclamoActivo1" />
+        <activity android:name=".ReclamoActivo2" />
+        <activity android:name=".ReclamoActivo3" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

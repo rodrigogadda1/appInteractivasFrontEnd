@@ -1,11 +1,5 @@
 package com.tp0.appintercativas.gestorreclamos;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,47 +7,67 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-
-public class ConfiguracionesUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
-
-    CheckBox chk_uso_movil,chk_uso_notificaciones;
-    Button guardar;
-    ImageView exit;
+public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-
-    //para la slideBar
+    Button btnEditRecActGuardar;
+    ImageView imgPpalRecAct3,imgEditRecAct1,imgEditRecAct2,imgEditRecAct3,imgEditRecAct4,imgEditRecActBack,imgEditRecActExit;
+    TextView txtPpalRecAct3,txtEditRecAct,txtEditRecActEspecialidad,txtEditRecActAgrupado,txtEditRecActEstados;
+    ScrollView scvEditReclamoTexto,scvEditRecActListImagenes;
+    Spinner spnEditRecActEspecialidades,spnEditRecActReclamosAg,spnEditRecActEstados;
+    EditText edtTxtEditRecActivoAgrupadosTexto;
+    //para la slide bar
+    private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuraciones_user);
+        setContentView(R.layout.activity_reclamo_activo3);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        guardar = (Button) findViewById(R.id.btnGuardarHisto1);
-        exit = (ImageView) findViewById(R.id.btnExitRec1);
+        btnEditRecActGuardar = (Button) findViewById(R.id.btnEditRecActGuardar);
 
-        chk_uso_movil = (CheckBox) findViewById(R.id.chk_uso_movil);
-        chk_uso_movil.setChecked(user.isDatos_moviles());
-        chk_uso_notificaciones = (CheckBox) findViewById(R.id.chk_uso_notificaciones);
-        chk_uso_notificaciones.setChecked(user.isRecibir_notificaciones());
+        imgPpalRecAct3 = (ImageView) findViewById(R.id.imgPpalRecAct3);
+        imgEditRecAct1 = (ImageView) findViewById(R.id.imgEditRecAct1);
+        imgEditRecAct2 = (ImageView) findViewById(R.id.imgEditRecAct2);
+        imgEditRecAct3 = (ImageView) findViewById(R.id.imgEditRecAct3);
+        imgEditRecAct4 = (ImageView) findViewById(R.id.imgEditRecAct4);
+        imgEditRecActBack = (ImageView) findViewById(R.id.imgEditRecActBack);
+        imgEditRecActExit = (ImageView) findViewById(R.id.imgEditRecActExit);
 
-        //para la slideBar
+        txtPpalRecAct3 = (TextView) findViewById(R.id.txtPpalRecAct3);
+        txtEditRecAct = (TextView) findViewById(R.id.txtEditRecAct);
+        txtEditRecActEspecialidad = (TextView) findViewById(R.id.txtEditRecActEspecialidad);
+        txtEditRecActAgrupado = (TextView) findViewById(R.id.txtEditRecActAgrupado);
+        txtEditRecActEstados = (TextView) findViewById(R.id.txtEditRecActEstados);
+
+        scvEditReclamoTexto = (ScrollView) findViewById(R.id.scvEditReclamoTexto);
+        scvEditRecActListImagenes = (ScrollView) findViewById(R.id.scvEditRecActListImagenes);
+
+        spnEditRecActEspecialidades = (Spinner) findViewById(R.id.spnEditRecActEspecialidades);
+        spnEditRecActReclamosAg = (Spinner) findViewById(R.id.spnEditRecActReclamosAg);
+        spnEditRecActEstados = (Spinner) findViewById(R.id.spnEditRecActEstados);
+
+        edtTxtEditRecActivoAgrupadosTexto = (EditText) findViewById(R.id.edtTxtEditRecActivoAgrupadosTexto);
+
+        //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
@@ -62,61 +76,34 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
         navigationView.setItemIconTintList(null);
 
         drawerLayout.addDrawerListener(this);
-        //fin para la slideBar
+        //fin codigo para slide bar
 
+        imgEditRecActBack.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                GoToREclamoActivo2();
+                                            }
+                                        }
+        );
+        imgEditRecActExit.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View view) {
+                                                     //aca se escribe que hacer
 
-        guardar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                user.setDatos_moviles(chk_uso_movil.isChecked());
-                user.setRecibir_notificaciones(chk_uso_notificaciones.isChecked());
-                guardarPreferencias(user);
-            }
-        });
-
-        exit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goBackToMainMenu();
-            }
-        });
-
-    }
-
-    private void goBackToMainMenu(){
-        Intent intent = new Intent(this, PantallaPrincipal.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-    }
-
-    private void guardarPreferencias(User user2){
-        Retrofit retrofit = Controller.ConfiguracionIP();
-        UserService us = retrofit.create(UserService.class);
-        Call<User> call = us.updateUser(user2.getId(),user2);
-
-
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (!response.isSuccessful() || response.body() == null) {
-                    mostrarDialogo("Error", "Resultado no correcto ");
-                    return;
-                } else {
-                    mostrarToast("Configuraciones guardadas.");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
-            }
-        });
+                                                 }
+                                             }
+        );
 
 
     }
+
+
 
     private void mostrarDialogo(String titulo,String mensaje){
         new AlertDialog.Builder( this)
@@ -129,13 +116,6 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                     }
                 })
                 .show();
-    }
-
-
-    //metodos de slideBar
-
-    private void mostrarToast(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     //metodos de slideBar desde ahora
@@ -172,10 +152,12 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                 }
                 break;
             case R.id.reclamoactivo:
-                GoToReclamosActivos ();
+                //GoToReclamosActivos ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.reclamohistorial:
-                GoToViewReclamosHist ();
+                //GoToViewReclamosHist ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.notificaciones:
                 if (user.getTipoUser().toLowerCase().equals("administrado")){
@@ -187,8 +169,7 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                     break;
                 }
             case R.id.configuracion:
-                //GoToConfiguraciones();
-                mostrarToast("Ya estás en el Menú de Configuraciones");
+                GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
                 GoToAcercaApp();
@@ -211,6 +192,11 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         return true;
 
     }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     private void GoToNotificaDetalle (){
         Intent intent = new Intent(this, Notificaciones2.class);
         intent.putExtra("user",user);
@@ -257,8 +243,18 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         intent.putExtra("user",user);
         startActivity(intent);
     }
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
     private void GoToAdministracionUsuarios () {
         Intent intent = new Intent(this, adminuserPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToREclamoActivo2() {
+        Intent intent = new Intent(this, ReclamoActivo2.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }

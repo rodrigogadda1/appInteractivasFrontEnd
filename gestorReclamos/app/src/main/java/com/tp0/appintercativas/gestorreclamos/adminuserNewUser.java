@@ -115,7 +115,12 @@ public class adminuserNewUser extends AppCompatActivity implements NavigationVie
         Intent intent;
         switch (item.getItemId()) {
             case R.id.reclamonuevo:
-                GoToNewReclamo ();
+                if (user.getTipoUser().toLowerCase().equals("administrado")){
+                    GoToNewReclamo();
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Abrir Reclamos");
+                }
                 break;
             case R.id.reclamoactivo:
                 GoToReclamosActivos ();
@@ -124,8 +129,14 @@ public class adminuserNewUser extends AppCompatActivity implements NavigationVie
                 GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
-                GoToNotificaciones ();
-                break;
+                if (user.getTipoUser().toLowerCase().equals("administrado")){
+                    GoToNotificaciones ();
+                    break;
+                }
+                else{
+                    mostrarToast("Ud no tiene Perfil para Administrar Notificaciones");
+                    break;
+                }
             case R.id.configuracion:
                 GoToConfiguraciones();
                 break;
@@ -187,7 +198,7 @@ public class adminuserNewUser extends AppCompatActivity implements NavigationVie
         //Intent intent= new Intent(this, Notificaciones1.class);
         //intent.putExtra("user", user);
         //startActivity(intent);
-        Intent intent = new Intent(this, CreacionReclamo4.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
 

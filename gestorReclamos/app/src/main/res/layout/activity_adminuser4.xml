@@ -22,7 +22,7 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/principal_img"
+            android:id="@+id/imgPpalRecActivo"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/principaltexto1"
+            android:id="@+id/txtPpal1"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
@@ -67,7 +67,7 @@
             android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/principaltexto1" >
+            app:layout_constraintTop_toBottomOf="@+id/txtPpal1" >
             <LinearLayout
                 android:id="@+id/linearLayout_1"
                 android:layout_width="fill_parent"
@@ -108,7 +108,7 @@
             app:layout_constraintTop_toBottomOf="@+id/detalles" />
 
         <TextView
-            android:id="@+id/principaltexto2"
+            android:id="@+id/txtPpal2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -136,7 +136,7 @@
             android:fadeScrollbars="false"
             android:scrollbarSize="8dp"
             android:scrollbarThumbVertical="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/principaltexto2">
+            app:layout_constraintTop_toBottomOf="@+id/txtPpal2">
             <LinearLayout
                 android:id="@+id/linearLayout_2"
                 android:layout_width="fill_parent"
@@ -200,7 +200,7 @@
             app:layout_constraintTop_toBottomOf="@+id/listausuarios" />
 
         <Button
-            android:id="@+id/guardar"
+            android:id="@+id/btnEditRecActGuardar"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
@@ -219,7 +219,7 @@
             app:layout_constraintTop_toBottomOf="@+id/asignarunidad" />
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/btnBackRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
@@ -234,7 +234,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/exit"
+            android:id="@+id/btnExitRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="80dp"
@@ -242,7 +242,7 @@
             android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintStart_toEndOf="@+id/btnBackRecAct"
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintVertical_bias="1.0" />
 

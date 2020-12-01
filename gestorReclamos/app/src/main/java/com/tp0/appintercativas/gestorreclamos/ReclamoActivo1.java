@@ -1,59 +1,68 @@
 package com.tp0.appintercativas.gestorreclamos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
-import com.tp0.appintercativas.gestorreclamos.UserManagement.service.UserService;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-
-public class ConfiguracionesUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
-
-    CheckBox chk_uso_movil,chk_uso_notificaciones;
-    Button guardar;
-    ImageView exit;
-    User user;
-
-    //para la slideBar
+public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+        User user;
+        Button btnFiltroRec,btnAgruparReclamo,btnEditarReclamo;
+        ImageView btnBackRelcamo,btnExitReclamo;
+        TextView txtPpal1,txtPpal2;
+        ScrollView svwlistareclamos;
+        CheckBox chkReclamo1,chkReclamo2,chkReclamo3,chkReclamo4,chkReclamo5,chkReclamo6,chkReclamo7,chkReclamo8;
+    //para la slide bar
+    private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuraciones_user);
+        setContentView(R.layout.activity_reclamo_activo1);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        guardar = (Button) findViewById(R.id.btnGuardarHisto1);
-        exit = (ImageView) findViewById(R.id.btnExitRec1);
+        btnFiltroRec = (Button) findViewById(R.id.btnFiltroRec);
+        btnAgruparReclamo = (Button) findViewById(R.id.btnAgruparReclamo);
+        btnEditarReclamo = (Button) findViewById(R.id.btnEditarReclamo);
+        btnBackRelcamo = (ImageView) findViewById(R.id.btnBackRelcamo);
+        btnExitReclamo = (ImageView) findViewById(R.id.btnExitReclamo);
 
-        chk_uso_movil = (CheckBox) findViewById(R.id.chk_uso_movil);
-        chk_uso_movil.setChecked(user.isDatos_moviles());
-        chk_uso_notificaciones = (CheckBox) findViewById(R.id.chk_uso_notificaciones);
-        chk_uso_notificaciones.setChecked(user.isRecibir_notificaciones());
+        txtPpal1 = (TextView) findViewById(R.id.txtPpal1);
+        txtPpal2 = (TextView) findViewById(R.id.txtPpal2);
 
-        //para la slideBar
+        svwlistareclamos = (ScrollView) findViewById(R.id.svwlistareclamos);
+
+        chkReclamo1 = (CheckBox) findViewById(R.id.chkReclamo1);
+        chkReclamo2 = (CheckBox) findViewById(R.id.chkReclamo2);
+        chkReclamo3 = (CheckBox) findViewById(R.id.chkReclamo3);
+        chkReclamo4 = (CheckBox) findViewById(R.id.chkReclamo4);
+        chkReclamo5 = (CheckBox) findViewById(R.id.chkReclamo5);
+        chkReclamo6 = (CheckBox) findViewById(R.id.chkReclamo6);
+        chkReclamo7 = (CheckBox) findViewById(R.id.chkReclamo7);
+        chkReclamo8 = (CheckBox) findViewById(R.id.chkReclamo8);
+
+        //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
@@ -62,61 +71,57 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
         navigationView.setItemIconTintList(null);
 
         drawerLayout.addDrawerListener(this);
-        //fin para la slideBar
+        //fin codigo para slide bar
 
+        btnFiltroRec.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                        GoToREclamoActivo2();
+                                            }
+                                        }
+        );
+        btnAgruparReclamo.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
 
-        guardar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                user.setDatos_moviles(chk_uso_movil.isChecked());
-                user.setRecibir_notificaciones(chk_uso_notificaciones.isChecked());
-                guardarPreferencias(user);
-            }
-        });
+                                            }
+                                        }
+        );
+        btnEditarReclamo.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //aca se escribe que hacer
+                                                GoToREclamoActivo3();
+                                            }
+                                        }
+        );
+        btnBackRelcamo.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    //aca se escribe que hacer
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goBackToMainMenu();
-            }
-        });
+                                                }
+                                            }
+        );
+        btnExitReclamo.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    //aca se escribe que hacer
 
-    }
-
-    private void goBackToMainMenu(){
-        Intent intent = new Intent(this, PantallaPrincipal.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-    }
-
-    private void guardarPreferencias(User user2){
-        Retrofit retrofit = Controller.ConfiguracionIP();
-        UserService us = retrofit.create(UserService.class);
-        Call<User> call = us.updateUser(user2.getId(),user2);
-
-
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (!response.isSuccessful() || response.body() == null) {
-                    mostrarDialogo("Error", "Resultado no correcto ");
-                    return;
-                } else {
-                    mostrarToast("Configuraciones guardadas.");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
-            }
-        });
-
+                                                }
+                                            }
+        );
 
     }
+
+
 
     private void mostrarDialogo(String titulo,String mensaje){
         new AlertDialog.Builder( this)
@@ -129,13 +134,6 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                     }
                 })
                 .show();
-    }
-
-
-    //metodos de slideBar
-
-    private void mostrarToast(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     //metodos de slideBar desde ahora
@@ -172,10 +170,12 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                 }
                 break;
             case R.id.reclamoactivo:
-                GoToReclamosActivos ();
+                //GoToReclamosActivos ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.reclamohistorial:
-                GoToViewReclamosHist ();
+                //GoToViewReclamosHist ();
+                mostrarToast("Ya estas en el Hostorial de Reclamos");
                 break;
             case R.id.notificaciones:
                 if (user.getTipoUser().toLowerCase().equals("administrado")){
@@ -187,8 +187,7 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
                     break;
                 }
             case R.id.configuracion:
-                //GoToConfiguraciones();
-                mostrarToast("Ya estás en el Menú de Configuraciones");
+                GoToConfiguraciones();
                 break;
             case R.id.acercaapp:
                 GoToAcercaApp();
@@ -211,6 +210,11 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         return true;
 
     }
+
+    private void mostrarToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
     private void GoToNotificaDetalle (){
         Intent intent = new Intent(this, Notificaciones2.class);
         intent.putExtra("user",user);
@@ -257,8 +261,23 @@ public class ConfiguracionesUser extends AppCompatActivity implements Navigation
         intent.putExtra("user",user);
         startActivity(intent);
     }
+    private void GoPantallaPrincipal(){
+        Intent intent = new Intent(this, PantallaPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
     private void GoToAdministracionUsuarios () {
         Intent intent = new Intent(this, adminuserPrincipal.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToREclamoActivo2() {
+        Intent intent = new Intent(this, ReclamoActivo2.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToREclamoActivo3() {
+        Intent intent = new Intent(this, ReclamoActivo3.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
