@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -44,7 +42,7 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
         btnExitRecAct = (ImageView) findViewById(R.id.btnExitRecAct);
         btnNextRecAct = (ImageView) findViewById(R.id.btnNextRecAct);
 
-        areclamo2_texto1 = (TextView) findViewById(R.id.areclamo2_texto1);
+        areclamo2_texto1 = (TextView) findViewById(R.id.txtRecActEstado);
         txtDetallesReclamoAct = (TextView) findViewById(R.id.txtDetallesReclamoAct);
         txtEspecialidadRecActivo = (TextView) findViewById(R.id.txtEspecialidadRecActivo);
         txtEspecialidadRecActDetalle = (TextView) findViewById(R.id.txtEspecialidadRecActDetalle);
@@ -141,11 +139,10 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.reclamoactivo:
                 //GoToReclamosActivos ();
-                mostrarToast("Ya estas en el Hostorial de Reclamos");
+                mostrarToast("Ya estas en Reclamos activos");
                 break;
             case R.id.reclamohistorial:
-                //GoToViewReclamosHist ();
-                mostrarToast("Ya estas en el Hostorial de Reclamos");
+                GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
                 if (user.getTipoUser().toLowerCase().equals("administrado")){

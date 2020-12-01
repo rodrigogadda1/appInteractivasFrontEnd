@@ -36,6 +36,7 @@
         <activity android:name=".ReclamoActivo1" />
         <activity android:name=".ReclamoActivo2" />
         <activity android:name=".ReclamoActivo3" />
+        <activity android:name=".ReclamoActivo4" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

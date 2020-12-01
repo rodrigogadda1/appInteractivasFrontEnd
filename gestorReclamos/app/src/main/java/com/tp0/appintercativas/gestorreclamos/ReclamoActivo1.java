@@ -90,7 +90,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                                             @Override
                                             public void onClick(View view) {
                                                 //aca se escribe que hacer
-
+                                                GoToREclamoActivo3();
                                             }
                                         }
         );
@@ -98,7 +98,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                                             @Override
                                             public void onClick(View view) {
                                                 //aca se escribe que hacer
-                                                GoToREclamoActivo3();
+                                                GoToREclamoActivo4();
                                             }
                                         }
         );
@@ -171,11 +171,10 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.reclamoactivo:
                 //GoToReclamosActivos ();
-                mostrarToast("Ya estas en el Hostorial de Reclamos");
+                mostrarToast("Ya estas en Reclamos activos");
                 break;
             case R.id.reclamohistorial:
-                //GoToViewReclamosHist ();
-                mostrarToast("Ya estas en el Hostorial de Reclamos");
+                GoToViewReclamosHist ();
                 break;
             case R.id.notificaciones:
                 if (user.getTipoUser().toLowerCase().equals("administrado")){
@@ -278,6 +277,11 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
     }
     private void GoToREclamoActivo3() {
         Intent intent = new Intent(this, ReclamoActivo3.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+    private void GoToREclamoActivo4() {
+        Intent intent = new Intent(this, ReclamoActivo4.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
