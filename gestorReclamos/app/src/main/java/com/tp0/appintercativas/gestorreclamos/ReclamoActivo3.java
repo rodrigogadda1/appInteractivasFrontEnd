@@ -55,14 +55,11 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
         txtPpalRecAct3 = (TextView) findViewById(R.id.txtPpalRecAct3);
         txtEditRecAct = (TextView) findViewById(R.id.txtEditRecAct);
         txtEditRecActEspecialidad = (TextView) findViewById(R.id.txtEditRecActEspecialidad);
-        txtEditRecActAgrupado = (TextView) findViewById(R.id.txtEditRecActAgrupado);
         txtEditRecActEstados = (TextView) findViewById(R.id.txtEditRecActEstados);
 
         scvEditReclamoTexto = (ScrollView) findViewById(R.id.scvEditReclamoTexto);
-        scvEditRecActListImagenes = (ScrollView) findViewById(R.id.scvEditRecActListImagenes);
 
         spnEditRecActEspecialidades = (Spinner) findViewById(R.id.spnEditRecActEspecialidades);
-        spnEditRecActReclamosAg = (Spinner) findViewById(R.id.spnEditRecActReclamosAg);
         spnEditRecActEstados = (Spinner) findViewById(R.id.spnEditRecActEstados);
 
         edtTxtEditRecActivoAgrupadosTexto = (EditText) findViewById(R.id.edtTxtEditRecActivoAgrupadosTexto);

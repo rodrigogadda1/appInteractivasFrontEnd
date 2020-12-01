@@ -71,24 +71,6 @@
         </ScrollView>
 
         <TextView
-            android:id="@+id/txtDetallesReclamoAct"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_gray"
-            android:gravity="center"
-            android:text="Detalles"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scvInfoREclamo2" />
-
-        <TextView
             android:id="@+id/txtEspecialidadRecActivo"
             android:layout_width="130dp"
             android:layout_height="40dp"
@@ -105,7 +87,7 @@
             app:layout_constraintEnd_toStartOf="@+id/txtEspecialidadRecActDetalle"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDetallesReclamoAct" />
+            app:layout_constraintTop_toBottomOf="@+id/scvInfoREclamo2" />
 
         <TextView
             android:id="@+id/txtEspecialidadRecActDetalle"
@@ -123,7 +105,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtEspecialidadRecActivo"
-            app:layout_constraintTop_toBottomOf="@+id/txtDetallesReclamoAct" />
+            app:layout_constraintTop_toBottomOf="@+id/scvInfoREclamo2" />
 
         <TextView
             android:id="@+id/txtEstadoRecActivo"
@@ -182,7 +164,7 @@
         <ScrollView
             android:id="@+id/scvListaImagenesRecActivo"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="240dp"
             android:layout_marginTop="14dp"
             android:fillViewport="true"
             android:gravity="center_vertical"
@@ -207,13 +189,14 @@
                     android:src="@drawable/image40"
                     android:adjustViewBounds="true" >
                 </ImageView>
+
                 <ImageView
                     android:id="@+id/imgEditRecAct2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image41"
-                    android:adjustViewBounds="true" >
-                </ImageView>
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/image41"></ImageView>
+
                 <ImageView
                     android:id="@+id/imgEditRecAct3"
                     android:layout_width="fill_parent"
@@ -238,10 +221,9 @@
             android:id="@+id/btnBackRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="4dp"
-            android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -252,10 +234,9 @@
             android:id="@+id/btnExitRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="85dp"
             android:layout_marginBottom="4dp"
-            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnBackRecAct"
@@ -266,11 +247,10 @@
             android:id="@+id/btnNextRecAct"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="80dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
-            android:onClick="next"
             android:src="@drawable/image08"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

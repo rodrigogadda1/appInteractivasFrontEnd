@@ -43,7 +43,6 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
         btnNextRecAct = (ImageView) findViewById(R.id.btnNextRecAct);
 
         areclamo2_texto1 = (TextView) findViewById(R.id.txtRecActEstado);
-        txtDetallesReclamoAct = (TextView) findViewById(R.id.txtDetallesReclamoAct);
         txtEspecialidadRecActivo = (TextView) findViewById(R.id.txtEspecialidadRecActivo);
         txtEspecialidadRecActDetalle = (TextView) findViewById(R.id.txtEspecialidadRecActDetalle);
         txtEstadoRecActivo = (TextView) findViewById(R.id.txtEstadoRecActivo);

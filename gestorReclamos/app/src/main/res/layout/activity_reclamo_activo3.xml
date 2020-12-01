@@ -36,13 +36,13 @@
         <TextView
             android:id="@+id/txtPpalRecAct3"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="30dp"
             android:layout_marginTop="14dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Editar Reclamo Agrupado"
+            android:text="Inspeccionar Reclamo"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -54,9 +54,9 @@
         <ScrollView
             android:id="@+id/scvEditReclamoTexto"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="130dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:fadeScrollbars="false"
@@ -91,7 +91,7 @@
             android:id="@+id/txtEditRecActEspecialidad"
             android:layout_width="130dp"
             android:layout_height="40dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="24dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_gray"
@@ -109,7 +109,7 @@
             android:id="@+id/spnEditRecActEspecialidades"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/especialidad_sp"
@@ -119,43 +119,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scvEditReclamoTexto" />
 
-        <TextView
-            android:id="@+id/txtEditRecActAgrupado"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="24dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/rounded_gray"
-            android:text="Asignar Agrupado :"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:padding="6dip"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEditRecActEspecialidad" />
-
-        <Spinner
-            android:id="@+id/spnEditRecActReclamosAg"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/rounded_white"
-            android:entries="@array/listaasignados"
-            android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnEditRecActEspecialidades" />
 
         <EditText
             android:id="@+id/edtTxtEditRecActivoAgrupadosTexto"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="25dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_white"
             android:textColor="@android:color/black"
@@ -166,62 +135,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spnEditRecActReclamosAg" />
+            app:layout_constraintTop_toBottomOf="@+id/txtEditRecActEspecialidad" />
 
-        <ScrollView
-            android:id="@+id/scvEditRecActListImagenes"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="14dp"
-            android:fillViewport="true"
-            android:gravity="center_vertical"
-            android:background="@drawable/rounded_gray"
-            android:scrollbars="vertical"
-            android:fadeScrollbars="false"
-            android:scrollbarSize="8dp"
-            android:scrollbarThumbVertical="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxtEditRecActivoAgrupadosTexto" >
-            <LinearLayout
-                android:id="@+id/linearLayout_2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical|center_horizontal">
-                <ImageView
-                    android:id="@+id/imgEditRecAct1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/image40"
-                    android:adjustViewBounds="true" >
-                </ImageView>
-                <ImageView
-                    android:id="@+id/imgEditRecAct2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/image41"
-                    android:adjustViewBounds="true" >
-                </ImageView>
 
-                <ImageView
-                    android:id="@+id/imgEditRecAct4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/image43"
-                    android:adjustViewBounds="true" >
-                </ImageView>
-                <ListView android:layout_weight="1"
-                    android:layout_height="0dp"
-                    android:layout_width="0dp" />
-            </LinearLayout>
-        </ScrollView>
 
         <TextView
             android:id="@+id/txtEditRecActEstados"
             android:layout_width="130dp"
             android:layout_height="40dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="24dp"
             android:gravity="center_vertical"
             android:background="@drawable/rounded_gray"
@@ -233,13 +155,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scvEditRecActListImagenes" />
+            app:layout_constraintTop_toBottomOf="@+id/edtTxtEditRecActivoAgrupadosTexto" />
 
         <Spinner
             android:id="@+id/spnEditRecActEstados"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_white"
             android:entries="@array/listaestado"
@@ -247,30 +169,53 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scvEditRecActListImagenes" />
+            app:layout_constraintTop_toBottomOf="@+id/edtTxtEditRecActivoAgrupadosTexto" />
+
+        <ImageView
+            android:id="@+id/imvRecActEstadoCamara2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/image35"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/camara_texto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnEditRecActEstados" />
+
+        <ImageView
+            android:id="@+id/imvRecActEstadoFiles2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="76dp"
+            android:src="@drawable/image36"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/archivos_texto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnEditRecActEstados" />
 
         <ImageView
             android:id="@+id/imgEditRecActBack"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="4dp"
-            android:onClick="back"
             android:src="@drawable/image12"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/imgEditRecActExit"
-            app:layout_constraintTop_toBottomOf="@+id/spnEditRecActEstados" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spnEditRecActEstados"
+            app:layout_constraintVertical_bias="0.617" />
 
         <ImageView
             android:id="@+id/imgEditRecActExit"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="85dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="70dp"
             android:layout_marginBottom="4dp"
-            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgEditRecActBack"
@@ -280,14 +225,13 @@
             android:id="@+id/btnEditRecActGuardar"
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="80dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="4dp"
-            android:onClick="guardar"
             android:background="@drawable/button_red"
-            android:text="Guardar"
             android:gravity="center"
+            android:text="Guardar"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textStyle="normal|bold"

@@ -96,7 +96,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         btnFiltroRec.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                        //GoToREclamoActivo2();
+
                                         mostrarToast("funcionalidad no implementada");
                                             }
                                         }
@@ -104,7 +104,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         btnAgruparReclamo.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //GoToREclamoActivo3();
+                                                GoToREclamoActivo3();
                                                 mostrarToast("funcionalidad no implementada");
                                             }
                                         }
@@ -275,6 +275,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                 @Override
                 public void onClick(View v) {
                     mostrarToast(item);
+                    GoToREclamoActivo2();
                     //var nro para usar en la List<Reclamo>
                     //aca se tiene que pasar al detalle
                 }

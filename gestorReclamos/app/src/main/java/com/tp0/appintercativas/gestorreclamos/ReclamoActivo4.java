@@ -25,10 +25,10 @@ import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
-    Button btnRecActEstado1,btnRecActEstado2,btnRecActEstado3,btnRecActEstado4,btnRecActEstado5,btnGuardarRecActEstado;
-    ImageView imgPpalRecActEstado,imgRecActEstado1,imgRecActEstado2,imgRecActEstado3,imgRecActEstado4,imvRecActEstadoCamara,imvRecActEstadoFiles,btnBackRecActEstado,btnExitREcActEstado;
+    Button btnGuardarRecActEstado;
+    ImageView imgPpalRecActEstado,btnBackRecActEstado,btnExitREcActEstado;
     TextView txtRecActEstado,txtRecActEstadoReclamo;
-    ScrollView scvRecActEstado,scvRecActEstadoListaImagenes,scvRecActEstadosLista;
+    ScrollView scvRecActEstado;
     EditText edtxtRecActEstadoDetalle;
 
     //para la slide bar
@@ -43,20 +43,9 @@ public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        btnRecActEstado1 = (Button) findViewById(R.id.btnRecActEstado1);
-        btnRecActEstado2 = (Button) findViewById(R.id.btnRecActEstado2);
-        btnRecActEstado3 = (Button) findViewById(R.id.btnRecActEstado3);
-        btnRecActEstado4 = (Button) findViewById(R.id.btnRecActEstado4);
-        btnRecActEstado5 = (Button) findViewById(R.id.btnRecActEstado5);
         btnGuardarRecActEstado = (Button) findViewById(R.id.btnGuardarRecActEstado);
 
         imgPpalRecActEstado = (ImageView) findViewById(R.id.imgPpalRecActEstado);
-        imgRecActEstado1 = (ImageView) findViewById(R.id.imgRecActEstado1);
-        imgRecActEstado2 = (ImageView) findViewById(R.id.imgRecActEstado2);
-        imgRecActEstado3 = (ImageView) findViewById(R.id.imgRecActEstado3);
-        imgRecActEstado4 = (ImageView) findViewById(R.id.imgRecActEstado4);
-        imvRecActEstadoCamara = (ImageView) findViewById(R.id.imvRecActEstadoCamara);
-        imvRecActEstadoFiles = (ImageView) findViewById(R.id.imvRecActEstadoFiles);
         btnBackRecActEstado = (ImageView) findViewById(R.id.btnBackRecActEstado);
         btnExitREcActEstado = (ImageView) findViewById(R.id.btnExitREcActEstado);
 
@@ -64,8 +53,6 @@ public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.
         txtRecActEstadoReclamo = (TextView) findViewById(R.id.txtRecActEstadoReclamo);
 
         scvRecActEstado = (ScrollView) findViewById(R.id.scvRecActEstado);
-        scvRecActEstadoListaImagenes = (ScrollView) findViewById(R.id.scvRecActEstadoListaImagenes);
-        scvRecActEstadosLista = (ScrollView) findViewById(R.id.scvRecActEstadosLista);
 
         edtxtRecActEstadoDetalle = (EditText) findViewById(R.id.edtxtRecActEstadoDetalle);
 
@@ -85,30 +72,6 @@ public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-        btnRecActEstado1.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-
-                                            }
-                                        }
-        );
-        btnRecActEstado2.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View view) {
-                                                     //aca se escribe que hacer
-
-                                                 }
-                                             }
-        );
-        imgRecActEstado3.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    //aca se escribe que hacer
-
-                                                }
-                                            }
-        );
         btnBackRecActEstado.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View view) {
