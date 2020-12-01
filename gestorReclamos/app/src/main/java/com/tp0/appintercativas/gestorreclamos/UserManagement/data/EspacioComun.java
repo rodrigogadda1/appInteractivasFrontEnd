@@ -27,7 +27,7 @@ public class EspacioComun implements Serializable {
                 "id_espaciocomun=" + id_espaciocomun +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", edificio=" + edificio.toString() +
+                ", edificio=" + edificio +
                 '}';
     }
 

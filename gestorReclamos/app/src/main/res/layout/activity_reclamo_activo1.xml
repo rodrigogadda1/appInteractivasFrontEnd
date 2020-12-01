@@ -59,7 +59,6 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/button_yellow"
             android:gravity="center"
-            android:onClick="filtro"
             android:text="Filtro"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
@@ -99,104 +98,6 @@
             android:scrollbarThumbVertical="@android:color/darker_gray"
             android:scrollbars="vertical"
             app:layout_constraintTop_toBottomOf="@+id/txtPpal2">
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <CheckBox
-                    android:id="@+id/chkReclamo1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 1º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 2º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 3º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 4º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo5"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 5º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo6"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 6º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo7"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 7º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-
-                <CheckBox
-                    android:id="@+id/chkReclamo8"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_white"
-                    android:padding="6dip"
-                    android:text="Ejemplo del 8º Reclamo Activo"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"></CheckBox>
-            </LinearLayout>
         </ScrollView>
 
         <Button
@@ -208,7 +109,6 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/button_red"
             android:gravity="center"
-            android:onClick="agrupar"
             android:text="Nuevo Reclamo Agrupado"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
@@ -227,7 +127,6 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/button_yellow"
             android:gravity="center"
-            android:onClick="editar"
             android:text="Editar Reclamo"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
@@ -237,21 +136,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAgruparReclamo" />
 
-        <ImageView
-            android:id="@+id/btnBackRelcamo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="4dp"
-            android:onClick="back"
-            android:src="@drawable/image12"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnExitReclamo"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEditarReclamo"
-            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/btnExitReclamo"
@@ -261,10 +145,10 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="90dp"
             android:layout_marginBottom="4dp"
-            android:onClick="exit"
             android:src="@drawable/image04"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnBackRelcamo"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnEditarReclamo"
             app:layout_constraintVertical_bias="1.0" />
 

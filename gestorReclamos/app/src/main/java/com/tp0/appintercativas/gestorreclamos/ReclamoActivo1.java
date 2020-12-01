@@ -1,6 +1,9 @@
 package com.tp0.appintercativas.gestorreclamos;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,14 +25,33 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Administrado;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Edificio;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Especialidad;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Inspector;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.AdministradoService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.InspectorService;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
+        List<Reclamo> reclamos;
+        Administrado administrado;
         User user;
         Button btnFiltroRec,btnAgruparReclamo,btnEditarReclamo;
-        ImageView btnBackRelcamo,btnExitReclamo;
+        ImageView btnExitReclamo;
         TextView txtPpal1,txtPpal2;
         ScrollView svwlistareclamos;
-        CheckBox chkReclamo1,chkReclamo2,chkReclamo3,chkReclamo4,chkReclamo5,chkReclamo6,chkReclamo7,chkReclamo8;
     //para la slide bar
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -45,7 +67,6 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         btnFiltroRec = (Button) findViewById(R.id.btnFiltroRec);
         btnAgruparReclamo = (Button) findViewById(R.id.btnAgruparReclamo);
         btnEditarReclamo = (Button) findViewById(R.id.btnEditarReclamo);
-        btnBackRelcamo = (ImageView) findViewById(R.id.btnBackRelcamo);
         btnExitReclamo = (ImageView) findViewById(R.id.btnExitReclamo);
 
         txtPpal1 = (TextView) findViewById(R.id.txtPpal1);
@@ -53,14 +74,8 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
 
         svwlistareclamos = (ScrollView) findViewById(R.id.svwlistareclamos);
 
-        chkReclamo1 = (CheckBox) findViewById(R.id.chkReclamo1);
-        chkReclamo2 = (CheckBox) findViewById(R.id.chkReclamo2);
-        chkReclamo3 = (CheckBox) findViewById(R.id.chkReclamo3);
-        chkReclamo4 = (CheckBox) findViewById(R.id.chkReclamo4);
-        chkReclamo5 = (CheckBox) findViewById(R.id.chkReclamo5);
-        chkReclamo6 = (CheckBox) findViewById(R.id.chkReclamo6);
-        chkReclamo7 = (CheckBox) findViewById(R.id.chkReclamo7);
-        chkReclamo8 = (CheckBox) findViewById(R.id.chkReclamo8);
+        reclamos = new ArrayList<Reclamo>();
+        getReclamosFilteredByUserIdStatus();
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -81,46 +96,195 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         btnFiltroRec.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                        GoToREclamoActivo2();
+                                        //GoToREclamoActivo2();
+                                        mostrarToast("funcionalidad no implementada");
                                             }
                                         }
         );
         btnAgruparReclamo.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                                GoToREclamoActivo3();
+                                                //GoToREclamoActivo3();
+                                                mostrarToast("funcionalidad no implementada");
                                             }
                                         }
         );
         btnEditarReclamo.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //aca se escribe que hacer
                                                 GoToREclamoActivo4();
                                             }
                                         }
         );
-        btnBackRelcamo.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    //aca se escribe que hacer
-
-                                                }
-                                            }
-        );
         btnExitReclamo.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
-                                                    //aca se escribe que hacer
-
+                                                    GoPantallaPrincipal();
                                                 }
                                             }
         );
 
     }
 
+    private void getReclamosFilteredByUserIdStatus() {
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        ReclamoService rs = retrofit.create(ReclamoService.class);
+        Call<List<Reclamo>> call = null;
+
+        if (user.getTipoUser().toLowerCase().equals("administrado")) {
+            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1,3,4,5","","");
+        } else if (user.getTipoUser().toLowerCase().equals("inspector")){
+            getInspector();
+        } else {
+            //caso administrador
+            call = rs.getReclamosByUserIdAndStatusId("","1,3,4,5","","");
+        }
+
+        if (!user.getTipoUser().toLowerCase().equals("inspector")) {
+            call.enqueue(new Callback<List<Reclamo>>() {
+                @Override
+                public void onResponse(Call<List<Reclamo>> call, Response<List<Reclamo>> response) {
+                    if (response.isSuccessful()) {
+                        reclamos = response.body();
+
+                    ArrayList<String> strings = new ArrayList<>();
+
+                    for (int i = 0; i < reclamos.size(); i++) {
+                            Reclamo reclamo = reclamos.get(i);
+                            strings.add(reclamoToString(reclamo));
+                    }
+
+                    if (strings.size() > 0) {
+                        String[] reclamosToAdd = new String[strings.size()];
+                        reclamosToAdd = strings.toArray(reclamosToAdd);
+                        makeCenterView(reclamosToAdd);
+                    }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Reclamo>> call, Throwable t) {
+                    mostrarDialogo("Error", "Error en la ejecucion " + t.getMessage());
+                }
+            });
+        }
+
+    }
+
+    private void getInspector (){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        InspectorService is = retrofit.create(InspectorService.class);
+        Call<Inspector> call = is.getInspectorId((long) user.getId());
+        call.enqueue(new Callback<Inspector>() {
+            @Override
+            public void onResponse(Call<Inspector> call, Response<Inspector> response) {
+
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label",response.body().toString());
+                clipboard.setPrimaryClip(clip);
+
+                if (response.isSuccessful()){
+                    Inspector inspector = response.body();
+                    if ( (inspector.getEdificios().size() > 0) && (inspector.getEspecialidades().size() > 0)){
+                        String lista_edificios = "", lista_especialidades = "";
+
+                        for (int i = 0; i < inspector.getEdificios().size(); i++) {
+                            Edificio edificio = inspector.getEdificios().get(i);
+                            if (i==0){
+                                lista_edificios=String.valueOf(edificio.getId_edificio());
+                            } else {
+                                lista_edificios+=","+String.valueOf(edificio.getId_edificio());
+                            }
+                        }
+
+                        for (int i = 0; i < inspector.getEspecialidades().size(); i++) {
+                            Especialidad especialidad = inspector.getEspecialidades().get(i);
+                            if (i == 0){
+                                lista_especialidades=String.valueOf(especialidad.getId_especialidad());
+                            } else {
+                                lista_especialidades+=","+String.valueOf(especialidad.getId_especialidad());
+                            }
+                        }
+
+                        getReclamosInspector(lista_edificios,lista_especialidades);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Inspector> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+            }
+        });
+    }
+
+    private void getReclamosInspector(String lista_edificios,String lista_especialidades){
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        ReclamoService rs = retrofit.create(ReclamoService.class);
+        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId("","1",lista_edificios,lista_especialidades);
+
+        call.enqueue(new Callback<List<Reclamo>>() {
+            @Override
+            public void onResponse(Call<List<Reclamo>> call, Response<List<Reclamo>> response) {
+
+                if (response.isSuccessful()){
+                    reclamos = response.body();
+                    ArrayList<String> strings = new ArrayList<>();
+
+                    for (int i = 0; i < reclamos.size(); i++) {
+                            Reclamo reclamo = reclamos.get(i);
+                            strings.add(reclamoToString(reclamo));
+                    }
+
+                    if (strings.size() > 0) {
+                        String[] reclamosToAdd = new String[strings.size()];
+                        reclamosToAdd = strings.toArray(reclamosToAdd);
+                        makeCenterView(reclamosToAdd);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Reclamo>> call, Throwable t) {
+                mostrarDialogo("Error", "Error en la ejecucion "+t.getMessage());
+            }
+        });
+    }
+
+    private String reclamoToString(Reclamo reclamo) {
+        return reclamo.getId_reclamo()+"-"+reclamo.getEspecialidad().getDescripcion()+"-"+reclamo.getDescripcion();
+    }
+
+    protected void makeCenterView(String[] items) {
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        int nro = 0;
+        for (final String item : items) {
+            LinearLayout line = new LinearLayout(this);
+            line.setOrientation(LinearLayout.HORIZONTAL);
+            line.setGravity(Gravity.CENTER);
+            Button btnReclamo = new Button(this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
+            lp.gravity = Gravity.CENTER;
+            btnReclamo.setLayoutParams(lp);
+            btnReclamo.setText(item); //aca iria el texto
+            btnReclamo.setGravity(Gravity.CENTER);
+            btnReclamo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mostrarToast(item);
+                    //var nro para usar en la List<Reclamo>
+                    //aca se tiene que pasar al detalle
+                }
+            });
+            line.addView(btnReclamo);
+            linearLayout.addView(line);
+            nro++;
+        }
+        svwlistareclamos.addView(linearLayout);
+    }
 
 
     private void mostrarDialogo(String titulo,String mensaje){

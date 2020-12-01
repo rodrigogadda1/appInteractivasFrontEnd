@@ -118,7 +118,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         edificiosNotSelected = new String[]{"Habilite la opcion"};
         estadosNotSelected = new String[]{"Habilite la opcion"};
 
-        getEdificios();
+        /*getEdificios();
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
             returnAdministrado();
             //getUnidadesEspaciosComunesAdministrado();
@@ -129,7 +129,7 @@ public class HistorialReclamos1 extends AppCompatActivity implements NavigationV
         else {
             getEdificiosAdministrador();
             getUnidadesEspaciosComunesAdministrador();
-        }
+        } */
         //setearEdificiosSpinner(edificios);
 
             //para los edificios (creacionReclamo1 par administrado, pantallaPrincipal para inspector, y todos los edificios para adminitrador)

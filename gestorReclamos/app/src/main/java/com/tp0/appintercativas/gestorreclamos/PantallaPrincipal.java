@@ -586,6 +586,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     protected void makeCenterView(String[] items) {
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
+        int nro = 0;
         for (final String item : items) {
             LinearLayout line = new LinearLayout(this);
             line.setOrientation(LinearLayout.HORIZONTAL);
@@ -601,10 +602,12 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                 public void onClick(View v) {
                     mostrarToast(item);
                     //aca se tiene que pasar al detalle
+                    //en la var nro esta de donde sacar el dato del reclamo
                 }
             });
             line.addView(btnReclamo);
             linearLayout.addView(line);
+            nro++;
         }
         ScrollViewReclamos.addView(linearLayout);
     }
