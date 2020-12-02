@@ -30,6 +30,8 @@ public class ReclamosHelper extends SQLiteOpenHelper {
             + ReclamoContract.ReclamosEntry.ID_ESTADO + " TEXT, "
             + ReclamoContract.ReclamosEntry.ID_AGRUPADOR + " TEXT, "
             + ReclamoContract.ReclamosEntry.DESCRIPCION + " TEXT, "
+            + ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR + " TEXT, "
+            + ReclamoContract.ReclamosEntry.RESPUESTA_ADMINISTRADOR + " TEXT, "
             + ReclamoContract.ReclamosEntry.ID_ADMINISTRADO + " TEXT, "
             + ReclamoContract.ReclamosEntry.ID_UNIDAD + " TEXT, "
             + ReclamoContract.ReclamosEntry.ID_ESPACIO_COMUN + " TEXT, "
@@ -96,8 +98,12 @@ public class ReclamosHelper extends SQLiteOpenHelper {
                     aux.setId_agrupador(cursor.getInt(cursor.getColumnIndex("id_agrupador")));
                 }
 
-                if (cursor.getString(cursor.getColumnIndex("descripcion")) != ""){
-                    aux.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
+                if (cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR)) != ""){
+                    aux.setRespuesta_inspector(cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR)));
+                }
+
+                if (cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_ADMINISTRADOR)) != ""){
+                    aux.setRespuesta_administrador(cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_ADMINISTRADOR)));
                 }
 
                 aux.setId_administrado(cursor.getInt(cursor.getColumnIndex("id_administrado")));
@@ -175,6 +181,14 @@ public class ReclamosHelper extends SQLiteOpenHelper {
 
             if (cursor.getString(cursor.getColumnIndex("descripcion")) != null){
                 aux.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
+            }
+
+            if (cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR)) != ""){
+                aux.setRespuesta_inspector(cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR)));
+            }
+
+            if (cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_ADMINISTRADOR)) != ""){
+                aux.setRespuesta_administrador(cursor.getString(cursor.getColumnIndex(ReclamoContract.ReclamosEntry.RESPUESTA_ADMINISTRADOR)));
             }
 
             aux.setId_administrado(cursor.getInt(cursor.getColumnIndex("id_administrado")));

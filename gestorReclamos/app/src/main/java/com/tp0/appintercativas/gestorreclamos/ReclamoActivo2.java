@@ -20,10 +20,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener {
     User user;
+    Reclamo reclamo;
     ImageView areclamo2_img, btnBackRecAct, btnExitRecAct, btnNextRecAct;
     TextView areclamo2_texto1, txtDetallesReclamoAct, txtEspecialidadRecActivo, txtEspecialidadRecActDetalle, txtEstadoRecActivo, txtRecActivoDetalle, txtDetalleDelReclamoRecAct;
     ScrollView scvInfoREclamo2, scvListaImagenesRecActivo;
@@ -36,6 +38,7 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
 
         areclamo2_img = (ImageView) findViewById(R.id.areclamo2_img);
         btnBackRecAct = (ImageView) findViewById(R.id.btnBackRecAct);
@@ -51,8 +54,10 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
 
         scvInfoREclamo2 = (ScrollView) findViewById(R.id.scvInfoREclamo2);
         scvListaImagenesRecActivo = (ScrollView) findViewById(R.id.scvListaImagenesRecActivo);
-        //para la slide bar
 
+        txtDetalleDelReclamoRecAct.setText("Respuesta de inspector:");
+        txtEspecialidadRecActDetalle.setText(reclamo.getEspecialidad().getDescripcion());
+        txtRecActivoDetalle.setText(reclamo.getEstado().getDescripcion());
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);

@@ -25,6 +25,8 @@ public class ReclamoContract {
         public static final String ID_ESTADO = "id_estado";
         public static final String ID_AGRUPADOR = "id_agrupador";
         public static final String DESCRIPCION = "descripcion";
+        public static final String RESPUESTA_INSPECTOR = "respuesta_inspector";
+        public static final String RESPUESTA_ADMINISTRADOR = "respuesta_administrador";
         public static final String ID_ADMINISTRADO = "id_administrado";
         public static final String ID_UNIDAD = "id_unidad";
         public static final String ID_ESPACIO_COMUN = "id_espacio_comun";

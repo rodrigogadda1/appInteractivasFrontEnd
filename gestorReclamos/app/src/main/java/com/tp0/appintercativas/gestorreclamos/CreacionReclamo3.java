@@ -236,7 +236,6 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         return decodedByte;
     }
 
-
     private Reclamo_SQLLite pasarDeReclamoAReclamo_SQLite (Reclamo reclamo){
         Reclamo_SQLLite reclamo_sqlLite = new Reclamo_SQLLite();
 
@@ -287,6 +286,9 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
         } else {
             reclamo_sqlLite.setDescripcion("");
         }
+
+        reclamo_sqlLite.setRespuesta_administrador("");
+        reclamo_sqlLite.setRespuesta_inspector("");
 
         if(reclamo.getAdministrado() != null){
             reclamo_sqlLite.setId_administrado(reclamo.getAdministrado().getId_administrado());

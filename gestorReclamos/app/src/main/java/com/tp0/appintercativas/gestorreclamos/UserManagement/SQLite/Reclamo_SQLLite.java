@@ -14,6 +14,8 @@ public class Reclamo_SQLLite {
     private long id_estado;
     private long id_agrupador;
     private String descripcion;
+    private String respuesta_inspector;
+    private String respuesta_administrador;
     private long id_administrado;
     private long id_unidad;
     private long id_espacioComun;
@@ -30,6 +32,8 @@ public class Reclamo_SQLLite {
                 ", id_estado=" + id_estado +
                 ", id_agrupador=" + id_agrupador +
                 ", descripcion='" + descripcion + '\'' +
+                ", respuesta_inspector='" + respuesta_inspector + '\'' +
+                ", respuesta_administrador='" + respuesta_administrador + '\'' +
                 ", id_administrado=" + id_administrado +
                 ", id_unidad=" + id_unidad +
                 ", id_espacioComun=" + id_espacioComun +
@@ -37,9 +41,8 @@ public class Reclamo_SQLLite {
                 '}';
     }
 
-    public Reclamo_SQLLite(long id_reclamo, String nombre, String username, long id_edificio, long id_especialidad, long id_estado, long id_agrupador, String descripcion, long id_administrado,
-                           long id_unidad, long id_espacioComun, List<String> fotos) {
-        super();
+    public Reclamo_SQLLite(long id_reclamo, String nombre, String username, long id_edificio, long id_especialidad, long id_estado, long id_agrupador, String descripcion,
+                           String respuesta_inspector, String respuesta_administrador, long id_administrado, long id_unidad, long id_espacioComun, List<String> fotos) {
         this.id_reclamo = id_reclamo;
         Nombre = nombre;
         this.username = username;
@@ -48,6 +51,8 @@ public class Reclamo_SQLLite {
         this.id_estado = id_estado;
         this.id_agrupador = id_agrupador;
         this.descripcion = descripcion;
+        this.respuesta_inspector = respuesta_inspector;
+        this.respuesta_administrador = respuesta_administrador;
         this.id_administrado = id_administrado;
         this.id_unidad = id_unidad;
         this.id_espacioComun = id_espacioComun;
@@ -154,6 +159,14 @@ public class Reclamo_SQLLite {
         this.fotos = fotos;
     }
 
+    public String getRespuesta_administrador() {
+        return respuesta_administrador;
+    }
+
+    public void setRespuesta_administrador(String respuesta_administrador) {
+        this.respuesta_administrador = respuesta_administrador;
+    }
+
     /**
      * Convierte el estado en pares clave valor para hacer el insert
      * */
@@ -180,6 +193,12 @@ public class Reclamo_SQLLite {
         }
         if (descripcion != "") {
             cv.put(ReclamoContract.ReclamosEntry.DESCRIPCION, descripcion);
+        }
+        if (respuesta_inspector != "") {
+            cv.put(ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR, respuesta_inspector);
+        }
+        if (respuesta_administrador != "") {
+            cv.put(ReclamoContract.ReclamosEntry.RESPUESTA_INSPECTOR, respuesta_administrador);
         }
         if (id_administrado != 0) {
             cv.put(ReclamoContract.ReclamosEntry.ID_ADMINISTRADO, id_administrado);
@@ -216,4 +235,13 @@ public class Reclamo_SQLLite {
         }
         return cv;
     }
+
+    public String getRespuesta_inspector() {
+        return respuesta_inspector;
+    }
+
+    public void setRespuesta_inspector(String respuesta_inspector) {
+        this.respuesta_inspector = respuesta_inspector;
+    }
+
 }

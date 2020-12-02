@@ -15,21 +15,27 @@ public class Reclamo implements Serializable {
     private Estado estado;
     private long id_agrupador;
     private String descripcion;
+    private String respuesta_inspector;
+    private String respuesta_administrador;
     private Administrado administrado;
     private Unidad unidad;
     private EspacioComun espacioComun;
     private List<Foto> fotos;
 
-    public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad, Estado estado
-                    , long id_agrupador, String descripcion, Administrado administrado, Unidad unidad, EspacioComun espacioComun, List<Foto> fotos) {
+    public Reclamo(long id_reclamo, String nombre, String username, Edificio edificio, Especialidad especialidad, Date fecha, Estado estado, long id_agrupador
+                    , String descripcion, String respuesta_inspector, String respuesta_administrador, Administrado administrado, Unidad unidad, EspacioComun espacioComun
+                    , List<Foto> fotos) {
         this.id_reclamo = id_reclamo;
         Nombre = nombre;
         this.username = username;
         this.edificio = edificio;
         this.especialidad = especialidad;
+        this.fecha = fecha;
         this.estado = estado;
         this.id_agrupador = id_agrupador;
         this.descripcion = descripcion;
+        this.respuesta_inspector = respuesta_inspector;
+        this.respuesta_administrador = respuesta_administrador;
         this.administrado = administrado;
         this.unidad = unidad;
         this.espacioComun = espacioComun;
@@ -52,6 +58,8 @@ public class Reclamo implements Serializable {
                 ", estado=" + estado +
                 ", id_agrupador=" + id_agrupador +
                 ", descripcion='" + descripcion + '\'' +
+                ", respuesta_inspector='" + respuesta_inspector + '\'' +
+                ", respuesta_administrador='" + respuesta_administrador + '\'' +
                 ", administrado=" + administrado +
                 ", unidad=" + unidad +
                 ", espacioComun=" + espacioComun +
@@ -85,6 +93,12 @@ public class Reclamo implements Serializable {
         }
         if (descripcion != null){
             salida+=" -descripcion "+descripcion;
+        }
+        if (respuesta_inspector != null){
+            salida+= " -respuesta inspector "+respuesta_inspector;
+        }
+        if (respuesta_administrador != null){
+            salida+=" - respuesta administrador "+respuesta_administrador;
         }
         if (administrado != null){
             salida+=" -administrado "+administrado.toString();
@@ -199,5 +213,21 @@ public class Reclamo implements Serializable {
 
     public void setEspacioComun(EspacioComun espacioComun) {
         this.espacioComun = espacioComun;
+    }
+
+    public String getRespuesta_inspector() {
+        return respuesta_inspector;
+    }
+
+    public void setRespuesta_inspector(String respuesta_inspector) {
+        this.respuesta_inspector = respuesta_inspector;
+    }
+
+    public String getRespuesta_administrador() {
+        return respuesta_administrador;
+    }
+
+    public void setRespuesta_administrador(String respuesta_administrador) {
+        this.respuesta_administrador = respuesta_administrador;
     }
 }

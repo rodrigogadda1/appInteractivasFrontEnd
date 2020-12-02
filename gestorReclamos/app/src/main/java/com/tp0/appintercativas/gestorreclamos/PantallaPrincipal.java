@@ -401,6 +401,14 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
 
         salida.setDescripcion(reclamitoPos.getDescripcion());
 
+        if (reclamitoPos.getRespuesta_inspector() != ""){
+            salida.setRespuesta_inspector(reclamitoPos.getRespuesta_inspector());
+        }
+
+        if (reclamitoPos.getRespuesta_administrador() != ""){
+            salida.setRespuesta_administrador(reclamitoPos.getRespuesta_administrador());
+        }
+
         Administrado administrado = new Administrado();
         administrado.setId_administrado(reclamitoPos.getId_administrado());
         salida.setAdministrado(administrado);

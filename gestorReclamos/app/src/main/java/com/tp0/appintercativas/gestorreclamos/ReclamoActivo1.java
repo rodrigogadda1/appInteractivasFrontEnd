@@ -271,11 +271,12 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
             btnReclamo.setLayoutParams(lp);
             btnReclamo.setText(item); //aca iria el texto
             btnReclamo.setGravity(Gravity.CENTER);
+            final int finalNro = nro;
             btnReclamo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mostrarToast(item);
-                    GoToREclamoActivo2();
+                    GoToREclamoActivo2(reclamos.get(finalNro));
                     //var nro para usar en la List<Reclamo>
                     //aca se tiene que pasar al detalle
                 }
@@ -435,9 +436,10 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         intent.putExtra("user",user);
         startActivity(intent);
     }
-    private void GoToREclamoActivo2() {
+    private void GoToREclamoActivo2(Reclamo reclamo) {
         Intent intent = new Intent(this, ReclamoActivo2.class);
         intent.putExtra("user",user);
+        intent.putExtra("reclamo",reclamo);
         startActivity(intent);
     }
     private void GoToREclamoActivo3() {
