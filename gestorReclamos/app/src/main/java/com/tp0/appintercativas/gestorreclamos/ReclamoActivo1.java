@@ -48,7 +48,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         List<Reclamo> reclamos;
         Administrado administrado;
         User user;
-        Button btnFiltroRec,btnAgruparReclamo,btnEditarReclamo;
+        Button btnFiltroRec,btnAgruparReclamo;
         ImageView btnExitReclamo;
         TextView txtPpal1,txtPpal2;
         ScrollView svwlistareclamos;
@@ -66,7 +66,6 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
 
         btnFiltroRec = (Button) findViewById(R.id.btnFiltroRec);
         btnAgruparReclamo = (Button) findViewById(R.id.btnAgruparReclamo);
-        btnEditarReclamo = (Button) findViewById(R.id.btnEditarReclamo);
         btnExitReclamo = (ImageView) findViewById(R.id.btnExitReclamo);
 
         txtPpal1 = (TextView) findViewById(R.id.txtPpal1);
@@ -109,12 +108,6 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                                             }
                                         }
         );
-        btnEditarReclamo.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                            }
-                                        }
-        );
         btnExitReclamo.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
@@ -131,12 +124,12 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         Call<List<Reclamo>> call = null;
 
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
-            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1,3,4","","");
+            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1,3,4,5","","");
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
             getInspector();
         } else {
             //caso administrador
-            call = rs.getReclamosByUserIdAndStatusId("","1,3,4","","");
+            call = rs.getReclamosByUserIdAndStatusId("","4,5","","");
         }
 
         if (!user.getTipoUser().toLowerCase().equals("inspector")) {
@@ -279,6 +272,8 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                         GoToREclamoActivo2(reclamos.get(finalNro));
                     } else if (user.getTipoUser().toLowerCase().equals("inspector")) {
                         GoToREclamoActivo3(reclamos.get(finalNro));
+                    } else {
+                        GoToREclamoActivo4(reclamos.get(finalNro));
                     }
 
                     //var nro para usar en la List<Reclamo>

@@ -21,10 +21,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
+    Reclamo reclamo;
     Button btnGuardarRecActEstado;
     ImageView imgPpalRecActEstado,btnBackRecActEstado,btnExitREcActEstado;
     TextView txtRecActEstado,txtRecActEstadoReclamo;
@@ -55,6 +57,20 @@ public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.
         scvRecActEstado = (ScrollView) findViewById(R.id.scvRecActEstado);
 
         edtxtRecActEstadoDetalle = (EditText) findViewById(R.id.edtxtRecActEstadoDetalle);
+
+        //para el estado
+        txtRecActEstadoReclamo.setText(reclamo.getEstado().getDescripcion());
+        //para descripcion de todo lo demas
+        String texto = "";
+
+        txtRecActEstado.setText(texto);
+        //para completar el mensaje de administrador
+        //edtxtRecActEstadoDetalle
+
+
+
+
+
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);

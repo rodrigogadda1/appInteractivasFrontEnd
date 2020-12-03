@@ -63,7 +63,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="6dip"
-                    android:text="Detalle del Reclamo"
                     android:textColor="#000000"
                     android:textSize="18sp"></TextView>
             </LinearLayout>
@@ -97,7 +96,6 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/rounded_gray"
             android:gravity="center"
-            android:text="Estado del Reclamo"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"

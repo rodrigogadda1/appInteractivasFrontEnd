@@ -476,12 +476,12 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         Call<List<Reclamo>> call = null;
 
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
-            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1","","");
+            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1,3,4,5","","");
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
             getInspector();
         } else {
             //caso administrador
-            call = rs.getReclamosByUserIdAndStatusId("","1","","");
+            call = rs.getReclamosByUserIdAndStatusId("","4,5","","");
         }
         if (!user.getTipoUser().toLowerCase().equals("inspector")){
             call.enqueue(new Callback<List<Reclamo>>() {
@@ -568,7 +568,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     private void getReclamosInspector(String lista_edificios,String lista_especialidades){
         Retrofit retrofit = Controller.ConfiguracionIP();
         ReclamoService rs = retrofit.create(ReclamoService.class);
-        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId("","1",lista_edificios,lista_especialidades);
+        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId("","1,3",lista_edificios,lista_especialidades);
 
         call.enqueue(new Callback<List<Reclamo>>() {
             @Override
