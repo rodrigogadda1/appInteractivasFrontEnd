@@ -116,7 +116,10 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
             texto+="Espacio comun: "+reclamo.getEspacioComun().getNombre()+ "\n";
         }
         if (reclamo.getUnidad() != null) {
-            texto+="Piso: "+reclamo.getUnidad().getPiso()+" Unidad: "+reclamo.getUnidad().getUnidad();
+            texto+="Piso: "+reclamo.getUnidad().getPiso()+" Unidad: "+reclamo.getUnidad().getUnidad()+ "\n";
+        }
+        if (reclamo.getDescripcion() != null){
+            texto+="Descripcion reclamo: "+reclamo.getDescripcion();
         }
         txtEditRecAct.setText(texto);
 
@@ -293,7 +296,7 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
         if (reclamo.getEstado().getDescripcion().toLowerCase().equals("abierto")) {
             spinners.add("Abierto");
         }
-        spinners.add("En reparacion");
+        spinners.add("En Reparacion");
         spinners.add("Cancelado");
         spinners.add("Inspeccionando");
         String[] stringsEstados = new String[spinners.size()];
