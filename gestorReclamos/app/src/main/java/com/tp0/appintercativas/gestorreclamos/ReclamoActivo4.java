@@ -25,8 +25,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.Controller.Controller;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Notificacion;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.service.NotificacionService;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.service.ReclamoService;
 
 import retrofit2.Call;
@@ -107,7 +109,7 @@ public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.
                         ClipData clip = ClipData.newPlainText("label",reclamo.toString());
                         clipboard.setPrimaryClip(clip);
                         guardarReclamo();
-                        //DarDeAltaNotificacion();
+                        DarDeAltaNotificacion();
                         GoBack();
                     } else {
                         mostrarDialogo("Error en validacion", "tiene que agregar un texto para dar la devolucion.");
@@ -154,6 +156,29 @@ public class ReclamoActivo4 extends AppCompatActivity implements NavigationView.
                                           }
         );
 
+    }
+
+    private void DarDeAltaNotificacion(){
+        Notificacion notificacion = new Notificacion();
+        notificacion.setId_administrdo((int) reclamo.getAdministrado().getId_administrado());
+        notificacion.setLeido(false);
+        notificacion.setId_reclamo((int) reclamo.getId_reclamo());
+        notificacion.setDescripcion("Tenes novedades en el reclamo id:"+reclamo.getId_reclamo());
+        Retrofit retrofit = Controller.ConfiguracionIP();
+        NotificacionService rs = retrofit.create(NotificacionService.class);
+        Call<Notificacion> call = rs.create(notificacion);
+
+        call.enqueue(new Callback<Notificacion>() {
+            @Override
+            public void onResponse(Call<Notificacion> call, Response<Notificacion> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Notificacion> call, Throwable t) {
+                mostrarDialogo("error en linea 179",t.getMessage() );
+            }
+        });
     }
 
     private void GoBack(){

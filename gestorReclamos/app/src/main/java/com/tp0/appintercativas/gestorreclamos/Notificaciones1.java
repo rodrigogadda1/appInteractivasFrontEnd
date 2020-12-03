@@ -92,15 +92,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         );
 
 
-
-        btnBorrarNotif.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                //aca se escribe que hacer
-                                            }
-                                        }
-        );
-
     }
 
     private Notificacion getNotificacionByIdDescr (String busqueda){
@@ -125,7 +116,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
             @Override
             public void onResponse(Call<Administrado> call, Response<Administrado> response) {
                 administrado = response.body();
-                mostrarDialogo("revisarNotificaciones ",administrado.toString());
                 if (response.isSuccessful()){
                     administrado = response.body();
                     buscarNotificaciones(administrado);
@@ -147,7 +137,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
         call.enqueue(new Callback<List<Notificacion>>() {
             @Override
             public void onResponse(Call<List<Notificacion>> call, Response<List<Notificacion>> response) {
-                mostrarDialogo("probando buscarNotificaciones",response.body().toString());
                 if (response.isSuccessful()){
                     List<Notificacion> notificaciones = response.body();
                     notificacionsNoLeidas = new ArrayList<Notificacion>();
@@ -218,7 +207,6 @@ public class Notificaciones1 extends AppCompatActivity implements NavigationView
             btnNotificacion.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mostrarToast(item);
                     GoToNotificaDetalle(getNotificacionByIdDescr(item));
                 }
             });
