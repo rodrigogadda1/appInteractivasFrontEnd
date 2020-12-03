@@ -208,17 +208,8 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
                                                         //seAgreganFotos se utiliza para saber si se guarda o no un reclamo
                                                         if ( seAgreganFotos) {
                                                             reclamo.setFecha(null);
-
-                                                            //CLIPBOARD
-                                                            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                                                            ClipData clip = ClipData.newPlainText("label",reclamo.toString());
-                                                            clipboard.setPrimaryClip(clip);
-                                                            mostrarToast("se copio");
-                                                            //CLIPBOARD
-
-
                                                             guardarReclamo();
-                                                            //GoBack();
+                                                            GoBack();
                                                         }
 
                                                     }
