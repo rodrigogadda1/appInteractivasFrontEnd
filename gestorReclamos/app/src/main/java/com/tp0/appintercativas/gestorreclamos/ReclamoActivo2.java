@@ -85,6 +85,9 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
         txtRecActivoDetalle = (TextView) findViewById(R.id.txtRecActivoDetalle);
         txtDetalleDelReclamoRecAct = (TextView) findViewById(R.id.txtDetalleDelReclamoRecAct);
 
+        txtEspecialidadRecActDetalle.setText(reclamo.getEspecialidad().getNombre());
+        txtRecActivoDetalle.setText(reclamo.getEstado().getDescripcion());
+
         scvInfoREclamo2 = (ScrollView) findViewById(R.id.scvInfoREclamo2);
         scvListaImagenesRecActivo = (ScrollView) findViewById(R.id.scvListaImagenesRecActivo);
 
