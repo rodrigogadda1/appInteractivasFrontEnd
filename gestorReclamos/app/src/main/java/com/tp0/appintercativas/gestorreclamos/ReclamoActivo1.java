@@ -274,7 +274,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
             btnReclamo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mostrarToast(item);
+                    //mostrarToast(item);
                     if (user.getTipoUser().toLowerCase().equals("administrado")){
                         GoToREclamoActivo2(reclamos.get(finalNro));
                     } else if (user.getTipoUser().toLowerCase().equals("inspector")) {

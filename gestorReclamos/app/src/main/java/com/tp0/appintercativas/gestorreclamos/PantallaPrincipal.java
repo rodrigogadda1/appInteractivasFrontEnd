@@ -69,6 +69,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     NotificationManager notificationManagerAux;
     private NotificationManagerCompat notificationManager;
 
+    List<Reclamo> reclamosAMostrar;
+
     String onCreateDone;
     ReclamosHelper reclamosHelper;
     Administrado administrado;
@@ -91,6 +93,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_pantalla_principal);
 
         onCreateDone = "yes";
+        reclamosAMostrar = new ArrayList<Reclamo>();
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -491,6 +494,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                         for (int i = 0; i < reclamos.size(); i++) {
                             if ( i < 5 ) {
                                 Reclamo reclamo = reclamos.get(i);
+                                reclamosAMostrar.add(reclamo);
                                 strings.add(reclamoToString(reclamo));
                             }
                         }
@@ -577,6 +581,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                     for (int i = 0; i < reclamos.size(); i++) {
                         if ( i < 5 ) {
                             Reclamo reclamo = reclamos.get(i);
+                            reclamosAMostrar.add(reclamo);
                             strings.add(reclamoToString(reclamo));
                         }
                     }
@@ -611,10 +616,16 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             btnReclamo.setLayoutParams(lp);
             btnReclamo.setText(item); //aca iria el texto
             btnReclamo.setGravity(Gravity.CENTER);
+            final int finalNro = nro;
             btnReclamo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mostrarToast(item);
+                    if (user.getTipoUser().toLowerCase().equals("administrado")){
+                        GoToREclamoActivo2(reclamosAMostrar.get(finalNro));
+                    } else if (user.getTipoUser().toLowerCase().equals("inspector")) {
+                        GoToREclamoActivo3(reclamosAMostrar.get(finalNro));
+                    }
                     //aca se tiene que pasar al detalle
                     //en la var nro esta de donde sacar el dato del reclamo
                 }
@@ -624,6 +635,19 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
             nro++;
         }
         ScrollViewReclamos.addView(linearLayout);
+    }
+
+    private void GoToREclamoActivo2(Reclamo reclamo) {
+        Intent intent = new Intent(this, ReclamoActivo2.class);
+        intent.putExtra("user",user);
+        intent.putExtra("reclamo",reclamo);
+        startActivity(intent);
+    }
+    private void GoToREclamoActivo3(Reclamo reclamo) {
+        Intent intent = new Intent(this, ReclamoActivo3.class);
+        intent.putExtra("user",user);
+        intent.putExtra("reclamo",reclamo);
+        startActivity(intent);
     }
 
     private String reclamoToString(Reclamo reclamo) {

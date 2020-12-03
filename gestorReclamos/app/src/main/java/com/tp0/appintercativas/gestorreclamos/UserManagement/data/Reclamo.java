@@ -230,4 +230,8 @@ public class Reclamo implements Serializable {
     public void setRespuesta_administrador(String respuesta_administrador) {
         this.respuesta_administrador = respuesta_administrador;
     }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }

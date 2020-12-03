@@ -140,22 +140,19 @@ public class ReclamoActivo2 extends AppCompatActivity implements NavigationView.
         drawerLayout.addDrawerListener(this);
         //fin codigo para slide bar
 
-    scvInfoREclamo2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //aca se escribe que hacer
+        btnBackRecAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoToReclamosActivos();
+            }
+        });
 
-        }
-    }
-        );
-        scvListaImagenesRecActivo.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //aca se escribe que hacer
-
-        }
-    }
-        );
+        btnExitRecAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoPantallaPrincipal();
+            }
+        });
 
 
 }
