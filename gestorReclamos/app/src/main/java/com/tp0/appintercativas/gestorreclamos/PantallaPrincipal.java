@@ -625,6 +625,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                         GoToREclamoActivo2(reclamosAMostrar.get(finalNro));
                     } else if (user.getTipoUser().toLowerCase().equals("inspector")) {
                         GoToREclamoActivo3(reclamosAMostrar.get(finalNro));
+                    } else {
+                        GoToREclamoActivo4(reclamosAMostrar.get(finalNro));
                     }
                     //aca se tiene que pasar al detalle
                     //en la var nro esta de donde sacar el dato del reclamo
@@ -665,6 +667,13 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
                     }
                 })
                 .show();
+    }
+
+    private void GoToREclamoActivo4(Reclamo reclamo) {
+        Intent intent = new Intent(this, ReclamoActivo4.class);
+        intent.putExtra("user",user);
+        intent.putExtra("reclamo",reclamo);
+        startActivity(intent);
     }
 
     private void mostrarToast(String mensaje){

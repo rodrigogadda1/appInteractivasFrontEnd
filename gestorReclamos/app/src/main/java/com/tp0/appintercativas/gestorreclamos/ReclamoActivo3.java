@@ -220,7 +220,7 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
     }
 
     private void GoBack(){
-        Intent intent = new Intent(this, CreacionReclamo1.class);
+        Intent intent = new Intent(this, ReclamoActivo1.class);
         intent.putExtra("user",user);
         startActivity(intent);
     }
