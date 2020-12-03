@@ -361,7 +361,6 @@ public class CreacionReclamo3 extends AppCompatActivity implements NavigationVie
             clipboard.setPrimaryClip(clip);
             //FIN METODO COPY TO CLIPBOARD
 
-            mostrarDialogo("probando 123",reclamo.toString());
             call.enqueue(new Callback<Reclamo>() {
                 @Override
                 public void onResponse(Call<Reclamo> call, Response<Reclamo> response) {

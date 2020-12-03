@@ -186,7 +186,6 @@
                     android:id="@+id/imgEditRecAct1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image40"
                     android:adjustViewBounds="true" >
                 </ImageView>
 
@@ -194,21 +193,73 @@
                     android:id="@+id/imgEditRecAct2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/image41"></ImageView>
+                    android:adjustViewBounds="true">
+                </ImageView>
 
                 <ImageView
                     android:id="@+id/imgEditRecAct3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image42"
                     android:adjustViewBounds="true" >
                 </ImageView>
                 <ImageView
                     android:id="@+id/imgEditRecAct4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image43"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct6"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct7"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct8"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct9"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct10"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct11"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct12"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true" >
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imgEditRecAct13"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:adjustViewBounds="true" >
                 </ImageView>
                 <ListView android:layout_weight="1"
@@ -243,19 +294,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btnNextRecAct"
             app:layout_constraintTop_toBottomOf="@+id/scvListaImagenesRecActivo" />
 
-        <ImageView
-            android:id="@+id/btnNextRecAct"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="4dp"
-            android:src="@drawable/image08"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnExitRecAct"
-            app:layout_constraintTop_toBottomOf="@+id/scvListaImagenesRecActivo" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

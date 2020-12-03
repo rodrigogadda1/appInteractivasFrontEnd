@@ -69,6 +69,7 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     NotificationManager notificationManagerAux;
     private NotificationManagerCompat notificationManager;
 
+    String onCreateDone;
     ReclamosHelper reclamosHelper;
     Administrado administrado;
 
@@ -88,6 +89,8 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_principal);
+
+        onCreateDone = "yes";
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -302,15 +305,18 @@ public class PantallaPrincipal extends AppCompatActivity implements NavigationVi
     protected void onResume() {
         super.onResume();
         //se revisa si hay reclamos pendientes para subir
-        if (user.getTipoUser().toLowerCase().equals("administrado")) {
-            //pruebo que tenga la conexion para poder subir los reclamos
-            if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
-                getAdministradoId();
+        if (!onCreateDone.equals("yes")) {
+            if (user.getTipoUser().toLowerCase().equals("administrado")) {
+                //pruebo que tenga la conexion para poder subir los reclamos
+                if (    testearConnection().equals("DataWifi") ||  ( testearConnection().equals("DataMobile") && (user.isDatos_moviles()) )   ) {
+                    getAdministradoId();
+                }
+
+            } else if (user.getTipoUser().toLowerCase().equals("inspector")){
+
             }
-
-        } else if (user.getTipoUser().toLowerCase().equals("inspector")){
-
         }
+
     }
 
     private void getAdministradoId(){

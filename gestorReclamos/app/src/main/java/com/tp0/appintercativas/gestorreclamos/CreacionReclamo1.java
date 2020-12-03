@@ -331,8 +331,10 @@ public class CreacionReclamo1 extends AppCompatActivity  implements NavigationVi
         for (int i = 0; i < administrado2.getAdministradoUnidades().size(); i++) {
             AdministradoUnidad adminUnidad = administrado2.getAdministradoUnidades().get(i);
             Edificio edificio = adminUnidad.getUnidad().getEdificio();
-            edificios.add(edificio);
-            listEdificios.add(edificio.getNombre());
+            if (!listEdificios.contains(edificio.getNombre())) {
+                edificios.add(edificio);
+                listEdificios.add(edificio.getNombre());
+            }
         }
 
         if (listEdificios.size() > 1){

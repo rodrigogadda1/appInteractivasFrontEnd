@@ -21,10 +21,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.tp0.appintercativas.gestorreclamos.UserManagement.data.Reclamo;
 import com.tp0.appintercativas.gestorreclamos.UserManagement.data.User;
 
 public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
     User user;
+    Reclamo reclamo;
     Button btnEditRecActGuardar;
     ImageView imgPpalRecAct3,imgEditRecAct1,imgEditRecAct2,imgEditRecAct3,imgEditRecAct4,imgEditRecActBack,imgEditRecActExit;
     TextView txtPpalRecAct3,txtEditRecAct,txtEditRecActEspecialidad,txtEditRecActAgrupado,txtEditRecActEstados;
@@ -41,6 +43,8 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        reclamo = (Reclamo) intent.getSerializableExtra("reclamo");
+
 
         btnEditRecActGuardar = (Button) findViewById(R.id.btnEditRecActGuardar);
 
@@ -63,6 +67,21 @@ public class ReclamoActivo3 extends AppCompatActivity implements NavigationView.
         spnEditRecActEstados = (Spinner) findViewById(R.id.spnEditRecActEstados);
 
         edtTxtEditRecActivoAgrupadosTexto = (EditText) findViewById(R.id.edtTxtEditRecActivoAgrupadosTexto);
+
+        //text de administrado reclamo
+        String texto = "";
+        if (reclamo.getUsername() != ""){
+            texto+="Usuario: "+reclamo.getUsername()+ "\n";
+        }
+        texto+="Edificio: "+reclamo.getEdificio().getNombre()+ "\n";
+        if (reclamo.getEspacioComun() != null) {
+            texto+="Espacio comun: "+reclamo.getEspacioComun().getNombre()+ "\n";
+        }
+        if (reclamo.getUnidad() != null) {
+            texto+="Piso: "+reclamo.getUnidad().getPiso()+" Unidad: "+reclamo.getUnidad().getUnidad();
+        }
+        txtEditRecAct.setText(texto);
+
 
         //codigo para slide bar
         Toolbar toolbar = findViewById(R.id.toolbar);

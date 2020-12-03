@@ -104,7 +104,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         btnAgruparReclamo.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                GoToREclamoActivo3();
+
                                                 mostrarToast("funcionalidad no implementada");
                                             }
                                         }
@@ -112,7 +112,6 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         btnEditarReclamo.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                GoToREclamoActivo4();
                                             }
                                         }
         );
@@ -132,12 +131,12 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         Call<List<Reclamo>> call = null;
 
         if (user.getTipoUser().toLowerCase().equals("administrado")) {
-            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1,3,4,5","","");
+            call = rs.getReclamosByUserIdAndStatusId(String.valueOf(user.getId()),"1,3,4","","");
         } else if (user.getTipoUser().toLowerCase().equals("inspector")){
             getInspector();
         } else {
             //caso administrador
-            call = rs.getReclamosByUserIdAndStatusId("","1,3,4,5","","");
+            call = rs.getReclamosByUserIdAndStatusId("","1,3,4","","");
         }
 
         if (!user.getTipoUser().toLowerCase().equals("inspector")) {
@@ -222,7 +221,7 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
     private void getReclamosInspector(String lista_edificios,String lista_especialidades){
         Retrofit retrofit = Controller.ConfiguracionIP();
         ReclamoService rs = retrofit.create(ReclamoService.class);
-        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId("","1",lista_edificios,lista_especialidades);
+        Call<List<Reclamo>> call = rs.getReclamosByUserIdAndStatusId("","1,3",lista_edificios,lista_especialidades);
 
         call.enqueue(new Callback<List<Reclamo>>() {
             @Override
@@ -276,7 +275,12 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
                 @Override
                 public void onClick(View v) {
                     mostrarToast(item);
-                    GoToREclamoActivo2(reclamos.get(finalNro));
+                    if (user.getTipoUser().toLowerCase().equals("administrado")){
+                        GoToREclamoActivo2(reclamos.get(finalNro));
+                    } else if (user.getTipoUser().toLowerCase().equals("inspector")) {
+                        GoToREclamoActivo3(reclamos.get(finalNro));
+                    }
+
                     //var nro para usar en la List<Reclamo>
                     //aca se tiene que pasar al detalle
                 }
@@ -442,14 +446,16 @@ public class ReclamoActivo1 extends AppCompatActivity implements NavigationView.
         intent.putExtra("reclamo",reclamo);
         startActivity(intent);
     }
-    private void GoToREclamoActivo3() {
+    private void GoToREclamoActivo3(Reclamo reclamo) {
         Intent intent = new Intent(this, ReclamoActivo3.class);
         intent.putExtra("user",user);
+        intent.putExtra("reclamo",reclamo);
         startActivity(intent);
     }
-    private void GoToREclamoActivo4() {
+    private void GoToREclamoActivo4(Reclamo reclamo) {
         Intent intent = new Intent(this, ReclamoActivo4.class);
         intent.putExtra("user",user);
+        intent.putExtra("reclamo",reclamo);
         startActivity(intent);
     }
 }
